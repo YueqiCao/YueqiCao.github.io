@@ -3,6 +3,64 @@
   
     
     <entry>
+      <title><![CDATA[Concentration in Gauss Space]]></title>
+      <url>/2019/07/25/Concentration-in-Gauss-Space/</url>
+      <content type="html"><![CDATA[<p>This article aims to solve an exercise in <a href="https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html#" target="_blank" rel="noopener">High-Dimensional Probability</a> (Page 112, Exercise 5.2.3).</p>
+<h1 id="Gaussian-Isoperimetric-Inequality"><a href="#Gaussian-Isoperimetric-Inequality" class="headerlink" title="Gaussian Isoperimetric Inequality"></a>Gaussian Isoperimetric Inequality</h1><p>Let $\mathbb R^n$ equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> $\gamma_n$:</p>
+<script type="math/tex; mode=display">
+\gamma_n(E)=\frac{1}{(2\pi)^{n/2}}\int_E\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x</script><p>where $E\subseteq \mathbb R^n$ is a Borel set. Then $(\mathbb R^n,\gamma_n)$ is called Gauss space. Gaussian isoperimetric inequality states that, among all the measurable sets with given volume, half spaces have the <strong>smallest perimeter</strong>. Moreover, define the Minkowski sum </p>
+<script type="math/tex; mode=display">
+A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statement.</p>
+<p><strong>Theorem.</strong> Let $\epsilon&gt;0$. Among all sets $A\subseteq \mathbb R^n$ with fixed Gauss measure $\gamma_n(A)$, the half spaces minimizes the Gauss measure $\gamma_n(A+B^n(\epsilon))$, where $B^n(\epsilon)$ is a solid ball centered at origin with radius $\epsilon$.</p>
+<p>See <a href="https://link.springer.com/content/pdf/10.1007/BF01425510.pdf" target="_blank" rel="noopener">here</a> for a general definition of Gauss space and proof of the above theorem. See <a href="https://www.jstor.org/stable/29782707?seq=1#page_scan_tab_contents" target="_blank" rel="noopener">this paper</a> for a friendly introduction of Gaussian isoperimetric inequality.</p>
+<h1 id="Concentration"><a href="#Concentration" class="headerlink" title="Concentration"></a>Concentration</h1><p>We want to prove the following concentration inequality in Gauss spaces.</p>
+<p><strong>Theorem.</strong> Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. $f:\mathbb R^n\to \mathbb R$ is a Lipschitz function with respect to the standard Euclidean metric. Then $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. That is,</p>
+<script type="math/tex; mode=display">
+\mathbb P(|f(X)-\mathbb Ef(X)|>t)\le \exp(-ct^2),\forall t>0,</script><p>where $c&gt;0$ is a constant.</p>
+<p>First we prove a blow-up lemma using isoperimetric inequality.</p>
+<p><strong>Lemma.</strong> Let $A$ be a subset in Gauss space. If $\gamma_n(A)&gt;1/2$, then for any $t&gt;0$, $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp{-t^2/2}$.</p>
+<p><strong>Proof of Lemma.</strong> Let $H={x\in\mathbb R^n:x_1\le 0}$ be the half space. By assumption, $\gamma_n(A)&gt;\gamma_n(H)$. The Gaussian isoperimetric inequality implies </p>
+<script type="math/tex; mode=display">
+\gamma_n(A+B^n(t))>\gamma_n(H+B^n(t)).</script><p>Note that $H+B^n(t)={x\in\mathbb R_n:x_1\le t}$ is also a half space. Direct computation shows that </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\gamma_n(H+B^n(t))&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^t\exp\{-\frac{x_1^2}{2}\}{\rm d}x_1\\
+&=1-\frac{1}{\sqrt{2\pi}}\int_t^{\infty}\exp\{-\frac{x_1^2}{2}\}{\rm d}x_1\\
+&=1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{(t+y)^2}{2}\}{\rm d}y\\
+&\ge 1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{t^2}{2}\}\exp\{-\frac{y^2}{2}\}{\rm d}y\\
+&=1-\frac{1}{2}\exp\{-\frac{t^2}{2}\}.
+\end{aligned}</script><p>Therefore, we have $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp{-t^2/2}$. $\blacksquare$ </p>
+<p>This blow-up lemma enables us to prove the main theorem.</p>
+<p><strong>Proof of Main Theorem.</strong> Without loss of generality, we assume $|f(x)-f(y)|\le |x-y|$. Let $m$ denote the median of $f(X)$. That is,</p>
+<script type="math/tex; mode=display">
+\mathbb P(f(X)\le m)\ge 1/2,\mathbb P(f(X)\ge m)\ge 1/2.</script><p>Consider the level set $A=f^{-1}((-\infty,m])$. Note that $\mathbb P(f(X)\le m)=\gamma_n(A)\ge 1/2$. By blow-up lemma, $\gamma_n(A+B^n(t))\ge  1-1/2\exp{-t^2/2}$. On the other hand, if $x\in A+B^n(t) $, there exists $y\in A$ such that $|x-y|\le t$. Therefore, </p>
+<script type="math/tex; mode=display">
+f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge \gamma_n(A+B^n(t))$, i.e. $\mathbb P(f(X)-m&gt;t)\le 1/2\exp{-t^2/2}$. </p>
+<p>Replace $f$ with $-f$. We can obtain a similar inequality as $\mathbb P(f(X)-m&lt;-t)\le 1/2\exp{-t^2/2}$. Hence, </p>
+<script type="math/tex; mode=display">
+\mathbb P(|f(X)-m|>t)\le \exp\{-t^2/2\},</script><p>which implies $f(X)-m$ is a sub-gaussian variable. Note that $\mathbb E(f(X)-m)=\mathbb E(f(X))-m$. We know that $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. $\blacksquare$</p>
+<h1 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h1><p>Let us take $f:\mathbb R^n\to\mathbb R$ to be the norm $|\cdot|$. Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. Direct computation shows that</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb Ef(X)&=\mathbb E\|X\|=\frac{1}{(2\pi)^{n/2}}\int \|x\|\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x\\
+&=\frac{1}{(2\pi)^{n/2}}\int_0^{\infty}\rho\exp\{-\rho^2/2\}{\rm d}\rho\int_{S^{n-1}(\rho)}{\rm d}\sigma\\
+&=\frac{1}{(2\pi)^{n/2}}\times\frac{n\pi^{n/2}}{\Gamma(\frac{n}{2}+1)}\times 2^{(n-1)/2}\Gamma(\frac{n+1}{2})\\
+&=\frac{n}{\sqrt{2}}\times\frac{\Gamma(\frac{n+1}{2})}{\Gamma(\frac{n+2}{2})}.
+\end{aligned}</script><p>By <a href="[https://en.wikipedia.org/wiki/Stirling%27s_approximation](https://en.wikipedia.org/wiki/Stirling&#39;s_approximation">Stirling’s formula</a>), the expectation is about $\sqrt{n}$ when $n$ is large. This shows that in high dimensions, the points concentrate in a sphere of radius $\sqrt{n}$. </p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Concentration Inequality </tag>
+            
+            <tag> Probability </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Bayesian Linear Regression]]></title>
       <url>/2019/07/21/Bayesian-Linear-Regression/</url>
       <content type="html"><![CDATA[<h1 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h1><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise. <a id="more"></a>That is </p>
