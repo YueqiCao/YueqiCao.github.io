@@ -220,13 +220,16 @@ r=G^{-1}(t)=(\frac{t}{cf(x)})^{1/p}+\eta(t),</script><p>where $\eta(t)=o(t^{1/p}
 \begin{aligned}
 \mathbb E\phi(Z_n)&=n\binom{n-1}{k-1}\int_0^1(\frac{t}{cf(x)}+\eta(t))^\lambda t^{k-1-\gamma}(1-t)^{n-k-\beta}{\rm d}t\\
 
-\end{aligned}</script><p>Let $Q$ be the $k$th nearest neighbor, $Y<em>1,Y_2,\cdots,Y</em>{k-1}$ be the $k-1$ points lying within $B<em>x(Z_n)=B_x(|Q-x|)$, and $V_1,V_2,\cdots,V</em>{n-k}$ be $n-k$ points falling outside $B_x(Z_n)$. Suppose $Z_n=r$ is known. Then $Q,Y$ and $V$ will be independent. The conditional densities are</p>
+\end{aligned}</script><hr>
+<p><strong>Personal Comments</strong></p>
+<p>I was intended to study <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>‘s paper thoroughly to understand the asymptotic behaviors of kNN estimator. Both results and techniques in proofs are important for me. However, I was very upset to find many subtle details I could not get through. The biggest problem appears in equation (12)</p>
+<blockquote>
 <script type="math/tex; mode=display">
-\begin{aligned}
-& f(y_i|r)=\frac{f(y_i)}{G(r)},\, y_i\in \mathring B_x(r)\\
-& f(v_i|r)=\frac{f(v_i)}{1-G(r)},\, v_i\in (B_x(r))^c\\
-& f(q|r)=\frac{f(q)}{G'(r)}, \, q\in S_x(r).
-\end{aligned}</script><p> Asymptotic moments of near–neighbour distance distributions</p>
+\mathbb E \phi(R_n)=n\binom{n-1}{k-1}\int_0^1((\frac{t}{cf(x)})^\lambda+o(t^\lambda))t^{k-1-\gamma}(1-t)^{n-k-\beta}{\rm d}t</script></blockquote>
+<p>The notation $o(t)$ is misleading. It is correct when $t$ is small. However, when $t$ is close to 1, this term tends to infinity. Therefore, the estimation for this expectation is not easy. One cannot simply drop the $o(t)$ integration. But according to the paper (though they did not display the computation), $o(t)$ was simply dropped. </p>
+<p>It was also disappointing that I found there were few papers concerning the asymptotic behaviors about kNN. One could find that the asymptotic moments for kNN distance variable are well-known. But the references were not mentioned. </p>
+<p>There is another paper discussing the asymptotic moments of kNN distance. But it restricts to compact convex area. See <a href="https://royalsocietypublishing.org/doi/abs/10.1098/rspa.2002.1011" target="_blank" rel="noopener">Asymptotic moments of near–neighbour distance distributions</a>.</p>
+<p>I will keep on tracking about this topic.</p>
 ]]></content>
       
         <categories>
