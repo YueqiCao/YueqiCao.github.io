@@ -417,10 +417,10 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
 <script type="math/tex; mode=display">
 \mathbb P(|f(X)-\mathbb Ef(X)|>t)\le \exp(-ct^2),\forall t>0,</script><p>where $c&gt;0$ is a constant.</p>
 <p>First we prove a blow-up lemma using isoperimetric inequality.</p>
-<p><strong>Lemma.</strong> Let $A$ be a subset in Gauss space. If $\gamma_n(A)&gt;1/2$, then for any $t&gt;0$, $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp{-t^2/2}$.</p>
-<p><strong>Proof of Lemma.</strong> Let $H={x\in\mathbb R^n:x_1\le 0}$ be the half space. By assumption, $\gamma_n(A)&gt;\gamma_n(H)$. The Gaussian isoperimetric inequality implies </p>
+<p><strong>Lemma.</strong> Let $A$ be a subset in Gauss space. If $\gamma_n(A)&gt;1/2$, then for any $t&gt;0$, $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp\{-t^2/2\}$.</p>
+<p><strong>Proof of Lemma.</strong> Let $H=\{x\in\mathbb R^n:x_1\le 0\}$ be the half space. By assumption, $\gamma_n(A)&gt;\gamma_n(H)$. The Gaussian isoperimetric inequality implies </p>
 <script type="math/tex; mode=display">
-\gamma_n(A+B^n(t))>\gamma_n(H+B^n(t)).</script><p>Note that $H+B^n(t)={x\in\mathbb R_n:x_1\le t}$ is also a half space. Direct computation shows that </p>
+\gamma_n(A+B^n(t))>\gamma_n(H+B^n(t)).</script><p>Note that $H+B^n(t)=\{x\in\mathbb R_n:x_1\le t\}$ is also a half space. Direct computation shows that </p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \gamma_n(H+B^n(t))&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^t\exp\{-\frac{x_1^2}{2}\}{\rm d}x_1\\
@@ -428,14 +428,14 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
 &=1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{(t+y)^2}{2}\}{\rm d}y\\
 &\ge 1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{t^2}{2}\}\exp\{-\frac{y^2}{2}\}{\rm d}y\\
 &=1-\frac{1}{2}\exp\{-\frac{t^2}{2}\}.
-\end{aligned}</script><p>Therefore, we have $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp{-t^2/2}$. $\blacksquare$ </p>
+\end{aligned}</script><p>Therefore, we have $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp\{-t^2/2\}$. $\blacksquare$ </p>
 <p>This blow-up lemma enables us to prove the main theorem.</p>
 <p><strong>Proof of Main Theorem.</strong> Without loss of generality, we assume $|f(x)-f(y)|\le |x-y|$. Let $m$ denote the median of $f(X)$. That is,</p>
 <script type="math/tex; mode=display">
-\mathbb P(f(X)\le m)\ge 1/2,\mathbb P(f(X)\ge m)\ge 1/2.</script><p>Consider the level set $A=f^{-1}((-\infty,m])$. Note that $\mathbb P(f(X)\le m)=\gamma_n(A)\ge 1/2$. By blow-up lemma, $\gamma_n(A+B^n(t))\ge  1-1/2\exp{-t^2/2}$. On the other hand, if $x\in A+B^n(t) $, there exists $y\in A$ such that $|x-y|\le t$. Therefore, </p>
+\mathbb P(f(X)\le m)\ge 1/2,\mathbb P(f(X)\ge m)\ge 1/2.</script><p>Consider the level set $A=f^{-1}((-\infty,m])$. Note that $\mathbb P(f(X)\le m)=\gamma_n(A)\ge 1/2$. By blow-up lemma, $\gamma_n(A+B^n(t))\ge  1-1/2\exp\{-t^2/2\}$. On the other hand, if $x\in A+B^n(t) $, there exists $y\in A$ such that $|x-y|\le t$. Therefore, </p>
 <script type="math/tex; mode=display">
-f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge \gamma_n(A+B^n(t))$, i.e. $\mathbb P(f(X)-m&gt;t)\le 1/2\exp{-t^2/2}$. </p>
-<p>Replace $f$ with $-f$. We can obtain a similar inequality as $\mathbb P(f(X)-m&lt;-t)\le 1/2\exp{-t^2/2}$. Hence, </p>
+f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge \gamma_n(A+B^n(t))$, i.e. $\mathbb P(f(X)-m&gt;t)\le 1/2\exp\{-t^2/2\}$. </p>
+<p>Replace $f$ with $-f$. We can obtain a similar inequality as $\mathbb P(f(X)-m&lt;-t)\le 1/2\exp\{-t^2/2\}$. Hence, </p>
 <script type="math/tex; mode=display">
 \mathbb P(|f(X)-m|>t)\le \exp\{-t^2/2\},</script><p>which implies $f(X)-m$ is a sub-gaussian variable. Note that $\mathbb E(f(X)-m)=\mathbb E(f(X))-m$. We know that $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. $\blacksquare$</p>
 <h1 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h1><p>Let us take $f:\mathbb R^n\to\mathbb R$ to be the norm $|\cdot|$. Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. Direct computation shows that</p>

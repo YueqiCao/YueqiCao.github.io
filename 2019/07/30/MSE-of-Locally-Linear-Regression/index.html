@@ -436,7 +436,7 @@ e_2=[0,1]^T.
 \mathbb E[(\hat{g}(x)-g(x))^2|{\bf X}]=&\mathbb E[(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}({\bf Y}-g({\bf X})))^2|{\bf X}]\\
 &+(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x))^2.
 \end{aligned}</script><p>The first term is variance and the second term is square of bias.</p>
-<h1 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h1><p>Let ${\bf \Sigma}={\rm diag}{\sigma^2(X_1),\cdots,\sigma^2(X_n)}$. Variance can be simplified as</p>
+<h1 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h1><p>Let ${\bf \Sigma}={\rm diag}\{\sigma^2(X_1),\cdots,\sigma^2(X_n)\}$. Variance can be simplified as</p>
 <script type="math/tex; mode=display">
 e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1.</script><p>Denote $\sum_{i=1}^n K_h(X_i-x)(X_i-x)^j$ by $S_j$ for $j=0,1,2$. Then we have </p>
 <script type="math/tex; mode=display">
@@ -449,7 +449,7 @@ e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1.</script><p>Deno
 &\le \frac{1}{nh}\int K(u)^2u^{2j}f(x+hu){\rm d}u.
 \end{aligned}</script><p>Therefore, $\rm Var\to 0$ as $nh\to \infty$. By Chebyshev’s inequality, we can write </p>
 <script type="math/tex; mode=display">
-S_j/nh^j=\mu_jf(x)+o_{\mathbb P}(1),</script><p>where $o_{\mathbb P}(1)$ denotes an infinitesimal in probability. Let ${\bf H}={\rm diag}{1,h}$. Then </p>
+S_j/nh^j=\mu_jf(x)+o_{\mathbb P}(1),</script><p>where $o_{\mathbb P}(1)$ denotes an infinitesimal in probability. Let ${\bf H}={\rm diag}\{1,h\}$. Then </p>
 <script type="math/tex; mode=display">
 \frac{1}{n}{\bf H^{-1}X^TWXH^{-1}}=f(x)\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]+o_{\mathbb P}(1),</script><p>where we assume that $\mu_j=0$ for odd $j$. </p>
 <p>Let $\nu_j=\int K(u)^2u^j{\rm d}u$. By a similar argument we have </p>

@@ -438,7 +438,7 @@ p(\beta|{\bf y,X,\sigma^2})\propto \exp\{-\frac{1}{2}(\beta^T({\bf \alpha I+X^TX
 \propto&(\gamma^{\nu_0/2-1}\exp\{-\gamma\nu_0\sigma^0/2\})\times(\gamma^{n/2}\exp\{-\gamma SSR(\beta)/2\})\\
 =&\gamma^{(\nu_0+n)/2-1}\exp\{-\gamma(\nu_0\sigma^2_0+SSR(\beta))/2\}.
 \end{aligned}</script><p>Hence, the posterior distribution for $\gamma$ is $Gamma((\nu_0+n)/2,(\nu_0\sigma_0^2+SSR(\beta))/2)$. </p>
-<h2 id="Gibbs-Sampler"><a href="#Gibbs-Sampler" class="headerlink" title="Gibbs Sampler"></a>Gibbs Sampler</h2><p>Given current values ${\beta^{(s)},(\sigma^2)^{(s)}}$. We can sample a new value by</p>
+<h2 id="Gibbs-Sampler"><a href="#Gibbs-Sampler" class="headerlink" title="Gibbs Sampler"></a>Gibbs Sampler</h2><p>Given current values $\{\beta^{(s)},(\sigma^2)^{(s)}\}$. We can sample a new value by</p>
 <ol>
 <li>Updating $\beta$: <ol>
 <li>Compute $\mathbb E[\beta|{\bf y,X,(\sigma^2)^{(s)}}]$ and $\textrm{Var}[\beta|{\bf y,X,(\sigma^2)^{(s)}}]$;</li>

@@ -11,9 +11,9 @@
 <hr>
 <p>The first stability theorem in TDA is proved by <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer</a>. It asserts that the bottleneck distance between two persistence diagrams is bounded by the $\infty$-norm of tame functions. They soon generalized this result to $L_p$ cases for tame Lipschitz functions (see <a href="https://faculty.math.illinois.edu/~ymileyko/papers/L_p-stability.pdf" target="_blank" rel="noopener">here</a>). This theorem is fundamental in TDA. And the idea is also direct — counting points in persistence diagrams. We sketch the procedure in the following.</p>
 <a id="more"></a>
-<p>Recall that a <em>persistence diagram</em> is a multiset in the extended plane $\bar{\mathbb R}=\mathbb R\cup {\infty}$. A <em>tame</em> function $f:X\to\mathbb R$ defined on a topological space induces a finite filtration</p>
+<p>Recall that a <em>persistence diagram</em> is a multiset in the extended plane $\bar{\mathbb R}=\mathbb R\cup \{\infty\}$. A <em>tame</em> function $f:X\to\mathbb R$ defined on a topological space induces a finite filtration</p>
 <script type="math/tex; mode=display">
-\emptyset=f^{-1}((-\infty,a_0])\to\cdots\to f^{-1}((-\infty,a_i])\to\cdots\to f^{-1}((-\infty,a_n])=X.</script><p>Each $a<em>i$ is called a homological critical value. Thus, at $a_i$ the homotopy type of the sublevel sets of $f$ is changed. Tameness means that it changes finite types. Let $b_i&lt;a_i&lt;b</em>{i+1}$ be interleaved sequences. The maps $H<em>k(f^{-1}(-\infty,b_i])\to H_k(f^{-1}(-\infty,b</em>{i+1}])$  are <strong>not</strong> isomorphisms. For simplicity, let us drop the subscript $k$, and denote the homology group by $H(b<em>i)$. Let $f</em>{x,y}$ denote the map $H(x)\to H(y)$. The image of $f_{x,y}$ is denoted by $H(x,y)$. Set $\beta(x,y)={\rm dim} H(x,y)$. We can define the <em>multiplicity</em> of a point $(a_i,a_j)$ in persistence diagram $D(f)$ as</p>
+\emptyset=f^{-1}((-\infty,a_0])\to\cdots\to f^{-1}((-\infty,a_i])\to\cdots\to f^{-1}((-\infty,a_n])=X.</script><p>Each $a_i$ is called a homological critical value. Thus, at $a_i$ the homotopy type of the sublevel sets of $f$ is changed. Tameness means that it changes finite types. Let $b_i&lt;a_i&lt;b_{i+1}$ be interleaved sequences. The maps $H_k(f^{-1}(-\infty,b_i])\to H_k(f^{-1}(-\infty,b_{i+1}])$  are <strong>not</strong> isomorphisms. For simplicity, let us drop the subscript $k$, and denote the homology group by $H(b_i)$. Let $f_{x,y}$ denote the map $H(x)\to H(y)$. The image of $f_{x,y}$ is denoted by $H(x,y)$. Set $\beta(x,y)={\rm dim} H(x,y)$. We can define the <em>multiplicity</em> of a point $(a_i,a_j)$ in persistence diagram $D(f)$ as</p>
 <script type="math/tex; mode=display">
 \mu(i,j)=\beta(b_{i-1},b_j)-\beta(b_i,b_j)+\beta(b_i,b_{j-1})-\beta(b_{i-1},b_{j-1}).</script><p>Then the <em>total multiplicity</em> (or <em>size</em>) of the persistence diagram over the diagonal is </p>
 <script type="math/tex; mode=display">
@@ -22,19 +22,19 @@
 <p>Let $Q_x^y=[-\infty,x]\times[y,\infty]$ be the closed upper left quadrant. <strong>k-Triangle Lemma</strong> asserts that for $x&lt;y$ different from homological critical values, then</p>
 <script type="math/tex; mode=display">
 \#(D(f)\cap Q_x^y)=\beta(x,y).</script><p>The proof is shown in the following figure. Note that the small square with plus and minus notations explains the multiplicity at a point. When summing over, plus and minus cancels. </p>
-<p><img src="/.top//ktriangle.png" alt="k-triangle lemma"> </p>
+<p><img src="/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/ktriangle.png" alt="k-triangle lemma"> </p>
 <hr>
 <p>Let $f$ and $g$ be two tame functions on the same topological space. Let $\epsilon=|f-g|_{\infty}$. We want to compare the multiplicities of quadrants for $f$ and $g$. In fact, the <strong>Quadrant Lemma</strong> asserts that</p>
 <script type="math/tex; mode=display">
 \#(D(f)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(g)\cap Q_x^y).</script><p>Symmetrically, we also have </p>
 <script type="math/tex; mode=display">
 \#(D(g)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(f)\cap Q_x^y).</script><p>Intuitively, when we shift the quadrant upper left by $\epsilon$, the multiplicity decreases. </p>
-<p><img src="/.top//quadrant.png" alt="quadrant lemma"></p>
+<p><img src="/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/quadrant.png" alt="quadrant lemma"></p>
 <hr>
 <p>Let $R=[a,b]\times[c,d]$ be a closed rectangle where $a&lt;b&lt;c&lt;d$. Let $R_{\epsilon}=[a+\epsilon,c-\epsilon]\times[c+\epsilon,d-\epsilon]$ be a smaller rectangle. The <strong>Box Lemma</strong> asserts that the points in the smaller box have less multiplicities. </p>
 <script type="math/tex; mode=display">
 \#(D(f)\cap R_{\epsilon})\le \#(D(g)\cap R).</script><p>Similarly, the positions of $f$ and $g$ can be exchanged in the inequality. </p>
-<p><img src="/.top//box.png" alt="box lemma"></p>
+<p><img src="/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/box.png" alt="box lemma"></p>
 <hr>
 <p>Let $A$ and $B$ be multisets in the extended plane. The Hausdorff distance between $A$ and $B$ is defined as </p>
 <script type="math/tex; mode=display">
@@ -44,9 +44,9 @@ d_{\mathcal H}(D(f),D(g))\le \|f-g\|_{\infty},</script><p>since for each point i
 <hr>
 <p>The final step is to generalize the inequality to bottleneck distance. By definition, the bottleneck distance between $A$ and $B$ is </p>
 <script type="math/tex; mode=display">
-d_{\mathcal B}(A,B)=\inf_{\gamma}\sup_x\|x-\gamma(x)\|_{\infty},</script><p>where $\gamma:A\to B$ is <strong>bijection</strong>. Note that $D(f)$ contains the diagonal with infinite points. Therefore, the bottleneck distance is well defined. Since there are finitely many points off the diagonal in a persistence diagram, we can assume that $f$ and $g$ are so close that in a square of length $|f-g|<em>{\infty}$ there is only one point in $D(f)$. On the other hand, by box lemma we also have a point in $D(g)$. This enables us to construct a bijection but the distance is $|f-g|</em>{\infty}$. For general $f$ and $g$, we interpolate piecewise linear functions and use triangle inequality to pass the conclusion to $\hat{f}$ and $\hat{g}$. In a word, we obtain the main theorem </p>
+d_{\mathcal B}(A,B)=\inf_{\gamma}\sup_x\|x-\gamma(x)\|_{\infty},</script><p>where $\gamma:A\to B$ is <strong>bijection</strong>. Note that $D(f)$ contains the diagonal with infinite points. Therefore, the bottleneck distance is well defined. Since there are finitely many points off the diagonal in a persistence diagram, we can assume that $f$ and $g$ are so close that in a square of length $|f-g|_{\infty}$ there is only one point in $D(f)$. On the other hand, by box lemma we also have a point in $D(g)$. This enables us to construct a bijection but the distance is $|f-g|_{\infty}$. For general $f$ and $g$, we interpolate piecewise linear functions and use triangle inequality to pass the conclusion to $\hat{f}$ and $\hat{g}$. In a word, we obtain the main theorem </p>
 <blockquote>
-<p>Let $X$ be a triangulable space with continuous tame functions $f,h:X\to \mathbb R$. Then the persistence diagrams satisfy $d<em>{\mathcal B}(D(f),D(g))\le|f-g|</em>{\infty}$.</p>
+<p>Let $X$ be a triangulable space with continuous tame functions $f,h:X\to \mathbb R$. Then the persistence diagrams satisfy $d_{\mathcal B}(D(f),D(g))\le|f-g|_{\infty}$.</p>
 </blockquote>
 <hr>
 <p>In proving the quadrant lemma and box lemma, one notice that there is an interleaving phenomenon of the level sets of $f$ and $g$. This interleaving is generalized to modules, which is purely algebraic. See <a href="https://geometry.stanford.edu/papers/ccggo-ppmd-09/ccggo-ppmd-09.pdf" target="_blank" rel="noopener">F. Chazal etc.</a> for references.  </p>
@@ -97,7 +97,7 @@ e_2=[0,1]^T.
 \mathbb E[(\hat{g}(x)-g(x))^2|{\bf X}]=&\mathbb E[(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}({\bf Y}-g({\bf X})))^2|{\bf X}]\\
 &+(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x))^2.
 \end{aligned}</script><p>The first term is variance and the second term is square of bias.</p>
-<h1 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h1><p>Let ${\bf \Sigma}={\rm diag}{\sigma^2(X_1),\cdots,\sigma^2(X_n)}$. Variance can be simplified as</p>
+<h1 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h1><p>Let ${\bf \Sigma}={\rm diag}\{\sigma^2(X_1),\cdots,\sigma^2(X_n)\}$. Variance can be simplified as</p>
 <script type="math/tex; mode=display">
 e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1.</script><p>Denote $\sum_{i=1}^n K_h(X_i-x)(X_i-x)^j$ by $S_j$ for $j=0,1,2$. Then we have </p>
 <script type="math/tex; mode=display">
@@ -110,7 +110,7 @@ e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1.</script><p>Deno
 &\le \frac{1}{nh}\int K(u)^2u^{2j}f(x+hu){\rm d}u.
 \end{aligned}</script><p>Therefore, $\rm Var\to 0$ as $nh\to \infty$. By Chebyshev’s inequality, we can write </p>
 <script type="math/tex; mode=display">
-S_j/nh^j=\mu_jf(x)+o_{\mathbb P}(1),</script><p>where $o_{\mathbb P}(1)$ denotes an infinitesimal in probability. Let ${\bf H}={\rm diag}{1,h}$. Then </p>
+S_j/nh^j=\mu_jf(x)+o_{\mathbb P}(1),</script><p>where $o_{\mathbb P}(1)$ denotes an infinitesimal in probability. Let ${\bf H}={\rm diag}\{1,h\}$. Then </p>
 <script type="math/tex; mode=display">
 \frac{1}{n}{\bf H^{-1}X^TWXH^{-1}}=f(x)\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]+o_{\mathbb P}(1),</script><p>where we assume that $\mu_j=0$ for odd $j$. </p>
 <p>Let $\nu_j=\int K(u)^2u^j{\rm d}u$. By a similar argument we have </p>
@@ -185,10 +185,10 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
 <script type="math/tex; mode=display">
 \mathbb P(|f(X)-\mathbb Ef(X)|>t)\le \exp(-ct^2),\forall t>0,</script><p>where $c&gt;0$ is a constant.</p>
 <p>First we prove a blow-up lemma using isoperimetric inequality.</p>
-<p><strong>Lemma.</strong> Let $A$ be a subset in Gauss space. If $\gamma_n(A)&gt;1/2$, then for any $t&gt;0$, $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp{-t^2/2}$.</p>
-<p><strong>Proof of Lemma.</strong> Let $H={x\in\mathbb R^n:x_1\le 0}$ be the half space. By assumption, $\gamma_n(A)&gt;\gamma_n(H)$. The Gaussian isoperimetric inequality implies </p>
+<p><strong>Lemma.</strong> Let $A$ be a subset in Gauss space. If $\gamma_n(A)&gt;1/2$, then for any $t&gt;0$, $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp\{-t^2/2\}$.</p>
+<p><strong>Proof of Lemma.</strong> Let $H=\{x\in\mathbb R^n:x_1\le 0\}$ be the half space. By assumption, $\gamma_n(A)&gt;\gamma_n(H)$. The Gaussian isoperimetric inequality implies </p>
 <script type="math/tex; mode=display">
-\gamma_n(A+B^n(t))>\gamma_n(H+B^n(t)).</script><p>Note that $H+B^n(t)={x\in\mathbb R_n:x_1\le t}$ is also a half space. Direct computation shows that </p>
+\gamma_n(A+B^n(t))>\gamma_n(H+B^n(t)).</script><p>Note that $H+B^n(t)=\{x\in\mathbb R_n:x_1\le t\}$ is also a half space. Direct computation shows that </p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \gamma_n(H+B^n(t))&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^t\exp\{-\frac{x_1^2}{2}\}{\rm d}x_1\\
@@ -196,14 +196,14 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
 &=1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{(t+y)^2}{2}\}{\rm d}y\\
 &\ge 1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{t^2}{2}\}\exp\{-\frac{y^2}{2}\}{\rm d}y\\
 &=1-\frac{1}{2}\exp\{-\frac{t^2}{2}\}.
-\end{aligned}</script><p>Therefore, we have $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp{-t^2/2}$. $\blacksquare$ </p>
+\end{aligned}</script><p>Therefore, we have $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp\{-t^2/2\}$. $\blacksquare$ </p>
 <p>This blow-up lemma enables us to prove the main theorem.</p>
 <p><strong>Proof of Main Theorem.</strong> Without loss of generality, we assume $|f(x)-f(y)|\le |x-y|$. Let $m$ denote the median of $f(X)$. That is,</p>
 <script type="math/tex; mode=display">
-\mathbb P(f(X)\le m)\ge 1/2,\mathbb P(f(X)\ge m)\ge 1/2.</script><p>Consider the level set $A=f^{-1}((-\infty,m])$. Note that $\mathbb P(f(X)\le m)=\gamma_n(A)\ge 1/2$. By blow-up lemma, $\gamma_n(A+B^n(t))\ge  1-1/2\exp{-t^2/2}$. On the other hand, if $x\in A+B^n(t) $, there exists $y\in A$ such that $|x-y|\le t$. Therefore, </p>
+\mathbb P(f(X)\le m)\ge 1/2,\mathbb P(f(X)\ge m)\ge 1/2.</script><p>Consider the level set $A=f^{-1}((-\infty,m])$. Note that $\mathbb P(f(X)\le m)=\gamma_n(A)\ge 1/2$. By blow-up lemma, $\gamma_n(A+B^n(t))\ge  1-1/2\exp\{-t^2/2\}$. On the other hand, if $x\in A+B^n(t) $, there exists $y\in A$ such that $|x-y|\le t$. Therefore, </p>
 <script type="math/tex; mode=display">
-f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge \gamma_n(A+B^n(t))$, i.e. $\mathbb P(f(X)-m&gt;t)\le 1/2\exp{-t^2/2}$. </p>
-<p>Replace $f$ with $-f$. We can obtain a similar inequality as $\mathbb P(f(X)-m&lt;-t)\le 1/2\exp{-t^2/2}$. Hence, </p>
+f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge \gamma_n(A+B^n(t))$, i.e. $\mathbb P(f(X)-m&gt;t)\le 1/2\exp\{-t^2/2\}$. </p>
+<p>Replace $f$ with $-f$. We can obtain a similar inequality as $\mathbb P(f(X)-m&lt;-t)\le 1/2\exp\{-t^2/2\}$. Hence, </p>
 <script type="math/tex; mode=display">
 \mathbb P(|f(X)-m|>t)\le \exp\{-t^2/2\},</script><p>which implies $f(X)-m$ is a sub-gaussian variable. Note that $\mathbb E(f(X)-m)=\mathbb E(f(X))-m$. We know that $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. $\blacksquare$</p>
 <h1 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h1><p>Let us take $f:\mathbb R^n\to\mathbb R$ to be the norm $|\cdot|$. Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. Direct computation shows that</p>
@@ -265,7 +265,7 @@ p(\beta|{\bf y,X,\sigma^2})\propto \exp\{-\frac{1}{2}(\beta^T({\bf \alpha I+X^TX
 \propto&(\gamma^{\nu_0/2-1}\exp\{-\gamma\nu_0\sigma^0/2\})\times(\gamma^{n/2}\exp\{-\gamma SSR(\beta)/2\})\\
 =&\gamma^{(\nu_0+n)/2-1}\exp\{-\gamma(\nu_0\sigma^2_0+SSR(\beta))/2\}.
 \end{aligned}</script><p>Hence, the posterior distribution for $\gamma$ is $Gamma((\nu_0+n)/2,(\nu_0\sigma_0^2+SSR(\beta))/2)$. </p>
-<h2 id="Gibbs-Sampler"><a href="#Gibbs-Sampler" class="headerlink" title="Gibbs Sampler"></a>Gibbs Sampler</h2><p>Given current values ${\beta^{(s)},(\sigma^2)^{(s)}}$. We can sample a new value by</p>
+<h2 id="Gibbs-Sampler"><a href="#Gibbs-Sampler" class="headerlink" title="Gibbs Sampler"></a>Gibbs Sampler</h2><p>Given current values $\{\beta^{(s)},(\sigma^2)^{(s)}\}$. We can sample a new value by</p>
 <ol>
 <li>Updating $\beta$: <ol>
 <li>Compute $\mathbb E[\beta|{\bf y,X,(\sigma^2)^{(s)}}]$ and $\textrm{Var}[\beta|{\bf y,X,(\sigma^2)^{(s)}}]$;</li>
@@ -345,7 +345,7 @@ p(\gamma|{\bf X,y})&\propto p(\gamma)p({\bf y}|{\bf X,\gamma})\\
 <script type="math/tex; mode=display">
 f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where $Z_n$ is the distance between $x$ and its $k$th nearest neighbor, and $\omega$ is a <strong>bounded integrable</strong> weight function with $\int\omega(u){\rm d}u=1$. </p>
 <a id="more"></a>
-<p>Let $\omega(u)=\frac{1}{|B<em>0(1)|}\chi</em>{B_0(1)}(u)$, where $B_0(1)={x\in\mathbb R^p:|x|\le 1}$ is the solid ball centered at origin with radius 1, and $|B_0(1)|=\frac{\pi^{p/2}}{\Gamma(\frac{p+2}{2})}$ is the volume of unit ball. Under these settings we see that the KNN estimate is </p>
+<p>Let $\omega(u)=\frac{1}{|B_0(1)|}\chi_{B_0(1)}(u)$, where $B_0(1)=\{x\in\mathbb R^p:|x|\le 1\}$ is the solid ball centered at origin with radius 1, and $|B_0(1)|=\frac{\pi^{p/2}}{\Gamma(\frac{p+2}{2})}$ is the volume of unit ball. Under these settings we see that the KNN estimate is </p>
 <script type="math/tex; mode=display">
 f_n(x)=\frac{1}{n(Z_n)^p}\cdot\frac{k}{|B_0(1)|}=\frac{k}{n}\cdot\frac{1}{|B_0(Z_n)|}.</script><p>If we see $\frac{k}{n}$ as the probability that points lie in a ball around $x$, then it is a naive analogy of $\text{probability}=\int\text{density}\approx\text{density}\times \text{area}$. In the following we always assume that $k=k(n)$ is a function of sample size $n$ and $k(n)\to \infty,k(n)/n\to0$ as $n\to\infty$.</p>
 <p>We first investigate several properties of $Z_n$. For simplicity, we call $Z_n$ the KNN distance variable.</p>
@@ -361,7 +361,7 @@ h(r)=\lim\limits_{\epsilon\to0}\frac{H(r+\epsilon)-H(r)}{\epsilon}=n\binom{n-1}{
 G'(r)&=\lim\limits_{\delta\to 0}\frac{1}{\delta}[\int_{B_x(r+\delta)}f(u){\rm d}u-\int_{B_x(r)}f(u){\rm d}u]\\
 &=\lim_{\delta\to0}\frac{1}{\delta}\int_r^{r+\delta}\rho^{p-1}{\rm d}\rho\int_{S_x(1)}f(\rho,t){\rm d}\sigma(t)\\
 &=\int_{S_x(r)}f(t){\rm d}\sigma(t),
-\end{aligned}</script><p>where $S_x(r)={y\in\mathbb R^p:|y-x|=r}$ is the sphere centered at $x$ with radius $r$, and ${\rm d}\sigma$ is the volume element on the sphere. </p>
+\end{aligned}</script><p>where $S_x(r)=\{y\in\mathbb R^p:|y-x|=r\}$ is the sphere centered at $x$ with radius $r$, and ${\rm d}\sigma$ is the volume element on the sphere. </p>
 <p>On the other hand, for each $X_i$, $|X_i-x|$ is a random variable with CDF $G(r)$ and   PDF $G’(r)$. Note that $Z_n$ is exactly the <strong>$k$th order statistic</strong> from i.i.d. samples $|X_i-x|$. The $k$th order statistic gives the same $h(r)$ as we deduced above.</p>
 <h2 id="Moments-of-Z-n"><a href="#Moments-of-Z-n" class="headerlink" title="Moments of $Z_n$"></a>Moments of $Z_n$</h2><p>In general, for a measurable function $\phi$, we want to compute the expectation $\mathbb{E}\phi(Z_n)$. By definition,</p>
 <script type="math/tex; mode=display">
@@ -426,8 +426,8 @@ r=G^{-1}(t)=(\frac{t}{cf(x)})^{1/p}+\eta(t),</script><p>where $\eta(t)=o(t^{1/p}
 <p>Now we can construct a graph based on the above argument. The vertices are random variables. Two distinct vertices are connected by an edge if they are not conditional independent. One event is ‘connected’ to another if there is a path joining them. Therefore, when we say ‘Everything is connected’, we actually mean that the graph is connected.</p>
 <p>However, we should be cautious about ‘everything’ since we just considered finite number of events. Given arbitrary $n$ events, we can say ‘These $n$ things are connected’ if the corresponding graph is connected. But it is too stupid to say such things, and we are not going to infer whether a graph is connected, either. Instead, let us look at the probability that a graph with $n$ nodes is connected.</p>
 <h1 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h1><p>Let $\mathbb{G}_n$ be the space of undirected simple graphs with $n$ nodes. $\mathbb{G}_n$ is a finite set with $2^\frac{n(n-1)}{2}$ elements. Let $\mathbb{G}_n^c$ be the subset of all connected graphs, $\mathbb G_n^d$ be the subset of all disconnected graphs. Define the connectivity ratio </p>
-<script type="math/tex; mode=display">R_n=\frac{ \#(\mathbb{G}_n^d)}{ \#(\mathbb{G}_n)}.</script><p>Denote $#(\mathbb{G}_n^c)$ by $K_n^c$ and $#(\mathbb{G}_n^d)$ by $K_n^d$. We have $K_n^c+K_n^d=2^\frac{n(n-1)}{2}$.</p>
-<p>Let $v<em>0,v_1,\cdots,v_n$ be vertices of a graph $G\in\mathbb{G}</em>{n+1}^d$. Suppose $C_0$ is the component containing $v_0$ with $i$ points. Let $C_1$ be the complement of $C_0$ with $n+1-i$ points. The we have the following recursion </p>
+<script type="math/tex; mode=display">R_n=\frac{ \#(\mathbb{G}_n^d)}{ \#(\mathbb{G}_n)}:=\frac{K_n^d}{K_n^c+K_n^d}.</script><p>where we have $K_n^c+K_n^d=2^\frac{n(n-1)}{2}$.</p>
+<p>Let $v_0,v_1,\cdots,v_n$ be vertices of a graph $G\in\mathbb{G}_{n+1}^d$. Suppose $C_0$ is the component containing $v_0$ with $i$ points. Let $C_1$ be the complement of $C_0$ with $n+1-i$ points. The we have the following recursion </p>
 <script type="math/tex; mode=display">K_{n+1}^d=\sum_{i=1}^n\binom{n}{i-1}K_i^c2^\frac{(n+1-i)(n-i)}{2}.</script><p>Dividing both sides by $2^\frac{(n+1)n}{2}$, we have</p>
 <script type="math/tex; mode=display">R_{n+1}=\sum_{i=1}^n\binom{n}{i-1}(1-R_i)2^\frac{-i(n+1-i)}{2}.</script><p>Note that $1-R_i<1$ when $i>1$. Multiply both sides by $2^n$,</1$></p>
 <script type="math/tex; mode=display">2^nR_{n+1}<1+n+\sum_{i=2}^{n-1}\binom{n}{i-1}2^{-(n-i)(i-1)}.</script><p>When $1&lt;i&lt;n$, $2^{-(n-i)(i-1)}&lt;2^{-(n-2)}$. We obtain that $2^nR_{n+1}&lt;n+5$. That is, the connectivity ratio $R_n&lt;\frac{n+4}{2^{n-1}}$. When $n$ tends to infinity, $R_n$ tends to $0$.</p>
