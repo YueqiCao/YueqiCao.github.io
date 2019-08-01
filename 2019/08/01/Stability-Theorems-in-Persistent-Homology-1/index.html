@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">342</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">343</span>Reading time: <span class="post-count reading-time">2 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -411,7 +411,7 @@ height:50vh;
 <a id="more"></a>
 <p>Recall that a <em>persistence diagram</em> is a multiset in the extended plane $\bar{\mathbb R}=\mathbb R\cup {\infty}$. A <em>tame</em> function $f:X\to\mathbb R$ defined on a topological space induces a finite filtration</p>
 <script type="math/tex; mode=display">
-\emptyset=f^{-1}((-\infty,a_0]))\to\cdots\to f^{-1}((-\infty,a_i]))\to\cdots\to f^{-1}((-\infty,a_n]))=X.</script><p>Each $a<em>i$ is called a homological critical value. Thus, at $a_i$ the homotopy type of the sublevel sets of $f$ is changed. Tameness means that it changes finite types. Let $b_i&lt;a_i&lt;b</em>{i+1}$ be interleaved sequences. The maps $H<em>k(f^{-1}(-\infty,b_i]))\to H_k(f^{-1}(-\infty,b</em>{i+1}]))$  are <strong>not</strong> isomorphisms. For simplicity, let us drop the subscript $k$, and denote the homology group by $H(b<em>i)$. Let $f</em>{x,y}$ denote the map $H(x)\to H(y)$. The image of $f_{x,y}$ is denoted by $H(x,y)$. Set $\beta(x,y)=\dim H(x,y)$. We can define the <em>multiplicity</em> of a point $(a_i,a_j)$ in persistence diagram $D(f)$ as</p>
+\emptyset=f^{-1}((-\infty,a_0])\to\cdots\to f^{-1}((-\infty,a_i])\to\cdots\to f^{-1}((-\infty,a_n])=X.</script><p>Each $a<em>i$ is called a homological critical value. Thus, at $a_i$ the homotopy type of the sublevel sets of $f$ is changed. Tameness means that it changes finite types. Let $b_i&lt;a_i&lt;b</em>{i+1}$ be interleaved sequences. The maps $H<em>k(f^{-1}(-\infty,b_i])\to H_k(f^{-1}(-\infty,b</em>{i+1}])$  are <strong>not</strong> isomorphisms. For simplicity, let us drop the subscript $k$, and denote the homology group by $H(b<em>i)$. Let $f</em>{x,y}$ denote the map $H(x)\to H(y)$. The image of $f_{x,y}$ is denoted by $H(x,y)$. Set $\beta(x,y)={\rm dim} H(x,y)$. We can define the <em>multiplicity</em> of a point $(a_i,a_j)$ in persistence diagram $D(f)$ as</p>
 <script type="math/tex; mode=display">
 \mu(i,j)=\beta(b_{i-1},b_j)-\beta(b_i,b_j)+\beta(b_i,b_{j-1})-\beta(b_{i-1},b_{j-1}).</script><p>Then the <em>total multiplicity</em> (or <em>size</em>) of the persistence diagram over the diagonal is </p>
 <script type="math/tex; mode=display">
@@ -420,19 +420,19 @@ height:50vh;
 <p>Let $Q_x^y=[-\infty,x]\times[y,\infty]$ be the closed upper left quadrant. <strong>k-Triangle Lemma</strong> asserts that for $x&lt;y$ different from homological critical values, then</p>
 <script type="math/tex; mode=display">
 \#(D(f)\cap Q_x^y)=\beta(x,y).</script><p>The proof is shown in the following figure. Note that the small square with plus and minus notations explains the multiplicity at a point. When summing over, plus and minus cancels. </p>
-<p><img src="/.top//hexo\blog\myblog\source\_posts\Stability-Theorems-in-Persistent-Homology-1\ktriangle.png" alt="k-triangle lemma"> </p>
+<p><img src="/.top//ktriangle.png" alt="k-triangle lemma"> </p>
 <hr>
 <p>Let $f$ and $g$ be two tame functions on the same topological space. Let $\epsilon=|f-g|_{\infty}$. We want to compare the multiplicities of quadrants for $f$ and $g$. In fact, the <strong>Quadrant Lemma</strong> asserts that</p>
 <script type="math/tex; mode=display">
 \#(D(f)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(g)\cap Q_x^y).</script><p>Symmetrically, we also have </p>
 <script type="math/tex; mode=display">
 \#(D(g)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(f)\cap Q_x^y).</script><p>Intuitively, when we shift the quadrant upper left by $\epsilon$, the multiplicity decreases. </p>
-<p><img src="/.top//hexo\blog\myblog\source\_posts\Stability-Theorems-in-Persistent-Homology-1\quadrant.png" alt="quadrant lemma"></p>
+<p><img src="/.top//quadrant.png" alt="quadrant lemma"></p>
 <hr>
 <p>Let $R=[a,b]\times[c,d]$ be a closed rectangle where $a&lt;b&lt;c&lt;d$. Let $R_{\epsilon}=[a+\epsilon,c-\epsilon]\times[c+\epsilon,d-\epsilon]$ be a smaller rectangle. The <strong>Box Lemma</strong> asserts that the points in the smaller box have less multiplicities. </p>
 <script type="math/tex; mode=display">
 \#(D(f)\cap R_{\epsilon})\le \#(D(g)\cap R).</script><p>Similarly, the positions of $f$ and $g$ can be exchanged in the inequality. </p>
-<p><img src="/.top//hexo\blog\myblog\source\_posts\Stability-Theorems-in-Persistent-Homology-1\box.png" alt="box lemma"></p>
+<p><img src="/.top//box.png" alt="box lemma"></p>
 <hr>
 <p>Let $A$ and $B$ be multisets in the extended plane. The Hausdorff distance between $A$ and $B$ is defined as </p>
 <script type="math/tex; mode=display">
@@ -687,23 +687,23 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
-    
-        <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
+    
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
+    
+        <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
     
         <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
-        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
-    
         <span class="sidebar-tag-name" data-tags="TDA"><span class="iconfont-archer">&#xe606;</span>TDA</span>
     
         <span class="sidebar-tag-name" data-tags="Stability"><span class="iconfont-archer">&#xe606;</span>Stability</span>
+    
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

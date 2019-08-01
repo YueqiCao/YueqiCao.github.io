@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">579</span>Reading time: <span class="post-count reading-time">3 min</span></span>
+                        <span>Word count: <span class="post-count word-count">581</span>Reading time: <span class="post-count reading-time">3 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -409,8 +409,8 @@ height:50vh;
 <p>Now we can construct a graph based on the above argument. The vertices are random variables. Two distinct vertices are connected by an edge if they are not conditional independent. One event is ‘connected’ to another if there is a path joining them. Therefore, when we say ‘Everything is connected’, we actually mean that the graph is connected.</p>
 <p>However, we should be cautious about ‘everything’ since we just considered finite number of events. Given arbitrary $n$ events, we can say ‘These $n$ things are connected’ if the corresponding graph is connected. But it is too stupid to say such things, and we are not going to infer whether a graph is connected, either. Instead, let us look at the probability that a graph with $n$ nodes is connected.</p>
 <h1 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h1><p>Let $\mathbb{G}_n$ be the space of undirected simple graphs with $n$ nodes. $\mathbb{G}_n$ is a finite set with $2^\frac{n(n-1)}{2}$ elements. Let $\mathbb{G}_n^c$ be the subset of all connected graphs, $\mathbb G_n^d$ be the subset of all disconnected graphs. Define the connectivity ratio </p>
-<script type="math/tex; mode=display">R_n=\frac{ \#(\mathbb{G}_n^d)}{ \#(\mathbb{G}_n)}.</script><p>Denote $#(\mathbb G_n^c)$ by $K_n^c$ and $#(\mathbb G_n^d)$ by $K_n^d$. We have $K_n^c+K_n^d=2^\frac{n(n-1)}{2}$.</p>
-<p>Let $v<em>0,v_1,\cdots,v_n$ be vertices of a graph $G\in\mathbb G</em>{n+1}^d$. Suppose $C_0$ is the component containing $v_0$ with $i$ points. Let $C_1$ be the complement of $C_0$ with $n+1-i$ points. The we have the following recursion </p>
+<script type="math/tex; mode=display">R_n=\frac{ \#(\mathbb{G}_n^d)}{ \#(\mathbb{G}_n)}.</script><p>Denote $#(\mathbb{G}_n^c)$ by $K_n^c$ and $#(\mathbb{G}_n^d)$ by $K_n^d$. We have $K_n^c+K_n^d=2^\frac{n(n-1)}{2}$.</p>
+<p>Let $v<em>0,v_1,\cdots,v_n$ be vertices of a graph $G\in\mathbb{G}</em>{n+1}^d$. Suppose $C_0$ is the component containing $v_0$ with $i$ points. Let $C_1$ be the complement of $C_0$ with $n+1-i$ points. The we have the following recursion </p>
 <script type="math/tex; mode=display">K_{n+1}^d=\sum_{i=1}^n\binom{n}{i-1}K_i^c2^\frac{(n+1-i)(n-i)}{2}.</script><p>Dividing both sides by $2^\frac{(n+1)n}{2}$, we have</p>
 <script type="math/tex; mode=display">R_{n+1}=\sum_{i=1}^n\binom{n}{i-1}(1-R_i)2^\frac{-i(n+1-i)}{2}.</script><p>Note that $1-R_i<1$ when $i>1$. Multiply both sides by $2^n$,</1$></p>
 <script type="math/tex; mode=display">2^nR_{n+1}<1+n+\sum_{i=2}^{n-1}\binom{n}{i-1}2^{-(n-i)(i-1)}.</script><p>When $1&lt;i&lt;n$, $2^{-(n-i)(i-1)}&lt;2^{-(n-2)}$. We obtain that $2^nR_{n+1}&lt;n+5$. That is, the connectivity ratio $R_n&lt;\frac{n+4}{2^{n-1}}$. When $n$ tends to infinity, $R_n$ tends to $0$.</p>
@@ -654,23 +654,23 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
-    
-        <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
+    
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
+    
+        <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
     
         <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
-        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
-    
         <span class="sidebar-tag-name" data-tags="TDA"><span class="iconfont-archer">&#xe606;</span>TDA</span>
     
         <span class="sidebar-tag-name" data-tags="Stability"><span class="iconfont-archer">&#xe606;</span>Stability</span>
+    
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>

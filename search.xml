@@ -13,7 +13,7 @@
 <a id="more"></a>
 <p>Recall that a <em>persistence diagram</em> is a multiset in the extended plane $\bar{\mathbb R}=\mathbb R\cup {\infty}$. A <em>tame</em> function $f:X\to\mathbb R$ defined on a topological space induces a finite filtration</p>
 <script type="math/tex; mode=display">
-\emptyset=f^{-1}((-\infty,a_0]))\to\cdots\to f^{-1}((-\infty,a_i]))\to\cdots\to f^{-1}((-\infty,a_n]))=X.</script><p>Each $a<em>i$ is called a homological critical value. Thus, at $a_i$ the homotopy type of the sublevel sets of $f$ is changed. Tameness means that it changes finite types. Let $b_i&lt;a_i&lt;b</em>{i+1}$ be interleaved sequences. The maps $H<em>k(f^{-1}(-\infty,b_i]))\to H_k(f^{-1}(-\infty,b</em>{i+1}]))$  are <strong>not</strong> isomorphisms. For simplicity, let us drop the subscript $k$, and denote the homology group by $H(b<em>i)$. Let $f</em>{x,y}$ denote the map $H(x)\to H(y)$. The image of $f_{x,y}$ is denoted by $H(x,y)$. Set $\beta(x,y)=\dim H(x,y)$. We can define the <em>multiplicity</em> of a point $(a_i,a_j)$ in persistence diagram $D(f)$ as</p>
+\emptyset=f^{-1}((-\infty,a_0])\to\cdots\to f^{-1}((-\infty,a_i])\to\cdots\to f^{-1}((-\infty,a_n])=X.</script><p>Each $a<em>i$ is called a homological critical value. Thus, at $a_i$ the homotopy type of the sublevel sets of $f$ is changed. Tameness means that it changes finite types. Let $b_i&lt;a_i&lt;b</em>{i+1}$ be interleaved sequences. The maps $H<em>k(f^{-1}(-\infty,b_i])\to H_k(f^{-1}(-\infty,b</em>{i+1}])$  are <strong>not</strong> isomorphisms. For simplicity, let us drop the subscript $k$, and denote the homology group by $H(b<em>i)$. Let $f</em>{x,y}$ denote the map $H(x)\to H(y)$. The image of $f_{x,y}$ is denoted by $H(x,y)$. Set $\beta(x,y)={\rm dim} H(x,y)$. We can define the <em>multiplicity</em> of a point $(a_i,a_j)$ in persistence diagram $D(f)$ as</p>
 <script type="math/tex; mode=display">
 \mu(i,j)=\beta(b_{i-1},b_j)-\beta(b_i,b_j)+\beta(b_i,b_{j-1})-\beta(b_{i-1},b_{j-1}).</script><p>Then the <em>total multiplicity</em> (or <em>size</em>) of the persistence diagram over the diagonal is </p>
 <script type="math/tex; mode=display">
@@ -22,19 +22,19 @@
 <p>Let $Q_x^y=[-\infty,x]\times[y,\infty]$ be the closed upper left quadrant. <strong>k-Triangle Lemma</strong> asserts that for $x&lt;y$ different from homological critical values, then</p>
 <script type="math/tex; mode=display">
 \#(D(f)\cap Q_x^y)=\beta(x,y).</script><p>The proof is shown in the following figure. Note that the small square with plus and minus notations explains the multiplicity at a point. When summing over, plus and minus cancels. </p>
-<p><img src="/.top//hexo\blog\myblog\source\_posts\Stability-Theorems-in-Persistent-Homology-1\ktriangle.png" alt="k-triangle lemma"> </p>
+<p><img src="/.top//ktriangle.png" alt="k-triangle lemma"> </p>
 <hr>
 <p>Let $f$ and $g$ be two tame functions on the same topological space. Let $\epsilon=|f-g|_{\infty}$. We want to compare the multiplicities of quadrants for $f$ and $g$. In fact, the <strong>Quadrant Lemma</strong> asserts that</p>
 <script type="math/tex; mode=display">
 \#(D(f)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(g)\cap Q_x^y).</script><p>Symmetrically, we also have </p>
 <script type="math/tex; mode=display">
 \#(D(g)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(f)\cap Q_x^y).</script><p>Intuitively, when we shift the quadrant upper left by $\epsilon$, the multiplicity decreases. </p>
-<p><img src="/.top//hexo\blog\myblog\source\_posts\Stability-Theorems-in-Persistent-Homology-1\quadrant.png" alt="quadrant lemma"></p>
+<p><img src="/.top//quadrant.png" alt="quadrant lemma"></p>
 <hr>
 <p>Let $R=[a,b]\times[c,d]$ be a closed rectangle where $a&lt;b&lt;c&lt;d$. Let $R_{\epsilon}=[a+\epsilon,c-\epsilon]\times[c+\epsilon,d-\epsilon]$ be a smaller rectangle. The <strong>Box Lemma</strong> asserts that the points in the smaller box have less multiplicities. </p>
 <script type="math/tex; mode=display">
 \#(D(f)\cap R_{\epsilon})\le \#(D(g)\cap R).</script><p>Similarly, the positions of $f$ and $g$ can be exchanged in the inequality. </p>
-<p><img src="/.top//hexo\blog\myblog\source\_posts\Stability-Theorems-in-Persistent-Homology-1\box.png" alt="box lemma"></p>
+<p><img src="/.top//box.png" alt="box lemma"></p>
 <hr>
 <p>Let $A$ and $B$ be multisets in the extended plane. The Hausdorff distance between $A$ and $B$ is defined as </p>
 <script type="math/tex; mode=display">
@@ -426,8 +426,8 @@ r=G^{-1}(t)=(\frac{t}{cf(x)})^{1/p}+\eta(t),</script><p>where $\eta(t)=o(t^{1/p}
 <p>Now we can construct a graph based on the above argument. The vertices are random variables. Two distinct vertices are connected by an edge if they are not conditional independent. One event is ‘connected’ to another if there is a path joining them. Therefore, when we say ‘Everything is connected’, we actually mean that the graph is connected.</p>
 <p>However, we should be cautious about ‘everything’ since we just considered finite number of events. Given arbitrary $n$ events, we can say ‘These $n$ things are connected’ if the corresponding graph is connected. But it is too stupid to say such things, and we are not going to infer whether a graph is connected, either. Instead, let us look at the probability that a graph with $n$ nodes is connected.</p>
 <h1 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h1><p>Let $\mathbb{G}_n$ be the space of undirected simple graphs with $n$ nodes. $\mathbb{G}_n$ is a finite set with $2^\frac{n(n-1)}{2}$ elements. Let $\mathbb{G}_n^c$ be the subset of all connected graphs, $\mathbb G_n^d$ be the subset of all disconnected graphs. Define the connectivity ratio </p>
-<script type="math/tex; mode=display">R_n=\frac{ \#(\mathbb{G}_n^d)}{ \#(\mathbb{G}_n)}.</script><p>Denote $#(\mathbb G_n^c)$ by $K_n^c$ and $#(\mathbb G_n^d)$ by $K_n^d$. We have $K_n^c+K_n^d=2^\frac{n(n-1)}{2}$.</p>
-<p>Let $v<em>0,v_1,\cdots,v_n$ be vertices of a graph $G\in\mathbb G</em>{n+1}^d$. Suppose $C_0$ is the component containing $v_0$ with $i$ points. Let $C_1$ be the complement of $C_0$ with $n+1-i$ points. The we have the following recursion </p>
+<script type="math/tex; mode=display">R_n=\frac{ \#(\mathbb{G}_n^d)}{ \#(\mathbb{G}_n)}.</script><p>Denote $#(\mathbb{G}_n^c)$ by $K_n^c$ and $#(\mathbb{G}_n^d)$ by $K_n^d$. We have $K_n^c+K_n^d=2^\frac{n(n-1)}{2}$.</p>
+<p>Let $v<em>0,v_1,\cdots,v_n$ be vertices of a graph $G\in\mathbb{G}</em>{n+1}^d$. Suppose $C_0$ is the component containing $v_0$ with $i$ points. Let $C_1$ be the complement of $C_0$ with $n+1-i$ points. The we have the following recursion </p>
 <script type="math/tex; mode=display">K_{n+1}^d=\sum_{i=1}^n\binom{n}{i-1}K_i^c2^\frac{(n+1-i)(n-i)}{2}.</script><p>Dividing both sides by $2^\frac{(n+1)n}{2}$, we have</p>
 <script type="math/tex; mode=display">R_{n+1}=\sum_{i=1}^n\binom{n}{i-1}(1-R_i)2^\frac{-i(n+1-i)}{2}.</script><p>Note that $1-R_i<1$ when $i>1$. Multiply both sides by $2^n$,</1$></p>
 <script type="math/tex; mode=display">2^nR_{n+1}<1+n+\sum_{i=2}^{n-1}\binom{n}{i-1}2^{-(n-i)(i-1)}.</script><p>When $1&lt;i&lt;n$, $2^{-(n-i)(i-1)}&lt;2^{-(n-2)}$. We obtain that $2^nR_{n+1}&lt;n+5$. That is, the connectivity ratio $R_n&lt;\frac{n+4}{2^{n-1}}$. When $n$ tends to infinity, $R_n$ tends to $0$.</p>
