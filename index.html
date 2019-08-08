@@ -359,6 +359,47 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/08/08/Remarks-on-Submanifold-density-estimation/" >
+            
+                <span>Remarks on &#39;Submanifold density estimation&#39;</span>
+        </a>
+        <div class="abstract-content">
+            <p>There seems to be a gap in <a href="http://papers.nips.cc/paper/3826-submanifold-density-estimation" target="_blank" rel="noopener">Submanifold density estimation</a>.</p>
+<p>In the deduction of variance, one needs to estimate </p>
+<blockquote>
+<p>$\frac{1}{h_m^n}\int_M f(q)\frac{1}{h_m^n}K^2(\frac{u_p(q)}{h_m})dV(q)$</p>
+</blockquote>
+<p>Apply theorem 3.1 to function $K^2$ one obtains</p>
+<script type="math/tex; mode=display">
+\frac{1}{h^n}\int_M K^2(\frac{u_p(q)}{h})\xi(q)dV(q)\to\xi(p)\int_{\mathbb{R}^n}K^2(\|z\|)d^nz,h\to 0.</script><p>It seems $h_m^{2n}$ will cause trouble in estimation. Whatever, they claimed that the integration will converges to $f(p)\int K^2(|z|)d^nz$. However, in the expression of variance</p>
+<blockquote>
+<p>$Var[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})]=E[\frac{1}{h_m^{2n}}K^2(\frac{u_p(q)}{h_m})]-(E[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})])^2$</p>
+</blockquote>
+<p>the first term will converge to a constant times $f(p)$, while the latter will converge to $f(p)^2$. Thus the variance will not converge to 0.</p>
+<p>The idea of proof is straightforward. Since $K$ will be supported in $[0,1]$, one notes that when the bandwidth $h$ is small, the integration will be zero outside the normal coordinate. Therefore, everything goes back to Euclidean space.</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Nonparametric Estimates">Nonparametric Estimates</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/" >
             
                 <span>Stability Theorems in Topological Data Analysis (1)</span>
@@ -789,9 +830,16 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
     
     
     
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 6
+        Total : 7
         </div>
         <!-- search  -->
         
@@ -804,6 +852,11 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/08</span><a class="archive-post-title" href= "/2019/08/08/Remarks-on-Submanifold-density-estimation/" >Remarks on 'Submanifold density estimation'</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -840,13 +893,13 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
-    
-        <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
+    
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
+    
+        <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
     
