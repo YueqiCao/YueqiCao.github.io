@@ -22,7 +22,7 @@
     <meta name="description" content="Notes and Remarks about Maths-related Topics">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Everything is Connected</title>
+    <title>Stability Theorems in Topological Data Analysis (3) · Everything is Connected</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Everything is Connected</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Stability Theorems in Topological Data Analysis (3)</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Everything is Connected</a>
 </header>
@@ -220,24 +231,76 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/purple.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            Stability Theorems in Topological Data Analysis (3)
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "TDA">TDA</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Stability">Stability</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">947</span>Reading time: <span class="post-count reading-time">5 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/10/02</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,78 +401,67 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/30/MSE-of-Locally-Linear-Regression/" >
-            
-                <span>MSE of Locally Linear Regression</span>
-        </a>
-        <div class="abstract-content">
-            <h1 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h1><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>Perhaps the most important case in TDA is point cloud data, i.e. finite metric spaces. The collection of all compact metric spaces makes up a metric space under <a href="[https://en.wikipedia.org/wiki/Gromov%E2%80%93Hausdorff_convergence](https://en.wikipedia.org/wiki/Gromov–Hausdorff_convergence">Gromov-Hausdorff metric</a>). If we construct Rips filtrations for point clouds,  we obtain a map between metric spaces by sending each point cloud to its persistence diagram. It is natural to ask which properties will this map have. From the work of <a href="http://fodava.gatech.edu/files/reports/FODAVA-09-24.pdf" target="_blank" rel="noopener">F. Memoli etc.</a>, it is in fact a <strong>Lipschitz</strong> map. Therefore, the bottleneck distance between two persistence diagrams is bounded by the Gromov-Hausdorff distance between two point clouds. This stability shows that one can use TDA to classify different point clouds, which is a major object in shape analysis.</p>
+<a id="more"></a>
+<p>Let $(Z,d_Z)$ be a (compact) metric space and $X,Y$ be subsets in $Z$. The Hausdorff distance between $X$ and $Y$ is defined as</p>
 <script type="math/tex; mode=display">
-y=g(x)+\epsilon(x),</script><p>where $g$ is a any smooth function, and $\epsilon(x)$ is a variable with zero mean and finite variance. Let $X_1,X_2,\cdots,X_n$ be i.i.d. samples with bounded density $f$, and $Y_1,Y_2,\cdots, Y_n$ be the corresponding responses (assume $X_i$’s are scalars ‘). By Taylor expansion, we have</p>
+d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_Z(x,y)\}.</script><p>The intuition is follows: For each $x\in X$, we can compute the distance between $x$ and $Y$, which is $\min_{y\in Y}d_Z(x,y)$. Then we take the largest value as the distance from $X$ to $Y$. The distance is the so called one-sided Hausdorff distance. Symmetrically, we compute the distance from $Y$ to $X$. The maximum is the so called (two-sided) Hausdorff distance.</p>
+<p>If $(X,d_X)$ and $(Y,d_Y)$ are different metric spaces, we cannot compare the distance between $X$ and $Y$ unless they are subspaces of another space $(Z,d_Z)$. Therefore, we try to embed $(X,d_X)$ and $(Y,d_Y)$ into a larger space so that they can be compared using Hausdorff distance. This motivates the following definition of Gromov-Hausdorff distance    </p>
 <script type="math/tex; mode=display">
-Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linear Regression">Linear Regression</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Least Squares">Least Squares</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Nonparametric Estimates">Nonparametric Estimates</a>
-    
-</div>
-            
-        </div>
+d_{GH}((X,d_X),(Y,d_Y))=\inf_{X,Y\hookrightarrow Z}d_H^Z(X,Y).</script><p>Let $\mathcal{X}=\{(X,d_X):X\text{ is compact metric space}\}$. Define an equivalence relation on $\mathcal{X}$: $(X,d_X)\sim(Y,d_Y)$ if they are isometric. The quotient space is still denoted by $\mathcal{X}$. Then $(\mathcal{X},d_{GH})$ is a complete metric space (see <a href="https://www.amazon.com/Course-Metric-Geometry-Dmitri-Burago/dp/0821821296" target="_blank" rel="noopener">this book</a> for reference). Furthermore, the infimum is in fact a minimum, that is, we can always find $Z$ for compact spaces.</p>
+<p>Given a finite metric space $(X,d_X)$ and a parameter $\alpha&gt;0$, the Rips complex $R_\alpha(X,d_X)$ is an abstract simplicial complex with vertex set $X$. A $k$-simplex is in $R_\alpha(X,d_X)$ if and only if the diameter is no more than $2\alpha$. When $\alpha$ ranges from $0$ to $\infty$, the nested family is called Rips filtration, denoted by $\mathcal{R}(X,d_X)$.</p>
+<p>Moreover, if $X$ is a finite subset of $(\mathbb{R}^n,l^\infty)$, there is another construction called $\check{C}ech$ complex which is the nerve of $l^\infty$ balls, denoted by $C_\alpha(X,l^\infty)$. It happens that the two constructions are the same.</p>
+<hr>
+<p><strong>Lemma</strong>. For any finite set $X$ in $(\mathbb{R}^n,l^\infty)$ and $\alpha&gt;0$, $C_\alpha(X,l^\infty)=R_\alpha(X,l^\infty)$.</p>
+<p><strong>proof</strong>. If $\{x_1,\cdots,x_k\}$ is in $C_\alpha$, then there is $\bar{x}$ such that  $|x_i-\bar{x}|_\infty\le \alpha$. By triangle inequality $|x_i-x_j|_\infty\le 2\alpha$. $\{x_1,\cdots,x_k\}$ is in $R_\alpha$. On the other hand, if $|x_i-x_j|_\infty\le 2\alpha$, for each coordinate $l$ we take $\bar{x}^{(l)}=1/2(x^{(l)}_{\max}+x^{(l)}_{\min})$. It is easy to verify $|x_i-\bar{x}|_\infty\le \alpha$. $\{x_1,\cdots,x_k\}$ is in $C_\alpha$.</p>
+<hr>
+<p>Another useful lemma can be found in the <a href="https://www.amazon.com/Course-Metric-Geometry-Dmitri-Burago/dp/0821821296" target="_blank" rel="noopener">book</a> which says that any finite metric space of cardinality $n$ can be isometrically embedded into $(\mathbb{R}^n,l^\infty)$.</p>
+<p>Now we can state and prove the stability theorem.</p>
+<hr>
+<p><strong>Theorem</strong>. For any finite metric spaces $(X,d_X)$ and $(Y,d_Y)$, for any $k\in \mathbb{N}$, </p>
+<script type="math/tex; mode=display">
+d^\infty_B(D_k\mathcal{R}(X,d_X),D_k\mathcal{R}(Y,d_Y))\le d_{GH}((X,d_X),(Y,d_Y)).</script><p><strong>proof</strong>. Let $\epsilon=d_{GH}((X,d_X),(Y,d_Y))$. By definition, there is a compact metric space $(Z,d_Z)$ and inclusions $\gamma_X:X\to Z$ and $\gamma_Y:Y\to Z$ such that $d_H^Z(X,Y)\le \epsilon$. Since $\gamma_X(X)\cup\gamma_Y(Y)$ is finite, they can be isometrically embedded into $(\mathbb{R}^n,l^\infty)$ for some $n$. Denote the embedding by $\gamma$. Let $\delta_X$ be the distance function to $\gamma(\gamma_X(X))$. That is,  </p>
+<script type="math/tex; mode=display">
+\delta_X(z)=\min_{x\in X}|z-\gamma(\gamma_X(x))|_\infty.</script><p>Similarly, let $\delta_Y$ be the distance function to $\gamma(\gamma_Y(Y))$. Note that</p>
+<script type="math/tex; mode=display">
+|\delta_X(z)-\delta_Y(z)|\le d_H^\infty(\gamma(\gamma_X(X)),\gamma(\gamma_Y(Y)))=\epsilon.</script><p>(<em>I have doubt in this inequality. The closest point in $X$ and $Y$ may not correspond in Hausdorff distance</em>).</p>
+<p>Since $\delta_X$ and $\delta_Y$ are $\epsilon$-close, by the theorem of <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">Edelsbrunner etc.</a>, the persistence diagrams of $\delta_X$ and $\delta_Y$ are $\epsilon$-close.</p>
+<p>However, the level set $\delta_X([0,\alpha])$ is nothing but the union of $\alpha$-balls in $(\mathbb{R}^n,l^\infty)$. By persistence nerve theorem the sublevel filtration of $\delta_X$ and the $\check{C}ech$ filtration of $\gamma(\gamma_X(X))$ yield same persistence diagrams. From the above lemma, $C_\alpha(\gamma(\gamma_X(X)),l^\infty)=R_\alpha(\gamma(\gamma_X(X)),l^\infty)=R_\alpha(\gamma_X(X),d_Z)=R_\alpha(X,d_X)$. Therefore, the persistence diagram of $\delta_X$ is exactly the persistence diagram $D\mathcal{R}(X,d_X)$. Apply the same argument to $Y$. Hence the inequality holds.</p>
+<hr>
+
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/21/Bayesian-Linear-Regression/" >
-            
-                <span>Bayesian Linear Regression</span>
-        </a>
-        <div class="abstract-content">
-            <h1 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h1><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linear Regression">Linear Regression</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Least Squares">Least Squares</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/" title= "Stability Theorems in Topological Data Analysis (2)">
+                    <div class="prevTitle">Stability Theorems in Topological Data Analysis (2)</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -491,6 +543,24 @@ Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -738,6 +808,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
