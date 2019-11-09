@@ -3,6 +3,51 @@
   
     
     <entry>
+      <title><![CDATA[Some Applications of Wasserstein Distances]]></title>
+      <url>/2019/11/09/Some-Applications-of-Wasserstein-Distances/</url>
+      <content type="html"><![CDATA[<h2 id="OMT-I"><a href="#OMT-I" class="headerlink" title="OMT I"></a>OMT I</h2><p>The original setting for optimal mass transportation (OMT) consists of three objects.</p>
+<ol>
+<li>Two probability spaces $(X,\mu)$ and $(Y,\nu)$. i.e. $\mu(X)=\nu(Y)=1$;</li>
+<li>A measurable map $T:X\to Y$ such that $T_*\mu=\nu$. i.e. for any Borel set $B\subset Y$ it holds $\nu(B)=\mu(T^{-1}(B))$.</li>
+<li>A cost function $c:X\times Y\to \mathbb R_+\cup\{\infty\}$ such that for any $T$ in 2. the map $c_T(x)=c(x,T(x))$ is measurable. The integration $\int_X c(x,T(x))d\mu$ is called the total cost.</li>
+</ol>
+<a id="more"></a>
+<p>We require that $X$ and $Y$ are probability spaces. However, in practicing many examples do not arise naturally as probability spaces. In those cases we require $\mu(X)=\nu(Y)$ for finite or infinite measures. In the second setting note that we use the <strong>pushforward</strong> of $\mu$ but not the pullback of $\nu$. This has a practical meaning, see <a href="https://bookstore.ams.org/gsm-58/" target="_blank" rel="noopener">Villani</a> for a reference. </p>
+<p>The original problem is raised by Monge that one needs to find a ‘transference plan’ $T$ to minimize the total cost $\int_X c(x,T(x))d\mu$.</p>
+<p>Despite solving Monge’s problem, consider the special case where $(X,d)$ is a metric space. $\mu$ and $\nu$ are two measures on $X$ with finite $p$th moments, i.e. $\int_Xd(x,x_0)^pd\mu&lt;\infty,\int_Xd(x,x_0)^pd\nu&lt;\infty$ for any $x_0\in X$. Let $T:X\to X$ range over all measure preserving map so that we can obtain the quantity $(\inf\{\int_Xd(x,T(x))^p\})^{1/p}$ which is called the $p$th Wasserstein distance between $\mu$ and $\nu$, denoted by $W_p(\mu,\nu)$. It can be proved that $W_p$ is a metric on the space of measures with finite $p$th order on $X$.</p>
+<h2 id="Shape-Classification"><a href="#Shape-Classification" class="headerlink" title="Shape Classification"></a>Shape Classification</h2><p>Here is an example that Wasserstein distance is used to classify shapes. See <a href="https://www.researchgate.net/publication/305887246_Surface-based_shape_classification_using_Wasserstein_distance" target="_blank" rel="noopener">this paper</a> for details of methods, and <a href="https://www.researchgate.net/publication/332180388_A_Geometric_View_of_Optimal_Transportation_and_Generative_Model" target="_blank" rel="noopener">this paper</a> for details of proofs.</p>
+<p>Let $\mathbb D$ be the unit disk in $\mathbb R^2$ (generally any compact and convex set in $\mathbb R^n$ can be considered), equipped with Lebesgue measure $m$. Let $Y=\{y_1,\cdots,y_k\}$ be a discrete subset in $\mathbb R^2$ with weighted counting measure $\delta=\sum_{i=1}^k b_i\delta_{y_i}$ such that $\delta(Y)=\pi$. In other words, we have two measures on $\mathbb R^2$ where the first is supported on $\mathbb D$ and the second is supported on $Y$. Monge’s problem states that a map $f:\mathbb D\to Y$ such that $f_*m=\nu$ is to be find to minimize $\int_{\mathbb D}|x-f(x)|^2dx$, where we use the standard metric on $\mathbb R^2$. Note that $Y$ is discrete. This problem is equivalent to partition $\mathbb D$ into $k$ subsets $D_1\cup\cdots\cup D_k$ such that $m(D_i)=b_i$. Therefore, we can use techniques in <a href="https://www.fmf.uni-lj.si/~lavric/hug&amp;weil.pdf" target="_blank" rel="noopener">convex geometry</a>.</p>
+<p>Let ${\bf h}=(h_1,\cdots,h_k)\in\mathbb R^k$. Define a piecewise linear convex function $u_{\bf h}(x)=\max\{x\cdot y_i+h_i\}$. Let $G({\bf h})$ be the graph of $u_{\bf h}$. Then $G({\bf h})$ is a piecewise hyperplane. The projection of $G({\bf h})$ to $\mathbb D$ gives a cell decomposition $\mathbb D=\cup_{i=1}^k W_i$, where each $W_i$ corresponds to a piece of plane $\{(x,x\cdot y_i+h_i)|x\in W_i\}$. Assign each $W_i$ to $y_i$. By moving ${\bf h}$ we can find the request assignment with $m(W_i)=b_i$. The fact is that, this is the unique map minimizing the total cost (see <a href="https://www.researchgate.net/publication/227632352_Polar_Factorization_and_Monotone_Rearrangement_of_Vector-Valued_Functions" target="_blank" rel="noopener">Brenier</a>, <a href="https://www.researchgate.net/publication/220616351_Power_Diagrams_Properties_Algorithms_and_Applications" target="_blank" rel="noopener">Aurenhammer</a>). Therefore, the problem reduces to find ${\bf h}$ in some suitable space $H_0$. This is done by using Newton’s method after defining an objective function $E({\bf h})$ which is twice differentiable and the hessian is given in a closed form.  </p>
+<p>For two arbitrary surfaces $M_1,M_2$ in $\mathbb R^3$ (represented by meshes), we use conformal maps to map $M_i$ to unit disks $\mathbb D_i$. For the first disk $\mathbb D_1$ we equip it with Lebesgue measure. For the second disk $\mathbb D_2$ we assign each point (projected from $M_2$) a value so that it is equipped with a weighted counting measure. The Wasserstein distance from $\mathbb D_1$ to $\mathbb D_2$ (in fact. $m$ to $\delta$) measures the difference between $M_1$ and $M_2$.</p>
+<h2 id="OMT-II"><a href="#OMT-II" class="headerlink" title="OMT II"></a>OMT II</h2><p>Consider the following example: $X=\{x_1,\cdots,x_n\}$ and $Y=\{y_1,\cdots,y_n\}$ are finite sets with the same cardinality. Equip $X$ and $Y$ with counting measure. Then a measure preserving map $f:X\to Y$ is exactly a permutation. In many cases it is not adequate to use ‘maps’ only, since each $x_i$ cannot be ‘split’ under maps.  If we are permitted to partition each $x_i$ into pieces, then a transference plan is a matrix $\Pi=[\pi_{ij}]$ where $\sum_j \pi_{ij}=1$ for each $i$ and $\sum_{i} \pi_{ij}=1$ for each $j$, i.e. $\Pi$ is a bistochastic matrix. This idea was raised by Kantorovich and the more general setting for OMT is</p>
+<ol>
+<li>$(X,\mu)$ and $(Y,\nu)$ are probability spaces;</li>
+<li>$\pi$ is a probability measure on $X\times Y$ such that the maginal distributions are $\mu$ on $X$ and $\nu$ on $Y$ respectively;</li>
+<li>$c:X\times Y\to \mathbb R_+\cup\{\infty\}$ is a $\pi$ measurable function. The integration $\int_{X\times Y}c(x,y)d\pi$ is called the total cost.</li>
+</ol>
+<p>Kantorovich’s problem is to find a probability measure $\pi$ so that the total cost is minimized. Note that it is a linear programming problem so we can formulate this in a dual form. The Kantorovich dual problem is </p>
+<script type="math/tex; mode=display">
+W_c(\mu,\nu)=\max_{\phi,\psi}\{\int_X\phi(x)d\mu+\int_Y\psi(y)d\nu\}</script><p>where $\phi$ and $\psi$ are functions on $X$ and $Y$ respectively and $\phi(x)+\psi(y)\le c(x,y)$. Define $\phi^c(y)=\inf_{x\in X}\{c(x,y)-\phi(x)\}$. Then (1) is equivalent to </p>
+<script type="math/tex; mode=display">
+W_c(\mu,\nu)=\max_{\phi}\{\int_X\phi(x)d\mu+\int_Y\phi^c(y)d\nu \}</script><h2 id="WGAN"><a href="#WGAN" class="headerlink" title="WGAN"></a>WGAN</h2><p>In <a href="http://proceedings.mlr.press/v70/arjovsky17a/arjovsky17a.pdf" target="_blank" rel="noopener">this paper</a> Wasserstein distance is first introduced to Generative Adversarial Network and the model is called WGAN. A resent <a href="https://www.researchgate.net/publication/332180388_A_Geometric_View_of_Optimal_Transportation_and_Generative_Model" target="_blank" rel="noopener">paper</a> by Gu Xianfeng etc. used geometry to interprete the role of Wasserstein distance in WGAN.</p>
+<p>A GAN consists of a generator (G) and a discriminator (D).  (G) generates artificial data and (D) discriminate them from real data. Suppose real data lies in a high dimensional space $\Chi$ and its distribution $\nu$ supports around a low dimensional manifold $\mathcal M$. A local chart $(U,\tau)$ is an open set in $\mathcal M$ together with a map $\tau:U\to Z$  from $U$ to the latent space $Z$. The inverse of $\tau$ is called a parametrization. If $\mu$ is a distribution on $Z$ then a local parametrization pushes forward $\mu$ to be a distribution on $\mathcal M$. i.e. the local parametrization <strong>is</strong> generator (G). Assume the training parameter for (G) is $\theta$ and denote the parametrization by $g_\theta$. (G) generates data on $\mathcal M$ whose distribution is $(g_\theta)_<em>\mu$. But how to discriminate it from the real distribution $\nu$? The answer is Wasserstein distance $W((g_\theta)_</em>,\nu)$. More specifically, by Kantorovich dual we need to compute</p>
+<script type="math/tex; mode=display">
+W_c((g_\theta)_*\mu,\nu)=\max_{\phi}\{\int_Z\phi(g_\theta(z))d\mu+\int_Y\phi^c(y)d\nu\}</script><p>Suppose the training parameter for (D) is $\xi$. Then we can rewrite (3) as</p>
+<script type="math/tex; mode=display">
+W_c((g_\theta)_*\mu,\nu)=\max_{\xi}(\mathbb E_{z\sim \mu}\phi(g_\theta(z))+\mathbb E_{y\sim \nu}\phi^c(y))</script><p>Therefore, the discriminator (D) <strong>is</strong> a calculator computing the Wasserstein distance. Above all, we can write down the objective function of a WGAN</p>
+<script type="math/tex; mode=display">
+\min_{\theta}\max_{\xi}(\mathbb E_{z\sim \mu}\phi(g_\theta(z))+\mathbb E_{y\sim \nu}\phi^c(y))</script>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Wasserstein Distances </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Stability Theorems in Topological Data Analysis (3)]]></title>
       <url>/2019/10/02/Stability-Theorems-in-Topological-Data-Analysis-3/</url>
       <content type="html"><![CDATA[<p>Perhaps the most important case in TDA is point cloud data, i.e. finite metric spaces. The collection of all compact metric spaces makes up a metric space under <a href="[https://en.wikipedia.org/wiki/Gromov%E2%80%93Hausdorff_convergence](https://en.wikipedia.org/wiki/Gromov–Hausdorff_convergence">Gromov-Hausdorff metric</a>). If we construct Rips filtrations for point clouds,  we obtain a map between metric spaces by sending each point cloud to its persistence diagram. It is natural to ask which properties will this map have. From the work of <a href="http://fodava.gatech.edu/files/reports/FODAVA-09-24.pdf" target="_blank" rel="noopener">F. Memoli etc.</a>, it is in fact a <strong>Lipschitz</strong> map. Therefore, the bottleneck distance between two persistence diagrams is bounded by the Gromov-Hausdorff distance between two point clouds. This stability shows that one can use TDA to classify different point clouds, which is a major object in shape analysis.</p>
@@ -97,7 +142,7 @@ rank(f^{\alpha_{j-1}}_{\alpha_i})-rank(f^{\alpha_j}_{\alpha_i})+rank(f^{\alpha_j
     <entry>
       <title><![CDATA[Curvature of Warped Products]]></title>
       <url>/2019/09/03/Curvature-of-Warped-Products/</url>
-      <content type="html"><![CDATA[<h1 id="Curvature-of-Coupled-Planes"><a href="#Curvature-of-Coupled-Planes" class="headerlink" title="Curvature of Coupled Planes"></a>Curvature of Coupled Planes</h1><p>Consider the product of two planes $\mathbb R^2\times\mathbb R^2$, with the following Riemannian metric</p>
+      <content type="html"><![CDATA[<h2 id="Curvature-of-Coupled-Planes"><a href="#Curvature-of-Coupled-Planes" class="headerlink" title="Curvature of Coupled Planes"></a>Curvature of Coupled Planes</h2><p>Consider the product of two planes $\mathbb R^2\times\mathbb R^2$, with the following Riemannian metric</p>
 <script type="math/tex; mode=display">
 ds^2=dx^2+dy^2+e^{2f(x,y)}(du^2+dv^2),</script><p>where $f(x,y)$ is a smooth function. We compute the sectional/Ricci/scalar curvature of the ‘coupled’ planes using orthonormal frames. Basics about moving frames are referred to <a href="https://link.springer.com/book/10.1007/978-3-319-55084-8" target="_blank" rel="noopener">Loring W. Tu</a>.    </p>
 <a id="more"></a>
@@ -142,7 +187,7 @@ K_{ij}=\langle R(e_i,e_j)e_j,e_i\rangle=\Omega_j^i(e_i,e_j).</script><p>Hence, w
 &Ric_{44}=K_{14}+K_{24}+K_{34}=-(f_{xx}+f_{yy}+2f_x^2+2f_y^2),\\
 \end{aligned}</script><p>Scalar curvature is the sum of Ricci curvature, thus,</p>
 <script type="math/tex; mode=display">
-S=Ric_{11}+Ric_{22}+Ric_{33}+Ric_{44}.</script><h1 id="Curvature-of-4-Dimensional-Warped-Product-Spaces"><a href="#Curvature-of-4-Dimensional-Warped-Product-Spaces" class="headerlink" title="Curvature of 4 Dimensional Warped Product Spaces"></a>Curvature of 4 Dimensional Warped Product Spaces</h1><p>More generally, let $M$ and $N$ be two Riemannian manifolds with metric $g_M$ and $g_N$, respectively. Consider the product space $M\times N$ with the following metric</p>
+S=Ric_{11}+Ric_{22}+Ric_{33}+Ric_{44}.</script><h2 id="Curvature-of-4-Dimensional-Warped-Product-Spaces"><a href="#Curvature-of-4-Dimensional-Warped-Product-Spaces" class="headerlink" title="Curvature of 4 Dimensional Warped Product Spaces"></a>Curvature of 4 Dimensional Warped Product Spaces</h2><p>More generally, let $M$ and $N$ be two Riemannian manifolds with metric $g_M$ and $g_N$, respectively. Consider the product space $M\times N$ with the following metric</p>
 <script type="math/tex; mode=display">
 g=g_M+e^{2f}g_N,</script><p>where $f$ is a smooth function on $M$. This is called the <strong>warped products</strong> of $M$ and $N$, and often denoted by $M\times_{e^f}N$ (see <a href="https://max.book118.com/html/2019/0228/6024223150002012.shtm" target="_blank" rel="noopener">John Lee, Example 2.24</a>).  Let $\theta^1,\theta^2$ be the orthonormal coframe on $M$ and $\omega^1_2$ be the corresponding connection form. Similarly, let $\theta^3,\theta^4,\omega^3_4$ be the orthonormal coframe and connection form on $N$. For the product space $M\times N$, we have the orthonormal coframe</p>
 <script type="math/tex; mode=display">
@@ -178,7 +223,7 @@ g=g_M+e^{2f}g_N,</script><p>where $f$ is a smooth function on $M$. This is calle
 &\bar{K}_{13}=\bar{K}_{14}=e^{-f}(\frac{de^f}{\theta^2}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^1)^2}),\\
 &\bar{K}_{23}=\bar{K}_{24}=e^{-f}(-\frac{de^f}{\theta^1}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^2)^2}),\\
 &\bar{K}_{34}=e^{-2f}(K_{34}-(\frac{de^f}{\theta^1})^2-(\frac{de^f}{\theta^2})^2).
-\end{aligned}</script><h1 id="More-Examples"><a href="#More-Examples" class="headerlink" title="More Examples"></a>More Examples</h1><p>Let $\mathbb S^2$ be the unit sphere in $\mathbb R^3$. Using stereographic projection, the <em>round metric</em> in local coordinate $(x,y)$ is </p>
+\end{aligned}</script><h2 id="More-Examples"><a href="#More-Examples" class="headerlink" title="More Examples"></a>More Examples</h2><p>Let $\mathbb S^2$ be the unit sphere in $\mathbb R^3$. Using stereographic projection, the <em>round metric</em> in local coordinate $(x,y)$ is </p>
 <script type="math/tex; mode=display">
 g_{\mathbb S^2}=\frac{4}{(1+x^2+y^2)^2}(dx^2+dy^2).</script><p>Let $\theta^1=2/(1+x^2+y^2)dx$ and $\theta^2=2/(1+x^2+y^2)dy$ be the orthonormal coframe. We compute that the connection 1-form is $\omega^1_2=-y\theta^1+x\theta^2$. Therefore, </p>
 <script type="math/tex; mode=display">
@@ -301,7 +346,7 @@ d_{\mathcal B}(A,B)=\inf_{\gamma}\sup_x\|x-\gamma(x)\|_{\infty},</script><p>wher
     <entry>
       <title><![CDATA[MSE of Locally Linear Regression]]></title>
       <url>/2019/07/30/MSE-of-Locally-Linear-Regression/</url>
-      <content type="html"><![CDATA[<h1 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h1><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
+      <content type="html"><![CDATA[<h2 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h2><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
 <script type="math/tex; mode=display">
 y=g(x)+\epsilon(x),</script><p>where $g$ is a any smooth function, and $\epsilon(x)$ is a variable with zero mean and finite variance. Let $X_1,X_2,\cdots,X_n$ be i.i.d. samples with bounded density $f$, and $Y_1,Y_2,\cdots, Y_n$ be the corresponding responses (assume $X_i$’s are scalars ‘). By Taylor expansion, we have</p>
 <script type="math/tex; mode=display">
@@ -332,7 +377,7 @@ e_2=[0,1]^T.
 \mathbb E[(\hat{g}(x)-g(x))^2|{\bf X}]=&\mathbb E[(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}({\bf Y}-g({\bf X})))^2|{\bf X}]\\
 &+(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x))^2.
 \end{aligned}</script><p>The first term is variance and the second term is square of bias.</p>
-<h1 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h1><p>Let ${\bf \Sigma}={\rm diag}\{\sigma^2(X_1),\cdots,\sigma^2(X_n)\}$. Variance can be simplified as</p>
+<h2 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h2><p>Let ${\bf \Sigma}={\rm diag}\{\sigma^2(X_1),\cdots,\sigma^2(X_n)\}$. Variance can be simplified as</p>
 <script type="math/tex; mode=display">
 e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1.</script><p>Denote $\sum_{i=1}^n K_h(X_i-x)(X_i-x)^j$ by $S_j$ for $j=0,1,2$. Then we have </p>
 <script type="math/tex; mode=display">
@@ -358,7 +403,7 @@ S_j/nh^j=\mu_jf(x)+o_{\mathbb P}(1),</script><p>where $o_{\mathbb P}(1)$ denotes
 &({\bf H^{-1}X^TWXH^{-1}}/n)^{-1}{\bf H^{-1}}e_1\\
 =&\frac{1}{nh}\left(\left(e_1^T\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]^{-1}\left[\begin{array}{cc}\nu_1&0\\0&\nu_2\end{array}\right]\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]^{-1}e_1\right)\frac{\sigma^2(x)}{f(x)}+o_{\mathbb P}(1)\right)\\
 =&\frac{1}{nh}(\frac{\nu_0\sigma^2(x)}{f(x)}+o_{\mathbb P}(1)).
-\end{aligned}</script><h1 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h1><p>Consider the Taylor expansion for $g$,</p>
+\end{aligned}</script><h2 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h2><p>Consider the Taylor expansion for $g$,</p>
 <script type="math/tex; mode=display">
 g(X_i)=g(x)+g'(x)(X_i-x)+\frac{1}{2}g''(x)(X_i-x)^2+\frac{1}{6}g'''(\bar{X}_i)(X_i-x)^3.</script><p>Write $r(X_i)=g(X_i)-g(x)-g’(x)(X_i-x)$. Then we have</p>
 <script type="math/tex; mode=display">
@@ -384,8 +429,8 @@ g({\bf X})=g(x){\bf X}e_1+g'(x){\bf X}e_2+r({\bf X}).</script><p>Therefore, the 
 =&\frac{h^2}{2}\left(g''(x)e_1^T\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]^{-1}\left[\begin{array}{cc}\mu_2\\\mu_3\end{array}\right]+o_{\mathbb P}(1)\right)\\
 =&\frac{h^2}{2}(g''(x)\mu_2+o_{\mathbb P}(1))
 \end{aligned}</script><p>Note that if $g$ is a linear function then we will <strong>NOT</strong> have bias.</p>
-<h1 id="Derivative-Estimation"><a href="#Derivative-Estimation" class="headerlink" title="Derivative Estimation"></a>Derivative Estimation</h1><p>Finally we consider the conditional bias and variance for $\hat{\beta}$. The main difference is that ${\bf H}^{-1}e_2=e_2/h$. Therefore we will have order $O(1/{nh^3})$ in variance, and $O(h)$ in bias.  </p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>The whole procedure can be generalized to multivariate case, where $X$ is a vector and $K(\cdot)$ is a multivariate kernel. The details are displayed in <a href="https://projecteuclid.org/download/pdf_1/euclid.aos/1176325632" target="_blank" rel="noopener">D. Ruppert and M.P. Wand</a>‘s paper.</p>
+<h2 id="Derivative-Estimation"><a href="#Derivative-Estimation" class="headerlink" title="Derivative Estimation"></a>Derivative Estimation</h2><p>Finally we consider the conditional bias and variance for $\hat{\beta}$. The main difference is that ${\bf H}^{-1}e_2=e_2/h$. Therefore we will have order $O(1/{nh^3})$ in variance, and $O(h)$ in bias.  </p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>The whole procedure can be generalized to multivariate case, where $X$ is a vector and $K(\cdot)$ is a multivariate kernel. The details are displayed in <a href="https://projecteuclid.org/download/pdf_1/euclid.aos/1176325632" target="_blank" rel="noopener">D. Ruppert and M.P. Wand</a>‘s paper.</p>
 <p>Also in this paper, they considered locally polynomial regression for univariate case. Conditional bias and variance are deduced for derivatives in any order. They also explained why one can not drop <em>condition</em> in asymptotic analysis for locally linear regression.</p>
 <p>A nice introduction to LLR (and other topics in nonparametric estimates) can be found in the <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/" target="_blank" rel="noopener">lecture notes</a>. This article mainly follows <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/local_lin_reg.pdf" target="_blank" rel="noopener">local linear regression</a>.  </p>
 ]]></content>
@@ -407,7 +452,7 @@ g({\bf X})=g(x){\bf X}e_1+g'(x){\bf X}e_2+r({\bf X}).</script><p>Therefore, the 
       <title><![CDATA[Concentration in Gauss Space]]></title>
       <url>/2019/07/25/Concentration-in-Gauss-Space/</url>
       <content type="html"><![CDATA[<p>This article aims to solve an exercise in <a href="https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html#" target="_blank" rel="noopener">High-Dimensional Probability</a> (Page 112, Exercise 5.2.3).</p>
-<h1 id="Gaussian-Isoperimetric-Inequality"><a href="#Gaussian-Isoperimetric-Inequality" class="headerlink" title="Gaussian Isoperimetric Inequality"></a>Gaussian Isoperimetric Inequality</h1><p>Let $\mathbb R^n$ equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> $\gamma_n$:</p>
+<h2 id="Gaussian-Isoperimetric-Inequality"><a href="#Gaussian-Isoperimetric-Inequality" class="headerlink" title="Gaussian Isoperimetric Inequality"></a>Gaussian Isoperimetric Inequality</h2><p>Let $\mathbb R^n$ equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> $\gamma_n$:</p>
 <script type="math/tex; mode=display">
 \gamma_n(E)=\frac{1}{(2\pi)^{n/2}}\int_E\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x</script><p>where $E\subseteq \mathbb R^n$ is a Borel set. Then $(\mathbb R^n,\gamma_n)$ is called Gauss space. Gaussian isoperimetric inequality states that, among all the measurable sets with given volume, half spaces have the <strong>smallest perimeter</strong>. Moreover, define the Minkowski sum </p>
 <script type="math/tex; mode=display">
@@ -415,7 +460,7 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
 <a id="more"></a>
 <p><strong>Theorem.</strong> Let $\epsilon&gt;0$. Among all sets $A\subseteq \mathbb R^n$ with fixed Gauss measure $\gamma_n(A)$, the half spaces minimizes the Gauss measure $\gamma_n(A+B^n(\epsilon))$, where $B^n(\epsilon)$ is a solid ball centered at origin with radius $\epsilon$.</p>
 <p>See <a href="https://link.springer.com/content/pdf/10.1007/BF01425510.pdf" target="_blank" rel="noopener">here</a> for a general definition of Gauss space and proof of the above theorem. See <a href="https://www.jstor.org/stable/29782707?seq=1#page_scan_tab_contents" target="_blank" rel="noopener">this paper</a> for a friendly introduction of Gaussian isoperimetric inequality.</p>
-<h1 id="Concentration"><a href="#Concentration" class="headerlink" title="Concentration"></a>Concentration</h1><p>We want to prove the following concentration inequality in Gauss spaces.</p>
+<h2 id="Concentration"><a href="#Concentration" class="headerlink" title="Concentration"></a>Concentration</h2><p>We want to prove the following concentration inequality in Gauss spaces.</p>
 <p><strong>Theorem.</strong> Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. $f:\mathbb R^n\to \mathbb R$ is a Lipschitz function with respect to the standard Euclidean metric. Then $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. That is,</p>
 <script type="math/tex; mode=display">
 \mathbb P(|f(X)-\mathbb Ef(X)|>t)\le \exp(-ct^2),\forall t>0,</script><p>where $c&gt;0$ is a constant.</p>
@@ -441,7 +486,7 @@ f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge 
 <p>Replace $f$ with $-f$. We can obtain a similar inequality as $\mathbb P(f(X)-m&lt;-t)\le 1/2\exp\{-t^2/2\}$. Hence, </p>
 <script type="math/tex; mode=display">
 \mathbb P(|f(X)-m|>t)\le \exp\{-t^2/2\},</script><p>which implies $f(X)-m$ is a sub-gaussian variable. Note that $\mathbb E(f(X)-m)=\mathbb E(f(X))-m$. We know that $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. $\blacksquare$</p>
-<h1 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h1><p>Let us take $f:\mathbb R^n\to\mathbb R$ to be the norm $|\cdot|$. Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. Direct computation shows that</p>
+<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>Let us take $f:\mathbb R^n\to\mathbb R$ to be the norm $|\cdot|$. Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. Direct computation shows that</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \mathbb Ef(X)&=\mathbb E\|X\|=\frac{1}{(2\pi)^{n/2}}\int \|x\|\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x\\
@@ -465,7 +510,7 @@ f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge 
     <entry>
       <title><![CDATA[Bayesian Linear Regression]]></title>
       <url>/2019/07/21/Bayesian-Linear-Regression/</url>
-      <content type="html"><![CDATA[<h1 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h1><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise. <a id="more"></a>That is </p>
+      <content type="html"><![CDATA[<h2 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h2><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise. <a id="more"></a>That is </p>
 <script type="math/tex; mode=display">
 Y={\bf \beta^Tx}+\epsilon, \epsilon\sim \mathcal N(0,\sigma^2).</script><p>Given $n$ i.i.d. samples $({\bf x_1},y_1),\cdots, ({\bf x_n},y_n)$, the joint probability density of observed data $y_1,\cdots, y_n$ conditional upon $\bf x_1,\cdots,x_n$ and the value of $\bf \beta$ and $\sigma^2$ (or, the <strong>likelihood function</strong>) is</p>
 <script type="math/tex; mode=display">
@@ -477,7 +522,7 @@ Y={\bf \beta^Tx}+\epsilon, \epsilon\sim \mathcal N(0,\sigma^2).</script><p>Given
 SSR(\beta)=(\bf y-X\beta)^T(y-X\beta)=\|y-X\beta\|_2^2.</script><p>The minimizer, also called the ordinary least square (OLS) estimate, is given in the closed form (suppose $\bf X^TX$ is invertible)</p>
 <script type="math/tex; mode=display">
 \hat{\beta}_{ols}=\bf (X^TX)^{-1}X^Ty.</script><p>The closed form can be obtained using <a href="https://vdisk.weibo.com/s/uGmkTKh4CQ2uJ" target="_blank" rel="noopener">linear algebra</a>, which is often explained as the geometric meaning of least square.</p>
-<h1 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h1><h2 id="A-Semiconjugate-Prior-for-beta"><a href="#A-Semiconjugate-Prior-for-beta" class="headerlink" title="A Semiconjugate Prior for $\beta$"></a>A Semiconjugate Prior for $\beta$</h2><p>Suppose $\beta\sim\mathcal N(\beta_0,\Sigma_0)$. The posterior distribution for $\beta$ is </p>
+<h2 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h2><h3 id="A-Semiconjugate-Prior-for-beta"><a href="#A-Semiconjugate-Prior-for-beta" class="headerlink" title="A Semiconjugate Prior for $\beta$"></a>A Semiconjugate Prior for $\beta$</h3><p>Suppose $\beta\sim\mathcal N(\beta_0,\Sigma_0)$. The posterior distribution for $\beta$ is </p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 &p(\beta|{\bf y,X,\sigma^2})\propto p({\bf y}|{\bf X,\beta,\sigma^2})p(\beta)\\
@@ -493,14 +538,14 @@ SSR(\beta)=(\bf y-X\beta)^T(y-X\beta)=\|y-X\beta\|_2^2.</script><p>The minimizer
 p(\beta|{\bf y,X,\sigma^2})\propto \exp\{-\frac{1}{2}(\beta^T({\bf \alpha I+X^TX/\sigma^2})\beta-2\beta^T{\bf X^Ty}/\sigma^2)\}.</script><p>Maximizing the posterior probability is equivalent to minimizing the error</p>
 <script type="math/tex; mode=display">
 \frac{1}{\sigma^2}\sum_{i=1}^n(y_i-\beta^T{\bf x_i})^2+\alpha\beta^T\beta,</script><p>which leads to the regularized least square problem. </p>
-<h2 id="A-Semiconjugate-Prior-for-sigma-2"><a href="#A-Semiconjugate-Prior-for-sigma-2" class="headerlink" title="A Semiconjugate Prior for $\sigma^2$"></a>A Semiconjugate Prior for $\sigma^2$</h2><p>Let $\gamma=\frac{1}{\sigma^2}$ be the precision. Suppose $\gamma\sim Gamma(\nu_0/2,\nu_o\sigma^2_0/2)$. The posterior probability for $\gamma$ is</p>
+<h3 id="A-Semiconjugate-Prior-for-sigma-2"><a href="#A-Semiconjugate-Prior-for-sigma-2" class="headerlink" title="A Semiconjugate Prior for $\sigma^2$"></a>A Semiconjugate Prior for $\sigma^2$</h3><p>Let $\gamma=\frac{1}{\sigma^2}$ be the precision. Suppose $\gamma\sim Gamma(\nu_0/2,\nu_o\sigma^2_0/2)$. The posterior probability for $\gamma$ is</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 &p(\gamma|{\bf y,X,\beta})\propto p(\gamma)p({\bf y}|{\bf X,\beta,\gamma})\\
 \propto&(\gamma^{\nu_0/2-1}\exp\{-\gamma\nu_0\sigma^0/2\})\times(\gamma^{n/2}\exp\{-\gamma SSR(\beta)/2\})\\
 =&\gamma^{(\nu_0+n)/2-1}\exp\{-\gamma(\nu_0\sigma^2_0+SSR(\beta))/2\}.
 \end{aligned}</script><p>Hence, the posterior distribution for $\gamma$ is $Gamma((\nu_0+n)/2,(\nu_0\sigma_0^2+SSR(\beta))/2)$. </p>
-<h2 id="Gibbs-Sampler"><a href="#Gibbs-Sampler" class="headerlink" title="Gibbs Sampler"></a>Gibbs Sampler</h2><p>Given current values $\{\beta^{(s)},(\sigma^2)^{(s)}\}$. We can sample a new value by</p>
+<h3 id="Gibbs-Sampler"><a href="#Gibbs-Sampler" class="headerlink" title="Gibbs Sampler"></a>Gibbs Sampler</h3><p>Given current values $\{\beta^{(s)},(\sigma^2)^{(s)}\}$. We can sample a new value by</p>
 <ol>
 <li>Updating $\beta$: <ol>
 <li>Compute $\mathbb E[\beta|{\bf y,X,(\sigma^2)^{(s)}}]$ and $\textrm{Var}[\beta|{\bf y,X,(\sigma^2)^{(s)}}]$;</li>
@@ -513,7 +558,7 @@ p(\beta|{\bf y,X,\sigma^2})\propto \exp\{-\frac{1}{2}(\beta^T({\bf \alpha I+X^TX
 </ol>
 </li>
 </ol>
-<h2 id="Zellner’s-g-Prior"><a href="#Zellner’s-g-Prior" class="headerlink" title="Zellner’s g-Prior"></a>Zellner’s g-Prior</h2><p>In the setting of prior distribution of $\beta$, let $\beta_0=0$ and $\Sigma_0=k({\bf X^TX})^{-1}$, where $k=g\sigma^2$. We obtain what is called <a href="https://en.wikipedia.org/wiki/G-prior" target="_blank" rel="noopener">g-prior</a>. The mean and variance are simplified as </p>
+<h3 id="Zellner’s-g-Prior"><a href="#Zellner’s-g-Prior" class="headerlink" title="Zellner’s g-Prior"></a>Zellner’s g-Prior</h3><p>In the setting of prior distribution of $\beta$, let $\beta_0=0$ and $\Sigma_0=k({\bf X^TX})^{-1}$, where $k=g\sigma^2$. We obtain what is called <a href="https://en.wikipedia.org/wiki/G-prior" target="_blank" rel="noopener">g-prior</a>. The mean and variance are simplified as </p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 &\mathbb E[\beta|{\bf y,X,\sigma^2}]=\frac{g}{g+1}\sigma^2{\bf \Phi}\\
@@ -544,12 +589,12 @@ SSR_g=\bf y^T(I-{\it \frac{g}{g+1}}X^T\Phi X)y.</script><p>Let $\gamma=1/\sigma^
 p(\gamma|{\bf X,y})&\propto p(\gamma)p({\bf y}|{\bf X,\gamma})\\
 &\propto \gamma^{(\nu_0+n)/2-1}\exp\{-\gamma(\nu_0\sigma^2_0+SSR_g)/2\}.
 \end{aligned}</script><p>Therefore, the posterior distribution for $\sigma^2$ is inverse-gamma with parameter $((\nu_0+n)/2,(\nu_0\sigma^2_0+SSR_g)/2)$. </p>
-<h2 id="Monte-Carlo-Sampler"><a href="#Monte-Carlo-Sampler" class="headerlink" title="Monte Carlo Sampler"></a>Monte Carlo Sampler</h2><p>Using g-prior, we see that the posterior distribution of $\sigma^2$ does not contain $\beta$. Thus we can use a simple sampling procedure</p>
+<h3 id="Monte-Carlo-Sampler"><a href="#Monte-Carlo-Sampler" class="headerlink" title="Monte Carlo Sampler"></a>Monte Carlo Sampler</h3><p>Using g-prior, we see that the posterior distribution of $\sigma^2$ does not contain $\beta$. Thus we can use a simple sampling procedure</p>
 <ol>
 <li>Sample $\sigma^2$ according to inverse-gamma;</li>
 <li>Sample $\beta\sim\mathcal N(\frac{g}{g+1}\hat{\beta}_{ols},\frac{g}{g+1}\sigma^2{\bf \Phi})$.</li>
 </ol>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li>Hoff, Peter D. <em>A first course in Bayesian statistical methods</em>. Vol. 580. New York: Springer, 2009.</li>
 <li>Bishop, Christopher M. <em>Pattern recognition and machine learning</em>. springer, 2006.</li>
 </ol>
@@ -576,7 +621,7 @@ p(\gamma|{\bf X,y})&\propto p(\gamma)p({\bf y}|{\bf X,\gamma})\\
       <title><![CDATA[Notes on KNN Density Estimates (1)]]></title>
       <url>/2019/07/18/Notes-on-KNN-Density-Estimates(1)/</url>
       <content type="html"><![CDATA[<p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>‘s work in 1979. </p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Suppose we have a <strong>bounded, twice differentiable density</strong> function $f$ on $\mathbb R^p$. Let $X_1,X_2,\cdots,X_n$ be $n$ i.i.d. samples of $f$. Let $x\in\mathbb R^p$ be a fixed point so that $f(x)&gt;0$. We want to estimate $f(x)$ based on $n$ samples. The KNN estimate is given by </p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Suppose we have a <strong>bounded, twice differentiable density</strong> function $f$ on $\mathbb R^p$. Let $X_1,X_2,\cdots,X_n$ be $n$ i.i.d. samples of $f$. Let $x\in\mathbb R^p$ be a fixed point so that $f(x)&gt;0$. We want to estimate $f(x)$ based on $n$ samples. The KNN estimate is given by </p>
 <script type="math/tex; mode=display">
 f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where $Z_n$ is the distance between $x$ and its $k$th nearest neighbor, and $\omega$ is a <strong>bounded integrable</strong> weight function with $\int\omega(u){\rm d}u=1$. </p>
 <a id="more"></a>
@@ -584,7 +629,7 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
 <script type="math/tex; mode=display">
 f_n(x)=\frac{1}{n(Z_n)^p}\cdot\frac{k}{|B_0(1)|}=\frac{k}{n}\cdot\frac{1}{|B_0(Z_n)|}.</script><p>If we see $\frac{k}{n}$ as the probability that points lie in a ball around $x$, then it is a naive analogy of $\text{probability}=\int\text{density}\approx\text{density}\times \text{area}$. In the following we always assume that $k=k(n)$ is a function of sample size $n$ and $k(n)\to \infty,k(n)/n\to0$ as $n\to\infty$.</p>
 <p>We first investigate several properties of $Z_n$. For simplicity, we call $Z_n$ the KNN distance variable.</p>
-<h1 id="KNN-distance-variable-Z-n"><a href="#KNN-distance-variable-Z-n" class="headerlink" title="KNN distance variable $Z_n$"></a>KNN distance variable $Z_n$</h1><h2 id="CDF-and-PDF-of-Z-n"><a href="#CDF-and-PDF-of-Z-n" class="headerlink" title="CDF and PDF of $Z_n$"></a>CDF and PDF of $Z_n$</h2><p>For fixed $x\in\mathbb R^p$, note that $Z_n$ is a function of $n$ i.i.d. samples. Let $H(r)$ be the cumulative distribution function (<strong>CDF</strong>) of $Z_n$. Let </p>
+<h2 id="KNN-distance-variable-Z-n"><a href="#KNN-distance-variable-Z-n" class="headerlink" title="KNN distance variable $Z_n$"></a>KNN distance variable $Z_n$</h2><h3 id="CDF-and-PDF-of-Z-n"><a href="#CDF-and-PDF-of-Z-n" class="headerlink" title="CDF and PDF of $Z_n$"></a>CDF and PDF of $Z_n$</h3><p>For fixed $x\in\mathbb R^p$, note that $Z_n$ is a function of $n$ i.i.d. samples. Let $H(r)$ be the cumulative distribution function (<strong>CDF</strong>) of $Z_n$. Let </p>
 <script type="math/tex; mode=display">
 G(r)=\mathbb P(B_x(r))=\int_{B_x(r)}f(u){\rm d}u.</script><p>For any $\epsilon&gt;0$, consider the probability $H(r+\epsilon)-H(r)=\mathbb P(r\le Z_n\le r+\epsilon)$. Suppose $\epsilon$ is small enough so that there is <strong>exactly one</strong> point lying in the shell of thickness $\epsilon$ (It happens when multiple points lie in the shell, but they will not contribute to our deduction since higher order of $\epsilon$ vanishes when taking limit). There are $n$ choices of $k$th nearest point, $\binom{n-1}{k-1}$ choices of $k-1$ points lying within the $r$ ball and others are outside the $r+\epsilon$ ball. Therefore, we have</p>
 <script type="math/tex; mode=display">
@@ -598,7 +643,7 @@ G'(r)&=\lim\limits_{\delta\to 0}\frac{1}{\delta}[\int_{B_x(r+\delta)}f(u){\rm d}
 &=\int_{S_x(r)}f(t){\rm d}\sigma(t),
 \end{aligned}</script><p>where $S_x(r)=\{y\in\mathbb R^p:|y-x|=r\}$ is the sphere centered at $x$ with radius $r$, and ${\rm d}\sigma$ is the volume element on the sphere. </p>
 <p>On the other hand, for each $X_i$, $|X_i-x|$ is a random variable with CDF $G(r)$ and   PDF $G’(r)$. Note that $Z_n$ is exactly the <strong>$k$th order statistic</strong> from i.i.d. samples $|X_i-x|$. The $k$th order statistic gives the same $h(r)$ as we deduced above.</p>
-<h2 id="Moments-of-Z-n"><a href="#Moments-of-Z-n" class="headerlink" title="Moments of $Z_n$"></a>Moments of $Z_n$</h2><p>In general, for a measurable function $\phi$, we want to compute the expectation $\mathbb{E}\phi(Z_n)$. By definition,</p>
+<h3 id="Moments-of-Z-n"><a href="#Moments-of-Z-n" class="headerlink" title="Moments of $Z_n$"></a>Moments of $Z_n$</h3><p>In general, for a measurable function $\phi$, we want to compute the expectation $\mathbb{E}\phi(Z_n)$. By definition,</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \mathbb E\phi(Z_n)&=\int_0^{\infty}\phi(r)h(r){\rm d}r\\
@@ -642,9 +687,9 @@ r=G^{-1}(t)=(\frac{t}{cf(x)})^{1/p}+\eta(t),</script><p>where $\eta(t)=o(t^{1/p}
         
         <tags>
             
-            <tag> Asymptotic Analysis </tag>
-            
             <tag> Nonparametric Estimates </tag>
+            
+            <tag> Asymptotic Analysis </tag>
             
         </tags>
         
@@ -653,14 +698,14 @@ r=G^{-1}(t)=(\frac{t}{cf(x)})^{1/p}+\eta(t),</script><p>where $\eta(t)=o(t^{1/p}
     <entry>
       <title><![CDATA[A Proof of 'Everything is connected']]></title>
       <url>/2019/07/14/a%20proof%20of%20everything%20is%20connected/</url>
-      <content type="html"><![CDATA[<h1 id="Stories"><a href="#Stories" class="headerlink" title="Stories"></a>Stories</h1><p>The idea about building my own blog was originated from a long time ago when I first read <a href="https://terrytao.wordpress.com/" target="_blank" rel="noopener">Terry Tao’s homepage</a>. In 2019, when I became a graduate student, I realized it is necessary to write down the mathematics to keep track of my research. Honestly speaking, repetitions and failures really make one suffer. It is those tiny progresses that encourage me to hold on.</p>
+      <content type="html"><![CDATA[<h2 id="Stories"><a href="#Stories" class="headerlink" title="Stories"></a>Stories</h2><p>The idea about building my own blog was originated from a long time ago when I first read <a href="https://terrytao.wordpress.com/" target="_blank" rel="noopener">Terry Tao’s homepage</a>. In 2019, when I became a graduate student, I realized it is necessary to write down the mathematics to keep track of my research. Honestly speaking, repetitions and failures really make one suffer. It is those tiny progresses that encourage me to hold on.</p>
 <a id="more"></a>
 <p>The title of this blog comes from an <a href="https://mp.weixin.qq.com/s?__biz=MjM5NDEzNjI0Mg==&amp;mid=2698897605&amp;idx=1&amp;sn=a19cb1dd989bbb6740345ceb476b01a7&amp;chksm=83a52118b4d2a80e6d4254aa2dac5442302180583a257c251e051a33f18b3a4a7a993d68cd36&amp;mpshare=1&amp;scene=1&amp;srcid=0716ytVjaAJNShmEwGSlmWpF&amp;key=dd5051400a9fb58f808d2da53b802b8acf4d01cc85436ece84b72433ba3fd12b83709bd533967b30d98fcbb2cafbb52010be54affd44f1114534efd269163755ef08943a54bd6644af14d7e46d5cd77b&amp;ascene=1&amp;uin=MTU3ODQ1MjIwNg%3D%3D&amp;devicetype=Windows+10&amp;version=62060833&amp;lang=zh_CN&amp;pass_ticket=hrTohvqyTgd41p4viiU31IowGnkdWinCUMu%2FwVIpE0dlQBF2lbrj1dBRey65qCVn" target="_blank" rel="noopener">essay</a> which ingeniously describes a philosophy, that every thing, every event, every people are connected with each other. Like <a href="https://en.wikipedia.org/wiki/Leonardo_da_Vinci" target="_blank" rel="noopener">da Vinci</a> said, <em>Learn how to see. Realize that everything connects to everything else</em>. When I read these, a great idea hit me that I could formulate a mathematical proposition and prove it. Though the proof seems naive, I was happy to find such an explanation. </p>
-<h1 id="Modeling"><a href="#Modeling" class="headerlink" title="Modeling"></a>Modeling</h1><p>Let us recall some basics from <a href="https://en.wikipedia.org/wiki/Graphical_model" target="_blank" rel="noopener">probabilistic graphical model</a>. We use random variables to represent true events in real life. The relationship between events is modeled by <strong>conditional independence</strong>. Suppose $X,Y$ and $Z$ are three random variables. If the joint probability density function of $X,Y$ and $Z$ satisfy the following equation</p>
+<h2 id="Modeling"><a href="#Modeling" class="headerlink" title="Modeling"></a>Modeling</h2><p>Let us recall some basics from <a href="https://en.wikipedia.org/wiki/Graphical_model" target="_blank" rel="noopener">probabilistic graphical model</a>. We use random variables to represent true events in real life. The relationship between events is modeled by <strong>conditional independence</strong>. Suppose $X,Y$ and $Z$ are three random variables. If the joint probability density function of $X,Y$ and $Z$ satisfy the following equation</p>
 <script type="math/tex; mode=display">f(x,y|z)=f(x|z)f(y|z),</script><p>$X$ and $Y$ are said to be conditional independent given $Z$. It generalizes the concept of <strong>independence</strong> where we known nothing prior ($Z=\emptyset$). In our case, it is reasonable that two events have no relationship if they are independent when we know all the other things.</p>
 <p>Now we can construct a graph based on the above argument. The vertices are random variables. Two distinct vertices are connected by an edge if they are not conditional independent. One event is ‘connected’ to another if there is a path joining them. Therefore, when we say ‘Everything is connected’, we actually mean that the graph is connected.</p>
 <p>However, we should be cautious about ‘everything’ since we just considered finite number of events. Given arbitrary $n$ events, we can say ‘These $n$ things are connected’ if the corresponding graph is connected. But it is too stupid to say such things, and we are not going to infer whether a graph is connected, either. Instead, let us look at the probability that a graph with $n$ nodes is connected.</p>
-<h1 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h1><p>Let $\mathbb{G}_n$ be the space of undirected simple graphs with $n$ nodes. $\mathbb{G}_n$ is a finite set with $2^\frac{n(n-1)}{2}$ elements. Let $\mathbb{G}_n^c$ be the subset of all connected graphs, $\mathbb G_n^d$ be the subset of all disconnected graphs. Define the connectivity ratio </p>
+<h2 id="Proof"><a href="#Proof" class="headerlink" title="Proof"></a>Proof</h2><p>Let $\mathbb{G}_n$ be the space of undirected simple graphs with $n$ nodes. $\mathbb{G}_n$ is a finite set with $2^\frac{n(n-1)}{2}$ elements. Let $\mathbb{G}_n^c$ be the subset of all connected graphs, $\mathbb G_n^d$ be the subset of all disconnected graphs. Define the connectivity ratio </p>
 <script type="math/tex; mode=display">R_n=\frac{ \#(\mathbb{G}_n^d)}{ \#(\mathbb{G}_n)}:=\frac{K_n^d}{K_n^c+K_n^d}.</script><p>where we have $K_n^c+K_n^d=2^\frac{n(n-1)}{2}$.</p>
 <p>Let $v_0,v_1,\cdots,v_n$ be vertices of a graph $G\in\mathbb{G}_{n+1}^d$. Suppose $C_0$ is the component containing $v_0$ with $i$ points. Let $C_1$ be the complement of $C_0$ with $n+1-i$ points. The we have the following recursion </p>
 <script type="math/tex; mode=display">K_{n+1}^d=\sum_{i=1}^n\binom{n}{i-1}K_i^c2^\frac{(n+1-i)(n-i)}{2}.</script><p>Dividing both sides by $2^\frac{(n+1)n}{2}$, we have</p>

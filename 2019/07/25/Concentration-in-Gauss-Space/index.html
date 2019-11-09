@@ -404,7 +404,7 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>This article aims to solve an exercise in <a href="https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html#" target="_blank" rel="noopener">High-Dimensional Probability</a> (Page 112, Exercise 5.2.3).</p>
-<h1 id="Gaussian-Isoperimetric-Inequality"><a href="#Gaussian-Isoperimetric-Inequality" class="headerlink" title="Gaussian Isoperimetric Inequality"></a>Gaussian Isoperimetric Inequality</h1><p>Let $\mathbb R^n$ equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> $\gamma_n$:</p>
+<h2 id="Gaussian-Isoperimetric-Inequality"><a href="#Gaussian-Isoperimetric-Inequality" class="headerlink" title="Gaussian Isoperimetric Inequality"></a>Gaussian Isoperimetric Inequality</h2><p>Let $\mathbb R^n$ equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> $\gamma_n$:</p>
 <script type="math/tex; mode=display">
 \gamma_n(E)=\frac{1}{(2\pi)^{n/2}}\int_E\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x</script><p>where $E\subseteq \mathbb R^n$ is a Borel set. Then $(\mathbb R^n,\gamma_n)$ is called Gauss space. Gaussian isoperimetric inequality states that, among all the measurable sets with given volume, half spaces have the <strong>smallest perimeter</strong>. Moreover, define the Minkowski sum </p>
 <script type="math/tex; mode=display">
@@ -412,7 +412,7 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
 <a id="more"></a>
 <p><strong>Theorem.</strong> Let $\epsilon&gt;0$. Among all sets $A\subseteq \mathbb R^n$ with fixed Gauss measure $\gamma_n(A)$, the half spaces minimizes the Gauss measure $\gamma_n(A+B^n(\epsilon))$, where $B^n(\epsilon)$ is a solid ball centered at origin with radius $\epsilon$.</p>
 <p>See <a href="https://link.springer.com/content/pdf/10.1007/BF01425510.pdf" target="_blank" rel="noopener">here</a> for a general definition of Gauss space and proof of the above theorem. See <a href="https://www.jstor.org/stable/29782707?seq=1#page_scan_tab_contents" target="_blank" rel="noopener">this paper</a> for a friendly introduction of Gaussian isoperimetric inequality.</p>
-<h1 id="Concentration"><a href="#Concentration" class="headerlink" title="Concentration"></a>Concentration</h1><p>We want to prove the following concentration inequality in Gauss spaces.</p>
+<h2 id="Concentration"><a href="#Concentration" class="headerlink" title="Concentration"></a>Concentration</h2><p>We want to prove the following concentration inequality in Gauss spaces.</p>
 <p><strong>Theorem.</strong> Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. $f:\mathbb R^n\to \mathbb R$ is a Lipschitz function with respect to the standard Euclidean metric. Then $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. That is,</p>
 <script type="math/tex; mode=display">
 \mathbb P(|f(X)-\mathbb Ef(X)|>t)\le \exp(-ct^2),\forall t>0,</script><p>where $c&gt;0$ is a constant.</p>
@@ -438,7 +438,7 @@ f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge 
 <p>Replace $f$ with $-f$. We can obtain a similar inequality as $\mathbb P(f(X)-m&lt;-t)\le 1/2\exp\{-t^2/2\}$. Hence, </p>
 <script type="math/tex; mode=display">
 \mathbb P(|f(X)-m|>t)\le \exp\{-t^2/2\},</script><p>which implies $f(X)-m$ is a sub-gaussian variable. Note that $\mathbb E(f(X)-m)=\mathbb E(f(X))-m$. We know that $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. $\blacksquare$</p>
-<h1 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h1><p>Let us take $f:\mathbb R^n\to\mathbb R$ to be the norm $|\cdot|$. Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. Direct computation shows that</p>
+<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>Let us take $f:\mathbb R^n\to\mathbb R$ to be the norm $|\cdot|$. Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. Direct computation shows that</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \mathbb Ef(X)&=\mathbb E\|X\|=\frac{1}{(2\pi)^{n/2}}\int \|x\|\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x\\
@@ -580,7 +580,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Gaussian-Isoperimetric-Inequality"><span class="toc-number">1.</span> <span class="toc-text">Gaussian Isoperimetric Inequality</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Concentration"><span class="toc-number">2.</span> <span class="toc-text">Concentration</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Applications"><span class="toc-number">3.</span> <span class="toc-text">Applications</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gaussian-Isoperimetric-Inequality"><span class="toc-number">1.</span> <span class="toc-text">Gaussian Isoperimetric Inequality</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Concentration"><span class="toc-number">2.</span> <span class="toc-text">Concentration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Applications"><span class="toc-number">3.</span> <span class="toc-text">Applications</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -667,9 +667,40 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 11
         </div>
         <!-- search  -->
         
@@ -682,6 +713,11 @@ top:50vh;
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >Some Applications of Wasserstein Distances</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -742,13 +778,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
+    
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
-        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
-    
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
         <span class="sidebar-tag-name" data-tags="TDA"><span class="iconfont-archer">&#xe606;</span>TDA</span>
     

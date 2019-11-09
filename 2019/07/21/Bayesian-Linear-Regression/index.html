@@ -403,7 +403,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h1><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise. <a id="more"></a>That is </p>
+        <h2 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h2><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise. <a id="more"></a>That is </p>
 <script type="math/tex; mode=display">
 Y={\bf \beta^Tx}+\epsilon, \epsilon\sim \mathcal N(0,\sigma^2).</script><p>Given $n$ i.i.d. samples $({\bf x_1},y_1),\cdots, ({\bf x_n},y_n)$, the joint probability density of observed data $y_1,\cdots, y_n$ conditional upon $\bf x_1,\cdots,x_n$ and the value of $\bf \beta$ and $\sigma^2$ (or, the <strong>likelihood function</strong>) is</p>
 <script type="math/tex; mode=display">
@@ -415,7 +415,7 @@ Y={\bf \beta^Tx}+\epsilon, \epsilon\sim \mathcal N(0,\sigma^2).</script><p>Given
 SSR(\beta)=(\bf y-X\beta)^T(y-X\beta)=\|y-X\beta\|_2^2.</script><p>The minimizer, also called the ordinary least square (OLS) estimate, is given in the closed form (suppose $\bf X^TX$ is invertible)</p>
 <script type="math/tex; mode=display">
 \hat{\beta}_{ols}=\bf (X^TX)^{-1}X^Ty.</script><p>The closed form can be obtained using <a href="https://vdisk.weibo.com/s/uGmkTKh4CQ2uJ" target="_blank" rel="noopener">linear algebra</a>, which is often explained as the geometric meaning of least square.</p>
-<h1 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h1><h2 id="A-Semiconjugate-Prior-for-beta"><a href="#A-Semiconjugate-Prior-for-beta" class="headerlink" title="A Semiconjugate Prior for $\beta$"></a>A Semiconjugate Prior for $\beta$</h2><p>Suppose $\beta\sim\mathcal N(\beta_0,\Sigma_0)$. The posterior distribution for $\beta$ is </p>
+<h2 id="Bayesian-Linear-Regression"><a href="#Bayesian-Linear-Regression" class="headerlink" title="Bayesian Linear Regression"></a>Bayesian Linear Regression</h2><h3 id="A-Semiconjugate-Prior-for-beta"><a href="#A-Semiconjugate-Prior-for-beta" class="headerlink" title="A Semiconjugate Prior for $\beta$"></a>A Semiconjugate Prior for $\beta$</h3><p>Suppose $\beta\sim\mathcal N(\beta_0,\Sigma_0)$. The posterior distribution for $\beta$ is </p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 &p(\beta|{\bf y,X,\sigma^2})\propto p({\bf y}|{\bf X,\beta,\sigma^2})p(\beta)\\
@@ -431,14 +431,14 @@ SSR(\beta)=(\bf y-X\beta)^T(y-X\beta)=\|y-X\beta\|_2^2.</script><p>The minimizer
 p(\beta|{\bf y,X,\sigma^2})\propto \exp\{-\frac{1}{2}(\beta^T({\bf \alpha I+X^TX/\sigma^2})\beta-2\beta^T{\bf X^Ty}/\sigma^2)\}.</script><p>Maximizing the posterior probability is equivalent to minimizing the error</p>
 <script type="math/tex; mode=display">
 \frac{1}{\sigma^2}\sum_{i=1}^n(y_i-\beta^T{\bf x_i})^2+\alpha\beta^T\beta,</script><p>which leads to the regularized least square problem. </p>
-<h2 id="A-Semiconjugate-Prior-for-sigma-2"><a href="#A-Semiconjugate-Prior-for-sigma-2" class="headerlink" title="A Semiconjugate Prior for $\sigma^2$"></a>A Semiconjugate Prior for $\sigma^2$</h2><p>Let $\gamma=\frac{1}{\sigma^2}$ be the precision. Suppose $\gamma\sim Gamma(\nu_0/2,\nu_o\sigma^2_0/2)$. The posterior probability for $\gamma$ is</p>
+<h3 id="A-Semiconjugate-Prior-for-sigma-2"><a href="#A-Semiconjugate-Prior-for-sigma-2" class="headerlink" title="A Semiconjugate Prior for $\sigma^2$"></a>A Semiconjugate Prior for $\sigma^2$</h3><p>Let $\gamma=\frac{1}{\sigma^2}$ be the precision. Suppose $\gamma\sim Gamma(\nu_0/2,\nu_o\sigma^2_0/2)$. The posterior probability for $\gamma$ is</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 &p(\gamma|{\bf y,X,\beta})\propto p(\gamma)p({\bf y}|{\bf X,\beta,\gamma})\\
 \propto&(\gamma^{\nu_0/2-1}\exp\{-\gamma\nu_0\sigma^0/2\})\times(\gamma^{n/2}\exp\{-\gamma SSR(\beta)/2\})\\
 =&\gamma^{(\nu_0+n)/2-1}\exp\{-\gamma(\nu_0\sigma^2_0+SSR(\beta))/2\}.
 \end{aligned}</script><p>Hence, the posterior distribution for $\gamma$ is $Gamma((\nu_0+n)/2,(\nu_0\sigma_0^2+SSR(\beta))/2)$. </p>
-<h2 id="Gibbs-Sampler"><a href="#Gibbs-Sampler" class="headerlink" title="Gibbs Sampler"></a>Gibbs Sampler</h2><p>Given current values $\{\beta^{(s)},(\sigma^2)^{(s)}\}$. We can sample a new value by</p>
+<h3 id="Gibbs-Sampler"><a href="#Gibbs-Sampler" class="headerlink" title="Gibbs Sampler"></a>Gibbs Sampler</h3><p>Given current values $\{\beta^{(s)},(\sigma^2)^{(s)}\}$. We can sample a new value by</p>
 <ol>
 <li>Updating $\beta$: <ol>
 <li>Compute $\mathbb E[\beta|{\bf y,X,(\sigma^2)^{(s)}}]$ and $\textrm{Var}[\beta|{\bf y,X,(\sigma^2)^{(s)}}]$;</li>
@@ -451,7 +451,7 @@ p(\beta|{\bf y,X,\sigma^2})\propto \exp\{-\frac{1}{2}(\beta^T({\bf \alpha I+X^TX
 </ol>
 </li>
 </ol>
-<h2 id="Zellner’s-g-Prior"><a href="#Zellner’s-g-Prior" class="headerlink" title="Zellner’s g-Prior"></a>Zellner’s g-Prior</h2><p>In the setting of prior distribution of $\beta$, let $\beta_0=0$ and $\Sigma_0=k({\bf X^TX})^{-1}$, where $k=g\sigma^2$. We obtain what is called <a href="https://en.wikipedia.org/wiki/G-prior" target="_blank" rel="noopener">g-prior</a>. The mean and variance are simplified as </p>
+<h3 id="Zellner’s-g-Prior"><a href="#Zellner’s-g-Prior" class="headerlink" title="Zellner’s g-Prior"></a>Zellner’s g-Prior</h3><p>In the setting of prior distribution of $\beta$, let $\beta_0=0$ and $\Sigma_0=k({\bf X^TX})^{-1}$, where $k=g\sigma^2$. We obtain what is called <a href="https://en.wikipedia.org/wiki/G-prior" target="_blank" rel="noopener">g-prior</a>. The mean and variance are simplified as </p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 &\mathbb E[\beta|{\bf y,X,\sigma^2}]=\frac{g}{g+1}\sigma^2{\bf \Phi}\\
@@ -482,12 +482,12 @@ SSR_g=\bf y^T(I-{\it \frac{g}{g+1}}X^T\Phi X)y.</script><p>Let $\gamma=1/\sigma^
 p(\gamma|{\bf X,y})&\propto p(\gamma)p({\bf y}|{\bf X,\gamma})\\
 &\propto \gamma^{(\nu_0+n)/2-1}\exp\{-\gamma(\nu_0\sigma^2_0+SSR_g)/2\}.
 \end{aligned}</script><p>Therefore, the posterior distribution for $\sigma^2$ is inverse-gamma with parameter $((\nu_0+n)/2,(\nu_0\sigma^2_0+SSR_g)/2)$. </p>
-<h2 id="Monte-Carlo-Sampler"><a href="#Monte-Carlo-Sampler" class="headerlink" title="Monte Carlo Sampler"></a>Monte Carlo Sampler</h2><p>Using g-prior, we see that the posterior distribution of $\sigma^2$ does not contain $\beta$. Thus we can use a simple sampling procedure</p>
+<h3 id="Monte-Carlo-Sampler"><a href="#Monte-Carlo-Sampler" class="headerlink" title="Monte Carlo Sampler"></a>Monte Carlo Sampler</h3><p>Using g-prior, we see that the posterior distribution of $\sigma^2$ does not contain $\beta$. Thus we can use a simple sampling procedure</p>
 <ol>
 <li>Sample $\sigma^2$ according to inverse-gamma;</li>
 <li>Sample $\beta\sim\mathcal N(\frac{g}{g+1}\hat{\beta}_{ols},\frac{g}{g+1}\sigma^2{\bf \Phi})$.</li>
 </ol>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
 <li>Hoff, Peter D. <em>A first course in Bayesian statistical methods</em>. Vol. 580. New York: Springer, 2009.</li>
 <li>Bishop, Christopher M. <em>Pattern recognition and machine learning</em>. springer, 2006.</li>
 </ol>
@@ -625,7 +625,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-Linear-Regression-Model"><span class="toc-number">1.</span> <span class="toc-text">The Linear Regression Model</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bayesian-Linear-Regression"><span class="toc-number">2.</span> <span class="toc-text">Bayesian Linear Regression</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Semiconjugate-Prior-for-beta"><span class="toc-number">2.1.</span> <span class="toc-text">A Semiconjugate Prior for $\beta$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Semiconjugate-Prior-for-sigma-2"><span class="toc-number">2.2.</span> <span class="toc-text">A Semiconjugate Prior for $\sigma^2$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gibbs-Sampler"><span class="toc-number">2.3.</span> <span class="toc-text">Gibbs Sampler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Zellner’s-g-Prior"><span class="toc-number">2.4.</span> <span class="toc-text">Zellner’s g-Prior</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Monte-Carlo-Sampler"><span class="toc-number">2.5.</span> <span class="toc-text">Monte Carlo Sampler</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Linear-Regression-Model"><span class="toc-number">1.</span> <span class="toc-text">The Linear Regression Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bayesian-Linear-Regression"><span class="toc-number">2.</span> <span class="toc-text">Bayesian Linear Regression</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Semiconjugate-Prior-for-beta"><span class="toc-number">2.1.</span> <span class="toc-text">A Semiconjugate Prior for $\beta$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-Semiconjugate-Prior-for-sigma-2"><span class="toc-number">2.2.</span> <span class="toc-text">A Semiconjugate Prior for $\sigma^2$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gibbs-Sampler"><span class="toc-number">2.3.</span> <span class="toc-text">Gibbs Sampler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Zellner’s-g-Prior"><span class="toc-number">2.4.</span> <span class="toc-text">Zellner’s g-Prior</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Monte-Carlo-Sampler"><span class="toc-number">2.5.</span> <span class="toc-text">Monte Carlo Sampler</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">3.</span> <span class="toc-text">Reference</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -712,9 +712,40 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 11
         </div>
         <!-- search  -->
         
@@ -727,6 +758,11 @@ top:50vh;
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >Some Applications of Wasserstein Distances</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -787,13 +823,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
+    
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
-        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
-    
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
         <span class="sidebar-tag-name" data-tags="TDA"><span class="iconfont-archer">&#xe606;</span>TDA</span>
     

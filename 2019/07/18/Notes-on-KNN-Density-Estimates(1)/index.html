@@ -266,9 +266,9 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Asymptotic Analysis">Asymptotic Analysis</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags = "Nonparametric Estimates">Nonparametric Estimates</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Asymptotic Analysis">Asymptotic Analysis</a>
     
 </div>
                 
@@ -404,7 +404,7 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>‘s work in 1979. </p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Suppose we have a <strong>bounded, twice differentiable density</strong> function $f$ on $\mathbb R^p$. Let $X_1,X_2,\cdots,X_n$ be $n$ i.i.d. samples of $f$. Let $x\in\mathbb R^p$ be a fixed point so that $f(x)&gt;0$. We want to estimate $f(x)$ based on $n$ samples. The KNN estimate is given by </p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Suppose we have a <strong>bounded, twice differentiable density</strong> function $f$ on $\mathbb R^p$. Let $X_1,X_2,\cdots,X_n$ be $n$ i.i.d. samples of $f$. Let $x\in\mathbb R^p$ be a fixed point so that $f(x)&gt;0$. We want to estimate $f(x)$ based on $n$ samples. The KNN estimate is given by </p>
 <script type="math/tex; mode=display">
 f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where $Z_n$ is the distance between $x$ and its $k$th nearest neighbor, and $\omega$ is a <strong>bounded integrable</strong> weight function with $\int\omega(u){\rm d}u=1$. </p>
 <a id="more"></a>
@@ -412,7 +412,7 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
 <script type="math/tex; mode=display">
 f_n(x)=\frac{1}{n(Z_n)^p}\cdot\frac{k}{|B_0(1)|}=\frac{k}{n}\cdot\frac{1}{|B_0(Z_n)|}.</script><p>If we see $\frac{k}{n}$ as the probability that points lie in a ball around $x$, then it is a naive analogy of $\text{probability}=\int\text{density}\approx\text{density}\times \text{area}$. In the following we always assume that $k=k(n)$ is a function of sample size $n$ and $k(n)\to \infty,k(n)/n\to0$ as $n\to\infty$.</p>
 <p>We first investigate several properties of $Z_n$. For simplicity, we call $Z_n$ the KNN distance variable.</p>
-<h1 id="KNN-distance-variable-Z-n"><a href="#KNN-distance-variable-Z-n" class="headerlink" title="KNN distance variable $Z_n$"></a>KNN distance variable $Z_n$</h1><h2 id="CDF-and-PDF-of-Z-n"><a href="#CDF-and-PDF-of-Z-n" class="headerlink" title="CDF and PDF of $Z_n$"></a>CDF and PDF of $Z_n$</h2><p>For fixed $x\in\mathbb R^p$, note that $Z_n$ is a function of $n$ i.i.d. samples. Let $H(r)$ be the cumulative distribution function (<strong>CDF</strong>) of $Z_n$. Let </p>
+<h2 id="KNN-distance-variable-Z-n"><a href="#KNN-distance-variable-Z-n" class="headerlink" title="KNN distance variable $Z_n$"></a>KNN distance variable $Z_n$</h2><h3 id="CDF-and-PDF-of-Z-n"><a href="#CDF-and-PDF-of-Z-n" class="headerlink" title="CDF and PDF of $Z_n$"></a>CDF and PDF of $Z_n$</h3><p>For fixed $x\in\mathbb R^p$, note that $Z_n$ is a function of $n$ i.i.d. samples. Let $H(r)$ be the cumulative distribution function (<strong>CDF</strong>) of $Z_n$. Let </p>
 <script type="math/tex; mode=display">
 G(r)=\mathbb P(B_x(r))=\int_{B_x(r)}f(u){\rm d}u.</script><p>For any $\epsilon&gt;0$, consider the probability $H(r+\epsilon)-H(r)=\mathbb P(r\le Z_n\le r+\epsilon)$. Suppose $\epsilon$ is small enough so that there is <strong>exactly one</strong> point lying in the shell of thickness $\epsilon$ (It happens when multiple points lie in the shell, but they will not contribute to our deduction since higher order of $\epsilon$ vanishes when taking limit). There are $n$ choices of $k$th nearest point, $\binom{n-1}{k-1}$ choices of $k-1$ points lying within the $r$ ball and others are outside the $r+\epsilon$ ball. Therefore, we have</p>
 <script type="math/tex; mode=display">
@@ -426,7 +426,7 @@ G'(r)&=\lim\limits_{\delta\to 0}\frac{1}{\delta}[\int_{B_x(r+\delta)}f(u){\rm d}
 &=\int_{S_x(r)}f(t){\rm d}\sigma(t),
 \end{aligned}</script><p>where $S_x(r)=\{y\in\mathbb R^p:|y-x|=r\}$ is the sphere centered at $x$ with radius $r$, and ${\rm d}\sigma$ is the volume element on the sphere. </p>
 <p>On the other hand, for each $X_i$, $|X_i-x|$ is a random variable with CDF $G(r)$ and   PDF $G’(r)$. Note that $Z_n$ is exactly the <strong>$k$th order statistic</strong> from i.i.d. samples $|X_i-x|$. The $k$th order statistic gives the same $h(r)$ as we deduced above.</p>
-<h2 id="Moments-of-Z-n"><a href="#Moments-of-Z-n" class="headerlink" title="Moments of $Z_n$"></a>Moments of $Z_n$</h2><p>In general, for a measurable function $\phi$, we want to compute the expectation $\mathbb{E}\phi(Z_n)$. By definition,</p>
+<h3 id="Moments-of-Z-n"><a href="#Moments-of-Z-n" class="headerlink" title="Moments of $Z_n$"></a>Moments of $Z_n$</h3><p>In general, for a measurable function $\phi$, we want to compute the expectation $\mathbb{E}\phi(Z_n)$. By definition,</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \mathbb E\phi(Z_n)&=\int_0^{\infty}\phi(r)h(r){\rm d}r\\
@@ -593,7 +593,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#KNN-distance-variable-Z-n"><span class="toc-number">2.</span> <span class="toc-text">KNN distance variable $Z_n$</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CDF-and-PDF-of-Z-n"><span class="toc-number">2.1.</span> <span class="toc-text">CDF and PDF of $Z_n$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Moments-of-Z-n"><span class="toc-number">2.2.</span> <span class="toc-text">Moments of $Z_n$</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KNN-distance-variable-Z-n"><span class="toc-number">2.</span> <span class="toc-text">KNN distance variable $Z_n$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CDF-and-PDF-of-Z-n"><span class="toc-number">2.1.</span> <span class="toc-text">CDF and PDF of $Z_n$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Moments-of-Z-n"><span class="toc-number">2.2.</span> <span class="toc-text">Moments of $Z_n$</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -680,9 +680,40 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 11
         </div>
         <!-- search  -->
         
@@ -695,6 +726,11 @@ top:50vh;
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >Some Applications of Wasserstein Distances</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -755,13 +791,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
+    
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
-        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
-    
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
         <span class="sidebar-tag-name" data-tags="TDA"><span class="iconfont-archer">&#xe606;</span>TDA</span>
     

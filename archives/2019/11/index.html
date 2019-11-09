@@ -346,62 +346,28 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/30/MSE-of-Locally-Linear-Regression/" >
+        <a class="abstract-title" href = "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >
             
-                <span>MSE of Locally Linear Regression</span>
+                <span>Some Applications of Wasserstein Distances</span>
         </a>
         <div class="abstract-content">
-            <h2 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h2><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
-<script type="math/tex; mode=display">
-y=g(x)+\epsilon(x),</script><p>where $g$ is a any smooth function, and $\epsilon(x)$ is a variable with zero mean and finite variance. Let $X_1,X_2,\cdots,X_n$ be i.i.d. samples with bounded density $f$, and $Y_1,Y_2,\cdots, Y_n$ be the corresponding responses (assume $X_i$’s are scalars ‘). By Taylor expansion, we have</p>
-<script type="math/tex; mode=display">
-Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
+            <h2 id="OMT-I"><a href="#OMT-I" class="headerlink" title="OMT I"></a>OMT I</h2><p>The original setting for optimal mass transportation (OMT) consists of three objects.</p>
+<ol>
+<li>Two probability spaces $(X,\mu)$ and $(Y,\nu)$. i.e. $\mu(X)=\nu(Y)=1$;</li>
+<li>A measurable map $T:X\to Y$ such that $T_*\mu=\nu$. i.e. for any Borel set $B\subset Y$ it holds $\nu(B)=\mu(T^{-1}(B))$.</li>
+<li>A cost function $c:X\times Y\to \mathbb R_+\cup\{\infty\}$ such that for any $T$ in 2. the map $c_T(x)=c(x,T(x))$ is measurable. The integration $\int_X c(x,T(x))d\mu$ is called the total cost.</li>
+</ol>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/30</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/09</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linear Regression">Linear Regression</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Least Squares">Least Squares</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Nonparametric Estimates">Nonparametric Estimates</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/21/Bayesian-Linear-Regression/" >
-            
-                <span>Bayesian Linear Regression</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h2><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linear Regression">Linear Regression</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Least Squares">Least Squares</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Wasserstein Distances">Wasserstein Distances</a>
     
 </div>
             

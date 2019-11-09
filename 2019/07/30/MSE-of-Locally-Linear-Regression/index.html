@@ -405,7 +405,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h1><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
+        <h2 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h2><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
 <script type="math/tex; mode=display">
 y=g(x)+\epsilon(x),</script><p>where $g$ is a any smooth function, and $\epsilon(x)$ is a variable with zero mean and finite variance. Let $X_1,X_2,\cdots,X_n$ be i.i.d. samples with bounded density $f$, and $Y_1,Y_2,\cdots, Y_n$ be the corresponding responses (assume $X_i$’s are scalars ‘). By Taylor expansion, we have</p>
 <script type="math/tex; mode=display">
@@ -436,7 +436,7 @@ e_2=[0,1]^T.
 \mathbb E[(\hat{g}(x)-g(x))^2|{\bf X}]=&\mathbb E[(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}({\bf Y}-g({\bf X})))^2|{\bf X}]\\
 &+(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x))^2.
 \end{aligned}</script><p>The first term is variance and the second term is square of bias.</p>
-<h1 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h1><p>Let ${\bf \Sigma}={\rm diag}\{\sigma^2(X_1),\cdots,\sigma^2(X_n)\}$. Variance can be simplified as</p>
+<h2 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h2><p>Let ${\bf \Sigma}={\rm diag}\{\sigma^2(X_1),\cdots,\sigma^2(X_n)\}$. Variance can be simplified as</p>
 <script type="math/tex; mode=display">
 e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1.</script><p>Denote $\sum_{i=1}^n K_h(X_i-x)(X_i-x)^j$ by $S_j$ for $j=0,1,2$. Then we have </p>
 <script type="math/tex; mode=display">
@@ -462,7 +462,7 @@ S_j/nh^j=\mu_jf(x)+o_{\mathbb P}(1),</script><p>where $o_{\mathbb P}(1)$ denotes
 &({\bf H^{-1}X^TWXH^{-1}}/n)^{-1}{\bf H^{-1}}e_1\\
 =&\frac{1}{nh}\left(\left(e_1^T\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]^{-1}\left[\begin{array}{cc}\nu_1&0\\0&\nu_2\end{array}\right]\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]^{-1}e_1\right)\frac{\sigma^2(x)}{f(x)}+o_{\mathbb P}(1)\right)\\
 =&\frac{1}{nh}(\frac{\nu_0\sigma^2(x)}{f(x)}+o_{\mathbb P}(1)).
-\end{aligned}</script><h1 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h1><p>Consider the Taylor expansion for $g$,</p>
+\end{aligned}</script><h2 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h2><p>Consider the Taylor expansion for $g$,</p>
 <script type="math/tex; mode=display">
 g(X_i)=g(x)+g'(x)(X_i-x)+\frac{1}{2}g''(x)(X_i-x)^2+\frac{1}{6}g'''(\bar{X}_i)(X_i-x)^3.</script><p>Write $r(X_i)=g(X_i)-g(x)-g’(x)(X_i-x)$. Then we have</p>
 <script type="math/tex; mode=display">
@@ -488,8 +488,8 @@ g({\bf X})=g(x){\bf X}e_1+g'(x){\bf X}e_2+r({\bf X}).</script><p>Therefore, the 
 =&\frac{h^2}{2}\left(g''(x)e_1^T\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]^{-1}\left[\begin{array}{cc}\mu_2\\\mu_3\end{array}\right]+o_{\mathbb P}(1)\right)\\
 =&\frac{h^2}{2}(g''(x)\mu_2+o_{\mathbb P}(1))
 \end{aligned}</script><p>Note that if $g$ is a linear function then we will <strong>NOT</strong> have bias.</p>
-<h1 id="Derivative-Estimation"><a href="#Derivative-Estimation" class="headerlink" title="Derivative Estimation"></a>Derivative Estimation</h1><p>Finally we consider the conditional bias and variance for $\hat{\beta}$. The main difference is that ${\bf H}^{-1}e_2=e_2/h$. Therefore we will have order $O(1/{nh^3})$ in variance, and $O(h)$ in bias.  </p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>The whole procedure can be generalized to multivariate case, where $X$ is a vector and $K(\cdot)$ is a multivariate kernel. The details are displayed in <a href="https://projecteuclid.org/download/pdf_1/euclid.aos/1176325632" target="_blank" rel="noopener">D. Ruppert and M.P. Wand</a>‘s paper.</p>
+<h2 id="Derivative-Estimation"><a href="#Derivative-Estimation" class="headerlink" title="Derivative Estimation"></a>Derivative Estimation</h2><p>Finally we consider the conditional bias and variance for $\hat{\beta}$. The main difference is that ${\bf H}^{-1}e_2=e_2/h$. Therefore we will have order $O(1/{nh^3})$ in variance, and $O(h)$ in bias.  </p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>The whole procedure can be generalized to multivariate case, where $X$ is a vector and $K(\cdot)$ is a multivariate kernel. The details are displayed in <a href="https://projecteuclid.org/download/pdf_1/euclid.aos/1176325632" target="_blank" rel="noopener">D. Ruppert and M.P. Wand</a>‘s paper.</p>
 <p>Also in this paper, they considered locally polynomial regression for univariate case. Conditional bias and variance are deduced for derivatives in any order. They also explained why one can not drop <em>condition</em> in asymptotic analysis for locally linear regression.</p>
 <p>A nice introduction to LLR (and other topics in nonparametric estimates) can be found in the <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/" target="_blank" rel="noopener">lecture notes</a>. This article mainly follows <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/local_lin_reg.pdf" target="_blank" rel="noopener">local linear regression</a>.  </p>
 
@@ -626,7 +626,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Backgrounds"><span class="toc-number">1.</span> <span class="toc-text">Backgrounds</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Variance"><span class="toc-number">2.</span> <span class="toc-text">Variance</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bias"><span class="toc-number">3.</span> <span class="toc-text">Bias</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Derivative-Estimation"><span class="toc-number">4.</span> <span class="toc-text">Derivative Estimation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Backgrounds"><span class="toc-number">1.</span> <span class="toc-text">Backgrounds</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Variance"><span class="toc-number">2.</span> <span class="toc-text">Variance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bias"><span class="toc-number">3.</span> <span class="toc-text">Bias</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Derivative-Estimation"><span class="toc-number">4.</span> <span class="toc-text">Derivative Estimation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -713,9 +713,40 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 11
         </div>
         <!-- search  -->
         
@@ -728,6 +759,11 @@ top:50vh;
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >Some Applications of Wasserstein Distances</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -788,13 +824,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
+    
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
-        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
-    
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
         <span class="sidebar-tag-name" data-tags="TDA"><span class="iconfont-archer">&#xe606;</span>TDA</span>
     
