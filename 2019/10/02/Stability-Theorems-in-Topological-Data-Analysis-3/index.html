@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">947</span>Reading time: <span class="post-count reading-time">5 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -427,6 +427,9 @@ d^\infty_B(D_k\mathcal{R}(X,d_X),D_k\mathcal{R}(Y,d_Y))\le d_{GH}((X,d_X),(Y,d_Y
 \delta_X(z)=\min_{x\in X}|z-\gamma(\gamma_X(x))|_\infty.</script><p>Similarly, let $\delta_Y$ be the distance function to $\gamma(\gamma_Y(Y))$. Note that</p>
 <script type="math/tex; mode=display">
 |\delta_X(z)-\delta_Y(z)|\le d_H^\infty(\gamma(\gamma_X(X)),\gamma(\gamma_Y(Y)))=\epsilon.</script><p>(<em>I have doubt in this inequality. The closest point in $X$ and $Y$ may not correspond in Hausdorff distance</em>).</p>
+<hr>
+<p><em>update.</em> This inequality is true. Note that $\delta_X(z)=d(z,X)$. For any point $y\in Y$ it holds $d(z,X)\le d(z,y)+d(y,X)$. Since $\inf_y(d(z,y)+d(y,X))\le \inf_yd(z,y)+\sup_yd(y,X)$, we obtain $d(z,X)-d(z,Y)\le H(X,Y)$. The other side is similar.</p>
+<hr>
 <p>Since $\delta_X$ and $\delta_Y$ are $\epsilon$-close, by the theorem of <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">Edelsbrunner etc.</a>, the persistence diagrams of $\delta_X$ and $\delta_Y$ are $\epsilon$-close.</p>
 <p>However, the level set $\delta_X([0,\alpha])$ is nothing but the union of $\alpha$-balls in $(\mathbb{R}^n,l^\infty)$. By persistence nerve theorem the sublevel filtration of $\delta_X$ and the $\check{C}ech$ filtration of $\gamma(\gamma_X(X))$ yield same persistence diagrams. From the above lemma, $C_\alpha(\gamma(\gamma_X(X)),l^\infty)=R_\alpha(\gamma(\gamma_X(X)),l^\infty)=R_\alpha(\gamma_X(X),d_Z)=R_\alpha(X,d_X)$. Therefore, the persistence diagram of $\delta_X$ is exactly the persistence diagram $D\mathcal{R}(X,d_X)$. Apply the same argument to $Y$. Hence the inequality holds.</p>
 <hr>
@@ -774,13 +777,13 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
-    
-        <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
+    
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
+    
+        <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
     
@@ -792,9 +795,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Stability"><span class="iconfont-archer">&#xe606;</span>Stability</span>
     
-        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
-    
         <span class="sidebar-tag-name" data-tags="Differential Geometry"><span class="iconfont-archer">&#xe606;</span>Differential Geometry</span>
+    
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -870,22 +873,7 @@ jsonContent:
     
         <script src="/scripts/share.js" async></script>    
      
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+    </body>
 </html>
 
 

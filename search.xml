@@ -142,6 +142,9 @@ d^\infty_B(D_k\mathcal{R}(X,d_X),D_k\mathcal{R}(Y,d_Y))\le d_{GH}((X,d_X),(Y,d_Y
 \delta_X(z)=\min_{x\in X}|z-\gamma(\gamma_X(x))|_\infty.</script><p>Similarly, let $\delta_Y$ be the distance function to $\gamma(\gamma_Y(Y))$. Note that</p>
 <script type="math/tex; mode=display">
 |\delta_X(z)-\delta_Y(z)|\le d_H^\infty(\gamma(\gamma_X(X)),\gamma(\gamma_Y(Y)))=\epsilon.</script><p>(<em>I have doubt in this inequality. The closest point in $X$ and $Y$ may not correspond in Hausdorff distance</em>).</p>
+<hr>
+<p><em>update.</em> This inequality is true. Note that $\delta_X(z)=d(z,X)$. For any point $y\in Y$ it holds $d(z,X)\le d(z,y)+d(y,X)$. Since $\inf_y(d(z,y)+d(y,X))\le \inf_yd(z,y)+\sup_yd(y,X)$, we obtain $d(z,X)-d(z,Y)\le H(X,Y)$. The other side is similar.</p>
+<hr>
 <p>Since $\delta_X$ and $\delta_Y$ are $\epsilon$-close, by the theorem of <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">Edelsbrunner etc.</a>, the persistence diagrams of $\delta_X$ and $\delta_Y$ are $\epsilon$-close.</p>
 <p>However, the level set $\delta_X([0,\alpha])$ is nothing but the union of $\alpha$-balls in $(\mathbb{R}^n,l^\infty)$. By persistence nerve theorem the sublevel filtration of $\delta_X$ and the $\check{C}ech$ filtration of $\gamma(\gamma_X(X))$ yield same persistence diagrams. From the above lemma, $C_\alpha(\gamma(\gamma_X(X)),l^\infty)=R_\alpha(\gamma(\gamma_X(X)),l^\infty)=R_\alpha(\gamma_X(X),d_Z)=R_\alpha(X,d_X)$. Therefore, the persistence diagram of $\delta_X$ is exactly the persistence diagram $D\mathcal{R}(X,d_X)$. Apply the same argument to $Y$. Hence the inequality holds.</p>
 <hr>
