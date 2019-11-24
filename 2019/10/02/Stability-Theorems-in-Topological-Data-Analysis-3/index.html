@@ -404,10 +404,10 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>Perhaps the most important case in TDA is point cloud data, i.e. finite metric spaces. The collection of all compact metric spaces makes up a metric space under <a href="[https://en.wikipedia.org/wiki/Gromov%E2%80%93Hausdorff_convergence](https://en.wikipedia.org/wiki/Gromov–Hausdorff_convergence">Gromov-Hausdorff metric</a>). If we construct Rips filtrations for point clouds,  we obtain a map between metric spaces by sending each point cloud to its persistence diagram. It is natural to ask which properties will this map have. From the work of <a href="http://fodava.gatech.edu/files/reports/FODAVA-09-24.pdf" target="_blank" rel="noopener">F. Memoli etc.</a>, it is in fact a <strong>Lipschitz</strong> map. Therefore, the bottleneck distance between two persistence diagrams is bounded by the Gromov-Hausdorff distance between two point clouds. This stability shows that one can use TDA to classify different point clouds, which is a major object in shape analysis.</p>
-<a id="more"></a>
 <p>Let $(Z,d_Z)$ be a (compact) metric space and $X,Y$ be subsets in $Z$. The Hausdorff distance between $X$ and $Y$ is defined as</p>
 <script type="math/tex; mode=display">
 d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_Z(x,y)\}.</script><p>The intuition is follows: For each $x\in X$, we can compute the distance between $x$ and $Y$, which is $\min_{y\in Y}d_Z(x,y)$. Then we take the largest value as the distance from $X$ to $Y$. The distance is the so called one-sided Hausdorff distance. Symmetrically, we compute the distance from $Y$ to $X$. The maximum is the so called (two-sided) Hausdorff distance.</p>
+<a id="more"></a>
 <p>If $(X,d_X)$ and $(Y,d_Y)$ are different metric spaces, we cannot compare the distance between $X$ and $Y$ unless they are subspaces of another space $(Z,d_Z)$. Therefore, we try to embed $(X,d_X)$ and $(Y,d_Y)$ into a larger space so that they can be compared using Hausdorff distance. This motivates the following definition of Gromov-Hausdorff distance    </p>
 <script type="math/tex; mode=display">
 d_{GH}((X,d_X),(Y,d_Y))=\inf_{X,Y\hookrightarrow Z}d_H^Z(X,Y).</script><p>Let $\mathcal{X}=\{(X,d_X):X\text{ is compact metric space}\}$. Define an equivalence relation on $\mathcal{X}$: $(X,d_X)\sim(Y,d_Y)$ if they are isometric. The quotient space is still denoted by $\mathcal{X}$. Then $(\mathcal{X},d_{GH})$ is a complete metric space (see <a href="https://www.amazon.com/Course-Metric-Geometry-Dmitri-Burago/dp/0821821296" target="_blank" rel="noopener">this book</a> for reference). Furthermore, the infimum is in fact a minimum, that is, we can always find $Z$ for compact spaces.</p>
@@ -777,13 +777,13 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
-    
-        <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
-    
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
+    
+        <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
     
