@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -411,13 +411,13 @@ d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_
 <p>If $(X,d_X)$ and $(Y,d_Y)$ are different metric spaces, we cannot compare the distance between $X$ and $Y$ unless they are subspaces of another space $(Z,d_Z)$. Therefore, we try to embed $(X,d_X)$ and $(Y,d_Y)$ into a larger space so that they can be compared using Hausdorff distance. This motivates the following definition of Gromov-Hausdorff distance    </p>
 <script type="math/tex; mode=display">
 d_{GH}((X,d_X),(Y,d_Y))=\inf_{X,Y\hookrightarrow Z}d_H^Z(X,Y).</script><p>Let $\mathcal{X}=\{(X,d_X):X\text{ is compact metric space}\}$. Define an equivalence relation on $\mathcal{X}$: $(X,d_X)\sim(Y,d_Y)$ if they are isometric. The quotient space is still denoted by $\mathcal{X}$. Then $(\mathcal{X},d_{GH})$ is a complete metric space (see <a href="https://www.amazon.com/Course-Metric-Geometry-Dmitri-Burago/dp/0821821296" target="_blank" rel="noopener">this book</a> for reference). Furthermore, the infimum is in fact a minimum, that is, we can always find $Z$ for compact spaces.</p>
-<p>Given a finite metric space $(X,d_X)$ and a parameter $\alpha&gt;0$, the Rips complex $R_\alpha(X,d_X)$ is an abstract simplicial complex with vertex set $X$. A $k$-simplex is in $R_\alpha(X,d_X)$ if and only if the diameter is no more than $2\alpha$. When $\alpha$ ranges from $0$ to $\infty$, the nested family is called Rips filtration, denoted by $\mathcal{R}(X,d_X)$.</p>
+<p>Given a finite metric space $(X,d_X)$ and a parameter $\alpha&gt;0$, the Rips complex $R_\alpha(X,d_X)$ is an abstract simplicial complex with vertex set $X$. A $k$-simplex is in $R_\alpha(X,d_X)$ if and only if the diameter is no more than $2\alpha$. (<strong>Caveat.</strong> The factor 2 makes a difference in the main theorem. Note that it is a classical issue that there is no universal parametrization on Rips complex.) When $\alpha$ ranges from $0$ to $\infty$, the nested family is called Rips filtration, denoted by $\mathcal{R}(X,d_X)$.</p>
 <p>Moreover, if $X$ is a finite subset of $(\mathbb{R}^n,l^\infty)$, there is another construction called $\check{C}ech$ complex which is the nerve of $l^\infty$ balls, denoted by $C_\alpha(X,l^\infty)$. It happens that the two constructions are the same.</p>
 <hr>
 <p><strong>Lemma</strong>. For any finite set $X$ in $(\mathbb{R}^n,l^\infty)$ and $\alpha&gt;0$, $C_\alpha(X,l^\infty)=R_\alpha(X,l^\infty)$.</p>
 <p><strong>proof</strong>. If $\{x_1,\cdots,x_k\}$ is in $C_\alpha$, then there is $\bar{x}$ such that  $|x_i-\bar{x}|_\infty\le \alpha$. By triangle inequality $|x_i-x_j|_\infty\le 2\alpha$. $\{x_1,\cdots,x_k\}$ is in $R_\alpha$. On the other hand, if $|x_i-x_j|_\infty\le 2\alpha$, for each coordinate $l$ we take $\bar{x}^{(l)}=1/2(x^{(l)}_{\max}+x^{(l)}_{\min})$. It is easy to verify $|x_i-\bar{x}|_\infty\le \alpha$. $\{x_1,\cdots,x_k\}$ is in $C_\alpha$.</p>
 <hr>
-<p>Another useful lemma can be found in the <a href="https://www.amazon.com/Course-Metric-Geometry-Dmitri-Burago/dp/0821821296" target="_blank" rel="noopener">book</a> which says that any finite metric space of cardinality $n$ can be isometrically embedded into $(\mathbb{R}^n,l^\infty)$.</p>
+<p>Another useful lemma can be found in the <a href="https://www.amazon.com/Course-Metric-Geometry-Dmitri-Burago/dp/0821821296" target="_blank" rel="noopener">book</a> which says that any finite metric space of cardinality $n$ can be isometrically embedded into $(\mathbb{R}^n,l^\infty)$. The proof is also straightforward. Put the distances in the coordinates in $\mathbb{R}^n$. One also finds a comprehensive introduction to embedding of finite metric spaces <a href="https://sites.cs.ucsb.edu/~suri/cs235/MatousekMetric.pdf" target="_blank" rel="noopener">here</a>.</p>
 <p>Now we can state and prove the stability theorem.</p>
 <hr>
 <p><strong>Theorem</strong>. For any finite metric spaces $(X,d_X)$ and $(Y,d_Y)$, for any $k\in \mathbb{N}$, </p>
@@ -705,9 +705,20 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 13
+        Total : 14
         </div>
         <!-- search  -->
         
@@ -720,6 +731,11 @@ top:50vh;
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/30</span><a class="archive-post-title" href= "/2019/12/30/Stability-Theorems-in-Topological-Data-Analysis-4/" >Stability Theorems in Topological Data Analysis (4)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -795,13 +811,13 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
-    
-        <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
-    
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
+    
+        <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
         <span class="sidebar-tag-name" data-tags="TDA"><span class="iconfont-archer">&#xe606;</span>TDA</span>
     
