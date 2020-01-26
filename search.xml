@@ -3,6 +3,64 @@
   
     
     <entry>
+      <title><![CDATA[Local-to-Global Convexity]]></title>
+      <url>/2020/01/26/Local-to-Global-Convexity/</url>
+      <content type="html"><![CDATA[<h2 id="Convex-Functions"><a href="#Convex-Functions" class="headerlink" title="Convex Functions"></a>Convex Functions</h2><p>Recall that a function $f:I\to \mathbb R$ is called convex if </p>
+<script type="math/tex; mode=display">
+f(tx+(1-t)y)\le tf(x)+(1-t)f(y)</script><p>for any $t\in[0,1]$ and $x,y\in I$ where $I$ is an interval in $\mathbb R$. In some <a href="https://arxiv.org/pdf/1601.03363.pdf" target="_blank" rel="noopener">context</a>, $f$ is called $p$-convex if $f^p$ is convex in the meaning of (1). $f$ is called quasi-convex if </p>
+<script type="math/tex; mode=display">
+f(t)\le\max\{f(a),f(b)\}</script><p>for any $t\in [a,b]$. Note that if $f$ is convex then $f$ is necessarily quasi-convex. Quasi-convex functions are also called peakless in <a href="https://core.ac.uk/display/56641235" target="_blank" rel="noopener">Busemann’s articles</a>.</p>
+<p>If $f$ is differentiable, then we have a simple rule to determine its convexity: $f$ is convex if and only if $f’$ is non-decreasing. If $f$ is twice differentiable, then $f$ is convex if and only if $f’’$ is non-negative. From these rules we can see that convexity is a <strong>local</strong> property for differentiable functions. i.e. say that $f$ is locally convex if for any $x$ there is a neighborhood such that $f$ is convex on that neighborhood. If $f$ is differentiable and locally convex, by the above discussions locally convexity implies global convexity.</p>
+<a id="more"></a>
+<p>The question is whether, without the presuppose of differentiability, local convexity implies global convexity. i.e if $f$ is defined on an interval such that any point has a neighborhood where condition (1) holds, is $f$ convex or not? Recall the following sufficient and necessary condition for $f$ being convex: $f$ is convex if and only if its epigraph is convex, where the epigraph of $f$ is defined by </p>
+<script type="math/tex; mode=display">
+epi(f)=\{(t,y)|y\ge f(t)\}</script><p>We see that local convexity is equivalent to that each point in the epigraph has a neighborhood which is convex. Thus we come to the question: Let $X$ be a locally convex set in $\mathbb R^n$, is itself convex?</p>
+<h2 id="Tietze-Nakajima-Theorem"><a href="#Tietze-Nakajima-Theorem" class="headerlink" title="Tietze-Nakajima Theorem"></a>Tietze-Nakajima Theorem</h2><p>The above question is answered by the classical <a href="https://arxiv.org/pdf/math/0701745.pdf" target="_blank" rel="noopener">Tietze-Nakajima theorem</a>.</p>
+<blockquote>
+<p>Let $X$ be a closed subset in $\mathbb R^n$. $X$ is convex if and only if $X$ is connected and locally convex.</p>
+</blockquote>
+<p>Necessity is clear since convexity implies connectedness and local convexity. Note that local convexity implies local path connectedness. Thus $X$ being connected is equivalent to $X$ being path connected. We can define a length structure on $X$ by defining admissible paths to be polygonal paths (the existence of polygonal paths is guaranteed by local convexity) and length to be the canonical length in Euclidean spaces. The induced metric on $X$ is <em>midpoint convex</em> (a special case of <em>Menger convex</em>). i.e. For any two point in $X$ there exists a midpoint (The existence of midpoint relies on the closeness and local convexity of $X$). Since $X$ is complete, by a theorem of <a href="https://www.amazon.com/Course-Metric-Geometry-Dmitri-Burago/dp/0821821296" target="_blank" rel="noopener">BBI</a>, $X$ is strictly intrinsic. i.e. the induced metric coincides with the usual Euclidean metric and there is a shortest path, which is clearly a straight line, connecting any two point. Therefore $X$ is convex.</p>
+<p>Tietze-Nakajima theorem implies that the convexity of functions is a local property. In contrast, quasi-convexity is <strong>not</strong> a local property. i.e if a function is local quasi-convex, it may not be a quasi-convex function globally. For a counterexample, consider the exterior of ‘风’.</p>
+<p>From the proof we see that the local-to-global convexity property for Euclidean spaces should have a natural generalization to distance geometry. However, one should be careful with the notion of ‘convexity’ and the choice of ‘proper’ spaces. See a series of questions discussed in StackExchange (<a href="https://math.stackexchange.com/questions/3517202/does-convexity-implies-contractibility-in-length-space" target="_blank" rel="noopener">Does convexity implies contractibility in length space?</a>; <a href="https://math.stackexchange.com/questions/479022/is-a-uniquely-geodesic-space-contractible-i" target="_blank" rel="noopener">Is a uniquely geodesic space contractible? I</a>; <a href="https://math.stackexchange.com/questions/481569/on-continuously-uniquely-geodesic-space" target="_blank" rel="noopener">On continuously uniquely geodesic space</a>.)</p>
+<h2 id="Generalized-Hadamard-Cartan-Theorem"><a href="#Generalized-Hadamard-Cartan-Theorem" class="headerlink" title="Generalized Hadamard-Cartan Theorem"></a>Generalized Hadamard-Cartan Theorem</h2><p>M. Gromov stated a theorem which generalized the classical <a href="[https://en.wikipedia.org/wiki/Cartan%E2%80%93Hadamard_theorem](https://en.wikipedia.org/wiki/Cartan–Hadamard_theorem">Hadamard-Cartan theorem</a>) in Riemannian geometry: </p>
+<blockquote>
+<p>A simply-connected, complete, locally convex geodesic space is globally convex; hence any two points are joined by a unique geodesic.</p>
+</blockquote>
+<p>A <strong>geodesic space</strong> is a space where any two points can be joined by a shortest path. A subset $A$ is <strong>convex</strong> if for any two scaled geodesics $\alpha,\beta:[0,1]\to A$ the function $d(\alpha(t),\beta(t))$ is convex. If $m_{pq}$ denotes the midpoint of a geodesic from $p$ to $q$. Then convexity is equivalent to $2d(m_{pq},m_{pr})\le d(q,r)$ for any three distinct points. Thus the generalized Hadamard-Cartan theorem shows that local-to-global convexity holds for simply-connected, complete, geodesic spaces. A detailed proof of this theorem is given by <a href="https://www.researchgate.net/publication/257947117_The_Hadamard-Cartan_theorem_in_locally_convex_metric_spaces" target="_blank" rel="noopener">S. Alexander and R. Bishop</a> in 1990. </p>
+<p>Let $m\in X$ be a fixed point in the geodesic space. Let $\mathbb G_m$ be the space of geodesics starting at $m$, carrying the uniform distance $\mathbf d$. $m$ has no <em>conjugate points</em> if the endpoint map </p>
+<script type="math/tex; mode=display">
+EP:\mathbb G_m\to X</script><p>defined by $EP(\gamma)=\gamma(1)$, is a local homeomorphism. i.e. $EP$ maps a neighborhood of each $\gamma$ homeomorphically onto a neighborhood of $\gamma(1)$. That is to say, each point has a neighborhood such that the geodesics vary continuously. The first theorem shown by AB is that </p>
+<blockquote>
+<p> A locally convex, complete geodesic space has no conjugate point.</p>
+</blockquote>
+<p>Using local convexity, it is easy to prove that $EP$ is an isometry on a neighborhood of $\gamma$ onto <strong>its image</strong>. The question is that whether this image is a neighborhood of $\gamma(1)$. AB proved that, in fact, $EP$ is an isomorphism from a ball of $\gamma$ to a ball of $\gamma(1)$ by using an induction method.</p>
+<p>$X$ is said to have neighborhoods of bipoint uniqueness if there are neighborhoods such that any two points of which is joined by a unique shortest geodesic varying continuously with its endpoints. If $X$ is locally convex, then $X$ has neighborhoods of bipoint uniqueness by the following argument.</p>
+<p><img src="/2020/01/26/Local-to-Global-Convexity/bp.jpg" alt="bipoint uniqueness"></p>
+<p>The following lemma says $EP$ is a covering map</p>
+<blockquote>
+<p>Let $\phi:\overline{M}\to M$ be a local isometry. $\overline{M}$ and $M$ are complete intrinsic metric spaces and $M$ has neighborhoods of bipoint uniqueness. Then $\phi$ is a covering map.</p>
+</blockquote>
+<p> Since $\mathbb G_m$ is contractible thus connected and simply connected, it suffices to define a complete intrinsic metric $\mathbf{d}^<em>$ on $\mathbb G_m$ so that $(\mathbb G_m,\mathbf d^</em>)$ is complete and $EP$ is local isometry. One verifies that the metric induced by $\mathbf d$ is exactly $\mathbf d^*$. </p>
+<h2 id="CAT-kappa-Spaces"><a href="#CAT-kappa-Spaces" class="headerlink" title="CAT($\kappa$) Spaces"></a>CAT($\kappa$) Spaces</h2><p><a href="https://en.wikipedia.org/wiki/CAT(k" target="_blank" rel="noopener">CAT$(\kappa)$ spaces</a>_space) are spaces with curvature bounded above in the Alexandrov sense. Let $x,y,z$ be distinct points in a length space $X$ and call $\Delta xyz$ a geodesic triangle if the segments $xy,yz,zx$ are geodesics. For any $\kappa\in\mathbb R$, the comparison space of curvature $\kappa$ is the unique simply-connected Riemannian 2-manifold of constant sectional curvature $\kappa$, denoted by $M_\kappa$. Define the diameter of $M_\kappa$ as </p>
+<script type="math/tex; mode=display">
+D_\kappa=\left\{\begin{array}{l}\infty, \kappa\le 0\\ \pi/\sqrt{\kappa},\kappa>0\end{array}\right.</script><p>For a $D_\kappa$-geodesic space $X$ (i.e. points within distance $D_\kappa$ are joined by a unique geodesic), a geodesic triangle $\Delta$ is said to satisfy the CAT$(\kappa)$ inequality if there exists an expanding map $f:\Delta\to M_\kappa$ such that $f|_{\partial\Delta}$ is an isometry. Then $X$ is called a CAT$(\kappa)$ space if every geodesic triangle with perimeter less than $2D_\kappa$ satisfies the CAT$(\kappa)$ inequality.</p>
+<p>A subset $A$ in the CAT$(\kappa)$ space $X$ is called convex if for any two points $x,y\in A$ within distance $D_\kappa$, the unique geodesic joining $x,y$ is contained in $A$. One easily verifies that these generalize the convexity in Euclidean spaces.</p>
+<p><a href="https://arxiv.org/pdf/1304.4147.pdf" target="_blank" rel="noopener">This paper</a> shows that local-to-global convexity holds for all CAT$(\kappa)$ spaces. Specifically, the following theorem holds</p>
+<blockquote>
+<p>Let $A\subset X$ be a closed, connected, locally convex subset in CAT$(\kappa)$ space. Denote with $l$ the induced length metric in $A$. Then if $diam_l(A)\le D_\kappa$, $l$ coincides with the original length distance and $A$ is convex.</p>
+</blockquote>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Metric Geometry </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Gromov访谈]]></title>
       <url>/2020/01/16/Gromov%E8%AE%BF%E8%B0%88/</url>
       <content type="html"><![CDATA[<p>翻译自2014年12月22日西蒙斯基金会对Gromov的<a href="https://www.simonsfoundation.org/2014/12/22/mikhail-gromov/" target="_blank" rel="noopener">采访</a>.</p>
