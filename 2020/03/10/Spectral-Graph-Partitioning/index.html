@@ -403,7 +403,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Spectral-Graph-Partitioning"><a href="#Spectral-Graph-Partitioning" class="headerlink" title="Spectral Graph Partitioning"></a>Spectral Graph Partitioning</h2><p>Informally, the problem of graph partitioning, or graph clustering, can be stated as follows: we want to partition a graph into several parts such that there are fewer edges between groups but more edges within groups. If there is a measurement on edges, i.e. the edges are weighted, then it can also be stated that we want a partition that nodes within groups are more similar. Graph partitioning can be encountered in many areas such as <a href="http://www.stat.cmu.edu/~larry/=sml/" target="_blank" rel="noopener">statistical learning</a>, <a href="http://www.leonidzhukov.net/hse/2015/networks/" target="_blank" rel="noopener">network analysis</a>, <a href="https://web.stanford.edu/class/cs224w/" target="_blank" rel="noopener">graph learning</a>. Other than data science, it is also related to graph theory and computer vision. One recalls that there is a classical problem called <a href="https://en.wikipedia.org/wiki/Minimum_cut" target="_blank" rel="noopener">minimum cut</a> in graph theory, which can be solved in polynomial time by the <a href="[https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm](https://en.wikipedia.org/wiki/Stoer–Wagner_algorithm">Stoer-Wagner algorithm</a>). Graph partitioning can be regarded as a strengthened min-cut problem, since we not only want to find the minimal cut but also an ‘equitable’ partition.</p>
+        <p>Informally, the problem of graph partitioning, or graph clustering, can be stated as follows: we want to partition a graph into several parts such that there are fewer edges between groups but more edges within groups. If there is a measurement on edges, i.e. the edges are weighted, then it can also be stated that we want a partition that nodes within groups are more similar. Graph partitioning can be encountered in many areas such as <a href="http://www.stat.cmu.edu/~larry/=sml/" target="_blank" rel="noopener">statistical learning</a>, <a href="http://www.leonidzhukov.net/hse/2015/networks/" target="_blank" rel="noopener">network analysis</a>, <a href="https://web.stanford.edu/class/cs224w/" target="_blank" rel="noopener">graph learning</a>. Other than data science, it is also related to graph theory and computer vision. One recalls that there is a classical problem called <a href="https://en.wikipedia.org/wiki/Minimum_cut" target="_blank" rel="noopener">minimum cut</a> in graph theory, which can be solved in polynomial time by the <a href="[https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm](https://en.wikipedia.org/wiki/Stoer–Wagner_algorithm">Stoer-Wagner algorithm</a>). Graph partitioning can be regarded as a strengthened min-cut problem, since we not only want to find the minimal cut but also an ‘equitable’ partition.</p>
 <p> <a href="https://en.wikipedia.org/wiki/Spectral_clustering" target="_blank" rel="noopener">Spectral clustering</a> is one of the most popular approaches to solve graph partitioning. It has a long history which can date back to 1970s and it is popularized in data science as a machine learning method. Results obtained by spectral clustering often outperform traditional methods. Moreover, it is very simple to implement and the mathematics is nothing but standard linear algebra. A comprehensive <a href="https://arxiv.org/pdf/0711.0189.pdf" target="_blank" rel="noopener">tutorial</a> written by U. von Luxburg provides many different aspects to understand spectral clustering including random walk, perturbation theory and so on. Here we may cover the basics from the easiest way: linear algebra. <a id="more"></a></p>
 <p><img src="/2020/03/10/Spectral-Graph-Partitioning/demo.jpg" alt="demo"></p>
 <p>Suppose we want to partition the graph into two parts. Let $A\subset V$ be a subset and $\bar{A}$ be the compliment of $A$ in $V$. Define the (unnormalized) graph cut to be </p>
@@ -429,7 +429,7 @@ s.t.\quad& \sum_i x_i=0,\sum_i x_i^2=n
 \min_{x\perp \mathbf{1}}\frac{x^TLx}{x^Tx}
 \end{equation}</script><p>By Rayleigh-Ritz theorem, we just pick the eigenvector with respect to the second least eigenvalue (note that $\mathbf{1}$ corresponds to the eigenvalue 0 of $L$). </p>
 <p>The last step is to revert the eigenvector $x$ to the indicator vector $s$. A simple criterion is to map positive numbers to $1$ and negative numbers to $-1$. In general, one can apply $k$-means clustering to $x$ (here $k=2$), which is a common method if we want to obtain a $k$ partition.</p>
-<p>The relaxation from integral optimization to real optimization seems to weaken the restriction $|A|=|\bar{A}|$. For integral optimization it is equivalent to $\sum s_i=0$. However, for real optimization $\sum x_i=0$ may not imply $#\{x_i&gt;0\}=#\{x_i&lt;0\}$. One way to overcome this shortcoming is to place the balance restriction to the objective function. We define the ratio cut </p>
+<p>The relaxation from integral optimization to real optimization seems to weaken the restriction $|A|=|\bar{A}|$. For integral optimization it is equivalent to $\sum s_i=0$. However, for real optimization $\sum x_i=0$ may not imply $|\{x_i&gt;0\}|=|\{x_i&lt;0\}|$. One way to overcome this shortcoming is to place the balance restriction to the objective function. We define the ratio cut </p>
 <script type="math/tex; mode=display">
 \begin{equation}
 Rcut(A,\bar{A})=\frac{cut(A,\bar{A})}{|A|}+\frac{cut(A,\bar{A})}{|\bar{A}|}
@@ -608,7 +608,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spectral-Graph-Partitioning"><span class="toc-number">1.</span> <span class="toc-text">Spectral Graph Partitioning</span></a></li></ol>
+        
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -925,15 +925,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
+        <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
         <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
-        <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
     
         <span class="sidebar-tag-name" data-tags="Discrete Geometry"><span class="iconfont-archer">&#xe606;</span>Discrete Geometry</span>
     
         <span class="sidebar-tag-name" data-tags="Spectral Graph Theory"><span class="iconfont-archer">&#xe606;</span>Spectral Graph Theory</span>
-    
-        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
     
         <span class="sidebar-tag-name" data-tags="TDA"><span class="iconfont-archer">&#xe606;</span>TDA</span>
     
@@ -943,9 +943,9 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Differential Geometry"><span class="iconfont-archer">&#xe606;</span>Differential Geometry</span>
     
-        <span class="sidebar-tag-name" data-tags="翻译"><span class="iconfont-archer">&#xe606;</span>翻译</span>
-    
         <span class="sidebar-tag-name" data-tags="Metric Geometry"><span class="iconfont-archer">&#xe606;</span>Metric Geometry</span>
+    
+        <span class="sidebar-tag-name" data-tags="翻译"><span class="iconfont-archer">&#xe606;</span>翻译</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
