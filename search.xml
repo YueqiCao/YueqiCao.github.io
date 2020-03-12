@@ -80,13 +80,35 @@ Ncut(A_1,\cdots,A_k)=Tr(H^TLH)
 s.t\quad& T^TT=I_{k\times k}
 \end{aligned}
 \end{equation}</script><p>which is in the same form as ratio cut. To revert to the discrete case, we apply $k$ means clustering to $H$. </p>
+<p>One remarkable thing about normalized cut is that it has a beautiful explanation from the perspective of random walk. Let $p_{ij}=w_{ij}/d_i$ be the one-step transition probability from node $i$ to node $j$. If the graph is connected and non-bipartite, this random walk will always possess a stationary distribution $\pi$ such that $\pi_i=d_i/vol(V)$. Let $P(A|B)=P(v_i\in A|v_j\in B)$ denote the probability that points in $B$ walk to $A$ in one step. Then </p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+P(A,\bar{A})&=\sum_{i\in A,j\in \bar{A}}\pi_ip_{ij}\\
+&=\sum_{i\in A,j\in \bar{A}}\frac{d_i}{vol(V)}\frac{w_{ij}}{d_i}\\
+&=\sum_{i\in A,j\in \bar{A}}\frac{w_{ij}}{vol(V)}
+\end{aligned}
+\end{equation}</script><p>Therefore,</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+P(A|\bar{A})&=\frac{P(A,\bar{A})}{P(\bar{A})}\\
+&=\frac{\sum_{i\in A,j\in\bar{A}}w_{ij}/vol(V)}{vol(A)/vol(V)}\\
+&=\sum_{i\in A,j\in\bar{A}}\frac{w_{ij}}{vol(A)}\\
+&=\frac{cut(A,\bar{A})}{vol(A)}
+\end{aligned}
+\end{equation}</script><p>We see that $Ncut(A,\bar{A})=P(A|\bar{A})+P(\bar{A}|A)$. When we are minimizing the normalized cut we are trying to find a partition such that points have low probability that transfer from one community to the other.</p>
 <p><img src="/2020/03/10/Spectral-Graph-Partitioning/spec.jpg" alt="spec"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> Network-Analysis </category>
+            
+        </categories>
+        
         
         <tags>
-            
-            <tag> Discrete Geometry </tag>
             
             <tag> Spectral Graph Theory </tag>
             
@@ -162,10 +184,16 @@ s.t\quad& T^TT=I_{k\times k}
 \begin{aligned}\mathcal{F}_p(\alpha)=w_\alpha(&\sum_{\beta\succ\alpha}\frac{w_\alpha}{w_\beta}+\sum_{\gamma\prec\alpha}\frac{w_\gamma}{w_\alpha}\\ &-\sum_{\eta\neq\alpha}|\sum_{\beta\succ\alpha,\eta}\epsilon_{\alpha\beta}\epsilon_{\eta\beta}\frac{\sqrt{w_{\alpha}w_{\eta}}}{w_\beta}+\sum_{\gamma\prec\alpha,\eta}\epsilon_{\gamma\alpha}\epsilon_{\gamma\eta}\frac{w_\gamma}{\sqrt{w_{\alpha}w_{\eta}}}|)\end{aligned}</script><p>When $p=1$ and all weights are 1, the formula simplifies as what is given in the beginning. </p>
 ]]></content>
       
+        <categories>
+            
+            <category> Geometry </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> Discrete Geometry </tag>
+            <tag> Forman Curvature </tag>
             
         </tags>
         
@@ -220,10 +248,16 @@ D_\kappa=\left\{\begin{array}{l}\infty, \kappa\le 0\\ \pi/\sqrt{\kappa},\kappa>0
 </blockquote>
 ]]></content>
       
+        <categories>
+            
+            <category> Geometry </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> Metric Geometry </tag>
+            <tag> Metric Convexity </tag>
             
         </tags>
         
@@ -267,12 +301,12 @@ D_\kappa=\left\{\begin{array}{l}\infty, \kappa\le 0\\ \pi/\sqrt{\kappa},\kappa>0
 <p>在一个小时试图解析这些细微差别之后，我的时间到了。格罗莫夫并没有对离别表示留恋。我们起身离开，我重新检查了一下小费，然后像他为妻子跑腿一样快速地离开了。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 翻译 </category>
+            
+        </categories>
         
-        <tags>
-            
-            <tag> 翻译 </tag>
-            
-        </tags>
         
     </entry>
     
@@ -340,12 +374,16 @@ d^{\mathbb R^n}_\mathcal{EH}(X,Y)=\inf_{T\in \mathcal E(d)}d^{\mathbb R^n}_{\mat
 <p>Obviously $d_\mathcal{GH}\le d_\mathcal{EH}$ and it is often the case where the inequality is strict. However, it is proved that $d_\mathcal{EH}\le cd_\mathcal{GH}^{1/2}$ thus two distances are equivalent. For our case $d_\mathcal{EH}$ is more convenient. Let $a=d_\mathcal{EH}$. For any $\epsilon&gt;0$ we can find an isometry $T\in \mathcal E(d)$ such that the Hausdorff distance between $X$ and $T(Y)$ is less than $a+\epsilon$. Therefore, $X\cup T(Y)$ lies in a ball of radius $2(\max\{\text{diam}(X),\text{diam}(Y)\}+a+\epsilon)$. This ball clearly satisfies the polynomial growth condition and the distance function $\delta_X$ restricted on the ball has the same filtration homotopy of $\delta_X$ on the whole space. According to the Nerve theorem, the sublevel filtration of $\delta_X$ is the Cech filtration of point clouds. Now apply Wasserstein Stability theorem and we obtain an inequality between the Wasserstein distance of Cech persistence diagrams and Euclidean-Hausdorff distance between $X$ and $Y$. </p>
 ]]></content>
       
+        <categories>
+            
+            <category> TDA </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> TDA </tag>
-            
-            <tag> Stability </tag>
+            <tag> TDA Stability </tag>
             
         </tags>
         
@@ -390,12 +428,12 @@ p_2[M^8]=\frac{p_1^2[M^8]+45}{7}=\frac{4(2i-1)^2+45}{7}</script><p>对$i=1$它�
 M^7=D^7_+\cup_fD^7_-</script><p>其中$D_{\pm}^7$微分同胚于七维圆盘。它们沿公共边界用微分同胚$f:S^6\to S^6$粘起来。<em>因此这个流形可以用两个七维圆盘在边界用微分同胚粘接得到</em>。同时，这个证明说明存在$S^6$到自身的微分同胚其本身非常怪异：它不能用光滑的同痕变为恒等映射，因为如果能这么做那么$M^7$就会微分同胚于标准的七维球面，进而与上述讨论矛盾。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 翻译 </category>
+            
+        </categories>
         
-        <tags>
-            
-            <tag> 翻译 </tag>
-            
-        </tags>
         
     </entry>
     
@@ -456,12 +494,16 @@ W_p(\mathcal T_1,\mathcal T_2)=(\inf_{\gamma}\{\sum_{^k{\bf x}\in G(i_{\mathcal 
 ||\mathcal T||_{W_p}=(\sum_{n=1}^{\infty}||\chi^{\bf x_n}_{k_n}||_{W_p}^p)^{1/p}=(\lim_{l\to\infty}\sum_{||\chi^{\bf x_n}_1||_{W_p}\ge\frac{1}{l}}||\chi^{\bf x_n}_{k_n}||_{W_p}^p)^{1/p}<\infty</script><p>Thus, for $\epsilon&gt;0$, there exists $l&gt;0$ such that $||\mathcal T||_{W_p}^p-\sum_{||\chi^{\bf x_n}_1||_{W_p}\ge\frac{1}{l}}||\chi^{\bf x_n}_{k_n}||_{W_p}^p&lt;\epsilon^p$. Let $\mathcal T_u$ be the persistence diagram such that $S_{\mathcal T_u}$ consists of those points in $\mathcal T$ with $||\chi^{\bf x}_1||_{W_p}\ge 1/l$ and $i_{\mathcal T_u}$ is the restriction of $i_{\mathcal T}$ on $S_{\mathcal T_u}$, $\mathcal T_s$ be such that $S_{\mathcal T_s}$ consists of points with $||\chi^{\bf x}_1||_{W_p}&lt;1/l$ and $i_{\mathcal T_s}$ is the restriction of $i_{\mathcal T}$ on $S_{\mathcal T_s}$. It is immediate that $\mathcal T_u\in\mathcal C_p$ and $||\mathcal T_s||_{W_p}&lt;\epsilon$ and $\mathcal T=\mathcal T_u+\mathcal T_s$.</p>
 ]]></content>
       
+        <categories>
+            
+            <category> TDA </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> TDA </tag>
-            
-            <tag> Stability </tag>
+            <tag> TDA Stability </tag>
             
         </tags>
         
@@ -503,6 +545,12 @@ W_c((g_\theta)_*\mu,\nu)=\max_{\xi}(\mathbb E_{z\sim \mu}\phi(g_\theta(z))+\math
 <script type="math/tex; mode=display">
 \min_{\theta}\max_{\xi}(\mathbb E_{z\sim \mu}\phi(g_\theta(z))+\mathbb E_{y\sim \nu}\phi^c(y))</script>]]></content>
       
+        <categories>
+            
+            <category> Geometry </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -547,12 +595,16 @@ d^\infty_B(D_k\mathcal{R}(X,d_X),D_k\mathcal{R}(Y,d_Y))\le d_{GH}((X,d_X),(Y,d_Y
 <hr>
 ]]></content>
       
+        <categories>
+            
+            <category> TDA </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> TDA </tag>
-            
-            <tag> Stability </tag>
+            <tag> TDA Stability </tag>
             
         </tags>
         
@@ -596,12 +648,16 @@ rank(f^{\alpha_{j-1}}_{\alpha_i})-rank(f^{\alpha_j}_{\alpha_i})+rank(f^{\alpha_j
 \cdots\to G_{\alpha_0+(2n-1)\epsilon}\to F_{\alpha_0+2n\epsilon}\to G_{\alpha_0+(2n+1)\epsilon}\to\cdots</script><p>Then $\mathcal{F}_{\alpha_0+2\epsilon\mathbb Z}$ and $\mathcal{G}_{\alpha_0+\epsilon+2\epsilon\mathbb Z}$ are subcollections of $\mathcal{H}$. By the pixelization lemma, we have $d_B^{\infty}(\mathcal{DF}_{\alpha_0+2\epsilon\mathbb Z},\mathcal{DG}_{\alpha_0+\epsilon+2\epsilon\mathbb Z})\le 2\epsilon$. Similarly, we have $d_B^{\infty}(\mathcal{DF}_{\alpha_0+2\epsilon\mathbb Z},\mathcal{DF}_A)\le 2\epsilon$ and $d_B^{\infty}(\mathcal{DG}_{\alpha_0+\epsilon+2\epsilon\mathbb Z},\mathcal{DG}_B)\le 2\epsilon$. By triangle inequality, we have the bound $6\epsilon$.</p>
 ]]></content>
       
+        <categories>
+            
+            <category> TDA </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> TDA </tag>
-            
-            <tag> Stability </tag>
+            <tag> TDA Stability </tag>
             
         </tags>
         
@@ -714,10 +770,16 @@ g_{\mathbb H^2}=\frac{1}{v^2}(du^2+dv^2).</script><p>Under this metric $\mathbb 
 <script type="math/tex; mode=display">
 \begin{aligned}&\bar{K}_{12}=1,\\&\bar{K}_{13}=\bar{K}_{14}=yf_yJ-(f_x)^2J^2-f_{xx}J^2-xf_xJ,\\&\bar{K}_{23}=\bar{K}_{24}=xf_xJ-(f_y)^2J^2-f_{yy}J^2-yf_yJ,\\&\bar{K}_{34}=e^{-2f}(-1-e^{2f}(f_x)^2J^2-e^{2f}(f_y)^2J^2).\end{aligned}</script>]]></content>
       
+        <categories>
+            
+            <category> Geometry </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> Differential Geometry </tag>
+            <tag> Warped Products </tag>
             
         </tags>
         
@@ -741,6 +803,12 @@ g_{\mathbb H^2}=\frac{1}{v^2}(du^2+dv^2).</script><p>Under this metric $\mathbb 
 <p>The idea of proof is straightforward. Since $K$ will be supported in $[0,1]$, one notes that when the bandwidth $h$ is small, the integration will be zero outside the normal coordinate. Therefore, everything goes back to Euclidean space.</p>
 <a id="more"></a> ]]></content>
       
+        <categories>
+            
+            <category> Statistical-Theory </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -800,12 +868,16 @@ d_{\mathcal B}(A,B)=\inf_{\gamma}\sup_x\|x-\gamma(x)\|_{\infty},</script><p>wher
 <p>In proving the quadrant lemma and box lemma, one notice that there is an interleaving phenomenon of the level sets of $f$ and $g$. This interleaving is generalized to modules, which is purely algebraic. See <a href="https://geometry.stanford.edu/papers/ccggo-ppmd-09/ccggo-ppmd-09.pdf" target="_blank" rel="noopener">F. Chazal etc.</a> for references.  </p>
 ]]></content>
       
+        <categories>
+            
+            <category> TDA </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> TDA </tag>
-            
-            <tag> Stability </tag>
+            <tag> TDA Stability </tag>
             
         </tags>
         
@@ -903,6 +975,12 @@ g({\bf X})=g(x){\bf X}e_1+g'(x){\bf X}e_2+r({\bf X}).</script><p>Therefore, the 
 <p>A nice introduction to LLR (and other topics in nonparametric estimates) can be found in the <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/" target="_blank" rel="noopener">lecture notes</a>. This article mainly follows <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/local_lin_reg.pdf" target="_blank" rel="noopener">local linear regression</a>.  </p>
 ]]></content>
       
+        <categories>
+            
+            <category> Statistical-Theory </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -964,12 +1042,16 @@ f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge 
 \end{aligned}</script><p>By <a href="[https://en.wikipedia.org/wiki/Stirling%27s_approximation](https://en.wikipedia.org/wiki/Stirling&#39;s_approximation">Stirling’s formula</a>), the expectation is about $\sqrt{n}$ when $n$ is large. This shows that in high dimensions, the points concentrate in a sphere of radius $\sqrt{n}$. </p>
 ]]></content>
       
+        <categories>
+            
+            <category> Probability </category>
+            
+        </categories>
+        
         
         <tags>
             
             <tag> Concentration Inequality </tag>
-            
-            <tag> Probability </tag>
             
         </tags>
         
@@ -1070,7 +1152,7 @@ p(\gamma|{\bf X,y})&\propto p(\gamma)p({\bf y}|{\bf X,\gamma})\\
       
         <categories>
             
-            <category> Bayesian Statistical Methods </category>
+            <category> Statistical-Theory </category>
             
         </categories>
         
@@ -1148,7 +1230,7 @@ r=G^{-1}(t)=(\frac{t}{cf(x)})^{1/p}+\eta(t),</script><p>where $\eta(t)=o(t^{1/p}
       
         <categories>
             
-            <category> Statistics Theory </category>
+            <category> Statistical-Theory </category>
             
         </categories>
         
@@ -1184,7 +1266,7 @@ r=G^{-1}(t)=(\frac{t}{cf(x)})^{1/p}+\eta(t),</script><p>where $\eta(t)=o(t^{1/p}
       
         <categories>
             
-            <category> About My Blog </category>
+            <category> About-My-Blog </category>
             
         </categories>
         

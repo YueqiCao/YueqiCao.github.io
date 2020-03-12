@@ -266,15 +266,13 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Discrete Geometry">Discrete Geometry</a>
-    
         <a class="post-tag" href="javascript:void(0);" data-tags = "Spectral Graph Theory">Spectral Graph Theory</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.3k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.5k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -478,6 +476,24 @@ Ncut(A_1,\cdots,A_k)=Tr(H^TLH)
 s.t\quad& T^TT=I_{k\times k}
 \end{aligned}
 \end{equation}</script><p>which is in the same form as ratio cut. To revert to the discrete case, we apply $k$ means clustering to $H$. </p>
+<p>One remarkable thing about normalized cut is that it has a beautiful explanation from the perspective of random walk. Let $p_{ij}=w_{ij}/d_i$ be the one-step transition probability from node $i$ to node $j$. If the graph is connected and non-bipartite, this random walk will always possess a stationary distribution $\pi$ such that $\pi_i=d_i/vol(V)$. Let $P(A|B)=P(v_i\in A|v_j\in B)$ denote the probability that points in $B$ walk to $A$ in one step. Then </p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+P(A,\bar{A})&=\sum_{i\in A,j\in \bar{A}}\pi_ip_{ij}\\
+&=\sum_{i\in A,j\in \bar{A}}\frac{d_i}{vol(V)}\frac{w_{ij}}{d_i}\\
+&=\sum_{i\in A,j\in \bar{A}}\frac{w_{ij}}{vol(V)}
+\end{aligned}
+\end{equation}</script><p>Therefore,</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{aligned}
+P(A|\bar{A})&=\frac{P(A,\bar{A})}{P(\bar{A})}\\
+&=\frac{\sum_{i\in A,j\in\bar{A}}w_{ij}/vol(V)}{vol(A)/vol(V)}\\
+&=\sum_{i\in A,j\in\bar{A}}\frac{w_{ij}}{vol(A)}\\
+&=\frac{cut(A,\bar{A})}{vol(A)}
+\end{aligned}
+\end{equation}</script><p>We see that $Ncut(A,\bar{A})=P(A|\bar{A})+P(\bar{A}|A)$. When we are minimizing the normalized cut we are trying to find a partition such that points have low probability that transfer from one community to the other.</p>
 <p><img src="/2020/03/10/Spectral-Graph-Partitioning/spec.jpg" alt="spec"></p>
 
     </article>
@@ -917,13 +933,11 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
+    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
-    
-        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
-    
-        <span class="sidebar-tag-name" data-tags="Probability"><span class="iconfont-archer">&#xe606;</span>Probability</span>
     
         <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
     
@@ -931,21 +945,17 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
     
-        <span class="sidebar-tag-name" data-tags="Discrete Geometry"><span class="iconfont-archer">&#xe606;</span>Discrete Geometry</span>
-    
-        <span class="sidebar-tag-name" data-tags="Spectral Graph Theory"><span class="iconfont-archer">&#xe606;</span>Spectral Graph Theory</span>
-    
-        <span class="sidebar-tag-name" data-tags="TDA"><span class="iconfont-archer">&#xe606;</span>TDA</span>
-    
-        <span class="sidebar-tag-name" data-tags="Stability"><span class="iconfont-archer">&#xe606;</span>Stability</span>
+        <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
         <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
     
-        <span class="sidebar-tag-name" data-tags="Differential Geometry"><span class="iconfont-archer">&#xe606;</span>Differential Geometry</span>
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
-        <span class="sidebar-tag-name" data-tags="Metric Geometry"><span class="iconfont-archer">&#xe606;</span>Metric Geometry</span>
+        <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
     
-        <span class="sidebar-tag-name" data-tags="翻译"><span class="iconfont-archer">&#xe606;</span>翻译</span>
+        <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
+    
+        <span class="sidebar-tag-name" data-tags="Spectral Graph Theory"><span class="iconfont-archer">&#xe606;</span>Spectral Graph Theory</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -980,11 +990,21 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Bayesian-Statistical-Methods"><span class="iconfont-archer">&#xe60a;</span>Bayesian-Statistical-Methods</span>
+        <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
+    
+        <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
     
         <span class="sidebar-category-name" data-categories="Statistics-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistics-Theory</span>
     
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
+    
+        <span class="sidebar-category-name" data-categories="TDA"><span class="iconfont-archer">&#xe60a;</span>TDA</span>
+    
         <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
+    
+        <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
+    
+        <span class="sidebar-category-name" data-categories="Network-Analysis"><span class="iconfont-archer">&#xe60a;</span>Network-Analysis</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

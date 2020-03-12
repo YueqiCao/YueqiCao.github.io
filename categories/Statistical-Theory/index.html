@@ -22,7 +22,7 @@
     <meta name="description" content="Notes and Remarks about Maths-related Topics">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Stability Theorems in Topological Data Analysis (2) · Everything is Connected</title>
+    <title>Everything is Connected</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,23 +203,12 @@
 </head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Everything is Connected</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">Stability Theorems in Topological Data Analysis (2)</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Everything is Connected</a>
 </header>
@@ -231,74 +220,24 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/purple.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-            Stability Theorems in Topological Data Analysis (2)
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "TDA Stability">TDA Stability</a>
-    
-</div>
-                
-                
-                    <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/09/12</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -399,78 +338,153 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>One observes that when proving the $L^{\infty}$ stability theorem, the functions $f$ and $g$ provide nothing but an interleaved inclusion of level sets $f^{-1}((-\infty,a])\subseteq g^{-1}((-\infty,a+\epsilon])\subseteq f^{-1}((-\infty.a+2\epsilon])$. This further gives the following commutative diagram.</p>
-<a id="more"></a>
-<p><img src="/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/interleavedmodules.png" alt="interleaved modules"></p>
-<p>Instead of taking functions and spaces into account, let us forget about geometry and work on algebra directly. That is, we consider two sequences of modules such that the above diagram commutes. In the terminology of <a href="https://geometry.stanford.edu/papers/ccggo-ppmd-09/ccggo-ppmd-09.pdf" target="_blank" rel="noopener">F. Chazal etc.</a>, the two sequences of modules are called <em>(weakly/strongly) $\epsilon$-interleaved</em>. It would be no surprise that the distance between two persistence diagrams are bounded by $\epsilon$. However, when working in an algebraic approach, we can drop many restrictions on spaces and functions. Furthermore, we generalize the definition of persistence diagrams hence the conclusion is also strengthened. </p>
-<hr>
-<p>Let $A$ be a subset of $\mathbb{R}$ and $R$ be a field. A <strong>persistence module</strong> $\mathcal{F}_A$ is a collection of vector spaces $\{F_{\alpha}\}_{\alpha\in A}$ together with linear maps $\{f_{\alpha}^{\alpha’}:F_\alpha\to F_{\alpha’}\}$ such that for any $\alpha\le \alpha’\le\alpha’’$, we have $f^{\alpha’’}_\alpha=f^{\alpha’’}_{\alpha’}\circ f^{\alpha’}_\alpha$ and $f^\alpha_\alpha=id_{F_\alpha}$. A persistence module is called <strong>tame</strong> if each vector space is of finite dimension. In the following all persistence modules are assumed to be tame.</p>
-<p>Let $\Delta$ be the diagonal $\{(x,x)|x\in\bar{\mathbb{R}}\}$ and $\Delta_{+}$ be the space on and upon the diagonal $\{(x,y)|y\ge x\}$. If $A$ is discrete with no accumulation point, we can define the <strong>persistence diagram</strong> of $\mathcal{F}_A$ to be a multiset $\mathcal{DF}_A$ in $\Delta_{+}$. The points in $\mathcal{DF}_A$ are in the form $(\alpha,\alpha’)$ where $\alpha\le \alpha’\in A$. For each point on the diagonal $\Delta$ the multiplicity is $\infty$. For each point off the diagonal, the multiplicity is </p>
+            <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/08/08/Remarks-on-Submanifold-density-estimation/" >
+            
+                <span>Remarks on &#39;Submanifold density estimation&#39;</span>
+        </a>
+        <div class="abstract-content">
+            <p>There seems to be a gap in <a href="http://papers.nips.cc/paper/3826-submanifold-density-estimation" target="_blank" rel="noopener">Submanifold density estimation</a>.</p>
+<p>In the deduction of variance, one needs to estimate </p>
+<blockquote>
+<p>$\frac{1}{h_m^n}\int_M f(q)\frac{1}{h_m^n}K^2(\frac{u_p(q)}{h_m})dV(q)$</p>
+</blockquote>
+<p>Apply theorem 3.1 to function $K^2$ one obtains</p>
 <script type="math/tex; mode=display">
-\mu(\alpha_i,\alpha_j)=\left\{\begin{array}{l}rank(f^{\alpha_{j-1}}_{\alpha_i})-rank(f^{\alpha_j}_{\alpha_i}),\alpha_i=\inf A\\
-rank(f^{\alpha_{j-1}}_{\alpha_i})-rank(f^{\alpha_j}_{\alpha_i})+rank(f^{\alpha_j}_{\alpha_{i-1}})-rank(f^{\alpha_{j-1}}_{\alpha_{i-1}}),else\end{array}\right.</script><p>This coincides with the <a href="http://yueqicao.top/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/">previous definition</a>. To define the persistence diagram of an arbitrary index set needs some preparation.</p>
-<p>Let $B\subseteq A$ be a subset with no accumulation point. Let $\Gamma_B$ be the grid $\{(\beta_i,\beta_j)|\beta\in B\}$. To each grid $\Gamma_B$ is associated with a <em>B-pixelization map</em> $pix_B:\Delta_{+}\to \Gamma_B\cup\Delta$. If a cell does not hit the diagonal, $pix_B$ sends each point in the cell to the upper right grid point. If a cell hits the diagonal, then each point is send to the closest point on the diagonal.</p>
-<p><img src="/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/pixelization.png" alt="pixelizationmap"></p>
-<p>Since we can always pick out a subsequence in the persistence module, it is natural to define the persistence diagram of $\mathcal{F}_A$ through an approximation of $\mathcal{DF}_B$ with $B\subseteq A$. </p>
-<p>Let us say a persistence module $\mathcal{F}_B$ is $\epsilon$-periodic is the index set $B=\alpha_0+\epsilon \mathbb{Z}$. Then we have the following lemma</p>
+\frac{1}{h^n}\int_M K^2(\frac{u_p(q)}{h})\xi(q)dV(q)\to\xi(p)\int_{\mathbb{R}^n}K^2(\|z\|)d^nz,h\to 0.</script><p>It seems $h_m^{2n}$ will cause trouble in estimation. Whatever, they claimed that the integration will converges to $f(p)\int K^2(|z|)d^nz$. However, in the expression of variance</p>
 <blockquote>
-<p> Let $B,C\subseteq A$. The pixelization map $pix_B$ defines a multi-bijection between $\mathcal{DF}_{B\cup C}$ and $\mathcal{DF}_B$. Furthermore, for any $\epsilon$-periodic persistence modules $\mathcal{F}_B$ and $\mathcal{F}_C$, we have $d_B^{\infty}(\mathcal{DF}_B,\mathcal{DF}_A)\le \epsilon$. </p>
+<p>$Var[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})]=E[\frac{1}{h_m^{2n}}K^2(\frac{u_p(q)}{h_m})]-(E[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})])^2$</p>
 </blockquote>
-<p>Therefore, Set $\epsilon=2^{-n}$, the persistence diagrams $\mathcal{DF}_{B_n}$ will form a Cauchy sequence under bottleneck distance. The diagram of $\mathcal{F}_A$ is defined to be the limit of this sequence.</p>
-<hr>
-<p>As mentioned in the beginning, the interleaving between level sets of spaces become interleaving between persistence modules. Two persistence modules $\mathcal{F}_{\mathbb{R}}$ and $\mathcal{G}_{\mathbb{R}}$ are <strong>strongly $\epsilon$-interleaved</strong> if there exists two families of homomorphisms $\{\phi_\alpha:F_\alpha\to G_{\alpha+\epsilon}\}$ and $\{\psi_{\alpha}:G_\alpha:\to F_{\alpha+\epsilon}\}$ such that the diagram in the beginning commutes. Then we have the following theorem about stability</p>
-<blockquote>
-<p>Let  $\mathcal{F}_{\mathbb{R}}$ and $\mathcal{G}_{\mathbb{R}}$ be tame persistence modules. If  $\mathcal{F}_{\mathbb{R}}$ and $\mathcal{G}_{\mathbb{R}}$ are strongly $\epsilon$-interleaved, then $d_B^{\infty}(\mathcal{DF}_{\mathbb R},\mathcal{DG}_{\mathbb R})\le \epsilon$.</p>
-</blockquote>
-<p>The proof of this theorem is lengthy. However, for persistence diagrams with finite points off the diagonal, the idea is nothing but an algebraic analogy to the geometric stability proof — one constructs a family of persistence modules $\mathcal{H}^s$ which interpolates between  $\mathcal{F}_{\mathbb{R}}$ and $\mathcal{G}_{\mathbb{R}}$. Then, for close enough $\mathcal{H}^s$ and $\mathcal{H}^{s’}$ the distance between persistence diagrams can be bounded by the <a href="http://yueqicao.top/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/">Box Lemma</a>. The bound for $\mathcal{DF}_{\mathbb R}$ and $\mathcal{DG}_{\mathbb R}$ is obtained by triangle inequality.    </p>
-<p>For general persistence diagram (with possibly infinite points off the diagonal), more techniques are involved. Two persistence diagrams $\mathcal{F}_A$ and $\mathcal{G}_B$ are <strong>weakly $\epsilon$-interleaved</strong> if there exists some $\alpha_0$ such that $\alpha_0+2\epsilon\mathbb Z\subseteq A$ and $\alpha_0+\epsilon+2\epsilon\mathbb Z\subseteq B$ and there are homomorphisms such that the following diagram commutes</p>
-<p><img src="/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/weaklyinter.png" alt="weakly interleaving"></p>
-<p>One needs to prove a weakly stability theorem to assist the strong one.</p>
-<blockquote>
-<p>Let  $\mathcal{F}_{A}$ and $\mathcal{G}_{B}$ be tame persistence modules. If  $\mathcal{F}_A$ and $\mathcal{G}_B$ are weakly $\epsilon$-interleaved, then $d_B^{\infty}(\mathcal{DF}_A,\mathcal{DG}_B)\le 3\epsilon$, and the bound is tight.</p>
-</blockquote>
-<p>To obtain the $3\epsilon$ bound we need to investigate the pixelization map carefully. But we can use the pixelization lemma to prove a loose bound easily. Let $\mathcal{H}$ be the persistence module</p>
-<script type="math/tex; mode=display">
-\cdots\to G_{\alpha_0+(2n-1)\epsilon}\to F_{\alpha_0+2n\epsilon}\to G_{\alpha_0+(2n+1)\epsilon}\to\cdots</script><p>Then $\mathcal{F}_{\alpha_0+2\epsilon\mathbb Z}$ and $\mathcal{G}_{\alpha_0+\epsilon+2\epsilon\mathbb Z}$ are subcollections of $\mathcal{H}$. By the pixelization lemma, we have $d_B^{\infty}(\mathcal{DF}_{\alpha_0+2\epsilon\mathbb Z},\mathcal{DG}_{\alpha_0+\epsilon+2\epsilon\mathbb Z})\le 2\epsilon$. Similarly, we have $d_B^{\infty}(\mathcal{DF}_{\alpha_0+2\epsilon\mathbb Z},\mathcal{DF}_A)\le 2\epsilon$ and $d_B^{\infty}(\mathcal{DG}_{\alpha_0+\epsilon+2\epsilon\mathbb Z},\mathcal{DG}_B)\le 2\epsilon$. By triangle inequality, we have the bound $6\epsilon$.</p>
-
+<p>the first term will converge to a constant times $f(p)$, while the latter will converge to $f(p)^2$. Thus the variance will not converge to 0.</p>
+<p>The idea of proof is straightforward. Since $K$ will be supported in $[0,1]$, one notes that when the bandwidth $h$ is small, the integration will be zero outside the normal coordinate. Therefore, everything goes back to Euclidean space.</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/08/08</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Nonparametric Estimates">Nonparametric Estimates</a>
+    
+</div>
+            
+        </div>
     </article>
-    <!-- license  -->
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/30/MSE-of-Locally-Linear-Regression/" >
+            
+                <span>MSE of Locally Linear Regression</span>
+        </a>
+        <div class="abstract-content">
+            <h2 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h2><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
+<script type="math/tex; mode=display">
+y=g(x)+\epsilon(x),</script><p>where $g$ is a any smooth function, and $\epsilon(x)$ is a variable with zero mean and finite variance. Let $X_1,X_2,\cdots,X_n$ be i.i.d. samples with bounded density $f$, and $Y_1,Y_2,\cdots, Y_n$ be the corresponding responses (assume $X_i$’s are scalars ‘). By Taylor expansion, we have</p>
+<script type="math/tex; mode=display">
+Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/30</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linear Regression">Linear Regression</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Least Squares">Least Squares</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Nonparametric Estimates">Nonparametric Estimates</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/21/Bayesian-Linear-Regression/" >
+            
+                <span>Bayesian Linear Regression</span>
+        </a>
+        <div class="abstract-content">
+            <h2 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h2><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise.</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Linear Regression">Linear Regression</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Least Squares">Least Squares</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/07/18/Notes-on-KNN-Density-Estimates(1)/" >
+            
+                <span>Notes on KNN Density Estimates (1)</span>
+        </a>
+        <div class="abstract-content">
+            <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>‘s work in 1979. </p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Suppose we have a <strong>bounded, twice differentiable density</strong> function $f$ on $\mathbb R^p$. Let $X_1,X_2,\cdots,X_n$ be $n$ i.i.d. samples of $f$. Let $x\in\mathbb R^p$ be a fixed point so that $f(x)&gt;0$. We want to estimate $f(x)$ based on $n$ samples. The KNN estimate is given by </p>
+<script type="math/tex; mode=display">
+f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where $Z_n$ is the distance between $x$ and its $k$th nearest neighbor, and $\omega$ is a <strong>bounded integrable</strong> weight function with $\int\omega(u){\rm d}u=1$. </p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Nonparametric Estimates">Nonparametric Estimates</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Asymptotic Analysis">Asymptotic Analysis</a>
+    
+</div>
+            
+        </div>
+    </article>
     
     <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2019/10/02/Stability-Theorems-in-Topological-Data-Analysis-3/" title= "Stability Theorems in Topological Data Analysis (3)">
-                    <div class="nextTitle">Stability Theorems in Topological Data Analysis (3)</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019/09/03/Curvature-of-Warped-Products/" title= "Curvature of Warped Products">
-                    <div class="prevTitle">Curvature of Warped Products</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
     
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -552,24 +566,6 @@ rank(f^{\alpha_{j-1}}_{\alpha_i})-rank(f^{\alpha_j}_{\alpha_i})+rank(f^{\alpha_j
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -982,8 +978,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
