@@ -78,6 +78,8 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -201,10 +203,8 @@
 </head>
 
     
-        <body class="home-body">
     
-    
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -220,34 +220,21 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/black.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Everything is Connected
-            <!-- 文章页  -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
-            
-            
-                Yueqi Cao's Blog
-            
-            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -384,395 +371,10 @@ T_p\tilde{M}=T_pM\oplus T_p^\perp M</script><p>where $T_p^\perp M$, called the n
         </div>
     </article>
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/27/Random-Walk-and-Graph-Spectra/" >
-            
-                <span>Random Walk and Graph Spectra</span>
-        </a>
-        <div class="abstract-content">
-            <p>Random walks arise in many fields in mathematics and physics, recently in network analysis, graph learning, clustering etc. It also has a natural relation with spectral graph theory. The <a href="http://web.cs.elte.hu/~lovasz/erdos.pdf" target="_blank" rel="noopener">survey</a> written by L.Lovasz presents many beautiful results concerning random walks and graph spectra. We aim to write down some computation details missing in the original succinct paper.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Spectral Graph Theory">Spectral Graph Theory</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Random Walk">Random Walk</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/10/Spectral-Graph-Partitioning/" >
-            
-                <span>Spectral Graph Partitioning</span>
-        </a>
-        <div class="abstract-content">
-            <p>Informally, the problem of graph partitioning, or graph clustering, can be stated as follows: we want to partition a graph into several parts such that there are fewer edges between groups but more edges within groups. If there is a measurement on edges, i.e. the edges are weighted, then it can also be stated that we want a partition that nodes within groups are more similar. Graph partitioning can be encountered in many areas such as <a href="http://www.stat.cmu.edu/~larry/=sml/" target="_blank" rel="noopener">statistical learning</a>, <a href="http://www.leonidzhukov.net/hse/2015/networks/" target="_blank" rel="noopener">network analysis</a>, <a href="https://web.stanford.edu/class/cs224w/" target="_blank" rel="noopener">graph learning</a>. Other than data science, it is also related to graph theory and computer vision. One recalls that there is a classical problem called <a href="https://en.wikipedia.org/wiki/Minimum_cut" target="_blank" rel="noopener">minimum cut</a> in graph theory, which can be solved in polynomial time by the <a href="[https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm](https://en.wikipedia.org/wiki/Stoer–Wagner_algorithm">Stoer-Wagner algorithm</a>). Graph partitioning can be regarded as a strengthened min-cut problem, since we not only want to find the minimal cut but also an ‘equitable’ partition.</p>
-<p> <a href="https://en.wikipedia.org/wiki/Spectral_clustering" target="_blank" rel="noopener">Spectral clustering</a> is one of the most popular approaches to solve graph partitioning. It has a long history which can date back to 1970s and it is popularized in data science as a machine learning method. Results obtained by spectral clustering often outperform traditional methods. Moreover, it is very simple to implement and the mathematics is nothing but standard linear algebra. A comprehensive <a href="https://arxiv.org/pdf/0711.0189.pdf" target="_blank" rel="noopener">tutorial</a> written by U. von Luxburg provides many different aspects to understand spectral clustering including random walk, perturbation theory and so on. Here we may cover the basics from the easiest way: linear algebra.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Spectral Graph Theory">Spectral Graph Theory</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/Forman-Ricci-Curvature-on-Complexes/" >
-            
-                <span>Forman-Ricci Curvature on Complexes</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="Bochner-Weitzenb-bf-ddot-o-ck-Formula-on-Riemannian-Manifolds"><a href="#Bochner-Weitzenb-bf-ddot-o-ck-Formula-on-Riemannian-Manifolds" class="headerlink" title="Bochner-Weitzenb$\bf\ddot{o}$ck Formula on Riemannian Manifolds"></a>Bochner-Weitzenb$\bf\ddot{o}$ck Formula on Riemannian Manifolds</h2><p>Let $(M,g)$ be an $n$-dimensional Riemannian manifold, and $\nabla$ be the Levi-Civita connection. Recall that for a smooth function (or 0-form) $f\in C^\infty(M)=\mathcal A^0(M)$, the <em>Laplacian of smooth functions</em> is defined as </p>
-<script type="math/tex; mode=display">
-\Delta_0(f)=\text{tr}\nabla^2(f)=\text{div}(\text{grad}(f))</script><p>The definition $\Delta_0=\text{tr}\nabla^2$ can be generalized to arbitrary $p$-forms and is called the <em>connection Laplacian</em>. Suppose in addition $M$ is oriented. Let $d:\mathcal A^p(M)\to\mathcal A^{p+1}(M)$ be the differential operator. We can define the adjoint operator $d^{*}$ of $d$ using the <em>Hodge star operator</em>. i.e. $d^{*}:\mathcal A^{p+1}(M)\to\mathcal A^p(M)$ is the operator satisfying $\langle d\alpha,\beta\rangle=\langle\alpha,d^{*}\beta\rangle=\int_Md\alpha\wedge {*}\beta$ for $\alpha\in\mathcal A^p(M)$ and $\beta\in\mathcal A^{p+1}$. The <em>Hodge Laplacian</em> is defined by </p>
-<script type="math/tex; mode=display">
-\Delta=dd^*+d^*d</script><p>By direct computation, we can see that $\Delta=-\Delta_0$ on $C^\infty(M)=\mathcal A^0(M)$. However, it is much more complicated in higher dimensions.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Forman Curvature">Forman Curvature</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/26/Local-to-Global-Convexity/" >
-            
-                <span>Local-to-Global Convexity</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="Convex-Functions"><a href="#Convex-Functions" class="headerlink" title="Convex Functions"></a>Convex Functions</h2><p>Recall that a function $f:I\to \mathbb R$ is called convex if </p>
-<script type="math/tex; mode=display">
-f(tx+(1-t)y)\le tf(x)+(1-t)f(y)</script><p>for any $t\in[0,1]$ and $x,y\in I$ where $I$ is an interval in $\mathbb R$. In some <a href="https://arxiv.org/pdf/1601.03363.pdf" target="_blank" rel="noopener">context</a>, $f$ is called $p$-convex if $f^p$ is convex in the meaning of (1). $f$ is called quasi-convex if </p>
-<script type="math/tex; mode=display">
-f(t)\le\max\{f(a),f(b)\}</script><p>for any $t\in [a,b]$. Note that if $f$ is convex then $f$ is necessarily quasi-convex. Quasi-convex functions are also called peakless in <a href="https://core.ac.uk/display/56641235" target="_blank" rel="noopener">Busemann’s articles</a>.</p>
-<p>If $f$ is differentiable, then we have a simple rule to determine its convexity: $f$ is convex if and only if $f’$ is non-decreasing. If $f$ is twice differentiable, then $f$ is convex if and only if $f’’$ is non-negative. From these rules we can see that convexity is a <strong>local</strong> property for differentiable functions. i.e. say that $f$ is locally convex if for any $x$ there is a neighborhood such that $f$ is convex on that neighborhood. If $f$ is differentiable and locally convex, by the above discussions locally convexity implies global convexity.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Metric Convexity">Metric Convexity</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/16/Gromov访谈/" >
-            
-                <span>Gromov访谈</span>
-        </a>
-        <div class="abstract-content">
-            翻译自2014年12月22日西蒙斯基金会对Gromov的采访.
-
-在向米沙·格罗莫夫（米沙是米哈伊尔的昵称）征求了18个月的同意后，我终于到巴黎左岸中心的奥登地铁站度过了完美的一天，想着这个男人最后究竟会不会放我鸽子。
-格罗莫夫在法国的高等科学研究所和纽约大学的库朗研究所任职。这使得他是一个很难亲自碰面的数学家。并且正如追随他的数学家所证实的，他的思想也不易让人捕捉。
-我在繁忙的街道上发现他，他如同一只稀有的鸟。其实，格罗莫夫看上去更像一个观鸟者，他的白色棒球帽向上倾斜在达尔文式的毛发上，他的衬衫紧紧地塞了起来。我们去了咖啡馆并点了巴黎水，随后的事情则进展快速。
-“什么是数学？这个问题太...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/16</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/30/Stability-Theorems-in-Topological-Data-Analysis-4/" >
-            
-                <span>Stability Theorems in Topological Data Analysis (4)</span>
-        </a>
-        <div class="abstract-content">
-            <p>Let $\mathbb X$ be a triangulable, compact metric space, $f,g:\mathbb X\to\mathbb R$ be tame functions (that is, $f$ and $g$ have finitely many homological critical values.) The sublevel sets of $f$ (resp. $g$) form a filtration of spaces. Using fields as coefficient groups, It gives a finite sequence of homology groups (vector spaces) in each dimension. A homology class is born if it is not an image from preceding homology groups, and is said to be died if it merges with other classes when entering succeeding homology groups. With the notion of birth and death, in each dimension one can associate $f$ (resp. $g$) a multiset in the two-plane called the persistence diagram, denoted by $D_k(f)$ (resp. $D_k(g)$) for $k=0,1,\cdots$. The bottleneck distance of $D_k(f)$ and $D_k(g)$ is defined as</p>
-<script type="math/tex; mode=display">
-d_B(D_k(f),D_k(g)):=\inf_{\gamma \text{ bijection}}\sup_{x\in D_k(f)}||x-\gamma(x)||_{\infty}</script><p>It was proved that persistence diagrams are robust to small perturbations of functions. More specifically, <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer (‘2007’)</a> proved that, for each $k$ one has</p>
-<script type="math/tex; mode=display">
-d_B(D_k(f),D_k(g))\le||f-g||_\infty</script><p>In analogy to Wasserstein distance, they note that bottleneck distance is a special case of a more general form. Let $D(f)$ be the union of all $D_k(f)$. Define the degree-$p$ Wasserstein distance between $D(f)$ and $D(g)$ by </p>
-<script type="math/tex; mode=display">
-W_p(D(f),D(g))=\left[\inf_{\gamma \text{ bijections}}\sum_{x\in D(f)}||x-\gamma(x)||_\infty^p\right]^{\frac{1}{p}}</script><p>To prove a stability result for Wasserstein distance, additional conditions are required for the space $\mathbb X$ and functions $f$ and $g$. We shall explain the details about the work of <a href="https://link.springer.com/article/10.1007%2Fs10208-010-9060-6" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer, Yuriy Mileyko (‘2010’)</a>. </p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "TDA Stability">TDA Stability</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/28/我是如何发现怪球的/" >
-            
-                <span>我是如何发现怪球的</span>
-        </a>
-        <div class="abstract-content">
-            翻译自John Milnor的短文Classification of $(n-1)$-connected $2n$-dimensional manifolds and the discovery of exotic spheres。
-
-（上个世纪）50年代在普林斯顿的时候，我对理解高维流形拓扑的基本问题非常感兴趣。我尤其关注$n-1$连通的$2n$维流形，因为那看起来像是一个人最有希望取得进展的最为简单的例子。（当然，和球面有相同伦型的流形更简单。然而为了理解这类流形所提出的广义庞加莱问题似乎也太难了，我都不知从何下手。）对一个闭的$2n$维流形$M^{2n}$，并且其低于中间维数的同伦...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/28</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/24/The-Space-of-Persistence-Diagrams/" >
-            
-                <span>The Space of Persistence Diagrams</span>
-        </a>
-        <div class="abstract-content">
-            <p><strong>Notation.</strong> In the following $\mathbb R^2$ is equipped with $\infty$-norm. Let $\Delta=\{(x,x)|x\in\mathbb R\}$ denote the diagonal, $\Delta_+=\{(x,y)|y&gt;x\}$ denote the upper off-diagonal points, and $\overline{\Delta}_+=\Delta\cup\Delta_+$ is the closure of $\Delta_+$. Set $\overline{\mathbb N}=\{1,2,\cdots\}\cup\{\infty\}$.</p>
-<hr>
-<p><strong>Definition.</strong> A persistence diagram $\mathcal T$ is a pair $(S_{\mathcal T},i_{\mathcal T})$ where $S_{\mathcal T}$ is a subset of $\mathbb R^2$ and $i_{\mathcal T}:S_{\mathcal T}\to \overline{\mathbb N}$ is a function such that </p>
-<ol>
-<li>$\Delta\subset S_{\mathcal T}\subset \overline{\Delta}_+$;</li>
-<li>$i_{\mathcal T}(\Delta)=\{\infty\}$.</li>
-</ol>
-<p>$S_{\mathcal T}$ is called the support of $\mathcal T$ while $i_{\mathcal T}$ is called the multiplicity function of $\mathcal T$.  </p>
-<p>Two persistence diagrams are said to be equal if they have the same support and multiplicity function. The graph of $i_{\mathcal T}$, defined by $G(i_{\mathcal T})=\{^k{\bf x}:=({\bf x},k)\in S_{\mathcal T}\times \overline{\mathbb N}|k\le i_{\mathcal T}({\bf x})\}$, is called the bundle space over $\mathcal T$. The projection $\pi_{\mathcal T}:G(i_{\mathcal T})\to S_{\mathcal T}$ to the first factor defines a map from the bundle space to the support with fiber $\pi_{\mathcal T}^{-1}({\bf x})=\{1,2,\cdots,i_{\mathcal T}({\bf x})\}$ for each point ${\bf x}\in S_{\mathcal T}$. It is an easy consequence that two persistence diagrams are equal if and only if they have the same bundle spaces.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "TDA Stability">TDA Stability</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >
-            
-                <span>Some Applications of Wasserstein Distances</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="OMT-I"><a href="#OMT-I" class="headerlink" title="OMT I"></a>OMT I</h2><p>The original setting for optimal mass transportation (OMT) consists of three objects.</p>
-<ol>
-<li>Two probability spaces $(X,\mu)$ and $(Y,\nu)$. i.e. $\mu(X)=\nu(Y)=1$;</li>
-<li>A measurable map $T:X\to Y$ such that $T_*\mu=\nu$. i.e. for any Borel set $B\subset Y$ it holds $\nu(B)=\mu(T^{-1}(B))$.</li>
-<li>A cost function $c:X\times Y\to \mathbb R_+\cup\{\infty\}$ such that for any $T$ in 2. the map $c_T(x)=c(x,T(x))$ is measurable. The integration $\int_X c(x,T(x))d\mu$ is called the total cost.</li>
-</ol>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Wasserstein Distances">Wasserstein Distances</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
-    </nav>
     
 </main>
             <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /avatar/snoopy.jpg >
-    <div class="profile-name">Yueqi Cao</div>
-    
-    <div class="profile-signature">
-        Genius only means hard working all one&#39;s life.  --Mendeleyev
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:bityueqi@gmail.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/YueqiCao" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
-            
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href= //www.baidu.com target="_black">friendA</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href= //www.google.com target="_black">friendB</a>
-                    </span>
-                
-            
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
             
         </div>
         <footer class="footer footer-unloaded">

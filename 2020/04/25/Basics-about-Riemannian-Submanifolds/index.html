@@ -22,7 +22,7 @@
     <meta name="description" content="Notes and Remarks about Maths-related Topics">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Everything is Connected</title>
+    <title>Basics about Riemannian Submanifolds · Everything is Connected</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -77,6 +77,8 @@
 
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
@@ -201,14 +203,23 @@
 </head>
 
     
-        <body class="home-body">
+        <body class="post-body">
     
     
-<header class="header index-header">
+<header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Everything is Connected</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Basics about Riemannian Submanifolds</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Everything is Connected</a>
 </header>
@@ -227,17 +238,17 @@ height:50vh;
     <!-- 主页  -->
     
     
-    <!-- 文章页  -->
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/black.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/purple.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Everything is Connected
-            <!-- 文章页  -->
+            Basics about Riemannian Submanifolds
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
@@ -245,12 +256,49 @@ height:50vh;
             <!-- 主页副标题  -->
             
             
-                Yueqi Cao's Blog
-            
-            <!-- 文章页  -->
+            <!-- 404 -->
             
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Submanifolds">Submanifolds</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.4k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/04/25</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -351,428 +399,176 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/04/25/Basics-about-Riemannian-Submanifolds/" >
-            
-                <span>Basics about Riemannian Submanifolds</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="The-Second-Fundamental-Form"><a href="#The-Second-Fundamental-Form" class="headerlink" title="The Second Fundamental Form"></a>The Second Fundamental Form</h2><p>Let $(\tilde{M},\tilde{g})$ be a Riemannian manifold and $M\subset \tilde{M}$ be a submanifold. By restricting $\tilde{g}$ on $M$ the submanifold is assigned with a natural Riemannian metric.  At each point $p$ we have the orthogonal decomposition with respect to $\tilde{g}_p$,</p>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="The-Second-Fundamental-Form"><a href="#The-Second-Fundamental-Form" class="headerlink" title="The Second Fundamental Form"></a>The Second Fundamental Form</h2><p>Let $(\tilde{M},\tilde{g})$ be a Riemannian manifold and $M\subset \tilde{M}$ be a submanifold. By restricting $\tilde{g}$ on $M$ the submanifold is assigned with a natural Riemannian metric.  At each point $p$ we have the orthogonal decomposition with respect to $\tilde{g}_p$,</p>
 <script type="math/tex; mode=display">
-T_p\tilde{M}=T_pM\oplus T_p^\perp M</script><p>where $T_p^\perp M$, called the normal space at $p$, denotes the orthogonal complement of $T_pM$ in $T_p\tilde{M}$. Let $T^\perp M=\cup_{p\in M}T_p^\perp M$. It can be verified that $T^\perp M$ is a vector bundle on $M$, called the normal bundle. The idea to study Riemannian submanifolds is straightforward: <strong>we differentiate the vector fields along $M$ and look at its tangent components and normal components respectively</strong>.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/04/25</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Submanifolds">Submanifolds</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/27/Random-Walk-and-Graph-Spectra/" >
-            
-                <span>Random Walk and Graph Spectra</span>
-        </a>
-        <div class="abstract-content">
-            <p>Random walks arise in many fields in mathematics and physics, recently in network analysis, graph learning, clustering etc. It also has a natural relation with spectral graph theory. The <a href="http://web.cs.elte.hu/~lovasz/erdos.pdf" target="_blank" rel="noopener">survey</a> written by L.Lovasz presents many beautiful results concerning random walks and graph spectra. We aim to write down some computation details missing in the original succinct paper.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Spectral Graph Theory">Spectral Graph Theory</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Random Walk">Random Walk</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/03/10/Spectral-Graph-Partitioning/" >
-            
-                <span>Spectral Graph Partitioning</span>
-        </a>
-        <div class="abstract-content">
-            <p>Informally, the problem of graph partitioning, or graph clustering, can be stated as follows: we want to partition a graph into several parts such that there are fewer edges between groups but more edges within groups. If there is a measurement on edges, i.e. the edges are weighted, then it can also be stated that we want a partition that nodes within groups are more similar. Graph partitioning can be encountered in many areas such as <a href="http://www.stat.cmu.edu/~larry/=sml/" target="_blank" rel="noopener">statistical learning</a>, <a href="http://www.leonidzhukov.net/hse/2015/networks/" target="_blank" rel="noopener">network analysis</a>, <a href="https://web.stanford.edu/class/cs224w/" target="_blank" rel="noopener">graph learning</a>. Other than data science, it is also related to graph theory and computer vision. One recalls that there is a classical problem called <a href="https://en.wikipedia.org/wiki/Minimum_cut" target="_blank" rel="noopener">minimum cut</a> in graph theory, which can be solved in polynomial time by the <a href="[https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm](https://en.wikipedia.org/wiki/Stoer–Wagner_algorithm">Stoer-Wagner algorithm</a>). Graph partitioning can be regarded as a strengthened min-cut problem, since we not only want to find the minimal cut but also an ‘equitable’ partition.</p>
-<p> <a href="https://en.wikipedia.org/wiki/Spectral_clustering" target="_blank" rel="noopener">Spectral clustering</a> is one of the most popular approaches to solve graph partitioning. It has a long history which can date back to 1970s and it is popularized in data science as a machine learning method. Results obtained by spectral clustering often outperform traditional methods. Moreover, it is very simple to implement and the mathematics is nothing but standard linear algebra. A comprehensive <a href="https://arxiv.org/pdf/0711.0189.pdf" target="_blank" rel="noopener">tutorial</a> written by U. von Luxburg provides many different aspects to understand spectral clustering including random walk, perturbation theory and so on. Here we may cover the basics from the easiest way: linear algebra.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/10</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Spectral Graph Theory">Spectral Graph Theory</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/02/16/Forman-Ricci-Curvature-on-Complexes/" >
-            
-                <span>Forman-Ricci Curvature on Complexes</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="Bochner-Weitzenb-bf-ddot-o-ck-Formula-on-Riemannian-Manifolds"><a href="#Bochner-Weitzenb-bf-ddot-o-ck-Formula-on-Riemannian-Manifolds" class="headerlink" title="Bochner-Weitzenb$\bf\ddot{o}$ck Formula on Riemannian Manifolds"></a>Bochner-Weitzenb$\bf\ddot{o}$ck Formula on Riemannian Manifolds</h2><p>Let $(M,g)$ be an $n$-dimensional Riemannian manifold, and $\nabla$ be the Levi-Civita connection. Recall that for a smooth function (or 0-form) $f\in C^\infty(M)=\mathcal A^0(M)$, the <em>Laplacian of smooth functions</em> is defined as </p>
+T_p\tilde{M}=T_pM\oplus T_p^\perp M</script><p>where $T_p^\perp M$, called the normal space at $p$, denotes the orthogonal complement of $T_pM$ in $T_p\tilde{M}$. Let $T^\perp M=\cup_{p\in M}T_p^\perp M$. It can be verified that $T^\perp M$ is a vector bundle on $M$, called the normal bundle. The idea to study Riemannian submanifolds is straightforward: <strong>we differentiate the vector fields along $M$ and look at its tangent components and normal components respectively</strong>.<a id="more"></a> Let $\tilde{\nabla}$ be the metric connection on $\tilde{M}$ and $X\in\Gamma(TM)$ be a tangent vector field on $M$. On the one hand, for any vector fields $X,Y\in \Gamma(TM)$, we have </p>
 <script type="math/tex; mode=display">
-\Delta_0(f)=\text{tr}\nabla^2(f)=\text{div}(\text{grad}(f))</script><p>The definition $\Delta_0=\text{tr}\nabla^2$ can be generalized to arbitrary $p$-forms and is called the <em>connection Laplacian</em>. Suppose in addition $M$ is oriented. Let $d:\mathcal A^p(M)\to\mathcal A^{p+1}(M)$ be the differential operator. We can define the adjoint operator $d^{*}$ of $d$ using the <em>Hodge star operator</em>. i.e. $d^{*}:\mathcal A^{p+1}(M)\to\mathcal A^p(M)$ is the operator satisfying $\langle d\alpha,\beta\rangle=\langle\alpha,d^{*}\beta\rangle=\int_Md\alpha\wedge {*}\beta$ for $\alpha\in\mathcal A^p(M)$ and $\beta\in\mathcal A^{p+1}$. The <em>Hodge Laplacian</em> is defined by </p>
+\tilde{\nabla}_XY=(\tilde{\nabla}_XY)^\top+(\tilde{\nabla}_XY)^\perp</script><p>The first term is nothing but the covariant derivative of $Y$ on $M$. Let $\nabla$ be the metric connection on $M$ with respect to the induced Riemannian metric. Then $(\tilde{\nabla}_XY)^\top=\nabla_XY$. Define </p>
 <script type="math/tex; mode=display">
-\Delta=dd^*+d^*d</script><p>By direct computation, we can see that $\Delta=-\Delta_0$ on $C^\infty(M)=\mathcal A^0(M)$. However, it is much more complicated in higher dimensions.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/16</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Forman Curvature">Forman Curvature</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/26/Local-to-Global-Convexity/" >
-            
-                <span>Local-to-Global Convexity</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="Convex-Functions"><a href="#Convex-Functions" class="headerlink" title="Convex Functions"></a>Convex Functions</h2><p>Recall that a function $f:I\to \mathbb R$ is called convex if </p>
+h(X,Y)=(\tilde{\nabla}_XY)^\perp=\tilde{\nabla}_XY-\nabla_XY</script><p>It can be verified that $h$ is a normal-bundle-valued symmetric tensor field on $M$, called <strong>the second fundamental form</strong>. Equation (3) is called <strong>the Gauss formula</strong>.</p>
+<p><strong>Remark.</strong> Given $\xi\in \Gamma(T^\perp M)$, we can define a tensor field $\Pi_\xi(X,Y)=\tilde{g}(h(X,Y),\xi)$. In literature $\Pi$ is also called the second fundamental form. </p>
+<p>On the other hand, for a vector field $\xi\in \Gamma(T^\perp M)$, we have </p>
 <script type="math/tex; mode=display">
-f(tx+(1-t)y)\le tf(x)+(1-t)f(y)</script><p>for any $t\in[0,1]$ and $x,y\in I$ where $I$ is an interval in $\mathbb R$. In some <a href="https://arxiv.org/pdf/1601.03363.pdf" target="_blank" rel="noopener">context</a>, $f$ is called $p$-convex if $f^p$ is convex in the meaning of (1). $f$ is called quasi-convex if </p>
+\tilde{\nabla}_X\xi=(\tilde{\nabla}_X\xi)^\top+(\tilde{\nabla}_X\xi)^\perp</script><p>Define the connection $\nabla^\perp:\Gamma(T^\perp M)\times\Gamma(TM)\to \Gamma(T^\perp M)$ by $(\nabla^\perp)_X\xi=(\tilde{\nabla}_X\xi)^\perp$. It can be verified that $\nabla^\perp$ is a connection on the normal bundle $T^\perp M$ which is compatible with the bundle metric, called <strong>the normal connection</strong>. Define </p>
 <script type="math/tex; mode=display">
-f(t)\le\max\{f(a),f(b)\}</script><p>for any $t\in [a,b]$. Note that if $f$ is convex then $f$ is necessarily quasi-convex. Quasi-convex functions are also called peakless in <a href="https://core.ac.uk/display/56641235" target="_blank" rel="noopener">Busemann’s articles</a>.</p>
-<p>If $f$ is differentiable, then we have a simple rule to determine its convexity: $f$ is convex if and only if $f’$ is non-decreasing. If $f$ is twice differentiable, then $f$ is convex if and only if $f’’$ is non-negative. From these rules we can see that convexity is a <strong>local</strong> property for differentiable functions. i.e. say that $f$ is locally convex if for any $x$ there is a neighborhood such that $f$ is convex on that neighborhood. If $f$ is differentiable and locally convex, by the above discussions locally convexity implies global convexity.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Metric Convexity">Metric Convexity</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/16/Gromov访谈/" >
-            
-                <span>Gromov访谈</span>
-        </a>
-        <div class="abstract-content">
-            翻译自2014年12月22日西蒙斯基金会对Gromov的采访.
-
-在向米沙·格罗莫夫（米沙是米哈伊尔的昵称）征求了18个月的同意后，我终于到巴黎左岸中心的奥登地铁站度过了完美的一天，想着这个男人最后究竟会不会放我鸽子。
-格罗莫夫在法国的高等科学研究所和纽约大学的库朗研究所任职。这使得他是一个很难亲自碰面的数学家。并且正如追随他的数学家所证实的，他的思想也不易让人捕捉。
-我在繁忙的街道上发现他，他如同一只稀有的鸟。其实，格罗莫夫看上去更像一个观鸟者，他的白色棒球帽向上倾斜在达尔文式的毛发上，他的衬衫紧紧地塞了起来。我们去了咖啡馆并点了巴黎水，随后的事情则进展快速。
-“什么是数学？这个问题太...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/16</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/30/Stability-Theorems-in-Topological-Data-Analysis-4/" >
-            
-                <span>Stability Theorems in Topological Data Analysis (4)</span>
-        </a>
-        <div class="abstract-content">
-            <p>Let $\mathbb X$ be a triangulable, compact metric space, $f,g:\mathbb X\to\mathbb R$ be tame functions (that is, $f$ and $g$ have finitely many homological critical values.) The sublevel sets of $f$ (resp. $g$) form a filtration of spaces. Using fields as coefficient groups, It gives a finite sequence of homology groups (vector spaces) in each dimension. A homology class is born if it is not an image from preceding homology groups, and is said to be died if it merges with other classes when entering succeeding homology groups. With the notion of birth and death, in each dimension one can associate $f$ (resp. $g$) a multiset in the two-plane called the persistence diagram, denoted by $D_k(f)$ (resp. $D_k(g)$) for $k=0,1,\cdots$. The bottleneck distance of $D_k(f)$ and $D_k(g)$ is defined as</p>
+A_\xi(X)=-(\tilde{\nabla}_X\xi)^\top</script><p>The operator $A_\xi:T_pM\to T_pM$ is called <strong>the shape operator</strong> or <strong>the Weingarten map</strong>. The minus sign is chosen so that the following equation holds</p>
 <script type="math/tex; mode=display">
-d_B(D_k(f),D_k(g)):=\inf_{\gamma \text{ bijection}}\sup_{x\in D_k(f)}||x-\gamma(x)||_{\infty}</script><p>It was proved that persistence diagrams are robust to small perturbations of functions. More specifically, <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer (‘2007’)</a> proved that, for each $k$ one has</p>
+\tilde{g}(A_\xi(X),Y)=\tilde{g}(h(X,Y),\xi)</script><p>The equation</p>
 <script type="math/tex; mode=display">
-d_B(D_k(f),D_k(g))\le||f-g||_\infty</script><p>In analogy to Wasserstein distance, they note that bottleneck distance is a special case of a more general form. Let $D(f)$ be the union of all $D_k(f)$. Define the degree-$p$ Wasserstein distance between $D(f)$ and $D(g)$ by </p>
+\tilde{\nabla}_X\xi=-A_\xi(X)+\nabla^\perp_X\xi</script><p>is called <strong>the Weingarten formula</strong>.</p>
+<p><strong>Example.</strong> Let $M^{d-1}\subseteq \mathbb{E}^d$ be a hypersurface, $\xi$ be a unit normal vector field on $M$. <strong>The Gauss map</strong> $g:M\to \mathbb{S}^{d-1}$ is defined by $g(p)=\xi_p$. For any $X\in T_pM$, let $\gamma$ be a smooth curve such that $\gamma’(0)=X$. Then</p>
 <script type="math/tex; mode=display">
-W_p(D(f),D(g))=\left[\inf_{\gamma \text{ bijections}}\sum_{x\in D(f)}||x-\gamma(x)||_\infty^p\right]^{\frac{1}{p}}</script><p>To prove a stability result for Wasserstein distance, additional conditions are required for the space $\mathbb X$ and functions $f$ and $g$. We shall explain the details about the work of <a href="https://link.springer.com/article/10.1007%2Fs10208-010-9060-6" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer, Yuriy Mileyko (‘2010’)</a>. </p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "TDA Stability">TDA Stability</a>
-    
-</div>
-            
-        </div>
+A_\xi X=-(\xi(\gamma)'(0))^\top=-g(\gamma)'(0)=-g_*(X)</script><p>that is, $-A_\xi=g_*$ is the differential of Gauss map. It is clear from this example that for hypersurfaces the normal connection is trivial.</p>
+<p>Let $e_1,\cdots,e_m$ be a basis of the tangent space and $\xi_1,\cdots,\xi_{d-m}$ be a basis of the normal space. Assume</p>
+<script type="math/tex; mode=display">
+A_{\xi_\alpha}e_i=\sum_{j=1}^mA_{\alpha i}^je_j</script><p>Easy computation shows that</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\Pi_{\xi_\alpha}(e_i,e_j)=A_{\alpha i}^j\\
+&h(e_i,e_j)=\sum_{\alpha=1}^{d-m}A_{\alpha i}^j\xi_\alpha
+\end{aligned}</script><p>Define the mean curvature vector field on $M$ by $H=\frac{1}{m}trace(h)$ where $m$ is the dimension of $M$. By definition $H$ is independent of the choice of basis. Under the above notation we have</p>
+<script type="math/tex; mode=display">
+H=\frac{1}{m}\sum_{i=1}^m h(e_i,e_i)=\frac{1}{m}\sum_{i=1}^m\sum_{\alpha=1}^{d-m}A_{\alpha i}^i\xi_\alpha=\sum_{\alpha=1}^{d-m}(\frac{1}{m}\text{trace}(A_{\alpha})\xi_{\alpha})=\sum_{\alpha=1}^{d-m}H^\alpha\xi_\alpha</script><p>where $H^\xi=\tilde{g}(H,\xi)$ is called the mean curvature along $\xi$. The value $|H|=(\sum_\alpha|H^\alpha|^2)^{1/2}=\frac{1}{m}(\sum_{\alpha=1}^{d-m}\text{trace}(A_\alpha)^2)^{1/2}$ is called the mean curvature. If $M$ is a hypersurface, $|H|=\frac{1}{m}|\text{trace}(A_\alpha)|$. For a surface in 3-dimensional Euclidean space, this coincides with <strong>the absolute mean curvature</strong>. </p>
+<h2 id="Fundamental-Equations"><a href="#Fundamental-Equations" class="headerlink" title="Fundamental Equations"></a>Fundamental Equations</h2><p>To involve the curvature tensor, we need second order derivative. Thus, we differentiate the Gauss formula and the Weingarten formula. For Gauss formula we have</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\tilde{\nabla}_X\tilde{\nabla}_YZ&=\tilde{\nabla}_X\nabla_YZ+\tilde{\nabla}_Xh(Y,Z)\\
+&=\nabla_X\nabla_Y+h(X,\nabla_YZ)-A_{h(Y,Z)}(X)+\nabla^\perp_Xh(Y,Z)
+\end{aligned}</script><p>If we define the curvature tensor to be $\tilde{R}(X,Y)=[\tilde{\nabla}_X,\tilde{\nabla}_Y]-\tilde{\nabla}_{[X,Y]}$, we have</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\tilde{R}(X,Y)Z=&R(X,Y)Z+h(X,\nabla_YZ)-h(Y,\nabla_XZ)-h([X,Y],Z)\\
+&-A_{h(Y,Z)}(X)+A_{h(X,Z)}(Y)+\nabla^\perp_Xh(Y,Z)-\nabla^\perp_Yh(X,Z)
+\end{aligned}</script><p>Define the covariant differentiation of $h$ to be</p>
+<script type="math/tex; mode=display">
+(\nabla_Xh)(Y,Z)=\nabla^\perp_Xh(Y,Z)-h(\nabla_XY,Z)-h(\nabla_XZ,Y)</script><p>Then the tangent component of $\tilde{R}(X,Y)Z$ is </p>
+<script type="math/tex; mode=display">
+(\tilde{R}(X,Y)Z)^\top=R(X,Y)Z+A_{h(X,Z)}(Y)-A_{h(Y,Z)}(X)</script><p>while the normal component is</p>
+<script type="math/tex; mode=display">
+(\tilde{R}(X,Y)Z)^\perp=(\nabla_Xh)(Y,Z)-(\nabla_Yh)(X,Z)</script><p>Equation (12) is called <strong>the Gauss equation</strong> and equation (13) is called <strong>the Codazzi equation</strong>. We can rewrite the Gauss equation as </p>
+<script type="math/tex; mode=display">
+\tilde{R}(X,Y,Z,W)=R(X,Y,Z,W)+\langle h(X,Z),h(Y,W)\rangle-\langle h(Y,Z),h(X,W)\rangle</script><p>Especially the sectional curvature can be expressed as </p>
+<script type="math/tex; mode=display">
+\tilde{K}(X,Y)=K(X,Y)-\langle h(X,X),h(Y,Y)\rangle+\|h(X,Y)\|^2</script><p>If the ambient space is Euclidean, then $\overline{R}$ vanishes identically. Let $e_i,e_j$ span a two-plane $\pi_{ij}$, then the sectional curvature of $\pi_{ij}$ is </p>
+<script type="math/tex; mode=display">
+K(\pi_{ij})=-\|h(e_i,e_j)\|^2+\langle h(e_i,e_i),h(e_j,e_j)\rangle=\sum_{\alpha=1}^{d-m}(-(A_{\alpha i}^j)^2+A_{\alpha i}^iA_{\alpha j}^j)</script><p>From $A_\alpha$ we extract the $2\times 2$ submatrix $A_\alpha|_{\pi_{ij}}$ with $i$th and $j$th row and column. Then </p>
+<script type="math/tex; mode=display">
+K(\pi_{ij})=\sum_{\alpha=1}^{d-m}\det(A_\alpha|_{\pi_{ij}})</script><p><strong>Example.</strong> If $M$ is a hypersurface of $\mathbb{E}^d$ with a unit normal vector field $\xi$, the sectional curvature is $K(\pi_{ij})=\det(A_\xi|_{\pi_{ij}})$. If $e_1,\cdots,e_{d-1}$ is a basis that diagonalizes the shape operator with eigenvalues $\lambda_1,\cdots,\lambda_{d-1}$, then $K(\pi_{ij})=\lambda_i\lambda_j$.  The eigenvalues are called <strong>principal curvature</strong> and eigenvectors are called <strong>principal directions</strong>. The determinant of $A_\xi$ is called <strong>the Gauss-Kronecker curvature</strong>.</p>
+<p>Similarly we can differentiate the Weingarten formula, which yields</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\tilde{\nabla}_X\tilde{\nabla}_Y\xi&=-\tilde{\nabla}_XA_\xi(Y)+\tilde{\nabla}_X\nabla^\perp_Y\xi\\
+&=-\nabla_X A_\xi(Y)-h(X,A_\xi(Y))-A_{\nabla^\perp_Y\xi}(X)+\nabla^\perp_X\nabla^\perp_Y\xi
+\end{aligned}</script><p>Define the curvature tensor on the normal bundle by $R^\perp(X,Y)\xi=[\nabla^\perp_X,\nabla^\perp_Y]\xi-\nabla^\perp_{[X,Y]}\xi$, and define the covariant differentiation of the shape operator by $(\nabla_XA)_\xi(Y)=\nabla_X(A_\xi Y)-A_{\nabla^\perp_X\xi}(Y)-A_\xi(\nabla_XY)$. We obtain that</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\tilde{R}(X,Y)\xi=&R^\perp(X,Y)\xi-(\nabla_X A)_\xi(Y)+(\nabla_Y A)_\xi(X)\\
+&-h(X,A_\xi(Y))+h(Y,A_\xi(X))
+\end{aligned}</script><p>The tangent component is </p>
+<script type="math/tex; mode=display">
+(\tilde{R}(X,Y)\xi)^\top=-(\nabla_X A)_\xi(Y)+(\nabla_Y A)_\xi(X)</script><p>while the normal component is </p>
+<script type="math/tex; mode=display">
+(\tilde{R}(X,Y)\xi)^\perp=R^\perp(X,Y)\xi+h(X,A_\xi(Y))-h(Y,A_\xi(X))</script><p>Equation (19) is called <strong>the Ricci equation</strong>. Note that equation (18) is equivalent to the Codazzi equation as follows</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\langle\tilde{R}(X,Y)\xi,Z\rangle=&\langle-(\nabla_X A)_\xi(Y),Z\rangle+\langle(\nabla_Y A)_\xi(X),Z\rangle\\
+=&\langle\nabla_X(A_\xi Y)-A_{\nabla^\perp_X\xi}(Y)-A_\xi(\nabla_XY),Z\rangle\\
+&+\langle\nabla_Y(A_\xi X)-A_{\nabla^\perp_Y\xi}(X)-A_\xi(\nabla_YX),Z\rangle\\
+=&-\langle\nabla^\perp_X\xi,h(Y,Z)\rangle-\langle\nabla^\perp_Y\xi,h(X,Z)\rangle-\langle h(\nabla_XY,Z),\xi\rangle\\
+&-\langle h(\nabla_YX,Z),\xi\rangle+X\langle h(Y,Z),\xi\rangle-\langle h(\nabla_XZ,Y),\xi \rangle\\
+&+Y\langle h(X,Z),\xi\rangle-\langle h(\nabla_YZ,X),\xi\rangle\\
+=&\langle\nabla_X^\perp h(Y,Z),\xi\rangle+\langle\nabla_Y^\perp h(X,Z),\xi\rangle-\langle h(\nabla_XY,Z),\xi\rangle\\
+&-\langle h(\nabla_YX,Z),\xi\rangle-\langle h(\nabla_XZ,Y),\xi \rangle-\langle h(\nabla_YZ,X),\xi\rangle\\
+=&\langle(\nabla_X h)(Y,Z)-(\nabla_Y h)(X,Z),\xi\rangle\\
+=&\langle\tilde{R}(X,Y)Z,\xi\rangle
+\end{aligned}</script><p>The three equations (Gauss, Codazzi, Ricci) are called fundamental equations for a submanifold $M\hookrightarrow\tilde{M}$. </p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="Planar-Curves"><a href="#Planar-Curves" class="headerlink" title="Planar Curves"></a>Planar Curves</h3><p>A planar curve is a 1-dimensional manifold embedded in the 2-plane. Let $\mathbf{t}$ be the tangent vector field and $\mathbf{n}$ be the normal vector field. We have </p>
+<script type="math/tex; mode=display">
+A_{\mathbf{n}}\mathbf{t}=-(\overline{D}_{\mathbf{n}}\mathbf{t})^\top=\kappa \mathbf{t}</script><p>where $\kappa$ is the curvature. Thus the estimation can be simply given by </p>
+<script type="math/tex; mode=display">
+\hat{A}=\frac{\Delta\mathbf{n}\cdot\mathbf{t}}{\Delta p\cdot\mathbf{t}}\approx \kappa</script><h3 id="Space-Curves"><a href="#Space-Curves" class="headerlink" title="Space Curves"></a>Space Curves</h3><p>A space curve is a 1-dimensional manifold embedded in 3-space. Let $\mathbf{t}$ be the tangent vector field, $\mathbf{n}$ be the normal vector field, and $\mathbf{b}$ be the binormal vector field. We have the Frenet formula</p>
+<script type="math/tex; mode=display">
+\frac{d}{ds}\left(\begin{array}{c}\mathbf{t}\\ \mathbf{n}\\ \mathbf{b}\end{array}\right)=\left(\begin{array}{ccc}0&\kappa&0\\ -\kappa&0&\tau\\ 0&-\tau&0\end{array}\right)\left(\begin{array}{c}\mathbf{t}\\ \mathbf{n}\\ \mathbf{b}\end{array}\right)</script><p>where $\kappa$ is curvature and $\tau$ is torsion. Let $\xi=\cos(\theta)\mathbf{n}+\sin(\theta)\mathbf{b}$ be a unit normal vector field. We have</p>
+<script type="math/tex; mode=display">
+A_\xi\mathbf{t}=\cos(\theta)A_\mathbf{n}\mathbf{t}+\sin(\theta)A_\mathbf{b}\mathbf{t}=\cos(\theta)\kappa\mathbf{t}</script><p>Similarly, let $\xi_\perp=-\sin(\theta)\mathbf{n}+\cos(\theta)\mathbf{b}$ be the unit normal vector perpendicular to $\xi$. Then</p>
+<script type="math/tex; mode=display">
+A_{\xi_\perp}\mathbf{t}=-\sin(\theta)\kappa\mathbf{t}</script><p>By definition the mean vector field is $H=\cos(\theta)\kappa\xi-\sin(\theta)\kappa\xi_\perp=\kappa\mathbf{n}$. The mean curvature is $|H|=\kappa$.</p>
+<h3 id="Surfaces"><a href="#Surfaces" class="headerlink" title="Surfaces"></a>Surfaces</h3><p>A surface is a 2-dimensional manifold embedded in 3-space. The shape operator coincides with the differential of Gauss map (with an additional minus sign). Thus the norm of mean curvature vector $|H|$ is in fact the absolute value of mean curvature for surfaces. The sectional curvature is Gaussian curvature for surfaces. </p>
+<h3 id="Clifford-Torus"><a href="#Clifford-Torus" class="headerlink" title="Clifford Torus"></a>Clifford Torus</h3><p>Let $f:\mathbb{R}^2\to\mathbb{R}^4$ be defined by </p>
+<script type="math/tex; mode=display">
+f(\theta,\phi)=\frac{1}{\sqrt{2}}(\cos(\sqrt{2}\theta),\sin(\sqrt{2}\theta),\cos(\sqrt{2}\phi),\sin(\sqrt{2}\phi))</script><p>The image of $f$ is $\mathbb{S}^1(\sqrt{1/2})\times\mathbb{S}^1(\sqrt{1/2})$, hence a torus. By computation the tangent vector fields are</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& f_\theta = (-\sin(\sqrt{2}\theta),\cos(\sqrt{2}\theta),0,0)\\
+& f_\phi = (0,0,-\sin(\sqrt{2}\phi),\cos(\sqrt{2}\phi))
+\end{aligned}</script><p>The Riemannian metric is given by </p>
+<script type="math/tex; mode=display">
+g = d\theta^2+d\phi^2</script><p>which is a flat metric, implying the sectional curvature is identically zero. The normal vector fields are given by</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \xi = \frac{1}{\sqrt{2}}(-\cos(\sqrt{2}\theta),-\sin(\sqrt{2}\theta),\cos(\sqrt{2}\phi),\sin(\sqrt{2}\phi))\\
+& \nu =\frac{1}{\sqrt{2}}(\cos(\sqrt{2}\theta),\sin(\sqrt{2}\theta),\cos(\sqrt{2}\phi),\sin(\sqrt{2}\phi))
+\end{aligned}</script><p>By definition the shape operators are given by </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&A_\xi[f_\theta,f_\phi]=[f_\theta,f_\phi]\left[\begin{array}{cc}1&0\\0&-1\end{array}\right]\\
+&A_\nu[f_\theta,f_\phi]=[f_\theta,f_\phi]\left[\begin{array}{cc}-1&0\\0&-1\end{array}\right]
+\end{aligned}</script><p>Therefore, the mean curvature vector field is $H=-\nu$ and the mean curvature is $1$.</p>
+<h3 id="Rotation-Group"><a href="#Rotation-Group" class="headerlink" title="Rotation Group"></a>Rotation Group</h3><p>Let $SO(2)$ be the rotation group which consists of matrices in the form</p>
+<script type="math/tex; mode=display">
+\left[\begin{array}{cc}\cos(\theta)&-\sin(\theta)\\ \sin(\theta)& \cos(\theta)\end{array}\right]</script><p>which can be viewed as a curve in the 4-space. Consider the parametrization</p>
+<script type="math/tex; mode=display">
+f(\theta)=(\cos(\theta),\sin(\theta),-\sin(\theta),\cos(\theta))</script><p>Direct computation shows that the tangent vector field is </p>
+<script type="math/tex; mode=display">
+e_\theta=1/\sqrt{2}(-\sin(\theta),\cos(\theta),-\cos(\theta),-\sin(\theta))</script><p>and consider the following basis of normal space</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \xi_1=(\cos(\theta),\sin(\theta),0,0)\\
+& \xi_2=(0,0,\sin(\theta),-\cos(\theta))\\
+& \xi_3=1/\sqrt{2}(-\sin(\theta),\cos(\theta),\cos(\theta),\sin(\theta))
+\end{aligned}</script><p>Then the shape operators are</p>
+<script type="math/tex; mode=display">
+A_{\xi_1}e_\theta=-1/\sqrt{2}e_\theta,A_{\xi_2}e_\theta=1/\sqrt{2}e_\theta,A_{\xi_3}e_\theta=0</script><p>Hence the mean vector field is $H(\theta)=-1/\sqrt{2}\xi_1+1/\sqrt{2}\xi_2=-1/\sqrt{2}f(\theta)$. </p>
+<h3 id="Ellipsoid"><a href="#Ellipsoid" class="headerlink" title="Ellipsoid"></a>Ellipsoid</h3><p>Let $F:\mathbb{R}^{n+1}\to\mathbb{R}$ be the function </p>
+<script type="math/tex; mode=display">
+F(x^1,\cdots,x^{n+1})=\sum_{i=1}^{n+1}(\frac{x^i}{a^i})^2-1</script><p>Since $\nabla F(x)\neq 0$ for all $x$ such that $F(x)=0$, the level set $M=F^{-1}(0)$ is a $n$-dimensional submanifold. $\nabla F/|\nabla F|$ serves as the unit normal vector field on $M$. The mean curvature is given by the following formula</p>
+<script type="math/tex; mode=display">
+H=-\frac{1}{n}div(\frac{\nabla F}{\|\nabla F\|})</script>
     </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/28/我是如何发现怪球的/" >
-            
-                <span>我是如何发现怪球的</span>
-        </a>
-        <div class="abstract-content">
-            翻译自John Milnor的短文Classification of $(n-1)$-connected $2n$-dimensional manifolds and the discovery of exotic spheres。
-
-（上个世纪）50年代在普林斯顿的时候，我对理解高维流形拓扑的基本问题非常感兴趣。我尤其关注$n-1$连通的$2n$维流形，因为那看起来像是一个人最有希望取得进展的最为简单的例子。（当然，和球面有相同伦型的流形更简单。然而为了理解这类流形所提出的广义庞加莱问题似乎也太难了，我都不知从何下手。）对一个闭的$2n$维流形$M^{2n}$，并且其低于中间维数的同伦...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/28</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/24/The-Space-of-Persistence-Diagrams/" >
-            
-                <span>The Space of Persistence Diagrams</span>
-        </a>
-        <div class="abstract-content">
-            <p><strong>Notation.</strong> In the following $\mathbb R^2$ is equipped with $\infty$-norm. Let $\Delta=\{(x,x)|x\in\mathbb R\}$ denote the diagonal, $\Delta_+=\{(x,y)|y&gt;x\}$ denote the upper off-diagonal points, and $\overline{\Delta}_+=\Delta\cup\Delta_+$ is the closure of $\Delta_+$. Set $\overline{\mathbb N}=\{1,2,\cdots\}\cup\{\infty\}$.</p>
-<hr>
-<p><strong>Definition.</strong> A persistence diagram $\mathcal T$ is a pair $(S_{\mathcal T},i_{\mathcal T})$ where $S_{\mathcal T}$ is a subset of $\mathbb R^2$ and $i_{\mathcal T}:S_{\mathcal T}\to \overline{\mathbb N}$ is a function such that </p>
-<ol>
-<li>$\Delta\subset S_{\mathcal T}\subset \overline{\Delta}_+$;</li>
-<li>$i_{\mathcal T}(\Delta)=\{\infty\}$.</li>
-</ol>
-<p>$S_{\mathcal T}$ is called the support of $\mathcal T$ while $i_{\mathcal T}$ is called the multiplicity function of $\mathcal T$.  </p>
-<p>Two persistence diagrams are said to be equal if they have the same support and multiplicity function. The graph of $i_{\mathcal T}$, defined by $G(i_{\mathcal T})=\{^k{\bf x}:=({\bf x},k)\in S_{\mathcal T}\times \overline{\mathbb N}|k\le i_{\mathcal T}({\bf x})\}$, is called the bundle space over $\mathcal T$. The projection $\pi_{\mathcal T}:G(i_{\mathcal T})\to S_{\mathcal T}$ to the first factor defines a map from the bundle space to the support with fiber $\pi_{\mathcal T}^{-1}({\bf x})=\{1,2,\cdots,i_{\mathcal T}({\bf x})\}$ for each point ${\bf x}\in S_{\mathcal T}$. It is an easy consequence that two persistence diagrams are equal if and only if they have the same bundle spaces.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/24</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "TDA Stability">TDA Stability</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >
-            
-                <span>Some Applications of Wasserstein Distances</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="OMT-I"><a href="#OMT-I" class="headerlink" title="OMT I"></a>OMT I</h2><p>The original setting for optimal mass transportation (OMT) consists of three objects.</p>
-<ol>
-<li>Two probability spaces $(X,\mu)$ and $(Y,\nu)$. i.e. $\mu(X)=\nu(Y)=1$;</li>
-<li>A measurable map $T:X\to Y$ such that $T_*\mu=\nu$. i.e. for any Borel set $B\subset Y$ it holds $\nu(B)=\mu(T^{-1}(B))$.</li>
-<li>A cost function $c:X\times Y\to \mathbb R_+\cup\{\infty\}$ such that for any $T$ in 2. the map $c_T(x)=c(x,T(x))$ is measurable. The integration $\int_X c(x,T(x))d\mu$ is called the total cost.</li>
-</ol>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/09</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Wasserstein Distances">Wasserstein Distances</a>
-    
-</div>
-            
-        </div>
-    </article>
+    <!-- license  -->
     
     <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
-    </nav>
-    
-</main>
-            <!-- profile -->
+    <ul class="post-paginator">
+        <li class="next">
             
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /avatar/snoopy.jpg >
-    <div class="profile-name">Yueqi Cao</div>
-    
-    <div class="profile-signature">
-        Genius only means hard working all one&#39;s life.  --Mendeleyev
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
+        </li>
+        <li class="previous">
             
-                <a href="mailto:bityueqi@gmail.com" class="iconfont-archer email" title=email ></a>
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/03/27/Random-Walk-and-Graph-Spectra/" title= "Random Walk and Graph Spectra">
+                    <div class="prevTitle">Random Walk and Graph Spectra</div>
+                </a>
             
-        
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-        
-            
-                <a href="//github.com/YueqiCao" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
     
-        
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
     
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
-            
-        
     
 
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href= //www.baidu.com target="_black">friendA</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href= //www.google.com target="_black">friendB</a>
-                    </span>
-                
-            
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
             
         </div>
         <footer class="footer footer-unloaded">
@@ -852,6 +648,24 @@ W_p(D(f),D(g))=\left[\inf_{\gamma \text{ bijections}}\sum_{x\in D(f)}||x-\gamma(
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Second-Fundamental-Form"><span class="toc-number">1.</span> <span class="toc-text">The Second Fundamental Form</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fundamental-Equations"><span class="toc-number">2.</span> <span class="toc-text">Fundamental Equations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples"><span class="toc-number">3.</span> <span class="toc-text">Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Planar-Curves"><span class="toc-number">3.1.</span> <span class="toc-text">Planar Curves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Space-Curves"><span class="toc-number">3.2.</span> <span class="toc-text">Space Curves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Surfaces"><span class="toc-number">3.3.</span> <span class="toc-text">Surfaces</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Clifford-Torus"><span class="toc-number">3.4.</span> <span class="toc-text">Clifford Torus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotation-Group"><span class="toc-number">3.5.</span> <span class="toc-text">Rotation Group</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ellipsoid"><span class="toc-number">3.6.</span> <span class="toc-text">Ellipsoid</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1296,6 +1110,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({

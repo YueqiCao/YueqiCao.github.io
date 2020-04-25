@@ -346,6 +346,38 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/02/Stability-Theorems-in-Topological-Data-Analysis-3/" >
+            
+                <span>Stability Theorems in Topological Data Analysis (3)</span>
+        </a>
+        <div class="abstract-content">
+            <p>Perhaps the most important case in TDA is point cloud data, i.e. finite metric spaces. The collection of all compact metric spaces makes up a metric space under <a href="[https://en.wikipedia.org/wiki/Gromov%E2%80%93Hausdorff_convergence](https://en.wikipedia.org/wiki/Gromov–Hausdorff_convergence">Gromov-Hausdorff metric</a>). If we construct Rips filtrations for point clouds,  we obtain a map between metric spaces by sending each point cloud to its persistence diagram. It is natural to ask which properties will this map have. From the work of <a href="http://fodava.gatech.edu/files/reports/FODAVA-09-24.pdf" target="_blank" rel="noopener">F. Memoli etc.</a>, it is in fact a <strong>Lipschitz</strong> map. Therefore, the bottleneck distance between two persistence diagrams is bounded by the Gromov-Hausdorff distance between two point clouds. This stability shows that one can use TDA to classify different point clouds, which is a major object in shape analysis.</p>
+<p>Let $(Z,d_Z)$ be a (compact) metric space and $X,Y$ be subsets in $Z$. The Hausdorff distance between $X$ and $Y$ is defined as</p>
+<script type="math/tex; mode=display">
+d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_Z(x,y)\}.</script><p>The intuition is follows: For each $x\in X$, we can compute the distance between $x$ and $Y$, which is $\min_{y\in Y}d_Z(x,y)$. Then we take the largest value as the distance from $X$ to $Y$. The distance is the so called one-sided Hausdorff distance. Symmetrically, we compute the distance from $Y$ to $X$. The maximum is the so called (two-sided) Hausdorff distance.</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/02</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "TDA Stability">TDA Stability</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/" >
             
                 <span>Stability Theorems in Topological Data Analysis (2)</span>
@@ -922,9 +954,20 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 19
+        Total : 20
         </div>
         <!-- search  -->
         
@@ -937,6 +980,11 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/Basics-about-Riemannian-Submanifolds/" >Basics about Riemannian Submanifolds</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1063,11 +1111,13 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
     
         <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
     
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
+    
         <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
-        <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
-    
         <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
+    
+        <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
     
         <span class="sidebar-tag-name" data-tags="Spectral Graph Theory"><span class="iconfont-archer">&#xe606;</span>Spectral Graph Theory</span>
     
