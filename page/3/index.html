@@ -78,8 +78,6 @@
     <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -203,8 +201,10 @@
 </head>
 
     
+        <body class="home-body">
     
-<header class="header">
+    
+<header class="header index-header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -220,21 +220,34 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/black.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            Everything is Connected
+            <!-- 文章页  -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
+            
+            
+                Yueqi Cao's Blog
+            
+            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -346,62 +359,23 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/30/MSE-of-Locally-Linear-Regression/" >
+        <a class="abstract-title" href = "/2019/07/14/a proof of everything is connected/" >
             
-                <span>MSE of Locally Linear Regression</span>
+                <span>A Proof of &#39;Everything is connected&#39;</span>
         </a>
         <div class="abstract-content">
-            <h2 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h2><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
-<script type="math/tex; mode=display">
-y=g(x)+\epsilon(x),</script><p>where $g$ is a any smooth function, and $\epsilon(x)$ is a variable with zero mean and finite variance. Let $X_1,X_2,\cdots,X_n$ be i.i.d. samples with bounded density $f$, and $Y_1,Y_2,\cdots, Y_n$ be the corresponding responses (assume $X_i$’s are scalars ‘). By Taylor expansion, we have</p>
-<script type="math/tex; mode=display">
-Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
+            <h2 id="Stories"><a href="#Stories" class="headerlink" title="Stories"></a>Stories</h2><p>The idea about building my own blog was originated from a long time ago when I first read <a href="https://terrytao.wordpress.com/" target="_blank" rel="noopener">Terry Tao’s homepage</a>. In 2019, when I became a graduate student, I realized it is necessary to write down the mathematics to keep track of my research. Honestly speaking, repetitions and failures really make one suffer. It is those tiny progresses that encourage me to hold on.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/30</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/14</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linear Regression">Linear Regression</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Least Squares">Least Squares</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Nonparametric Estimates">Nonparametric Estimates</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/21/Bayesian-Linear-Regression/" >
-            
-                <span>Bayesian Linear Regression</span>
-        </a>
-        <div class="abstract-content">
-            <h2 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h2><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Linear Regression">Linear Regression</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Least Squares">Least Squares</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "About My Blog">About My Blog</a>
     
 </div>
             
@@ -410,8 +384,102 @@ Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
     
     <!-- paginator  -->
     
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+    
 </main>
             <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" alt="avatar" src= /avatar/snoopy.jpg >
+    <div class="profile-name">Yueqi Cao</div>
+    
+    <div class="profile-signature">
+        Genius only means hard working all one&#39;s life.  --Mendeleyev
+    </div>
+    
+    
+    <div class="profile-social">
+        
+    
+        
+            
+                <a href="mailto:bityueqi@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/YueqiCao" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    
+        <div class="friends">
+            <div>FRIENDS</div>
+            
+                
+                    <span>
+                        <a href= //www.yueqihome.site target="_black">Homepage</a>
+                    </span>
+                
+            
+                
+                    <span>
+                        <a href= //www.yueqicao.top target="_black">Blog</a>
+                    </span>
+                
+            
+                
+            
+        </div>
+    
+    
+</div>
             
         </div>
         <footer class="footer footer-unloaded">

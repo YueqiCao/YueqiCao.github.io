@@ -3,6 +3,86 @@
   
     
     <entry>
+      <title><![CDATA[Extrinsic Quantities of Euclidean Submanifolds]]></title>
+      <url>/2020/05/16/Extrinsic-Quantities-of-Euclidean-Submanifolds/</url>
+      <content type="html"><![CDATA[<p>Consider an $m$-dimensional compact Riemannian submanifold $\mathcal{M}$ of a Euclidean space $\mathbb{R}^n$ with $m<n$. there are two aspects to investigate the geometry and topology about submanifold. on one hand, can look at intrinsic quantities defined $\mathcal{m}$, say riemannian metric tensor, geodesics, jacobian fields sectional curvature. this has often been done in [lie group learning](https: arxiv.org pdf 1909.12057.pdf), [information geometry](http: math.ucr.edu home baez information ) so on. other extrinsic related embedding of submanifold into euclidean space, which include normal vectors (or spaces), second fundamental form mean curvature etc. , also useful important. for data scientists who always confront with situation where underlying manifold is unknown only random samples available, extrinsically choice. here we list some show their influences submanifold.<a id="more"></n$.></p>
+<h2 id="Reach-and-Medial-Axis"><a href="#Reach-and-Medial-Axis" class="headerlink" title="Reach and Medial Axis"></a>Reach and Medial Axis</h2><p>Let $\mathcal{NM}$ be the normal bundle of $\mathcal{M}$. Consider the map given by</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+E:\mathcal{NM}&\to \mathbb{R}^n\\
+(x,\xi)&\mapsto x+\xi
+\end{aligned}</script><p>A tubular neighborhood $\mathcal{M}^\tau$ is the diffeomorphic image under $E$ of some open subset $V\subseteq \mathcal{NM}$ of the form</p>
+<script type="math/tex; mode=display">
+V=\{(x,\xi)\in\mathcal{NM}:\|\xi\|<\tau(x)\}</script><p>where $\tau:\mathcal{M}\to \mathbb{R}$ is some positive function. That is, $\mathcal{M}^\tau=E(V)$. It is a fact that every embedded submanifold of $\mathbb{R}^n$ has a tubular neighborhood (See <a href="https://www.amazon.com/Introduction-Smooth-Manifolds-Graduate-Mathematics/dp/1441999817" target="_blank" rel="noopener">Theorem 6.17 of Lee</a>. Moreover, if $\mathcal{M}$ is compact, $\tau$ can be chosen to be a constant. The projection $\pi^\tau:\mathcal{M}^\tau\to\mathcal{M}$ sends a point $y\in\mathcal{M}^\tau$ to the closest point $\pi^\tau(y)\in\mathcal{M}$. The <a href="https://arxiv.org/pdf/1705.00989.pdf" target="_blank" rel="noopener">reach</a> $\tau_{\mathcal{M}}$ of $\mathcal{M}$ is the supreme radius for which the tubular neighborhood can be defined. </p>
+<p>In computational geometry, the <a href="http://people.cs.uchicago.edu/~niyogi/papersps/NiySmaWeiHom.pdf" target="_blank" rel="noopener">medial axis</a> is a commonly used notion which is defined as the closure of the set </p>
+<script type="math/tex; mode=display">
+G=\{x\in\mathbb{R}^n|\exist p\neq q\in\mathcal{M}\text{ s.t. }d(x,\mathcal{M})=\|x-p\|=\|x-q\|\}</script><p>For any $p\in\mathcal{M}$, the local feature size $\sigma(p)$ is the distance of $p$ to $\bar{G}$. By definition we have</p>
+<script type="math/tex; mode=display">
+\tau_{\mathcal{M}}=\inf_{p\in\mathcal{M}}\sigma(p)</script><h2 id="The-Second-Fundamental-Form"><a href="#The-Second-Fundamental-Form" class="headerlink" title="The Second Fundamental Form"></a>The Second Fundamental Form</h2><p>Fix a point $x\in\mathcal{M}$. Let $\Pi:T_x\mathcal{M}\times T_x\mathcal{M}\to T_x^\perp\mathcal{M}$ be the second fundamental form at $x$. For any unit normal $\xi\in T_x^\perp\mathcal{M}$, let $A_\xi$ be the shape operator such that </p>
+<script type="math/tex; mode=display">
+\langle\Pi(u,v),\xi\rangle=\langle A_\xi(u),v\rangle</script><p>Let $\lambda_\xi$ be the largest eigenvalue of $A_\xi$. It turns out that the operator norm of the shape operator and thus the second fundamental form can be uniformly bounded by the reciprocal of reach. </p>
+<blockquote>
+<p>For all $x\in\mathcal{M}$ and all $\xi\in T_x^\perp\mathcal{M}$, we have $\lambda_\xi\le 1/\tau_{\mathcal{M}}$. Therefore, $|A_\xi|_{op}\le1/\tau_{\mathcal{M}}$. If we define $|\Pi|=\sup_{|u|=|v|=1}|\Pi(u,v)|$, then $|\Pi|\le (n-m)/\tau_{\mathcal{M}}$.</p>
+</blockquote>
+<p>Suppose there exists $x$ and $\xi\in T_x^\perp\mathcal{M}$ such that $\lambda_\xi&gt;1/\tau_\mathcal{M}$. There exists some $t&lt;\tau_{\mathcal{M}}$ such that $\lambda_\xi&gt;1/t&gt;1/\tau_{\mathcal{M}}$. Note that </p>
+<script type="math/tex; mode=display">
+\lambda_\xi=\sup_{\|u\|=1}\langle\Pi(u,u),\xi\rangle</script><p>Let $\gamma(s)$ be a geodesic parametrized by the arc length with $\gamma(0)=x$ and $\dot{\gamma}(0)=u$. Then $\Pi(u,u)=\ddot{\gamma}(0)$. Consider the point $q=x+t\xi$. By assumption, $x$ is the closest point to $q$ in $\mathcal{M}$. Thus </p>
+<script type="math/tex; mode=display">
+f(s):=\|\gamma(s)-q\|^2\ge f(0)=t^2</script><p>Direct computation shows that</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\dot{f}(s)=2\langle\dot{\gamma}(s),\gamma(s)-q\rangle\\
+&\ddot{f}(s)=2(\langle\ddot{\gamma}(s),\gamma(s)-q\rangle+1)
+\end{aligned}</script><p>Note that $\dot{f}(0)=0$ and $\ddot{f}(0)=2(-t\langle\Pi(u,u),\xi\rangle+1)&lt;0$. By continuity, there exists $s_0$ such that $f(s_0)&lt;f(0)$, which contradicts to our assumption.</p>
+<h2 id="Local-Parametrizations"><a href="#Local-Parametrizations" class="headerlink" title="Local Parametrizations"></a>Local Parametrizations</h2><h3 id="Exponential-Map"><a href="#Exponential-Map" class="headerlink" title="Exponential Map"></a>Exponential Map</h3><p>The second fundamental form is closely related to the injective radius, as proved by <a href="https://arxiv.org/pdf/math/0511570.pdf" target="_blank" rel="noopener">Bishop and Alexander</a>: If $|\Pi|\le C$, then $inj_\mathcal{M}\ge\pi/C$. Thus the exponential map can be defined on the ball of radius $\pi/C$ in $T_x\mathcal{M}$ for all $x$. Fix $x\in\mathcal{M}$, if we transform $\mathcal{M}$ isometrically in $\mathbb{R}^n$ so that $x$ is the origin and the first $m$ standard basis $\{e_1,\cdots,e_m\}$ spans the tangent space $T_x\mathcal{M}$. Consider the coordinate components of the exponential map</p>
+<script type="math/tex; mode=display">
+\exp(u^1,\cdots,u^m)=(r^1(u^1,\cdots,u^m),\cdots,r^n(u^1,\cdots,u^m))</script><p>We can express the derivatives of component functions using the geometrical terms defined on $\mathcal{M}$. Firstly, since the tangent map of $\exp$ at origin is the identity, we have </p>
+<script type="math/tex; mode=display">
+d\exp_0(e_i)=(\partial_ir^1(0),\cdots,\partial_ir^n(0))=e_i</script><p>We obtain that $\partial_ir^j(0)=\delta^j_i$ for $i,j=1,\cdots,m$ and $\partial_ir^\alpha(0)=0$ for $\alpha=m+1,\cdots,n$. </p>
+<p>For the second derivatives, let $u=\sum_{i=1}^m u^ie_i$ and $\gamma(s)=\exp(su)$. we have</p>
+<script type="math/tex; mode=display">
+\ddot{\gamma}(0)=(\sum_{i,j}\partial_{i}\partial_jr^1(0)u^iu^j,\cdots,\sum_{i,j}\partial_i\partial_jr^n(0)u^iu^j)=\Pi(u,u)</script><p>Thus, $\partial_i\partial_jr^k(0)=0$ for $i,j,k=1,\cdots,m$. Let $\Pi_\alpha(u,v)=\langle\Pi(u,v),e_\alpha\rangle=\langle A_{e_\alpha}(u),v\rangle$. We see that $[\partial_i\partial_jr^\alpha(0)=\langle A_{e_\alpha}e_i,e_j\rangle]_{i,j}$ is the matrix representation for shape operator $A_{e_\alpha}$ for $\alpha=m+1,\cdots,n$. </p>
+<p>By Weingarten formula, we have</p>
+<script type="math/tex; mode=display">
+\dddot{\gamma}=-A_{\Pi(\dot{\gamma},\dot{\gamma})}(\dot{\gamma})+\nabla_{\dot{\gamma}}^\perp\Pi(\dot{\gamma},\dot{\gamma})</script><p>If we define $\nabla\Pi(u,v,w)=\nabla_w^\perp\Pi(u,v)-\Pi(\nabla_wu,v)-\Pi(u,\nabla_wv)$. Then we have</p>
+<script type="math/tex; mode=display">
+\dddot{\gamma}(0)=-A_{\Pi(u,u)}(u)+(\nabla\Pi)(u,u,u)</script><p>Comparing the components on both sides we obtain that</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\partial_i\partial_j\partial_kr^l(0)=-\langle A_{\Pi(e_i,e_j)}(e_k),e_l\rangle\\
+&\partial_i\partial_j\partial_kr^\alpha(0)=\langle(\nabla_{e_i}\Pi)(e_j,e_k),e_l\rangle
+\end{aligned}</script><p>for $i,j,k,l=1,\cdots,m$ and $\alpha=m+1,\cdots,n$. We have also deduced the following tailor expansion for the exponential map</p>
+<script type="math/tex; mode=display">
+\exp_x(u)=x+u+\frac{1}{2}\Pi(u,u)-\frac{1}{6}A_{\Pi(u,u)}(u)+\frac{1}{6}(\nabla_u\Pi)(u,u)+O(\|u\|^4)</script><p>Let $y=\exp_x(su)$ where $|u|=1$. We can compare the Euclidean distance $|y-x|$ and the Riemannian distance $s=d_\mathcal{M}(x,y)$. In fact, we have </p>
+<script type="math/tex; mode=display">
+\|y-x\|^2=s^2+\frac{1}{4}\|\Pi(u,u)\|^2s^4-\frac{1}{3}\langle A_{\Pi(u,u)}(u),u\rangle s^4+o(s^4)</script><p>Therefore, </p>
+<script type="math/tex; mode=display">
+\|y-x\|=s-\frac{1}{24}\|\Pi(u,u)\|^2s^3+o(s^3)</script><h3 id="Graph-Parametrization"><a href="#Graph-Parametrization" class="headerlink" title="Graph Parametrization"></a>Graph Parametrization</h3><p>Consider a parametrized surface $r(u,v)=(x(u,v),y(u,v),z(u,v))$. Without loss of generality assume that $\left[\begin{array}{cc}x_u&amp; y_u\\ x_v&amp;y_v\end{array}\right]$ is non-singular at $p$. Then by implicit function theorem there will be an open neighborhood near $p$ such that $u=u(x,y),v=v(x,y)$. Then $r(x,y)=(x,y,z(x,y))$ is the graph of function $z=z(x,y)$. </p>
+<p>Generally for any submanifold there exists local parametrization such that it is just the graph of some functions. Furthermore, if we place $p$ at the origin and let $T_p\mathcal{M}$ coincide with the $m$-coordinate space, assume that the parametrization is given by</p>
+<script type="math/tex; mode=display">
+(u^1,\cdots,u^m)\mapsto(u^1,\cdots,u^m,f^1(u^1,\cdots,u^m),\cdots,f^{n-m}(u^1,\cdots,u^m))</script><p>Then by assumption $\partial_if^j(0)=0$ for $i,j=1,\cdots,m$. The normal vector field can be explicitly given by </p>
+<script type="math/tex; mode=display">
+\xi^\alpha=(-\partial_1f^\alpha,\cdots,-\partial_mf^\alpha,0,\cdots,\overset{\alpha}{1},\cdots,0)</script><p>Thus the matrix representation of the shape operator $A_{e_\alpha}$ is $[\partial_i\xi^\alpha\cdot e_j]_{i,j}=Hess(f^\alpha)$. Note that $Hess(f^\alpha)$ also plays the role as the second fundamental form of the hypersurface</p>
+<script type="math/tex; mode=display">
+(u^1,\cdots,u^m,f^\alpha(u^1,\cdots,u^m))\subseteq \mathbb{R}^{m+1}</script><p>Although the asymptotic of graph parametrization and the exponential map parametrization has a lot in common, they are actually different. For the graph parametrization, the inverse is simply given by the projection onto the tangent space, while for the exponential map this cannot be the case.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Geometry </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Submanifolds </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Basics about Riemannian Submanifolds]]></title>
       <url>/2020/04/25/Basics-about-Riemannian-Submanifolds/</url>
       <content type="html"><![CDATA[<h2 id="The-Second-Fundamental-Form"><a href="#The-Second-Fundamental-Form" class="headerlink" title="The Second Fundamental Form"></a>The Second Fundamental Form</h2><p>Let $(\tilde{M},\tilde{g})$ be a Riemannian manifold and $M\subset \tilde{M}$ be a submanifold. By restricting $\tilde{g}$ on $M$ the submanifold is assigned with a natural Riemannian metric.  At each point $p$ we have the orthogonal decomposition with respect to $\tilde{g}_p$,</p>
