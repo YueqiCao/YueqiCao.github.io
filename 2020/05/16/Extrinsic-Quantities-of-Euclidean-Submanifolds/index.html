@@ -418,7 +418,7 @@ G=\{x\in\mathbb{R}^n|\exists p\neq q\in\mathcal{M}\text{ s.t. }d(x,\mathcal{M})=
 <script type="math/tex; mode=display">
 \langle\Pi(u,v),\xi\rangle=\langle A_\xi(u),v\rangle</script><p>Let $\lambda_\xi$ be the largest eigenvalue of $A_\xi$. It turns out that the operator norm of the shape operator and thus the second fundamental form can be uniformly bounded by the reciprocal of reach. </p>
 <blockquote>
-<p>For all $x\in\mathcal{M}$ and all $\xi\in T_x^\perp\mathcal{M}$, we have $\lambda_\xi\le 1/\tau_{\mathcal{M}}$. Therefore, $|A_\xi|_{op}\le1/\tau_{\mathcal{M}}$. If we define $|\Pi|=\sup_{|u|=|v|=1}|\Pi(u,v)|$, then $|\Pi|\le (n-m)/\tau_{\mathcal{M}}$.</p>
+<p>For all $x\in\mathcal{M}$ and all $\xi\in T_x^\perp\mathcal{M}$, we have $\lambda_\xi\le 1/\tau_{\mathcal{M}}$. Therefore, $|A_\xi|_{op}\le1/\tau_{\mathcal{M}}$. If we define $|\Pi|=\sup_{|u|=|v|=1}|\Pi(u,v)|$, then $|\Pi|\le 1/\tau_{\mathcal{M}}$.</p>
 </blockquote>
 <p>Suppose there exists $x$ and $\xi\in T_x^\perp\mathcal{M}$ such that $\lambda_\xi&gt;1/\tau_\mathcal{M}$. There exists some $t&lt;\tau_{\mathcal{M}}$ such that $\lambda_\xi&gt;1/t&gt;1/\tau_{\mathcal{M}}$. Note that </p>
 <script type="math/tex; mode=display">
@@ -430,6 +430,7 @@ f(s):=\|\gamma(s)-q\|^2\ge f(0)=t^2</script><p>Direct computation shows that</p>
 &\dot{f}(s)=2\langle\dot{\gamma}(s),\gamma(s)-q\rangle\\
 &\ddot{f}(s)=2(\langle\ddot{\gamma}(s),\gamma(s)-q\rangle+1)
 \end{aligned}</script><p>Note that $\dot{f}(0)=0$ and $\ddot{f}(0)=2(-t\langle\Pi(u,u),\xi\rangle+1)&lt;0$. By continuity, there exists $s_0$ such that $f(s_0)&lt;f(0)$, which contradicts to our assumption.</p>
+<p>Since $|\Pi(u,v)|=\sup_{|\xi|=1}\langle\Pi(u,v),\xi\rangle=\sup_{|\xi|=1}\langle A_\xi(u),v\rangle$ and for any $\xi$ the operator norm $|A_\xi|_{op}$ is uniformly bounded, we see that $|\Pi|\le1/\tau_{\mathcal{M}}$.</p>
 <h2 id="Local-Parametrizations"><a href="#Local-Parametrizations" class="headerlink" title="Local Parametrizations"></a>Local Parametrizations</h2><h3 id="Exponential-Map"><a href="#Exponential-Map" class="headerlink" title="Exponential Map"></a>Exponential Map</h3><p>The second fundamental form is closely related to the injective radius, as proved by <a href="https://arxiv.org/pdf/math/0511570.pdf" target="_blank" rel="noopener">Bishop and Alexander</a>: If $|\Pi|\le C$, then $inj_\mathcal{M}\ge\pi/C$. Thus the exponential map can be defined on the ball of radius $\pi/C$ in $T_x\mathcal{M}$ for all $x$. Fix $x\in\mathcal{M}$, if we transform $\mathcal{M}$ isometrically in $\mathbb{R}^n$ so that $x$ is the origin and the first $m$ standard basis $\{e_1,\cdots,e_m\}$ spans the tangent space $T_x\mathcal{M}$. Consider the coordinate components of the exponential map</p>
 <script type="math/tex; mode=display">
 \exp(u^1,\cdots,u^m)=(r^1(u^1,\cdots,u^m),\cdots,r^n(u^1,\cdots,u^m))</script><p>We can express the derivatives of component functions using the geometrical terms defined on $\mathcal{M}$. Firstly, since the tangent map of $\exp$ at origin is the identity, we have </p>
