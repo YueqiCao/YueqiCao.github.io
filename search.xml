@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[Tangent Space Estimation Using Local PCA]]></title>
       <url>/2020/05/21/Tangent-Space-Estimation-Using-Local-PCA/</url>
-      <content type="html"><![CDATA[<p>In <a href="https://arxiv.org/abs/1102.0075" target="_blank" rel="noopener">this paper</a>, A.Singer and H.-T. Wu derived an explicit expression for the bias and variance of local PCA in tangent space estimation. There are many details one should notice: To ensure the convergence of eigenvectors, one cannot take $O(\text{bias})=O(\text{variance})$ as usual. Instead, the sampling rate is taken so that the error mainly comes from variance. Using different criteria to measure the deviation of estimated tangent space will yield different order of convergence. These nontrivial results cannot be easily understood unless one writes out all the details.</p>
+      <content type="html"><![CDATA[<p>In <a href="https://arxiv.org/abs/1102.0075" target="_blank" rel="noopener">this paper</a>, A.Singer and H.-T. Wu derived an explicit expression for the bias and variance of local PCA in tangent space estimation. There are many details one should notice: <strong>Using different criteria to measure the deviation of estimated tangent space will yield different order of convergence</strong>. Especially, in this paper they use optimal rotation to measure the difference. Instead of taking $O(\text{bias})=O(\text{variance})$ as usual, the sampling rate is taken so that the error mainly comes from variance. In this way the error converges <strong>faster</strong>. These nontrivial results cannot be easily understood unless one writes out all the details.</p>
 <p>Let $\mathcal{M}$ be an $m$-dimensional compact submanifold in a Euclidean space $\mathbb{R}^d$. Fix $x\in\mathcal{M}$. Without loss of generality assume that $x$ is placed at the origin and the tangent space $T_x\mathcal{M}$ coincides with the coordinate space spanned by the first $m$ standard vectors $\{e_1,\cdots,e_m\}$ in $\mathbb{R}^d$. Suppose $X$ is a random vector valued in $\mathcal{M}$ with a smooth positive density function $f:\mathcal{M}\to \mathbb{R}$. Let $K:\mathbb{R}\to\mathbb{R}$ be a smooth function supported on $[0,1]$ and $h&gt;0$ be a positive number. To estimate the tangent space at $x$, we start by finding a direction $v$ such that the projection to $v$ is maximized</p>
 <script type="math/tex; mode=display">
 \mathbb{E}[((X-x)\cdot v)^2K_h(X-x)]</script><p>where $K_h:\mathbb{R}^d\to\mathbb{R}$ is the function $K_h(u)=1/h^mK(|u|/h)$. Therefore, we consider the following Lagrange function</p>
@@ -46,23 +46,35 @@ V=\frac{h^2}{\sqrt{nh^m}}\left[\begin{array}{cc}O(1)& O(h)\\O(h)&O(h^2)\end{arra
 <script type="math/tex; mode=display">
 \begin{aligned}
 \frac{1}{h^2}H=&c\left[\begin{array}{cc}I&0\\0&0\end{array}\right]+h^2\left[\begin{array}{cc}O(1)&O(1)\\O(1)&O(1)\end{array}\right]+\frac{1}{\sqrt{nh^m}}\left[\begin{array}{cc}O(1)&O(h)\\O(h)&O(h^2)\end{array}\right]
-\end{aligned}</script><p>There will be a problem if we set $O(\text{bias})=O(\text{variance})$. Let us see what will happen if we choose the <em>optimal bandwidth</em> $h=O(n^{-1/(m+4)})$. In this case we have</p>
+\end{aligned}</script><p>If we set $O(\text{bias})=O(\text{variance})$, the <em>optimal bandwidth</em> $h=O(n^{-1/(m+4)})$. In this case we have</p>
 <script type="math/tex; mode=display">
-H=h^2c\left[\begin{array}{cc}I+h^2A&h^2C\\h^2C^t&h^2B\end{array}\right]=h^2c(S+T)</script><p>where </p>
+H=h^2c\left[\begin{array}{cc}I+h^2A&h^2C\\h^2C^t&h^2B\end{array}\right]=h^2c(S+h^2T)</script><p>where </p>
 <script type="math/tex; mode=display">
-S=\left[\begin{array}{cc}I&0\\0&0\end{array}\right], T=h^2\left[\begin{array}{cc}A&C\\C^t&B\end{array}\right]</script><p>Let $w_k$ be the eigenvector of $T$. It is clear that $w_k$ will also be the eigenvector of $S+T$. Therefore, when the bandwidth tends to zero, the eigenvectors are not converging to the eigenvectors of $S$. To make this happen, we should make the leading term of $A$ different from $B$ and $C$, which means that $O(\text{variance})&gt;O(\text{bias})$ and the error mainly comes from sampling. As in the original paper we set $O(\text{variance})=O(h)$ which gives the sampling rate $h=O(n^{-1/(m+2)})$. In this case we have</p>
+S=\left[\begin{array}{cc}I&0\\0&0\end{array}\right], T=\left[\begin{array}{cc}A&C\\C^t&B\end{array}\right]</script><p>Let $\mathbf{v}$ be an eigenvector of $S+h^2T$ with respect to the eigenvalue $\mathbf{\Lambda}$. Using the following expansion on both sides of $S\mathbf{v}=\mathbf{\Lambda}\mathbf{v}$,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\mathbf{v}=v_0+h^2v_1+h^4v_2+\cdots\\
+&\mathbf{\Lambda}=\lambda_0+h^2\lambda_1+h^4\lambda_2+\cdots
+\end{aligned}</script><p>and compare the coefficients on both sides. We have</p>
+<script type="math/tex; mode=display">
+Sv_0=\lambda_0v_0</script><p>which means that $\lambda_0=1$ and $v_0$ is in the form $[\bar{v}_0,0]^t$. For the first order term we have</p>
+<script type="math/tex; mode=display">
+Sv_1+Tv_0=\lambda_0v_1+\lambda_1v_0</script><p>Thus if we write $v_1=[\bar{v}_1,\tilde{v}_1]$ then $A\bar{v}_0=\lambda_1\bar{v}_0$ and $C^t\bar{v}_0=\tilde{v}_1$. For the second term, we have </p>
+<script type="math/tex; mode=display">
+Sv_2+Tv_1=v_2+\lambda_1v_1+\lambda_2v_0</script><p>Then $A\bar{v}_1+C\tilde{v}_1=\lambda_1\bar{v}_1+\lambda_2\bar{v}_0$. Nothing will vanish after this step. Therefore, we have $\mathbf{v}=[\bar{v}_0,0]+O(h^2)$ and $\mathbf{\Lambda}=1+h^2\lambda_A+O(h^4)$. </p>
+<p>However, if we make the leading term of $A$ different from $B$ and $C$, that is, $O(\text{variance})&gt;O(\text{bias})$ and the error mainly comes from sampling, the result will be different. As in the original paper we set $O(\text{variance})=O(h)$ which gives the sampling rate $h=O(n^{-1/(m+2)})$. In this case we have</p>
 <script type="math/tex; mode=display">
 S=\left[\begin{array}{cc}I&0\\0&0\end{array}\right], T_1=\left[\begin{array}{cc}A&0\\0&0\end{array}\right], T_2=\left[\begin{array}{cc}0&C\\C^t&B\end{array}\right]</script><p>By <a href="https://www.math.usm.edu/lambers/mat610/sum10/lecture13.pdf" target="_blank" rel="noopener">Wielandt-Hoffman theorem</a>, the eigenvalues satisfy the following inequality</p>
 <script type="math/tex; mode=display">
 \sum_{i=1}^d(\lambda_i(T_1+hT_2)-\lambda_i(T_1))^2\le\|hT_2\|_F^2</script><p>Hence if we set the eigenvalues in descending order $\lambda_1\ge\lambda_2\ge\cdots\ge\lambda_d$, then $\lambda_k(T_1+hT_2)=\lambda_k^A+O(h)$ for $k=1,\cdots,m$ and $\lambda_l(T_1+hT_2)=O(h)$ for $k=m+1,\cdots,d$. </p>
-<p>For eigenvectors the problem is much harder. Suppose $\mathbf{v}$ is a unit eigenvector of $S+hT_1+hT_2$ corresponding to the eigenvalue $\mathbf{\Lambda}$. Using Taylor expansions for $\mathbf{v}$ and $\mathbf{\Lambda}$, </p>
+<p>For eigenvectors we use the same method as above. Suppose $\mathbf{v}$ is a unit eigenvector of $S+hT_1+hT_2$ corresponding to the eigenvalue $\mathbf{\Lambda}$. Using Taylor expansions for $\mathbf{v}$ and $\mathbf{\Lambda}$, </p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 &\mathbf{v}=v_0+hv_1+h^2v_2+h^3v_3+h^4v_4+O(h^5)\\
 &\mathbf{\Lambda}=\lambda_0+h\lambda_1+h^2\lambda_2+h^3\lambda_3+h^4\lambda_4+O(h^5)
 \end{aligned}</script><p>and by the relation </p>
 <script type="math/tex; mode=display">
-(S+hT_1+hT_2)\mathbf{v}=\mathbf{\Lambda}\mathbf{v}</script><p>we compare the coefficients on both sides. For the constants we have</p>
+(S+hT_1+h^2T_2)\mathbf{v}=\mathbf{\Lambda}\mathbf{v}</script><p>we compare the coefficients on both sides. For the constants we have</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 &Sv_0=\lambda_0v_0
@@ -87,11 +99,11 @@ A\bar{v}_3+CC^t\bar{v}_0=\lambda_1\bar{v}_3+\lambda_4\bar{v}_0</script><p>We can
 &\mathbf{\Lambda}=1+h\lambda_1+h^4\lambda_4+O(h^5)
 \end{aligned}</script><p>Suppose the first $m$ eigenvectors of $H$ are $u_1,\cdots,u_m$ and the eigenvectors of $A$ are $w_1,\cdots,w_m$. We have $u_k=[w_k+O(h^3),O(h^2)]^t$ for $k=1,\cdots,m$. Let $\mathbf{U}=[u_1,\cdots,u_m]$ be the $d\times m$ matrix and $\mathbf{O}=[w_1,\cdots,w_m]^t$ be the $m\times m$ orthogonal matrix. Furthermore, let $\mathbf{\Theta}=[e_1,\cdots,e_m]$ be the matrix consisting of $m$ standard basis of $\mathbb{R}^d$. We measure the deviation of the estimated $m$-plane spanned by $u_k$’s from $T_x\mathcal{M}$ by</p>
 <script type="math/tex; mode=display">
-\min_{O\in O(m)} \|\mathbf{U}^t\mathbf{\Theta}-O\|_F\le\|\mathbf{U}^t\mathbf{\Theta}-\mathbf{O}\|_F=O(h^3)</script><p>From another perspective, if we want to find a rotation $\hat{O}$ such that the basis $Q=\mathbf{\Theta}\hat{O}$ is closest to $\mathbf{U}$, i.e. the error is measured by </p>
+\min_{O\in O(m)} \|\mathbf{U}^t\mathbf{\Theta}-O\|_F\le\|\mathbf{U}^t\mathbf{\Theta}-\mathbf{O}\|_F=O(h^3)</script><p>If we choose the optimal bandwidth, the order will be $O(h^2)$. Thus we see that by choosing ‘non-optimal’ bandwidth the convergence even become faster. However, from another perspective, if we want to find a rotation $\hat{O}$ such that the basis $Q=\mathbf{\Theta}\hat{O}$ is closest to $\mathbf{U}$, i.e. the error is measured by </p>
 <script type="math/tex; mode=display">
 \min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F</script><p>then the error is bounded by </p>
 <script type="math/tex; mode=display">
-\min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F\le O(h^2)</script><p>Note that the difference comes from the estimation of eigenvectors.</p>
+\min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F\le O(h^2)</script><p>Then different bandwidths yield the same order of convergence. Note that the difference comes from the estimation of eigenvectors.</p>
 ]]></content>
       
         <categories>
