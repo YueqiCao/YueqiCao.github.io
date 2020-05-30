@@ -3,6 +3,83 @@
   
     
     <entry>
+      <title><![CDATA[Tangent Space Estimation Using Local Polynomial Fitting]]></title>
+      <url>/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/</url>
+      <content type="html"><![CDATA[<p>Generalizations of local PCA to tangent space estimation are considered in various papers. E. Aamari and C. Levrard considered the non-asymptotic rates of local PCA in a <a href="https://arxiv.org/pdf/1512.02857.pdf" target="_blank" rel="noopener">paper</a> of manifold reconstruction. Suppose $n$ is the number of points and $m$ is the manifold dimension. Then with bandwidth chosen to be $O(\log(n)/n)^{1/m}$ the minimax rate is $O(1/n)^{1/m}$. In their <a href="https://arxiv.org/pdf/1705.00989.pdf" target="_blank" rel="noopener">subsequent work</a>, they considered generalization using local polynomial fitting. It happens that by involving more higher terms the convergence is faster. Suppose the fitting is up to $k$th term, then with the same bandwidth the minimax rate is $O(1/n)^{k/m}$. However, they did not show practical algorithms. In an <a href="http://www.cse.ust.hk/~scheng/pub/j5.pdf" target="_blank" rel="noopener">early paper</a> of S.-W. Cheng and M.-K. Chiu, they proposed an algorithm using polynomial fitting up to the second order, but their analysis did not show consistency with the above result. However, their method is practical and its principle is easy to understand. We present a simple description in the following.</p>
+<p>Let $\mathcal{M}\subseteq \mathbb{R}^{m+1}$ be a hypersurface. Suppose $x\in\mathcal{M}$ is the origin and we want to estimate $T_x\mathcal{M}$. Firstly for the simplest case where $T_x\mathcal{M}$ coincides with the hyperplane spanned by the standard vectors $e_1,\cdots,e_m$ in $\mathbb{R}^{m+1}$, we have the local parametrization </p>
+<script type="math/tex; mode=display">
+\mathbf{r}(u^1,\cdots,u^m)=(u^1,\cdots,u^m,f(u^1,\cdots,u^m))</script><p>By definition we deduce that</p>
+<script type="math/tex; mode=display">
+f(0)=0,\, Df(0)=0</script><p>Thus locally $\mathcal{M}$ is the level set of the function </p>
+<script type="math/tex; mode=display">
+F(\mathbf{u})=u^{m+1}-f(u^1,\cdots,u^m)=u^{m+1}-\frac{1}{2}[u^1,\cdots,u^m]D^2f(0)[u^1,\cdots,u^m]^t+O(\|\mathbf{u}\|^3)</script><p>We write the quadratic form in $F(\mathbf{u})$ as the product of two vectors</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&[\frac{1}{\sqrt{2}}(u^1)^2,u^1u^2,\cdots,u^1u^m,u^1u^{m+1},\frac{1}{\sqrt{2}}(u^2)^2,\cdots,u^2u^m,u^2u^{m+1},\cdots,\frac{1}{\sqrt{2}}(u^{m+1})^2]\cdot\\
+&[\frac{1}{\sqrt{2}}\partial_1^2f(0),\partial_1\partial_2f(0),\cdots,\partial_1\partial_mf(0),0,\frac{1}{\sqrt{2}}\partial_2^2f(0),\cdots,\partial_2\partial_mf(0),0,\cdots,0]
+\end{aligned}</script><p>Define $q:\mathbb{R}^{m+1}\to\mathbb{R}^{(m+1)m/2}$ by </p>
+<script type="math/tex; mode=display">
+q(\mathbf{u})=[\frac{1}{\sqrt{2}}(u^1)^2,u^1u^2,\cdots,u^1u^{m+1},\frac{1}{\sqrt{2}}(u^2)^2,\cdots,u^2u^{m+1},\cdots,\frac{1}{\sqrt{2}}(u^{m+1})^2]^t</script><p>Denote the vectorized form of $D^2f(0)$ by $Q_{m+1}$. Then </p>
+<script type="math/tex; mode=display">
+F(\mathbf{u})=\mathbf{u}^te_{m+1}-q(\mathbf{u})^tQ_{m+1}+O(\|\mathbf{u}\|^3)</script><p>In general, let $T_x\mathcal{M}=\text{span}\{\hat{e}_1,\cdots,\hat{e}_m\}$ and $[\hat{e}_1,\cdots,\hat{e}_m,\hat{e}_{m+1}]=P[e_1,\cdots,e_m,e_{m+1}]$. Let $\mathbf{u}=\sum_{i=1}^{m+1}u^ie_i=\sum_{i=1}^{m+1}\hat{u}^i\hat{e}_i$. As in above $F$ should be a function of $\hat{u}^1,\cdots,\hat{u}^{m+1}$, here we still express $F$ with respect to coordinate components $u^1,\cdots,u^{m+1}$.</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+F(\mathbf{u})&=\mathbf{u}^t\hat{e}_{m+1}-q(\mathbf{u})^tq(P)Q_{m+1}+O(\|\mathbf{u}\|^3)\\
+&=\mathbf{u}^tPe_{m+1}-q(\mathbf{u})^tq(P)Q_{m+1}+O(\|\mathbf{u}\|^3)\\
+&=[\mathbf{u},q(\mathbf{u})]^t\left[\begin{array}{c}Pe_{m+1}\\ q(P)Q_{m+1}\end{array}\right]+O(\|\mathbf{u}\|^3)
+\end{aligned}</script><p>where $q(P)$ is an orthogonal matrix in $\mathbb{R}^{(m+1)m/2}$. </p>
+<p>For Euclidean submanifolds $\mathcal{M} \subseteq\mathbb{R}^{d}$, it is similar since we have $l=d-m$ functions $F_{m+1},\cdots,F_d$ as above. That is, </p>
+<script type="math/tex; mode=display">
+F_\alpha(\mathbf{u})=[\mathbf{u},q(\mathbf{u})]^t\left[\begin{array}{c}Pe_{\alpha}\\ q(P)Q_{\alpha}\end{array}\right]+O(\|\mathbf{u}\|^3)</script><p>for $\alpha=m+1,\cdots,d$. Now suppose we have $n$ samples $X_1,\cdots,X_n$ from some distribution on the manifold. It is natural to minimize the following error</p>
+<script type="math/tex; mode=display">
+\frac{1}{n}\sum_{\alpha=m+1}^d\sum_{i=1}^n\left([X_i,q(X_i)]^t\left[\begin{array}{c}Pe_{\alpha}\\ q(P)Q_{\alpha}\end{array}\right]\right)^2</script><p>If we set</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&A=\left[\begin{array}{ccc}X_{11}&\cdots&X_{1d}\\ \vdots&\ddots&\vdots\\ X_{n1}&\cdots& X_{nd}\end{array}\right]\\
+&B=\left[\begin{array}{cccccc}\frac{1}{\sqrt{2}}X^2_{11}&X_{11}X_{12}&\cdots&X_{11}X_{1d}&\cdots&\frac{1}{\sqrt{2}}X_{1d}^2\\ \vdots&\vdots&\ddots&\vdots&\ddots&\vdots\\ \frac{1}{\sqrt{2}}X^2_{n1}&X_{n1}X_{n2}&\cdots&X_{n1}X_{nd}&\cdots&\frac{1}{\sqrt{2}}X_{nd}^2\end{array}\right]\\
+&\left[\begin{array}{c}Pe_{\alpha}\\ q(P)Q_{\alpha}\end{array}\right]=\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]
+\end{aligned}</script><p>it is equivalent to minimize</p>
+<script type="math/tex; mode=display">
+\frac{1}{n}\sum_{\alpha=m+1}^d\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]^t[A,B]^t[A,B]\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]</script><p>Note the dimension of eigenspace of $[A B]^t[A B]$ corresponding to $0$ can be far larger than that of normal space. Hence it works for hypersurfaces but becomes intractable for general submanifolds. Furthermore, if one writes down the asymptotic order with respect to bandwidth it is easy to notice that in fact it does not exceed local PCA. To work out a method faster than local PCA needs further consideration. </p>
+<p>Consider the case when the number of samples is less than $d(d+1)/2$. we add the penalty term </p>
+<script type="math/tex; mode=display">
+\sum_{\alpha=m+1}^d(\frac{1}{n}\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]^t[A,B]^t[A,B]\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]+\gamma\|c_\alpha\|^2)</script><p>Then the objective function becomes</p>
+<script type="math/tex; mode=display">
+\sum_{\alpha=m+1}^d\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]^tZ\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]</script><p>where </p>
+<script type="math/tex; mode=display">
+Z=\left[\begin{array}{cc}\frac{1}{n}A^tA&\frac{1}{n}A^tB\\\frac{1}{n}A^tB&\frac{1}{n}B^tB+\gamma I\end{array}\right]=\left[\begin{array}{cc}I&H_\gamma\\0&I\end{array}\right]\left[\begin{array}{cc}W_\gamma&0\\0&U_\gamma\end{array}\right]\left[\begin{array}{cc}I&0\\H_\gamma&I\end{array}\right]</script><p>and </p>
+<script type="math/tex; mode=display">
+U_\gamma=\frac{1}{n}B^tB+\gamma I,\, H_\gamma=\frac{1}{n}A^tBU_\gamma^{-1},\, W_\gamma=\frac{1}{n}A^tA-H_\gamma U_\gamma H_\gamma^t</script><p>Therefore, we have </p>
+<script type="math/tex; mode=display">
+(10)=\sum_{\alpha=m+1}^dg_\alpha^tW_\gamma g_\alpha+(c_\alpha+H_\gamma^tg_\alpha)^tU_\gamma(c_\alpha+H^t_\gamma g_\alpha)</script><p>Note that $U_\gamma$ is positive definite for $\gamma&gt;0$. Hence the minimum is achieved if $c_\alpha+H^t_\gamma g_\alpha=0$. Let $B=LSR$ be the SVD decomposition of $B$. Then </p>
+<script type="math/tex; mode=display">
+U_\gamma=R^t(\frac{1}{n}S^2+\gamma I)R</script><p>and </p>
+<script type="math/tex; mode=display">
+\frac{1}{n}B(U_\gamma^{-1})^tB^t=\frac{1}{n}LS(\frac{1}{n}S^2+\gamma I)^{-1}SL^t</script><p>Substituting into the expression of $W_\gamma$, we see that</p>
+<script type="math/tex; mode=display">
+W_\gamma=\frac{1}{n}A^t(I-\frac{1}{n}B(U_\gamma^{-1})^tB^t)A=\frac{1}{n}A^tL(I-\frac{1}{n}S(\frac{1}{n}S^2+\gamma I)^{-1}S)L^tA</script><p>Note that the middle term is a diagonal matrix. Write $W_\gamma=\gamma A^tL\Sigma_\gamma L^tA$. For an arbitrary element $\lambda\in S$ it becomes $1/(\lambda^2+n\gamma)$ in $\Sigma_\gamma$. Therefore, the solution is given by the eigenvectors of $W_\gamma$ corresponding to the smallest eigenvalue.</p>
+<p>In the original paper, more techniques are involved to remove the penalty parameter and to make the computation efficient. For the convergence rate, the authors only focused on small sample size (between $(m+1)m/2$ and $(d+1)d/2$). Under some assumptions, the angular error is $O(h^2)$ with high probability, where $h$ is the bandwidth. The proof involves a lot of estimations of matrix elements which are used in Gershgorin circle theorem. In fact, the paper contributes a lot to the estimation of eigenvalues. For eigenvectors they used results from <a href="https://ipsen.math.ncsu.edu/ps/rr978.ps" target="_blank" rel="noopener">relative perturbation bounds for eigenspaces</a>, which are generalizations of Davis-Kahan theorem.   </p>
+<p><img src="/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/1.jpg" alt="1"><img src="/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/2.jpg" alt="2"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Manifold-Learning </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Asymptotic Analysis </tag>
+            
+            <tag> Submanifolds </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Tangent Space Estimation Using Local PCA]]></title>
       <url>/2020/05/21/Tangent-Space-Estimation-Using-Local-PCA/</url>
       <content type="html"><![CDATA[<p>In <a href="https://arxiv.org/abs/1102.0075" target="_blank" rel="noopener">this paper</a>, A.Singer and H.-T. Wu derived an explicit expression for the bias and variance of local PCA in tangent space estimation. There are many details one should notice: <strong>Using different criteria to measure the deviation of estimated tangent space will yield different order of convergence</strong>. Especially, in this paper they use optimal rotation to measure the difference. Instead of taking $O(\text{bias})=O(\text{variance})$ as usual, the sampling rate is taken so that the error mainly comes from variance. In this way the error converges <strong>faster</strong>. These nontrivial results cannot be easily understood unless one writes out all the details.</p>
@@ -104,13 +181,23 @@ A\bar{v}_3+CC^t\bar{v}_0=\lambda_1\bar{v}_3+\lambda_4\bar{v}_0</script><p>We can
 \min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F</script><p>then the error is bounded by </p>
 <script type="math/tex; mode=display">
 \min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F\le O(h^2)</script><p>Then different bandwidths yield the same order of convergence. Note that the difference comes from the estimation of eigenvectors.</p>
+<p>A final remark is that the method used above by comparing coefficients for different orders is not very strict, since it automatically assumes that there are no fractional order terms. Generalization to fractional order convergence needs further investigation. </p>
+<hr>
+<p><strong>Update:</strong> In this <a href="https://arxiv.org/pdf/1512.02857.pdf" target="_blank" rel="noopener">paper</a> (appendix D theorem 38), a useful version of <a href="https://arxiv.org/pdf/1405.0680.pdf" target="_blank" rel="noopener">Davis-Kahan</a> theorem is stated as follows</p>
+<blockquote>
+<p>Let $O\in\mathbb{R}^{d\times d}$, $B\in\mathbb{R}^{m\times m}$ be positive semi-definite symmetric matrices such that </p>
+<script type="math/tex; mode=display">
+O=\left[\begin{array}{cc}B&0\\ 0&0\end{array}\right]+E</script><p>Let $T_0$ be the vector space spanned by the first $m$ vectors of canonical basis and $T$ be the eigenspace spanned by the first $m$ eigenvectors of $O$. Then</p>
+<script type="math/tex; mode=display">
+\angle (T_0,T)\le \frac{\sqrt{2}\|E\|_{op}}{\lambda_{\min}(B)}</script></blockquote>
+<p>Now we return back to the expression of $1/h^2H$, consider the decomposition</p>
+<script type="math/tex; mode=display">
+\frac{1}{h^2}H=\left[\begin{array}{cc}cI+O(h^2)+O(\sqrt{nh^m})&0\\0&0\end{array}\right]+\left[\begin{array}{cc}0&O(h^2+\frac{h}{\sqrt{nh^m}})\\O(h^2+\frac{h}{\sqrt{nh^m}})&O(h^2)\end{array}\right]</script><p>Note $\lambda_{\min}(cI+O(\cdot))\approx c$. Thus the convergence rate depends on the operator norm of the second matrix. If we set $1/\sqrt{nh^m}=h^\alpha$ where $0&lt;\alpha&lt;1$, then the rate is $O(h^{1+\alpha})$. If $\alpha\ge 1$, the rate is $O(h^2)$. </p>
 ]]></content>
       
         <categories>
             
-            <category> Geometry </category>
-            
-            <category> Probability </category>
+            <category> Machine-Learning </category>
             
         </categories>
         

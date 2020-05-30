@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.4k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.6k</span>Reading time: <span class="post-count reading-time">16 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -502,6 +502,18 @@ A\bar{v}_3+CC^t\bar{v}_0=\lambda_1\bar{v}_3+\lambda_4\bar{v}_0</script><p>We can
 \min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F</script><p>then the error is bounded by </p>
 <script type="math/tex; mode=display">
 \min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F\le O(h^2)</script><p>Then different bandwidths yield the same order of convergence. Note that the difference comes from the estimation of eigenvectors.</p>
+<p>A final remark is that the method used above by comparing coefficients for different orders is not very strict, since it automatically assumes that there are no fractional order terms. Generalization to fractional order convergence needs further investigation. </p>
+<hr>
+<p><strong>Update:</strong> In this <a href="https://arxiv.org/pdf/1512.02857.pdf" target="_blank" rel="noopener">paper</a> (appendix D theorem 38), a useful version of <a href="https://arxiv.org/pdf/1405.0680.pdf" target="_blank" rel="noopener">Davis-Kahan</a> theorem is stated as follows</p>
+<blockquote>
+<p>Let $O\in\mathbb{R}^{d\times d}$, $B\in\mathbb{R}^{m\times m}$ be positive semi-definite symmetric matrices such that </p>
+<script type="math/tex; mode=display">
+O=\left[\begin{array}{cc}B&0\\ 0&0\end{array}\right]+E</script><p>Let $T_0$ be the vector space spanned by the first $m$ vectors of canonical basis and $T$ be the eigenspace spanned by the first $m$ eigenvectors of $O$. Then</p>
+<script type="math/tex; mode=display">
+\angle (T_0,T)\le \frac{\sqrt{2}\|E\|_{op}}{\lambda_{\min}(B)}</script></blockquote>
+<p>Now we return back to the expression of $1/h^2H$, consider the decomposition</p>
+<script type="math/tex; mode=display">
+\frac{1}{h^2}H=\left[\begin{array}{cc}cI+O(h^2)+O(\sqrt{nh^m})&0\\0&0\end{array}\right]+\left[\begin{array}{cc}0&O(h^2+\frac{h}{\sqrt{nh^m}})\\O(h^2+\frac{h}{\sqrt{nh^m}})&O(h^2)\end{array}\right]</script><p>Note $\lambda_{\min}(cI+O(\cdot))\approx c$. Thus the convergence rate depends on the operator norm of the second matrix. If we set $1/\sqrt{nh^m}=h^\alpha$ where $0&lt;\alpha&lt;1$, then the rate is $O(h^{1+\alpha})$. If $\alpha\ge 1$, the rate is $O(h^2)$. </p>
 
     </article>
     <!-- license  -->
@@ -509,6 +521,11 @@ A\bar{v}_3+CC^t\bar{v}_0=\lambda_1\bar{v}_3+\lambda_4\bar{v}_0</script><p>We can
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/" title= "Tangent Space Estimation Using Local Polynomial Fitting">
+                    <div class="nextTitle">Tangent Space Estimation Using Local Polynomial Fitting</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -872,9 +889,42 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 23
         </div>
         <!-- search  -->
         
@@ -887,6 +937,11 @@ top:50vh;
     
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/" >Tangent Space Estimation Using Local Polynomial Fitting</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1022,19 +1077,19 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
-        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
-    
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
-        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
     
         <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
+    
         <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
-        <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
-    
         <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
+    
+        <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
     
         <span class="sidebar-tag-name" data-tags="Spectral Graph Theory"><span class="iconfont-archer">&#xe606;</span>Spectral Graph Theory</span>
     
@@ -1077,17 +1132,23 @@ jsonContent:
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="TDA"><span class="iconfont-archer">&#xe60a;</span>TDA</span>
     
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
+    
+        <span class="sidebar-category-name" data-categories="Manifold-Learning"><span class="iconfont-archer">&#xe60a;</span>Manifold-Learning</span>
+    
         <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
+    
+        <span class="sidebar-category-name" data-categories="Manifold-Learning/Geometry"><span class="iconfont-archer">&#xe60a;</span>Manifold-Learning/Geometry</span>
     
         <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
     
         <span class="sidebar-category-name" data-categories="Network-Analysis"><span class="iconfont-archer">&#xe60a;</span>Network-Analysis</span>
     
         <span class="sidebar-category-name" data-categories="Geometry/Probability"><span class="iconfont-archer">&#xe60a;</span>Geometry/Probability</span>
+    
+        <span class="sidebar-category-name" data-categories="Machine-Learning"><span class="iconfont-archer">&#xe60a;</span>Machine-Learning</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
