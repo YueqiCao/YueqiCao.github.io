@@ -3,6 +3,69 @@
   
     
     <entry>
+      <title><![CDATA[Two Applications of the Weingarten Map]]></title>
+      <url>/2020/07/11/Two-Applications-of-the-Weingarten-Map/</url>
+      <content type="html"><![CDATA[<p>If $\mathcal{M}$ is an Euclidean submanifold, many intrinsic quantities can be expressed using information from the ambient Euclidean space. Here are two examples where the Weingarten map plays an important role: first is the Riemannian hessian of a smooth map, and second is the Ricci curvature tensor. Assume that $f:\mathcal{M}\to\mathbb{R}$ is a smooth function and $\widehat{f}:\mathbb{R}^d\to\mathbb{R}$ is a smooth extension of $f$. In data science, it is much more convenient to compute the gradient or hessian of $\widehat{f}$ than those of $f$. <a href="https://link.springer.com/chapter/10.1007/978-3-642-40020-9_39" target="_blank" rel="noopener">Absil etc.</a> presented the relations and applied them in Riemannian optimization. On the other hand, Ricci curvature is also a hot topic in manifold learning. An old paper of <a href="https://www.jstor.org/stable/2034680" target="_blank" rel="noopener">Hicks</a> proves that there is a simple relation between Ricci map and Weingarten map if the manifold is a hypersurface. Many problems concerning Ricci curvature thus descend to the estimation of the Weingarten map.</p>
+<h3 id="Riemannian-Hessian"><a href="#Riemannian-Hessian" class="headerlink" title="Riemannian Hessian"></a>Riemannian Hessian</h3><p>Let $\mathcal{M}$ be an $m$-dimensional submanifold in the $d$-dimensional Euclidean space $\mathbb{R}^d$. Let $\pi_x:\mathbb{R}^d\to T_x\mathcal{M}$ be the orthogonal projection to the tangent space $T_x\mathcal{M}$. It turns out that the gradient of $f$ is nothing but the projection of gradient of $\widehat{f}$. Denote $\partial\widehat{f}$ to be the usual gradient for $\widehat{f}$ and $\text{grad}(f)$ to be the Riemannian gradient for $f$. Then we have</p>
+<blockquote>
+<p>$\text{grad}(f)_x=\pi_x(\partial\widehat{f}_x)$ </p>
+</blockquote>
+<p>To check this equality, note that for any tangent vector $v\in T_x\mathcal{M}$ and smooth curve $\gamma$ in $\mathcal{M}$ with $\gamma(0)=x$ and $\gamma’(0)=v$ we have </p>
+<script type="math/tex; mode=display">
+\langle v,\text{grad}(f)_x\rangle=v(f)=\frac{\rm d}{\rm dt}|_0f(\gamma(t))=\frac{\rm d}{\rm dt}|_0\widehat{f}(\gamma(t))=\langle v,\pi_x(\partial\widehat{f}_x)\rangle</script><p>Let $\nabla$ be the Riemannian connection on $\mathcal{M}$. For any vector fields $X$ and $Y$, by definition, </p>
+<script type="math/tex; mode=display">
+\nabla_XY=\pi(\partial_XY)</script><p>Define the Riemannian hessian of $f$ at $x$ by</p>
+<script type="math/tex; mode=display">
+\text{Hess}f_x(v)=\nabla_v\text{grad}(f)</script><p>It is easy to check that</p>
+<script type="math/tex; mode=display">
+\langle\text{Hess}f_x(v),w\rangle=v(w(f))-\langle\nabla_vw,\text{grad}(f)\rangle=\langle\text{Hess}f_x(w),v\rangle</script><p>Thus, $\text{Hess}f_x:T_x\mathcal{M}\to T_x\mathcal{M}$ is a self-adjoint operator. However, the original definition is difficult to use in practice. Further computation shows that</p>
+<script type="math/tex; mode=display">
+\text{Hess}f_x(v)=\pi_x\partial_v(\pi\partial\widehat{f})=\pi_x((\partial_v\pi)\partial\widehat{f}_x+\partial^2\widehat{f}_x(v))</script><p>where we have used the product rule. If we understand $\pi$ as matrices then $\partial_v\pi$ contains elements which are derivatives of those in $\pi$. From the result we see that Riemannian hessian of $f$ differs from the projection of usual hessian of $\widehat{f}$ by a term involving the covariant derivative of $\pi$. Let $\pi^\perp:\mathbb{R}^d\to T^\perp_x\mathcal{M}$ be the projection operator to the normal space at $x$. Using the identity $\text{id}=\pi+\pi^\perp$, we have </p>
+<script type="math/tex; mode=display">
+\pi_x\partial_v\pi=-\pi_x\partial_v\pi^\perp</script><p>In addition, since $\pi\pi^\perp=0$, we have</p>
+<script type="math/tex; mode=display">
+0=\pi_x\partial_v(\pi\pi^\perp)=\pi_x(\partial_v\pi^\perp)_x+\pi_x(\partial_v\pi)_x\pi^\perp_x</script><p>which implies $\pi_x(\partial_v\pi^\perp)_x\pi_x=0$ and $\pi_x(\partial_v\pi)\partial\widehat{f}_x=-\pi_x(\partial_v\pi^\perp)_x\pi_x^\perp\partial\widehat{f}_x$.</p>
+<p>Recall that the Weingarten map at $x$ for $\xi\in T^\perp_x\mathcal{M}$ is defined by $A_{x,\xi}(v)=-\pi_x\partial_v\tilde{\xi}$ where $v\in T_x\mathcal{M}$ and $\tilde{\xi}$ is any extension of $\xi$. The identity implies that</p>
+<script type="math/tex; mode=display">
+A_{x,\xi}(v)=-\pi_x\partial_v(\pi^\perp\tilde{\xi})=-\pi_x(\partial_v\pi^\perp)_x\xi-\pi_x\pi_x^\perp\partial_v\tilde{\xi}=-\pi_x(\partial_v\pi^\perp)_x\xi</script><p>Utilizing the above results we have</p>
+<script type="math/tex; mode=display">
+\text{Hess}f_x(v)=\pi_x\partial^2\widehat{f}_x(v)+A_{x,\pi_x^\perp\partial\widehat{f}_x}(v)</script><h3 id="Ricci-Map"><a href="#Ricci-Map" class="headerlink" title="Ricci Map"></a>Ricci Map</h3><p>Suppose $\mathcal{M}$ is a <strong>hypersurface</strong> in Euclidean space. i.e. $\mathcal{M}$ is of codimension $1$. Let $\xi$ be a local unit normal vector field. The second fundamental form can be simplified as </p>
+<script type="math/tex; mode=display">
+h(X,Y)=\partial_XY-\nabla_XY=\langle\partial_XY,\xi\rangle\xi=\langle Y,A_\xi(X)\rangle\xi</script><p>where we have used the identity $X\langle Y,\xi\rangle=\langle\partial_XY,\xi\rangle+\langle Y,\partial_X\xi\rangle$ and the definition of Weingarten map. Recall that for Euclidean submanifolds Gauss equation reads</p>
+<script type="math/tex; mode=display">
+0=\tilde{R}(X,Y)Z=R(X,Y)Z-A_{h(Y,Z)}X+A_{h(X,Z)}Y</script><p>Substituting the expression of the second fundamental form into above, we have</p>
+<script type="math/tex; mode=display">
+R(X,Y)Z=\langle A_\xi(Y),Z\rangle A_\xi(X)-\langle A_\xi(X),Z\rangle A_\xi(Y)</script><p>Let $Z_1,\cdots,Z_m$ be an orthonormal base of principal vectors of $A_\xi$. i.e. $A_\xi(Z_i)=k_iZ_i$ where $k_i$’s are principal curvatures. Let $H=\sum k_i$ be the mean curvature and define $Ric:T_x\mathcal{M}\to T_x\mathcal{M}$ by $Ric(X)=\sum_{i=1}^m R(X,Z_i)Z_i$, called <strong>Ricci map</strong>. Then we have</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Ric(X)&=\sum_{i=1}^mR(X,Z_i)Z_i\\
+&=\sum_{i=1}^m\langle A_\xi(Z_i),Z_i\rangle A_\xi(X)-\langle A_\xi(X),Z_i\rangle A_\xi(Z_i)\\
+&=\sum_{i=1}^m\langle k_iZ_i,Z_i\rangle A_\xi(X)-\langle A_\xi(X),Z_i\rangle k_iZ_i\\
+&=H A_\xi(X)-\sum_{i=1}^m\langle A_\xi(X),A_\xi(Z_i)\rangle Z_i\\
+&=H A_\xi(X)-\sum_{i=1}^m\langle A_\xi^2(X),Z_i\rangle Z_i\\
+&=H A_\xi(X)-A_\xi^2(X)
+\end{aligned}</script><p>Therefore we have proved the following identity relating the Ricci map with Weingarten map</p>
+<script type="math/tex; mode=display">
+A_\xi^2-HA_\xi+Ric=0</script><p>An obvious corollary is that every principal vector is also a Ricci vector. i.e. $Ric$ has the same eigenvectors as $A_\xi$.</p>
+<p><strong>Example.</strong> Let $\mathcal{M}$ be a surface in the three space. The characteristic equation for Weingarten map is $A^2-HA+KI=0$ where $K$ is Gauss curvature. Comparing both equations we have $Ric=KI$.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Geometry </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Submanifolds </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Local PCA with Gaussian Noise]]></title>
       <url>/2020/07/08/Local-PCA-with-Gaussian-Noise/</url>
       <content type="html"><![CDATA[<p>In noiseless case we have a clean result for the convergence rate about tangent space estimation via local PCA ( see <a href="http://yueqicao.top/2020/05/21/Tangent-Space-Estimation-Using-Local-PCA/">this post</a> ). However, for noisy data the analysis is much more involved, because noise will cause points in the local neighborhood to exit, and points from the outside to enter. The integration in normal patch no more holds due to loss of true location. People proposed many practical approaches to do local PCA with the existence of noise, but few provided with a comprehensive theory. There is one method which covers both sides, called Multiscale SVD. The details are complex and can be found in this <a href="http://dspace.mit.edu/handle/1721.1/72597" target="_blank" rel="noopener">technical report</a>, while the intuition is easy to explain and help us gain insights into other problems in manifold learning.  </p>
