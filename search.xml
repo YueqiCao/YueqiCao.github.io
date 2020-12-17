@@ -106,6 +106,12 @@ p(N,\alpha)=\mathbb{P}\left(\left|\sum_{j\neq i} Y_j\right|\ge (N-1)\alpha(\math
 <script type="math/tex; mode=display">
 \frac{\alpha}{\epsilon}=O(\frac{1}{\sqrt{N\epsilon^{1+d/2}}})</script>]]></content>
       
+        <categories>
+            
+            <category> Manifold-Learning </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -242,9 +248,9 @@ H=\begin{bmatrix}ch^2I+O(h^4)+O(\frac{h^2+\sigma^2}{\sqrt{nh^m}})& 0\\0&0\end{bm
         
         <tags>
             
-            <tag> Asymptotic Analysis </tag>
-            
             <tag> Submanifolds </tag>
+            
+            <tag> Asymptotic Analysis </tag>
             
         </tags>
         
@@ -319,9 +325,9 @@ W_\gamma=\frac{1}{n}A^t(I-\frac{1}{n}B(U_\gamma^{-1})^tB^t)A=\frac{1}{n}A^tL(I-\
         
         <tags>
             
-            <tag> Asymptotic Analysis </tag>
-            
             <tag> Submanifolds </tag>
+            
+            <tag> Asymptotic Analysis </tag>
             
         </tags>
         
@@ -452,9 +458,9 @@ O=\left[\begin{array}{cc}B&0\\ 0&0\end{array}\right]+E</script><p>Let $T_0$ be t
         
         <tags>
             
-            <tag> Asymptotic Analysis </tag>
-            
             <tag> Submanifolds </tag>
+            
+            <tag> Asymptotic Analysis </tag>
             
         </tags>
         
