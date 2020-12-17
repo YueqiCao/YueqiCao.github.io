@@ -3,6 +3,121 @@
   
     
     <entry>
+      <title><![CDATA[The Convergence Rate of Graph Laplacian]]></title>
+      <url>/2020/12/17/The-Convergence-Rate-of-Graph-Laplacian/</url>
+      <content type="html"><![CDATA[<p>Amit Singer’s paper <a href="https://www.math.pku.edu.cn/teachers/yaoy/Fall2011/Amit06_laplacian.pdf" target="_blank" rel="noopener"><em>From graph to manifold Laplacian: The convergence rate</em></a> presents a very clear proof of the convergence rate of graph Laplacian that everyone can follow. Techniques involved in this proof have become standard in following works in manifold learning. We review the proof in this post.</p>
+<h2 id="Setups"><a href="#Setups" class="headerlink" title="Setups"></a>Setups</h2><p>Let $x_1,\cdots,x_N$ be i.i.d. samples from uniform distribution on compact submanifold $\mathcal{M}^d\subseteq \mathbb{R}^m$. Construct the weight matrix $W$ by using heat kernel</p>
+<script type="math/tex; mode=display">
+W_{ij}=\exp\{-\|x_i-x_j\|^2/2\epsilon\}</script><p>Define the degree matrix by</p>
+<script type="math/tex; mode=display">
+D_{ii}=\sum_j W_{ij}</script><p>The graph Laplacian is given by</p>
+<script type="math/tex; mode=display">
+L=D^{-1}W-I</script><p>Let $f:\mathcal{M}\to\mathbb{R}$ be a smooth function and $\Delta_\mathcal{M}$ be the Beltrami-Laplacian operator  on $\mathcal{M}$. The convergence result states that for each $x_i$ we have</p>
+<script type="math/tex; mode=display">
+\frac{1}{\epsilon}\sum_j L_{ij}f(x_j)=\frac{1}{2}\Delta_\mathcal{M}f(x_i)+O(\frac{1}{\sqrt{N\epsilon^{1+d/2}}},\epsilon)</script><p>$\textbf{Remark}:$ In fact the convergence result holds for any $x\in\mathcal{M}$. However, if we choose $x$ to be a fixed data point, then in the following arguments there will be $N-1$ random data and the summation should exclude $x_i$. We follow the original paper and denote $x_i$ by $x$.</p>
+<h2 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h2><p>Define</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& F(x_j)=\exp\{-\|x-x_j\|^2/2\epsilon\}f(x_j)\\
+& G(x_j)=\exp\{-\|x-x_j\|^2/2\epsilon\}
+\end{aligned}</script><p>The graph Laplacian can be written as</p>
+<script type="math/tex; mode=display">
+(Lf)(x)=\frac{\sum_j F(x_j)}{\sum_j G(x_j)}-f(x)</script><p>As we remarked above, we need to consider</p>
+<script type="math/tex; mode=display">
+\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}</script><p>As $N$ tends infinity, we may expect</p>
+<script type="math/tex; mode=display">
+\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}\to\frac{\mathbb{E}F}{\mathbb{E}G}</script><p>where</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \mathbb{E}F=\int_{\mathcal{M}} \exp\{-\|x-y\|^2/2\epsilon\}f(y)\frac{\rm{d}y}{vol(\mathcal{M})}\\
+& \mathbb{E}G=\int_{\mathcal{M}} \exp\{-\|x-y\|^2/2\epsilon\}\frac{\rm{d}y}{vol(\mathcal{M})}
+\end{aligned}</script><p>The Taylor expansion for $\mathbb{E}F$ is given by</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\frac{1}{(2\pi \epsilon)^{d/2}}\int_\mathcal{M}\exp\{-\|x-y\|^2/2\epsilon\}f(y){\rm d}y\\
+=&f(x)+\frac{\epsilon}{2}(E(x)f(x)+\Delta_\mathcal{M}f(x))+O(\epsilon^{2})
+\end{aligned}</script><p>Therefore,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\mathbb{E}F}{\mathbb{E}G}&=\frac{f(x)+\frac{\epsilon}{2}(E(x)f(x)+\Delta_\mathcal{M}f(x))+O(\epsilon^{2})}{1+\frac{\epsilon}{2}E(x)+O(\epsilon^{2})}\\
+&=f(x)+\frac{\epsilon}{2}\Delta_\mathcal{M}f(x)+O(\epsilon^{2})
+\end{aligned}</script><p>The bias term is given by</p>
+<script type="math/tex; mode=display">
+\frac{\mathbb{E}F}{\mathbb{E}G}-f(x)=\frac{\epsilon}{2}\Delta_\mathcal{M}f(x)+O(\epsilon^{2})</script><p>$\textbf{Remark}$: In fact we have decomposed $Lf$ as </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(Lf)(x)=&\frac{\sum_j F(x_j)}{\sum_j G(x_j)}-\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}\\
+&+\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}-\frac{\mathbb{E}F}{\mathbb{E}G}\\
+&+\frac{\mathbb{E}F}{\mathbb{E}G}-f(x)
+\end{aligned}</script><p>For the first term, a rough estimate is given by</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\frac{\sum_j F(x_j)}{\sum_j G(x_j)}-\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}\\
+=&\frac{(\sum_j F(x_j))(\sum_{j\neq i} G(x_j))-(\sum_{j\neq i} F(x_j))(\sum_{j} G(x_j))}{\sum_j G(x_j)\sum_{j\neq i} G(x_j)}\\
+=&\frac{F(x)(\sum_{j\neq i} G(x_j))-G(x)(\sum_{j\neq i} F(x_j))}{\sum_j G(x_j)\sum_{j\neq i} G(x_j)}\\
+=&\frac{f(x)(\sum_{j\neq i} G(x_j))-(\sum_{j\neq i} F(x_j))}{\sum_j G(x_j)\sum_{j\neq i} G(x_j)}\\
+=&\frac{\sum_j F(x_j)}{\sum_j G(x_j)}\frac{f(x)}{\sum_j F(x_j)}-\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}\frac{1}{\sum_j G(x_j)}\\
+\le& C\frac{1/N}{1/N\sum_j F(x_j)}f(x)-C'\frac{1/N}{1/N\sum_j G(x_j)}\\
+=& O(\frac{1}{N\epsilon^{d/2}}) 
+\end{aligned}</script><p>where bounds $C$ and $C’$ come from the fact that convergent sequences are bounded. However, as we will see later $O(1/N\epsilon^{d/2})$ is negligible compared to bias and variance. </p>
+<h2 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h2><p>For the variance error</p>
+<script type="math/tex; mode=display">
+\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}-\frac{\mathbb{E}F}{\mathbb{E}G}</script><p>we can only expect it to be small <em>in probability</em> when $N$ tends to infinity. </p>
+<p>Recall that the <a href="https://en.wikipedia.org/wiki/Chebyshev%27s_inequality" target="_blank" rel="noopener">Chebyshev inequality</a> states that for a random variable $X$ with finite mean $\mu$ and variance $\sigma^2$ then for any $t&gt;0$ we have</p>
+<script type="math/tex; mode=display">
+\mathbb{P}(|X-\mu|\ge t)\le \frac{\sigma^2}{t^2}</script><p>$\textbf{Remark}$: In the original paper the author used Chernoff inequality. However, according to the context it seems to be <a href="https://en.wikipedia.org/wiki/Bernstein_inequalities_(probability_theory" target="_blank" rel="noopener">Bernstein inequality</a> ). But in the final statement the author only used variance and missed another term in the denominator. It seems Chebyshev inequality is enough for our use.</p>
+<p>Consider the following probability</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+p(N,\alpha)&=\mathbb{P}\left(\left|\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}-\frac{\mathbb{E}F}{\mathbb{E}G}\right|\ge \alpha\right)\\
+&=p_+(N,\alpha)+p_-(N,\alpha)\\
+&=\mathbb{P}\left(\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}-\frac{\mathbb{E}F}{\mathbb{E}G}\ge \alpha\right)\\
+&+\mathbb{P}\left(\frac{\sum_{j\neq i} F(x_j)}{\sum_{j\neq i} G(x_j)}-\frac{\mathbb{E}F}{\mathbb{E}G}\le -\alpha\right)
+\end{aligned}</script><p>Since $G(x_j)$ are positive, it is equivalent to </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+p(N,\alpha)&=p_+(N,\alpha)+p_-(N,\alpha)\\
+&=\mathbb{P}\left(\sum_{j\neq i}F(x_j)\mathbb{E}G-G(x_j)\mathbb{E}F-\sum_{j\neq i}\alpha G(x_j)\mathbb{E}G\ge 0\right)\\
+&+\mathbb{P}\left(\sum_{j\neq i}F(x_j)\mathbb{E}G-G(x_j)\mathbb{E}F+\sum_{j\neq i}\alpha G(x_j)\mathbb{E}G\le 0\right)
+\end{aligned}</script><p>If we define</p>
+<script type="math/tex; mode=display">
+Y_j=F(x_j)\mathbb{E}G-G(x_j)\mathbb{E}F+\alpha\mathbb{E}G(\mathbb{E}G-G(x_j))</script><p>Then $Y_j$ are i.i.d. samples with zero mean. The probability $p(N,\alpha)$ can be expressed by</p>
+<script type="math/tex; mode=display">
+p(N,\alpha)=\mathbb{P}\left(\left|\sum_{j\neq i} Y_j\right|\ge (N-1)\alpha(\mathbb{E}G)^2\right)</script><p>To apply Chebyshev inequality, we only need to compute $\mathbb{E}Y_j^2$. Using the expansion from $\mathbb{E}F$ we have</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \mathbb{E}F=\frac{(2\pi\epsilon)^{d/2}}{vol(\mathcal{M})}\left(f(x)+\frac{\epsilon}{2}(E(x)f(x)+\Delta_\mathcal{M}f(x))+O(\epsilon^2)\right)\\
+& \mathbb{E}G=\frac{(2\pi\epsilon)^{d/2}}{vol(\mathcal{M})}\left(1+\frac{\epsilon}{2} E(x)+O(\epsilon^2)\right)\\
+& \mathbb{E}F^2=\frac{(\pi\epsilon)^{d/2}}{vol(\mathcal{M})}\left(f^2(x)+\frac{\epsilon}{4}(E(x)f^2(x)+\Delta_\mathcal{M}f^2(x))+O(\epsilon^2)\right)\\
+& \mathbb{E}G^2=\frac{(\pi\epsilon)^{d/2}}{vol(\mathcal{M})}\left(1+\frac{\epsilon}{4} E(x)+O(\epsilon^2)\right)\\
+& \mathbb{E}FG=\frac{(\pi\epsilon)^{d/2}}{vol(\mathcal{M})}\left(f(x)+\frac{\epsilon}{4}(E(x)f(x)+\Delta_\mathcal{M}f(x))+O(\epsilon^2)\right)
+\end{aligned}</script><p>Note that in the derivation of bias term, the coefficient before $\Delta_\mathcal{M}f$ is $\epsilon/2$. Therefore, we should focus on $\alpha\ll \epsilon$. Neglecting $\alpha$ and $\alpha^2$ term, we have</p>
+<script type="math/tex; mode=display">
+\mathbb{E}Y_j^2=\frac{2^d(\pi\epsilon)^{3d/2}}{vol(\mathcal{M})^3}\frac{\epsilon}{2}(\|\nabla_\mathcal{M} f\|^2+O(\epsilon))</script><p>Substituting into Chebyshev inequality we have</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&p(N,\alpha)\\
+\le&\frac{\mathbb{E}Y_j^2}{(N-1)\alpha^2(\mathbb{E}G)^4}\\
+=&\frac{\frac{2^d(\pi\epsilon)^{3d/2}}{vol(\mathcal{M})^3}\frac{\epsilon}{2}(\|\nabla_\mathcal{M} f\|^2+O(\epsilon))}{(N-1)\alpha^2\frac{(2\pi\epsilon)^{2d}}{vol(\mathcal{M})^4}\left(1+\frac{\epsilon}{2} E(x)+O(\epsilon^2)\right)^4}\\
+=&\frac{vol(\mathcal{M})\epsilon(\|\nabla_\mathcal{M} f\|^2+O(\epsilon))}{2^{d+1}(\pi\epsilon)^{d/2}(N-1)\alpha^2\left(1+\frac{\epsilon}{2} E(x)+O(\epsilon^2)\right)^4}
+\end{aligned}</script><p>If we take </p>
+<script type="math/tex; mode=display">
+\alpha\approx\sqrt{\frac{vol(\mathcal{M})\epsilon(\|\nabla_\mathcal{M} f\|^2+O(\epsilon))}{2^{d+1}(\pi\epsilon)^{d/2}(N-1)}}</script><p>Thus the noise error is </p>
+<script type="math/tex; mode=display">
+\frac{\alpha}{\epsilon}=O(\frac{1}{\sqrt{N\epsilon^{1+d/2}}})</script>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Asymptotic Analysis </tag>
+            
+            <tag> Spectral Graph Theory </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Two Applications of the Weingarten Map]]></title>
       <url>/2020/07/11/Two-Applications-of-the-Weingarten-Map/</url>
       <content type="html"><![CDATA[<p>If $\mathcal{M}$ is an Euclidean submanifold, many intrinsic quantities can be expressed using information from the ambient Euclidean space. Here are two examples where the Weingarten map plays an important role: first is the Riemannian hessian of a smooth map, and second is the Ricci curvature tensor. Assume that $f:\mathcal{M}\to\mathbb{R}$ is a smooth function and $\widehat{f}:\mathbb{R}^d\to\mathbb{R}$ is a smooth extension of $f$. In data science, it is much more convenient to compute the gradient or hessian of $\widehat{f}$ than those of $f$. <a href="https://link.springer.com/chapter/10.1007/978-3-642-40020-9_39" target="_blank" rel="noopener">Absil etc.</a> presented the relations and applied them in Riemannian optimization. On the other hand, Ricci curvature is also a hot topic in manifold learning. An old paper of <a href="https://www.jstor.org/stable/2034680" target="_blank" rel="noopener">Hicks</a> proves that there is a simple relation between Ricci map and Weingarten map if the manifold is a hypersurface. Many problems concerning Ricci curvature thus descend to the estimation of the Weingarten map.</p>
@@ -127,9 +242,9 @@ H=\begin{bmatrix}ch^2I+O(h^4)+O(\frac{h^2+\sigma^2}{\sqrt{nh^m}})& 0\\0&0\end{bm
         
         <tags>
             
-            <tag> Submanifolds </tag>
-            
             <tag> Asymptotic Analysis </tag>
+            
+            <tag> Submanifolds </tag>
             
         </tags>
         
@@ -204,9 +319,9 @@ W_\gamma=\frac{1}{n}A^t(I-\frac{1}{n}B(U_\gamma^{-1})^tB^t)A=\frac{1}{n}A^tL(I-\
         
         <tags>
             
-            <tag> Submanifolds </tag>
-            
             <tag> Asymptotic Analysis </tag>
+            
+            <tag> Submanifolds </tag>
             
         </tags>
         
@@ -337,9 +452,9 @@ O=\left[\begin{array}{cc}B&0\\ 0&0\end{array}\right]+E</script><p>Let $T_0$ be t
         
         <tags>
             
-            <tag> Submanifolds </tag>
-            
             <tag> Asymptotic Analysis </tag>
+            
+            <tag> Submanifolds </tag>
             
         </tags>
         
