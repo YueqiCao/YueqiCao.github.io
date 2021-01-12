@@ -413,7 +413,13 @@ A+H=\sum_{i=1}^n\mu_iv_iv_i^*</script><p>We want to know </p>
 <li>(2) the error bound for eigenvectors $u_i$ and $v_i$. </li>
 </ul>
 <p>It is worth thinking whether above two problems are <strong>well-defined</strong>. In fact, a critical thing is how to ‘match’ the original eigen-value/vector and the corresponding perturbed eigen-value/vector. For the first problem, we can sort the eigenvalues and match them according to the order. For the second problem, however, the situation is more intricate: think about two different eigenvalues that become equal after perturbation. Then any vector in the two-dimensional eigenspace will be an eigenvector corresponding to the new eigenvalue. Therefore, it is natural to place some assumptions on eigengaps to separate different eigenspaces.</p>
-<p>Define $P=\sum_{i=1}^ku_iu_i^h=UU^h$ to be the orthogonal projection operator to the $k$-dimensional eigenspace spanned by $u_1,\cdots,u_k$. Let $P_\perp=I-P=\sum_{i=k+1}^nu_iu_i^<em>=U_\perp U_\perp^</em>$. Similarly, define $Q=\sum_{i=1}^kv_iv_i^<em>=VV^</em>$ and $Q_\perp=I-Q$. The second problem can be generalized to </p>
+<p>Define</p>
+<script type="math/tex; mode=display">
+P=\sum_{i=1}^ku_iu_i^*=UU^*</script><p>to be the orthogonal projection operator to the $k$-dimensional eigenspace spanned by $u_1,\cdots,u_k$. Let</p>
+<script type="math/tex; mode=display">
+P_\perp=I-P=\sum_{i=k+1}^nu_iu_i^*=U_\perp U_\perp^*</script><p>Similarly, define</p>
+<script type="math/tex; mode=display">
+Q=\sum_{i=1}^kv_iv_i^*=VV^*</script><p>and $Q_\perp=I-Q$. The second problem can be generalized to </p>
 <ul>
 <li>(2*) the error bound for projections $P$ and $Q$.</li>
 </ul>
@@ -430,12 +436,16 @@ A+H=\sum_{i=1}^n\mu_iv_iv_i^*</script><p>We want to know </p>
 <script type="math/tex; mode=display">
 e=E\alpha,\quad f=F\beta</script><p>where $\alpha$ and $\beta$ are unit vectors. Then we see that </p>
 <script type="math/tex; mode=display">
-\angle E,F = \inf_{\alpha,\beta}\text{arccos}(\alpha^*E^*F\beta)=\text{arccos}(\lambda_{\max}(E^*F))</script><p>where $\lambda_{\max}(E^<em>F)$ is the largest singular value of $E^</em>F$. Since we have seen that the angle between two vector spaces is related to the singular value of $E^<em>F$, it will be helpful to consider all the singular values of $E^</em>F$ instead of the largest one. We call each $\theta_i=\text{arccos}\lambda_i(E^*F)$ the principal angle between $E$ and $F$. Note that each principal angle is between $[0,\pi/2]$. Define the following matrix</p>
+\angle E,F = \inf_{\alpha,\beta}\text{arccos}(\alpha^*E^*F\beta)=\text{arccos}(\lambda_{\max}(E^*F))</script><p>where $\lambda_{\max}$ denotes the largest singular value. Since we have seen that the angle between two vector spaces is related to the singular value, it will be helpful to consider all the singular values instead of the largest one. We call each</p>
 <script type="math/tex; mode=display">
-\Theta_{E,F}=\text{arccos}(E^*F)</script><p>where $\text{arccos}$ acts on singular values in the singular decomposition of $E^*F$. Though in general cases $\Theta_{E,F}\neq \Theta_{F,E}$, in the following discussion we only focus on $\sin(\Theta)$ whose nonzero singular values are equal for $\sin(\Theta_{E,F})$ and $\sin(\Theta_{F,E})$.   Now we have prepared to look at the Davis-Kahan theorem. </p>
-<h2 id="Davis-Kahan’s-sin-Theta-Theorem"><a href="#Davis-Kahan’s-sin-Theta-Theorem" class="headerlink" title="Davis-Kahan’s $\sin(\Theta)$ Theorem"></a>Davis-Kahan’s $\sin(\Theta)$ Theorem</h2><p>Back to our set-up, we want to compare two projection matrices $P=UU^<em>$ and $Q=VV^</em>$. Using the Frobenius norm for matrices, we have</p>
+\theta_i=\text{arccos}\lambda_i(E^*F)</script><p>the principal angle between $E$ and $F$. Note that each principal angle is between $[0,\pi/2]$. Define the following matrix</p>
 <script type="math/tex; mode=display">
-\|P-Q\|_{F}^2=\text{tr}((P-Q)^2)=2k-2\text{tr}(PQ)</script><p>Note that $\text{tr}(PQ)=|U^*V|_F^2=|\cos(\Theta_{U,V})|^2_F$. Therefore, we have</p>
+\Theta_{E,F}=\text{arccos}(E^*F)</script><p>where $\text{arccos}$ acts on singular values in the singular decomposition. Though in general cases $\Theta_{E,F}\neq \Theta_{F,E}$, in the following discussion we only focus on $\sin(\Theta)$ whose nonzero singular values are equal for $\sin(\Theta_{E,F})$ and $\sin(\Theta_{F,E})$.   Now we have prepared to look at the Davis-Kahan theorem. </p>
+<h2 id="Davis-Kahan’s-sin-Theta-Theorem"><a href="#Davis-Kahan’s-sin-Theta-Theorem" class="headerlink" title="Davis-Kahan’s $\sin(\Theta)$ Theorem"></a>Davis-Kahan’s $\sin(\Theta)$ Theorem</h2><p>Back to our set-up, we want to compare two projection matrices $P$ and $Q$. Using the Frobenius norm for matrices, we have</p>
+<script type="math/tex; mode=display">
+\|P-Q\|_{F}^2=\text{tr}((P-Q)^2)=2k-2\text{tr}(PQ)</script><p>Note that</p>
+<script type="math/tex; mode=display">
+\text{tr}(PQ)=\|U^*V\|_F^2=\|\cos(\Theta_{U,V})\|^2_F</script><p>Therefore, we have</p>
 <script type="math/tex; mode=display">
 \|P-Q\|_F=\sqrt{2}\|\sin(\Theta_{U,V})\|_F</script><p>To bound the error between two projection matrices, it suffices to bound $|\sin(\Theta_{U,V})|_F$.</p>
 <p>We write the eigen-decomposition for $A$ with respect to $U$ and $U_\perp$ as</p>
@@ -468,7 +478,10 @@ A+H = [U,U_\perp]\left[\begin{array}{cc}
     U^*\\ U^*_\perp
 \end{array}\right]</script><p>Since our focus is the eigenspace spanned by $u_1,\cdots,u_k$, define the following residual</p>
 <script type="math/tex; mode=display">
-R = (A+H)U-AU=UH_0+U_\perp B^*=VM V^*U+V_\perpM_\perp V_\perp^*U-U\Lambda</script><p>If we multiply $V_\perp^*$ on the left, we have</p>
+\begin{aligned}
+R =& (A+H)U-AU=UH_0+U_{\perp} B^*\\
+=& VM V^*U+V_\perp M_\perp V_\perp^*U-U\Lambda
+\end{aligned}</script><p>If we multiply $V_\perp^*$ on the left, we have</p>
 <script type="math/tex; mode=display">
 V_\perp^*R=M_\perp V_\perp^*U-V_\perp^*U\Lambda</script><p>Note that $M_\perp$ and $\Lambda$ are nonnegative diagonal matrices. For Frobenius norm we have the following lemma</p>
 <blockquote>
@@ -488,7 +501,10 @@ V_\perp^*R=M_\perp V_\perp^*U-V_\perp^*U\Lambda</script><p>Note that $M_\perp$ a
 <script type="math/tex; mode=display">
 \|P-Q\|_{op}\le \|P-Q\|_F\le \frac{\sqrt{2k}\|H\|_{op}}{\delta}</script><p>It is also possible to make assumptions on gaps between $\Lambda_\perp$ and $M$. Consider another residual</p>
 <script type="math/tex; mode=display">
-R_\perp = (A+H)U_\perp-AU_\perp=UB+U_\perp H_1=VM V^*U_\perp+V_\perpM_\perp V_\perp^*U_\perp-U_\perp \Lambda_\perp</script><p>Multiply $V^*$ on the left</p>
+\begin{aligned}
+R_\perp =& (A+H)U_\perp-AU_\perp=UB+U_\perp H_1\\
+=& VM V^*U_\perp+V_\perp M_\perp V_\perp^*U_\perp-U_\perp \Lambda_\perp
+\end{aligned}</script><p>Multiply $V^*$ on the left</p>
 <script type="math/tex; mode=display">
 V^*R_\perp = M V^*U_\perp-V^*U_\perp\Lambda_\perp</script><p>But what is $|V^*U_\perp|_F$? The computation shows that </p>
 <script type="math/tex; mode=display">
@@ -499,7 +515,9 @@ L=AV-V\Lambda+HV-HV=V(M-\Lambda)-HV</script><p>Using <a href="http://i.stanford.
 <script type="math/tex; mode=display">
 \|L\|_F\le \|V(M-\Lambda)\|_F+\|HV\|_F\le 2\|H\|_F</script><p>On the other hand, using the eigen-decomposition for $A$, we have</p>
 <script type="math/tex; mode=display">
-L=U\Lambda U^*V+U_\perp\Lambda_\perp U_\perp^*V-V\Lambda</script><p>Note that $V\Lambda=(P+P_\perp)V\Lambda=UU^<em>V\Lambda+U_\perp U_\perp^</em>V\Lambda$. Thus,</p>
+L=U\Lambda U^*V+U_\perp\Lambda_\perp U_\perp^*V-V\Lambda</script><p>Note that</p>
+<script type="math/tex; mode=display">
+V\Lambda=(P+P_\perp)V\Lambda=UU^*V\Lambda+U_\perp U_\perp^*V\Lambda</script><p>Thus,</p>
 <script type="math/tex; mode=display">
 L=U(\Lambda U^*V-U^*V\Lambda)+U_\perp(\Lambda_\perp U_\perp^*V-U_\perp^*V\Lambda)</script><p>Since $U$ and $U_\perp$ are orthogonal, we have</p>
 <script type="math/tex; mode=display">
@@ -1157,11 +1175,11 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
+    
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
@@ -1222,9 +1240,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     
         <span class="sidebar-category-name" data-categories="Manifold-Learning"><span class="iconfont-archer">&#xe60a;</span>Manifold-Learning</span>
     
