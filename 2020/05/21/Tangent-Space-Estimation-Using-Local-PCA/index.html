@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.6k</span>Reading time: <span class="post-count reading-time">16 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">16 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,7 +403,15 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>In <a href="https://arxiv.org/abs/1102.0075" target="_blank" rel="noopener">this paper</a>, A.Singer and H.-T. Wu derived an explicit expression for the bias and variance of local PCA in tangent space estimation. There are many details one should notice: <strong>Using different criteria to measure the deviation of estimated tangent space will yield different order of convergence</strong>. Especially, in this paper they use optimal rotation to measure the difference. Instead of taking $O(\text{bias})=O(\text{variance})$ as usual, the sampling rate is taken so that the error mainly comes from variance. In this way the error converges <strong>faster</strong>. These nontrivial results cannot be easily understood unless one writes out all the details.</p>
+        <p>In <a href="https://arxiv.org/abs/1102.0075" target="_blank" rel="noopener">this paper</a>, A.Singer and H.-T. Wu derived an explicit expression for the bias and variance of local PCA in tangent space estimation. One thing to notice: when we have estimated a basis $\widehat{E}$ and want to compare with the true basis $E$, we can either</p>
+<ul>
+<li>consider the error between two projection operators $|\widehat{E}\widehat{E}^T-EE^T|$, </li>
+</ul>
+<p>or </p>
+<ul>
+<li>consider the error up to rotation $\min_{O}|O\widehat{E}-E|$.</li>
+</ul>
+<p>However, according to the original paper, the convergence rates for above two errors are different. Moreover, the authors did not claim the choice of bandwidth is optimal. So other choices of bandwidth may also by possible. </p>
 <p>Let $\mathcal{M}$ be an $m$-dimensional compact submanifold in a Euclidean space $\mathbb{R}^d$. Fix $x\in\mathcal{M}$. Without loss of generality assume that $x$ is placed at the origin and the tangent space $T_x\mathcal{M}$ coincides with the coordinate space spanned by the first $m$ standard vectors $\{e_1,\cdots,e_m\}$ in $\mathbb{R}^d$. Suppose $X$ is a random vector valued in $\mathcal{M}$ with a smooth positive density function $f:\mathcal{M}\to \mathbb{R}$. Let $K:\mathbb{R}\to\mathbb{R}$ be a smooth function supported on $[0,1]$ and $h&gt;0$ be a positive number. To estimate the tangent space at $x$, we start by finding a direction $v$ such that the projection to $v$ is maximized</p>
 <script type="math/tex; mode=display">
 \mathbb{E}[((X-x)\cdot v)^2K_h(X-x)]</script><p>where $K_h:\mathbb{R}^d\to\mathbb{R}$ is the function $K_h(u)=1/h^mK(|u|/h)$. Therefore, we consider the following Lagrange function</p>
@@ -514,6 +522,8 @@ O=\left[\begin{array}{cc}B&0\\ 0&0\end{array}\right]+E</script><p>Let $T_0$ be t
 <p>Now we return back to the expression of $1/h^2H$, consider the decomposition</p>
 <script type="math/tex; mode=display">
 \frac{1}{h^2}H=\left[\begin{array}{cc}cI+O(h^2)+O(\sqrt{nh^m})&0\\0&0\end{array}\right]+\left[\begin{array}{cc}0&O(h^2+\frac{h}{\sqrt{nh^m}})\\O(h^2+\frac{h}{\sqrt{nh^m}})&O(h^2)\end{array}\right]</script><p>Note $\lambda_{\min}(cI+O(\cdot))\approx c$. Thus the convergence rate depends on the operator norm of the second matrix. If we set $1/\sqrt{nh^m}=h^\alpha$ where $0&lt;\alpha&lt;1$, then the rate is $O(h^{1+\alpha})$. If $\alpha\ge 1$, the rate is $O(h^2)$. </p>
+<hr>
+<p><strong>Update:</strong> <a href="https://djalil.chafai.net/blog/2011/12/03/the-hoffman-wielandt-inequality/" target="_blank" rel="noopener">This blog</a> gives a very nice introduction to Wielandt-Hoffman inequality. The proof is short and readable. I also write a new blog on Davis-Kahan’s $\sin(\Theta)$ theorem. See <a href="http://yueqicao.top/2021/01/12/Davis-Kahan-s-Theorem/">this page</a> for more details.</p>
 
     </article>
     <!-- license  -->
@@ -1182,11 +1192,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
     
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+    
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
-    
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
     
