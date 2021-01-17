@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2k</span>Reading time: <span class="post-count reading-time">12 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.3k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -546,7 +546,45 @@ A^*A \text{ and } AA^*</script><p>are Hermitian matrices, and their eigenvalues 
     =& \|(\widehat{A}^*\otimes I)vec(\widehat{A}-A)\|+\|(I\otimes A^*)vec(\widehat{A}-A)\|\\
     \le & (\|\widehat{A}\|_{op}+\|A\|_{op})\|vec(\widehat{A}-A)\|\\
     \le & (2\|A\|_{op}+\|A-\widehat{A}\|_{op})\|\widehat{A}-A\|_{F}\\
-\end{aligned}</script><p>The first generalization to singular eigenspaces is carried out by <a href="https://www.semanticscholar.org/paper/Perturbation-bounds-in-connection-with-singular-Wedin/133c76f0d580e09de0ca28ff0fb599d5e57321f8" target="_blank" rel="noopener">Wedin</a>. Thus Davis-Kahan theorem is also called Davis-Kahan-Wedin theorem in literature.</p>
+\end{aligned}</script><p>Alternatively, for any $A\in\mathbb{R}^{m\times n}$, we can define the $(m+n)\times (m+n)$ matrix</p>
+<script type="math/tex; mode=display">
+\tilde{A}=\left[\begin{array}{cc}
+    0 & A\\
+    A^*&0
+\end{array}\right]\text{ and }
+\tilde{H}=\left[\begin{array}{cc}
+    0 & H\\
+    H^*&0
+\end{array}\right]</script><p>If $Av=\sigma u$ Then</p>
+<script type="math/tex; mode=display">
+\tilde{A}\left[\begin{array}{c}
+    u\\
+    v
+\end{array}\right]=\sigma \left[\begin{array}{c}
+    u\\
+    v
+\end{array}\right]\text{ and }
+\tilde{A}\left[\begin{array}{c}
+    u\\
+    -v
+\end{array}\right]=-\sigma \left[\begin{array}{c}
+    u\\
+    -v
+\end{array}\right]</script><p>Therefore, the non-zero eigenvalues of $\tilde{A}$ are the positive and negative of singular values of $A$, and the eigenvectors are formed by the left and right singular vectors of $A$. Note that $\tilde{A}$ and $\tilde{H}$ are Hermitian matrices, which implies we can use Davis-Kahan theorem directly. The only thing we should take care of is that we need to relate $\sin(\tilde{\Theta})$ with $\sin(\Theta_u)$ and $\sin(\Theta_v)$. A typical model is stated as follows.</p>
+<p>Let</p>
+<script type="math/tex; mode=display">
+\tilde{u}=\left[\begin{array}{c}
+    u_1\\
+    u_2
+\end{array}\right]\text{ and }
+\tilde{v}=\left[\begin{array}{c}
+    v_1\\
+    v_2
+\end{array}\right]</script><p>Note that $|u_i|=|v_i|=1$ so $|\tilde{u}|=|\tilde{v}|=2$. Then</p>
+<script type="math/tex; mode=display">
+\cos^2(\tilde{u},\tilde{v})=\frac{1}{4}|\tilde{u}\cdot\tilde{v}|^2\le\frac{1}{2}\cos^2(u_1,v_1)+\frac{1}{2}\cos^2(u_2,v_2)</script><p>Therefore,</p>
+<script type="math/tex; mode=display">
+\sin^2(\tilde{u},\tilde{v})\ge \frac{1}{2}\sin^2(u_1,v_1)+\frac{1}{2}\sin^2(u_2,v_2)</script><p>The first generalization to singular spaces is carried out by <a href="https://www.semanticscholar.org/paper/Perturbation-bounds-in-connection-with-singular-Wedin/133c76f0d580e09de0ca28ff0fb599d5e57321f8" target="_blank" rel="noopener">Wedin</a>. Thus Davis-Kahan theorem is also called Davis-Kahan-Wedin theorem in literature. </p>
 <h2 id="A-Final-Remark"><a href="#A-Final-Remark" class="headerlink" title="A Final Remark"></a>A Final Remark</h2><p>In Davis and Kahan’s <a href="https://epubs.siam.org/doi/10.1137/0707001" target="_blank" rel="noopener">original paper</a>, they actually proved four types of theorems. Except for the $\sin(\Theta)$ theorem, the remaining three are: (1) $\sin(2\Theta)$ theorem; (2) $\tan(\Theta)$ theorem; (3) $\tan(2\Theta)$ theorem. For $2\Theta$ theorems, they allow the principal angle to be close to either 0 or $\pi/2$. It seems that $2\Theta$ theorems are more general. However, it is rather difficult to find practical applications. </p>
 
     </article>
@@ -1211,11 +1249,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
     
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+    
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
-    
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
     
