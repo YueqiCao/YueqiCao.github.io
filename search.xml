@@ -3,7 +3,7 @@
   
     
     <entry>
-      <title><![CDATA[Davis-Kahan's Theorem]]></title>
+      <title><![CDATA[Davis-Kahan Theorem]]></title>
       <url>/2021/01/12/Davis-Kahan-s-Theorem/</url>
       <content type="html"><![CDATA[<h2 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h2><p>Let $A$ be an $n\times n$ Hermitian matrix, and suppose we have the following spectral decomposition for $A$</p>
 <script type="math/tex; mode=display">
@@ -133,7 +133,23 @@ L=U(\Lambda U^*V-U^*V\Lambda)+U_\perp(\Lambda_\perp U_\perp^*V-U_\perp^*V\Lambda
 <script type="math/tex; mode=display">
 \|\sin(\Theta_{U,V})\|_F\le \frac{2\min\{\sqrt{k}\|H\|_{op},\|H\|_F\}}{\delta}</script><p>if $k=1$, obviously $|H|_{op}\le|H|_F$. Hence,</p>
 <script type="math/tex; mode=display">
-\|\sin(\Theta_{U,V})\|_F\le \frac{2\|H\|_{op}}{\delta}</script><h2 id="A-Final-Remark"><a href="#A-Final-Remark" class="headerlink" title="A Final Remark"></a>A Final Remark</h2><p>In Davis and Kahan’s <a href="https://epubs.siam.org/doi/10.1137/0707001" target="_blank" rel="noopener">original paper</a>, they actually proved four types of theorems. Except for the $\sin(\Theta)$ theorem, the remaining three are: (1) $\sin(2\Theta)$ theorem; (2) $\tan(\Theta)$ theorem; (3) $\tan(2\Theta)$ theorem. For $2\Theta$ theorems, they allow the principal angle to be close to either 0 or $\pi/2$. It seems that $2\Theta$ theorems are more general. However, it is rather difficult to find practical applications. </p>
+\|\sin(\Theta_{U,V})\|_F\le \frac{2\|H\|_{op}}{\delta}</script><p>One may also consider the generalization of Davis-Kahan theorem to rectangular matrices. It is not hard if we notice that for any matrix $A$, </p>
+<script type="math/tex; mode=display">
+A^*A \text{ and } AA^*</script><p>are Hermitian matrices, and their eigenvalues are nothing but the square of singular values. The only thing to take care of is that we need to relate </p>
+<script type="math/tex; mode=display">
+\widehat{A}^*\widehat{A}-A^*A \text{ and } \widehat{A}\widehat{A}^*-AA^*</script><p>with $\widehat{A}-A=H$. This is done by the following</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    \|\widehat{A}^*\widehat{A}-A^*A\|_{op}=&\|(\widehat{A}-A)^*\widehat{A}+A^*(\widehat{A}-A)\|_{op}\\
+    \le & (\|\widehat{A}\|_{op}+\|A\|_{op})\|\widehat{A}-A\|_{op}\\
+    \le & (2\|A\|_{op}+\|A-\widehat{A}\|_{op})\|\widehat{A}-A\|_{op}\\
+    \|\widehat{A}^*\widehat{A}-A^*A\|_F=&\|(\widehat{A}-A)^*\widehat{A}+A^*(\widehat{A}-A)\|_{F}\\
+    \le & \|(\widehat{A}-A)^*\widehat{A}\|_F+\|A^*(\widehat{A}-A)\|_F\\
+    =& \|(\widehat{A}^*\otimes I)vec(\widehat{A}-A)\|+\|(I\otimes A^*)vec(\widehat{A}-A)\|\\
+    \le & (\|\widehat{A}\|_{op}+\|A\|_{op})\|vec(\widehat{A}-A)\|\\
+    \le & (2\|A\|_{op}+\|A-\widehat{A}\|_{op})\|\widehat{A}-A\|_{F}\\
+\end{aligned}</script><p>The first generalization to singular eigenspaces is carried out by <a href="https://www.semanticscholar.org/paper/Perturbation-bounds-in-connection-with-singular-Wedin/133c76f0d580e09de0ca28ff0fb599d5e57321f8" target="_blank" rel="noopener">Wedin</a>. Thus Davis-Kahan theorem is also called Davis-Kahan-Wedin theorem in literature.</p>
+<h2 id="A-Final-Remark"><a href="#A-Final-Remark" class="headerlink" title="A Final Remark"></a>A Final Remark</h2><p>In Davis and Kahan’s <a href="https://epubs.siam.org/doi/10.1137/0707001" target="_blank" rel="noopener">original paper</a>, they actually proved four types of theorems. Except for the $\sin(\Theta)$ theorem, the remaining three are: (1) $\sin(2\Theta)$ theorem; (2) $\tan(\Theta)$ theorem; (3) $\tan(2\Theta)$ theorem. For $2\Theta$ theorems, they allow the principal angle to be close to either 0 or $\pi/2$. It seems that $2\Theta$ theorems are more general. However, it is rather difficult to find practical applications. </p>
 ]]></content>
       
         <categories>
