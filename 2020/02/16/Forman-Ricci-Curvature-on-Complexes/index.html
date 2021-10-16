@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Yueqi Cao">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Yueqi Cao">
+    
+    <meta name="keywords" content="hexo,math,blog">
+    
+    <meta name="description" content="Reading & Thinking">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Forman-Ricci Curvature on Complexes · Everything is Connected</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/book.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Everything is Connected</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Forman-Ricci Curvature on Complexes</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Everything is Connected</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/purple.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Forman-Ricci Curvature on Complexes
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Forman Curvature">Forman Curvature</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.2k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/02/16</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="Bochner-Weitzenb-bf-ddot-o-ck-Formula-on-Riemannian-Manifolds"><a href="#Bochner-Weitzenb-bf-ddot-o-ck-Formula-on-Riemannian-Manifolds" class="headerlink" title="Bochner-Weitzenb$\bf\ddot{o}$ck Formula on Riemannian Manifolds"></a>Bochner-Weitzenb$\bf\ddot{o}$ck Formula on Riemannian Manifolds</h2><p>Let $(M,g)$ be an $n$-dimensional Riemannian manifold, and $\nabla$ be the Levi-Civita connection. Recall that for a smooth function (or 0-form) $f\in C^\infty(M)=\mathcal A^0(M)$, the <em>Laplacian of smooth functions</em> is defined as </p>
+<script type="math/tex; mode=display">
+\Delta_0(f)=\text{tr}\nabla^2(f)=\text{div}(\text{grad}(f))</script><p>The definition $\Delta_0=\text{tr}\nabla^2$ can be generalized to arbitrary $p$-forms and is called the <em>connection Laplacian</em>. Suppose in addition $M$ is oriented. Let $d:\mathcal A^p(M)\to\mathcal A^{p+1}(M)$ be the differential operator. We can define the adjoint operator $d^{*}$ of $d$ using the <em>Hodge star operator</em>. i.e. $d^{*}:\mathcal A^{p+1}(M)\to\mathcal A^p(M)$ is the operator satisfying $\langle d\alpha,\beta\rangle=\langle\alpha,d^{*}\beta\rangle=\int_Md\alpha\wedge {*}\beta$ for $\alpha\in\mathcal A^p(M)$ and $\beta\in\mathcal A^{p+1}$. The <em>Hodge Laplacian</em> is defined by </p>
+<script type="math/tex; mode=display">
+\Delta=dd^*+d^*d</script><p>By direct computation, we can see that $\Delta=-\Delta_0$ on $C^\infty(M)=\mathcal A^0(M)$. However, it is much more complicated in higher dimensions.<a id="more"></a> The <em>Bochner-Weitzenb$\ddot{o}$ck formula</em> tells that, on $\mathcal A^p(M)$ for $p&gt;0$, a term involving curvature tensor should be added. More precisely, we have </p>
+<script type="math/tex; mode=display">
+\Delta=-\Delta_0+\sum_{i,j}\omega^i\wedge i_{E_j}R_{E_iE_j}</script><p>where $E<em>1,\cdots,E_n$ is a local orthonormal frame and $w^1,\cdots,\omega^n$ is the corresponding coframe. $i</em>{E<em>j}$ is the interior multiplication and $R</em>{E<em>iE_j}=\nabla</em>{[E<em>i,E_j]}-[\nabla</em>{E<em>i},\nabla</em>{E_j}]$ is the curvature tensor. For 1-forms the following equation is commonly presented in textbooks.</p>
+<script type="math/tex; mode=display">
+\frac{1}{2}\Delta_0|\omega|^2=|\nabla\omega|^2-\langle\Delta\omega,\omega\rangle+\text{Ric}(\omega_*,\omega_*)</script><p>Using this formula one is able to prove the following Bochner’s theorem</p>
+<blockquote>
+<p>Let $M$ be a compact, oriented Riemannian manifold, whose Ricci curvature tensor is nonnegative and positive at one point. Then $H^1(M;\mathbb R)$=0.</p>
+</blockquote>
+<p>From Hodge theorem it suffices to prove that every harmonic 1-form is zero. Let $\omega$ be a harmonic 1-form. Integrate equation (4) on both sides and note that on any compact manifold we have $\int_M \Delta_0(f)dv=0$. We have </p>
+<script type="math/tex; mode=display">
+\nabla\omega=0 \text{ and } \text{Ric}(\omega_*,\omega_*)=0</script><p>For any vector field $X$ we have $X|\omega|^2=2\langle\nabla<em>X\omega,\omega\rangle=0$. Hence $|\omega|$ is constant. If $\omega\neq 0$ at one point then $\omega\neq 0$ on $M$. But $\text{Ric}$ is positive at one point which means at this point $\text{Ric}(\omega</em>*,\omega_*)&gt;0$, which is a contradiction.</p>
+<p>This ‘standard’ proof is not the same as Bochner’s original proof. In fact, Bochner defined Laplacian in the following way. Since $\nabla:\Gamma(\bigwedge^*(M))\to\Gamma(\bigwedge^*(M)\otimes T^*M)$ is a linear map between inner product spaces, it admits an adjoint $\nabla^*$. The <a href="https://en.wikipedia.org/wiki/Laplace_operators_in_differential_geometry" target="_blank" rel="noopener"><em>Bochner Laplacian</em></a> is defined by $\Delta_B=\nabla^*\nabla$, which is also called <em>rough Laplacian</em> in literature (see <a href="https://www.springer.com/gp/book/9783540653172" target="_blank" rel="noopener">Berger</a>). It is easy to see that $\Delta_B$ is nonnegative definite and $\text{Ker}(\Delta_B)=\text{Ker}(\nabla)$ whose elements are parallel forms. By computation one verifies that $\Delta_B=-\Delta_0$. Therefore,</p>
+<script type="math/tex; mode=display">
+\Delta=\Delta_B+\text{Curv}(R)</script><p>If $\text{Curv}(R)$ is nonnegative, then $\text{Ker}(\Delta)=\text{Ker}(\Delta_B)\cap\text{Ker}(\text{Curv}(R))$. But parallel forms are completely determined at one point. Therefore, if $\text{Curv}(R)$ is positive at one point, the harmonic forms will be identically zero. </p>
+<h2 id="Forman’s-Discretization-of-Ricci-Curvature"><a href="#Forman’s-Discretization-of-Ricci-Curvature" class="headerlink" title="Forman’s Discretization of Ricci Curvature"></a>Forman’s Discretization of Ricci Curvature</h2><p>Bochner’s proof is carefully studied by <a href="https://link.springer.com/article/10.1007%2Fs00454-002-0743-x" target="_blank" rel="noopener">Robin Forman</a> so as to place a combinatorial analogy in discrete cases. In 2003, a series of combinatorial invariants for quasiconvex CW complexes were proposed, named ‘curvature’ by Forman. In the simplest case, suppose $M$ is a simplicial complex. For each nonnegative integer $p$, define the $p$th curvature function by </p>
+<script type="math/tex; mode=display">
+\mathcal F_p(\alpha)=\#\{(p+1)\text{-cofaces}\}+\#\{(p-1)\text{-faces}\}-\#\{\text{parallel neighbors}\}</script><p>where parallel neighbors of $\alpha$ are $p$-simplices sharing either a $(p+1)$-coface or $(p-1)$-face but not both. For $p=1$, $\mathcal F_1$ is called Ricci curvature by Forman, denoted by $\text{Ric}$. Using this analogy Forman could prove several Bochner-type theorems. For example, one has the following</p>
+<blockquote>
+<p>Let $M$ be a connected weighted quasiconvex CW complex with nonnegative Ricci curvature. Suppose, in addition, there exists a vertex $v$ such that $\text{Ric}(e)&gt;0$ for each coface $e$ of $v$. Then $H_1(M,\mathbb R)=0$.</p>
+</blockquote>
+<p>Forman’s idea comes from a simple observation. Though the classical Bochner-Weitzenb$\rm\ddot{o}$ck formula looks rather abstruse, with many abstract operators on Riemannian manifolds involved, but from the simplest perspective, one has</p>
+<script type="math/tex; mode=display">
+\text{Laplacian}=\text{nonnegative definite operator}+\text{curvature}</script><p>For a simplicial complex $M$ the discrete Laplacian is well defined. i.e. Let $\partial<em>p:C_p(M;\mathbb R)\to C</em>{p-1}(M;\mathbb R)$ be the $p$th boundary operator. Place a metric on each chain vector space by declaring the simplices are orthogonal (<em>It is not necessary that they are orthonormal. Note that when simplices are assigned weights the adjoint operator is no longer the transpose</em>).  The boundary operator admits an adjoint $\partial<em>p^*:C</em>{p-1}(M;\mathbb R)\to C<em>p(M;\mathbb R)$, such that $\langle\partial_p\alpha,\beta\rangle</em>{p-1}=\langle\alpha,\partial_p^*\beta\rangle_p$. The <em>combinatorial Laplacian</em> is defined by </p>
+<script type="math/tex; mode=display">
+\square_p=\partial_{p+1}\partial_{p+1}^*+\partial_p^*\partial_p:C_p(M;\mathbb R)\to C_p(M;\mathbb R)</script><p>From equation (8) we know we want to decompose $\square_p$ as a sum of a nonnegative definite matrix $B_p$ and a curvature-type matrix $F_p$. In fact we only need to construct $B_p$, since we do not know any property of $F_p$ so that we just put $F_p=\square_p-B_p$.</p>
+<p>The way Forman defined $B_p$ is quite natural. Suppose $A$ is a symmetric matrix. Then </p>
+<script type="math/tex; mode=display">
+\mathbb{B}(A)=\left\{\begin{array}{l}A_{ij},\text{ for }i\neq j\\ \sum_{j\neq i} |A_{ij}|,\text{ for }i=j\end{array}\right.</script><p>is a diagonally dominant matrix, thus is nonnegative definite. $\mathbb B(A)$ is called the Bochner matrix associated to $A$. Thereafter $\mathbb F(A)=A-\mathbb B(A)$ is called the curvature matrix associated to $A$. From this perspective we see that ‘curvature’ measures how <strong>a symmetric matrix deviates from a diagonally dominant matrix</strong>. This decomposition is useful in our case because $\mathbb B(\square)$ preserves the topological (or combinatorial) information of the simplicial complex $M$. Specifically, if $\alpha$ and $\beta$ are parallel neighbors, then $\square<em>{\alpha\beta}=\mathbb B(A)</em>{\alpha\beta}\neq 0$ by checking definition. Let $B$ be a symmetric $n\times n$ matrix. Define an equivalence relation on ${1,2,\cdots,n}$ by requiring $i\sim i$ and $i\sim j$ if and only if there is a sequence $i=k<em>0,k_1,\cdots,k_n=j$ such that $B(k_l,k</em>{l+1})\neq 0$. Let $\mathcal C(B)$ be the set of equivalence classes and $\mathcal N(B)=|\mathcal C(B)|$. The following nontrivial property of diagonally dominant matrices is used by Forman to prove Bochner’s theorem for 1-chains.</p>
+<blockquote>
+<p>Let $B$ be a diagonally dominant metrix, then</p>
+<ol>
+<li>$\text{dim(ker)}(B)\le \mathcal N(B)$;</li>
+<li>Suppose $v=(v<em>1,\cdots,v_n)\in\text{ker}(B)$, if $B</em>{ij}\neq 0$, $v<em>j=-sign(B</em>{ij})v_i$. i.e. the components in the same equivalence class are completely determined at one element.</li>
+</ol>
+</blockquote>
+<p>It suffices to prove 2. Let $c\in\mathcal C(B)$ be any class. Without loss of generality, assume $v<em>i=\max</em>{j\in c}|v_j|\ge0$. Then we have </p>
+<script type="math/tex; mode=display">
+0=(Bv)_i=\sum_{j}B_{ij}v_j=B_{ii}v_i+\sum_{j\in c,j\neq i}B_{ij}v_j\ge\sum_{j\in c,j\neq i}|B_{ij}|(v_i-|v_j|)\ge0</script><p>The equality holds if and only if $v<em>j=0$ for all $j\in c$,  or, $B</em>{ii}=\sum<em>{j\neq i}|B</em>{ij}|$ and $v<em>j=-sign(B</em>{ij})v_i$ for all $j\neq c$. </p>
+<p>Recall that for graph Laplacian $L=D-A$ the dimension of kernel is always equal to the connected components. This is because the constant vector $\mathbf{1}$ provides a nontrivial element in the kernel if the graph is connected. However, one can easily construct an invertible matrix $B$ with the diagonal equal to the sum of off-diagonal elements. Thus the first inequality can be strict.</p>
+<p>Let us see how this property can be used in our case. Suppose $\alpha$ and $\beta$ are parallel $p$-neighbors, which implies $\square<em>p(\alpha,\beta)\neq 0$ and thus $\mathbb{B}(\square_p)(\alpha,\beta)\neq 0$. If there is a $p$-chain $c=\sum c</em>\gamma\gamma\in\text{Ker}(\mathbb{B}(\square<em>p))$ with $c</em>\alpha=0$, then $c_\beta=0$. This continuation property will be important in the proof of Bochner-type theorems.</p>
+<p>Now suppose $\mathbb{F}(\square<em>p)$ is nonnegative definite, which is equivalent to say $\mathbb{F}(\square_p)</em>{ii}\ge 0$. Being a sum of two nonnegative definite matrices, we have $\text{Ker}(\square_p)=\text{Ker}(\mathbb{B}(\square_p))\cap\text{Ker}(\mathbb{F}(\square_p))$. In the simplest case, suppose $\mathbb{F}(\square_p)$ is positive definite, then $\text{Ker}(\square_p)={0}$. For $p=1$, we have the familiar statement: if $M$ has positive Ricci curvature (at present call $\mathbb{F}(\square_1)$ the Ricci curvature, which is positive if the diagonal elements are positive), then $H_1(M;\mathbb R)$ is trivial. </p>
+<p>More generally, assume $M$ has nonnegative Ricci curvature and there is a vertex $v$ such that $\text{Ric}(e)&gt;0$ for all $e\succ v$. Let $c=\sum c_e e\in\text{Ker}(\square_1)=\text{Ker}(\mathbb{B}(\square_1))\cap\text{Ker(Ric)}$. Since $c\in\text{Ker(Ric)}$ we have $c_e=0$ for all $e\succ v$. The following lemma shows that $c$ will be identically zero.</p>
+<blockquote>
+<p>Suppose $c=\sum c_e e$ is a 1-chain such that $c\in\text{Ker}(\partial^*)\cap\text{Ker}(\mathbb{B}(\square_1))$. In addition, there is a vertex $v$ with $c_e=0$ for all $e\succ v$. Then $c=0$.</p>
+</blockquote>
+<p>Define $D:{\text{1-simplices}}\to\mathbb{Z}_{\ge 0}$ as: (1). $D(e)=0$ for $e\succ v$; (2). Inductively, if $D(e)$ is greater than $k$ and there is a 1-simplex $e_1$ such that $e\cap e_1\neq\emptyset$ and $D(e_1)=k$, set $D(e)=k+1$. </p>
+<p>From hypothesis $c<em>e=0$ for $D(e)=0$. Suppose $c_e=0$ for all $D(e)\le k$. Let $e$ be a 1-simplex with $D(e)=k+1$. Then there exists 1-simplex $e_1$ such that $D(e_1)=k$ and $e\cap e_1\neq \emptyset$. If $e$ and $e_1$ are parallel, by the continuation property of $\mathbb{B}(\square_1)$, $c_e=0$. If $e$ and $e_1$ are not parallel, there is a 2-simplex $f$ such that $f\succ e$ and $f\succ e_1$. Let the last edge of $f$ be $e_2$. Since $D(e_1)=k$, either $D(e)=k$ or $D(e_2)=k$. By assumption $D(e_2)=k$, thus $c</em>{e<em>1}=c</em>{e_2}=0$. Then </p>
+<script type="math/tex; mode=display">
+\langle\partial f,c\rangle=\langle f,\partial^*c\rangle=0=\pm c_e\langle e,e\rangle</script><p>Hence $c=0$ by induction.</p>
+<p>Now we give the explicit representation of $\square_p$ and the curvature function $\mathcal F_p$.</p>
+<p>For each $(p+1)$-simplex $\beta$ with $\partial\beta=\sum<em>{\alpha\prec\beta}\epsilon</em>{\alpha\beta}\alpha$ where $\epsilon<em>{\alpha\beta}=\pm 1$ according to the orientation of $\beta$. By definition, $\langle\partial^*\alpha,\beta\rangle=\langle\alpha,\partial\beta\rangle=\epsilon</em>{\alpha\beta}w<em>\alpha$ where we assume that $\langle\alpha,\alpha\rangle=w</em>\alpha$. Thus $\partial^*\alpha=\sum<em>{\beta\succ\alpha}\epsilon</em>{\alpha\beta}\frac{w<em>\alpha}{w</em>\beta}\beta$. This gives</p>
+<script type="math/tex; mode=display">
+\square_p\alpha_1=\sum_{\alpha_2}[\sum_{\beta\succ\alpha_1,\alpha_2}\epsilon_{\alpha_1\beta}\epsilon_{\alpha_2\beta}\frac{w_{\alpha_1}}{w_\beta}+\sum_{\gamma\prec\alpha_1,\alpha_2}\epsilon_{\gamma\alpha_1}\epsilon_{\gamma\alpha_2}\frac{w_\gamma}{w_{\alpha_2}}]\alpha_2</script><p>We may work on orthonormal basis. Note that for different basis the definition of curvature will be different. Let $\alpha^*=\alpha/\sqrt{w_\alpha}$. Then </p>
+<script type="math/tex; mode=display">
+\langle\square_p\alpha_1^*,\alpha_2^*\rangle=\sum_{\beta\succ\alpha_1,\alpha_2}\epsilon_{\alpha_1\beta}\epsilon_{\alpha_2\beta}\frac{\sqrt{w_{\alpha_1}w_{\alpha_2}}}{w_\beta}+\sum_{\gamma\prec\alpha_1,\alpha_2}\epsilon_{\gamma\alpha_1}\epsilon_{\gamma\alpha_2}\frac{w_\gamma}{\sqrt{w_{\alpha_2}w_{\alpha_1}}}</script><p>Denote by $\square_p(\alpha_1^*,\alpha_2^*)$. Then under orthonormal basis, the curvature matrix is </p>
+<script type="math/tex; mode=display">
+\mathbb{F}(\square_p)(\alpha_1^*,\alpha_2^*)=\left\{\begin{array}{l}0,\text{ if }\alpha_1\neq\alpha_2\\ \square_p(\alpha_1^*,\alpha_2^*)-\sum_{\alpha^*\neq\alpha_2^*}|\square_p(\alpha^*,\alpha_1^*)|,\text{ if }\alpha_1=\alpha_2\end{array}\right.</script><p>Define the $p$th curvature function by $\mathcal{F}<em>p(\alpha)=w</em>\alpha\mathbb{F}(\square_p)(\alpha^*,\alpha^*)$. Thus</p>
+<script type="math/tex; mode=display">
+\begin{aligned}\mathcal{F}_p(\alpha)=w_\alpha(&\sum_{\beta\succ\alpha}\frac{w_\alpha}{w_\beta}+\sum_{\gamma\prec\alpha}\frac{w_\gamma}{w_\alpha}\\ &-\sum_{\eta\neq\alpha}|\sum_{\beta\succ\alpha,\eta}\epsilon_{\alpha\beta}\epsilon_{\eta\beta}\frac{\sqrt{w_{\alpha}w_{\eta}}}{w_\beta}+\sum_{\gamma\prec\alpha,\eta}\epsilon_{\gamma\alpha}\epsilon_{\gamma\eta}\frac{w_\gamma}{\sqrt{w_{\alpha}w_{\eta}}}|)\end{aligned}</script><p>When $p=1$ and all weights are 1, the formula simplifies as what is given in the beginning. </p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/03/10/Spectral-Graph-Partitioning/" title= "Spectral Graph Partitioning">
+                    <div class="nextTitle">Spectral Graph Partitioning</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/01/26/Local-to-Global-Convexity/" title= "Local-to-Global Convexity">
+                    <div class="prevTitle">Local-to-Global Convexity</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:bityueqi@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/YueqiCao" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bochner-Weitzenb-bf-ddot-o-ck-Formula-on-Riemannian-Manifolds"><span class="toc-number">1.</span> <span class="toc-text">Bochner-Weitzenb$\bf\ddot{o}$ck Formula on Riemannian Manifolds</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Forman’s-Discretization-of-Ricci-Curvature"><span class="toc-number">2.</span> <span class="toc-text">Forman’s Discretization of Ricci Curvature</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 31
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span><a class="archive-post-title" href= "/2021/10/16/List-of-Convergence-Rates-in-TDA/" >List of Convergence Rates in TDA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2021/07/22/Error-Estimate-under-Hausdorff-Distance/" >Error Estimate under Hausdorff Distance</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/31</span><a class="archive-post-title" href= "/2021/05/31/tex2svg/" >tex2svg</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2021/04/09/Random-Perturbation-to-Low-Rank-Matrices/" >Random Perturbation to Low Rank Matrices</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2021/01/12/Davis-Kahan-s-Theorem/" >Davis-Kahan Theorem</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/2020/12/17/The-Convergence-Rate-of-Graph-Laplacian/" >The Convergence Rate of Graph Laplacian</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href= "/2020/07/11/Two-Applications-of-the-Weingarten-Map/" >Two Applications of the Weingarten Map</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2020/07/08/Local-PCA-with-Gaussian-Noise/" >Local PCA with Gaussian Noise</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/" >Tangent Space Estimation Using Local Polynomial Fitting</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2020/05/21/Tangent-Space-Estimation-Using-Local-PCA/" >Tangent Space Estimation Using Local PCA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/Extrinsic-Quantities-of-Euclidean-Submanifolds/" >Extrinsic Quantities of Euclidean Submanifolds</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/Basics-about-Riemannian-Submanifolds/" >Basics about Riemannian Submanifolds</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2020/03/27/Random-Walk-and-Graph-Spectra/" >Random Walk and Graph Spectra</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/Spectral-Graph-Partitioning/" >Spectral Graph Partitioning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Forman-Ricci-Curvature-on-Complexes/" >Forman-Ricci Curvature on Complexes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span><a class="archive-post-title" href= "/2020/01/26/Local-to-Global-Convexity/" >Local-to-Global Convexity</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2020/01/16/Gromov访谈/" >Gromov访谈</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/30</span><a class="archive-post-title" href= "/2019/12/30/Stability-Theorems-in-Topological-Data-Analysis-4/" >Stability Theorems in Topological Data Analysis (4)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2019/11/28/我是如何发现怪球的/" >我是如何发现怪球的</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/24</span><a class="archive-post-title" href= "/2019/11/24/The-Space-of-Persistence-Diagrams/" >The Space of Persistence Diagrams</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >Some Applications of Wasserstein Distances</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2019/10/02/Stability-Theorems-in-Topological-Data-Analysis-3/" >Stability Theorems in Topological Data Analysis (3)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/" >Stability Theorems in Topological Data Analysis (2)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span><a class="archive-post-title" href= "/2019/09/03/Curvature-of-Warped-Products/" >Curvature of Warped Products</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/08</span><a class="archive-post-title" href= "/2019/08/08/Remarks-on-Submanifold-density-estimation/" >Remarks on 'Submanifold density estimation'</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/01</span><a class="archive-post-title" href= "/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/" >Stability Theorems in Topological Data Analysis (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2019/07/30/MSE-of-Locally-Linear-Regression/" >MSE of Locally Linear Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2019/07/25/Concentration-in-Gauss-Space/" >Concentration in Gauss Space</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/21</span><a class="archive-post-title" href= "/2019/07/21/Bayesian-Linear-Regression/" >Bayesian Linear Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/18</span><a class="archive-post-title" href= "/2019/07/18/Notes-on-KNN-Density-Estimates(1)/" >Notes on KNN Density Estimates (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href= "/2019/07/14/a proof of everything is connected/" >A Proof of 'Everything is connected'</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
+    
+        <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+    
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
+    
+        <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
+    
+        <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
+    
+        <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
+    
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
+    
+        <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
+        <span class="sidebar-tag-name" data-tags="Random Walk"><span class="iconfont-archer">&#xe606;</span>Random Walk</span>
+    
+        <span class="sidebar-tag-name" data-tags="Spectral Graph Theory"><span class="iconfont-archer">&#xe606;</span>Spectral Graph Theory</span>
+    
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
+    
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="Latex"><span class="iconfont-archer">&#xe606;</span>Latex</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
+    
+        <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
+    
+        <span class="sidebar-category-name" data-categories="Matrix-Analysis"><span class="iconfont-archer">&#xe60a;</span>Matrix-Analysis</span>
+    
+        <span class="sidebar-category-name" data-categories="TDA"><span class="iconfont-archer">&#xe60a;</span>TDA</span>
+    
+        <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
+    
+        <span class="sidebar-category-name" data-categories="Manifold-Learning"><span class="iconfont-archer">&#xe60a;</span>Manifold-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="TDA/Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>TDA/Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Network-Analysis"><span class="iconfont-archer">&#xe60a;</span>Network-Analysis</span>
+    
+        <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
+    
+        <span class="sidebar-category-name" data-categories="CS"><span class="iconfont-archer">&#xe60a;</span>CS</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Yueqi Cao"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Yueqi Cao">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Yueqi Cao">
+    
+    <meta name="keywords" content="hexo,math,blog">
+    
+    <meta name="description" content="Reading & Thinking">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tangent Space Estimation Using Local PCA · Everything is Connected</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/book.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Everything is Connected</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Tangent Space Estimation Using Local PCA</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Everything is Connected</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/purple.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Tangent Space Estimation Using Local PCA
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Submanifolds">Submanifolds</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Asymptotic Analysis">Asymptotic Analysis</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">16 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/05/21</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>In <a href="https://arxiv.org/abs/1102.0075" target="_blank" rel="noopener">this paper</a>, A.Singer and H.-T. Wu derived an explicit expression for the bias and variance of local PCA in tangent space estimation. One thing to notice: when we have estimated a basis $\widehat{E}$ and want to compare with the true basis $E$, we can either</p>
+<ul>
+<li>consider the error between two projection operators $|\widehat{E}\widehat{E}^T-EE^T|$, </li>
+</ul>
+<p>or </p>
+<ul>
+<li>consider the error up to rotation $\min_{O}|O\widehat{E}-E|$.</li>
+</ul>
+<p>However, according to the original paper, the convergence rates for above two errors are different. Moreover, the authors did not claim the choice of bandwidth is optimal. So other choices of bandwidth may also by possible. </p>
+<p>Let $\mathcal{M}$ be an $m$-dimensional compact submanifold in a Euclidean space $\mathbb{R}^d$. Fix $x\in\mathcal{M}$. Without loss of generality assume that $x$ is placed at the origin and the tangent space $T_x\mathcal{M}$ coincides with the coordinate space spanned by the first $m$ standard vectors ${e_1,\cdots,e_m}$ in $\mathbb{R}^d$. Suppose $X$ is a random vector valued in $\mathcal{M}$ with a smooth positive density function $f:\mathcal{M}\to \mathbb{R}$. Let $K:\mathbb{R}\to\mathbb{R}$ be a smooth function supported on $[0,1]$ and $h&gt;0$ be a positive number. To estimate the tangent space at $x$, we start by finding a direction $v$ such that the projection to $v$ is maximized</p>
+<script type="math/tex; mode=display">
+\mathbb{E}[((X-x)\cdot v)^2K_h(X-x)]</script><p>where $K_h:\mathbb{R}^d\to\mathbb{R}$ is the function $K_h(u)=1/h^mK(|u|/h)$. Therefore, we consider the following Lagrange function</p>
+<script type="math/tex; mode=display">
+f(v)=\mathbb{E}[((X-x)\cdot v)^2K_h(X-x)]-\lambda(\|v\|-1)</script><p>Setting $df/dv=0$ we have $\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]v=\lambda v$ and the objective function is $\lambda$. Thus we choose the eigenvector of $\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]$ with respect to the largest eigenvalue. </p>
+<p>Next, we proceed by finding another direction $v’$ orthogonal to $v$ such that the same objective function is maximized. The result turns out that the optimal $v’$ is the eigenvector of $\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]$ of the second largest eigenvalue.  Iteratively, to estimate the tangent space $T_x\mathcal{M}$ we attempt to find the first $m$ eigenvectors of the matrix $\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]$. We set </p>
+<script type="math/tex; mode=display">
+\mathbb{H}=\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]</script><p>and call it the <strong>population covariance matrix</strong>. In practice, $\mathbb{H}$ is not available. Suppose $X_1,\cdots,X_n$ are i.i.d. samples of $X$.  Then we can replace $\mathbb{H}$ by the empirical mean,</p>
+<script type="math/tex; mode=display">
+H=\frac{1}{n}\sum_{i=1}^n(X_i-x)(X_i-x)^tK_h(X_i-x)</script><p>which is called the <strong>empirical covariance matrix</strong>. Note that these are not in fact covariance matrices since the mean is forced to be $x$. But it will bring technical convenience for our analysis. We first give a detailed analysis of the covariance matrices.</p>
+<p>For $h$ small enough, the contributed points will lie in a normal patch of $x$. Hence we can use the exponential map. Suppose $X=\exp_x(s_X\theta_X)$ where $|\theta_X|=1$. Then </p>
+<script type="math/tex; mode=display">
+X-x=s_X\theta_X+\frac{1}{2}\Pi(\theta_X,\theta_X)s_X^2-\frac{1}{6}A_{\Pi(\theta_X,\theta_X)}(\theta_X)s^3+\frac{1}{6}(\nabla_{\theta_X}\Pi)(\theta_X,\theta_X)s^3+o(s^3)</script><p>Thus we have the following expansion for $\mathbb{H}$,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathbb{H}=&\underbrace{\mathbb{E}[(\theta_X\theta_X^ts_X^2-\frac{1}{6}(\theta_XA_\Pi^t+A_\Pi^t\theta_X)s_X^4+o(s^4_X))K_h(X-x)]}_{\mathbf{H}}\\
++&\underbrace{\mathbb{E}[(\frac{1}{2}(\theta_X\Pi^t+\Pi\theta_X^t)s_X^3+\frac{1}{6}(\theta_X(\nabla\Pi)^t+(\nabla\Pi)\theta^t)s_X^4+o(s_X^4))K_h(X-x)]}_{\mathbf{B}_r}\\
++&\underbrace{\mathbb{E}[(\frac{1}{4}\Pi\Pi^ts^4)K_h(X-x)]}_{\mathbf{B}_s}
+\end{aligned}</script><p>Note that $\mathbf{H}$, $\mathbf{B}_r$ and $\mathbf{B}_s$ are blocked matrices. i.e.</p>
+<script type="math/tex; mode=display">
+\mathbf{H}=\left[\begin{array}{cc}*&0\\0&0\end{array}\right],\mathbf{B}_r=\left[\begin{array}{cc}0&*\\*&0\end{array}\right],\mathbf{B}_s=\left[\begin{array}{cc}0&0\\0&*\end{array}\right]</script><p>Call $\mathbf{H}$ the true covariance matrix since the eigenvectors of $\mathbf{H}$ will give the true basis of the tangent space. $\mathbf{B}_r$ and $\mathbf{B}_s$ will called the basis matrices and we see from the expansion that the bias comes from the curvature of the manifold $\mathcal{M}$. </p>
+<p>Integration in the normal patch gives the leading terms of each matrices. Note that odd terms of $\theta$ will vanish. Therefore,</p>
+<script type="math/tex; mode=display">
+\mathbf{H}=\left[\begin{array}{cc}ch^2I+O(h^4)&0\\0&0\end{array}\right],\mathbf{B}_r=\left[\begin{array}{cc}0&O(h^4)\\O(h^4)&0\end{array}\right],\mathbf{B}_s=\left[\begin{array}{cc}0&0\\0&O(h^4)\end{array}\right]</script><p>Thus the bias deviates from the true matrix will be of order $O(h^4)$.</p>
+<p>Then we consider the variance coming from $\mathbb{H}$ and $H$. By definition, $\mathbb{E}[H]=\mathbb{H}$. Thus we may write</p>
+<script type="math/tex; mode=display">
+H=\mathbb{H}+V</script><p>where $\mathbb{E}[V]=0$. For each element in $V$, the variance is</p>
+<script type="math/tex; mode=display">
+\mathbb{Var}[V(i,j)]=\mathbb{E}[(H(i,j)-\mathbb{H}(i,j))^2]\le\frac{1}{n}\mathbb{E}[(X-x)_i^2(X-x)^2_jK^2_h(X-x)]</script><p>By computation the second moments are given by</p>
+<script type="math/tex; mode=display">
+\mathbb{E}[(X-x)_i^2(X-x)_j^2K_h(X-x)]=\left\{\begin{array}{l}O(\frac{h^4}{h^m})\quad i,j=1,\cdots,m\\ O(\frac{h^8}{h^m})\quad i,j=m+1,\cdots,d\\ O(\frac{h^6}{h^m})\quad \text{otherwise}\end{array}\right.</script><p>Therefore, the variance matrix is given by</p>
+<script type="math/tex; mode=display">
+\mathbb{Var}[V(i,j)]=\left\{\begin{array}{l}O(\frac{h^4}{nh^m})\quad i,j=1,\cdots,m\\ O(\frac{h^8}{nh^m})\quad i,j=m+1,\cdots,d\\ O(\frac{h^6}{nh^m})\quad \text{otherwise}\end{array}\right.</script><p>Using Chebyshev’s inequality, we see that for any $\epsilon&gt;0$,</p>
+<script type="math/tex; mode=display">
+\mathbb{Pr}\{|H(i,j)-\mathbb{H}(i,j)|>\epsilon\}\le\frac{\mathbb{Var}(V(i,j))}{\epsilon^2}</script><p>If we set the right hand side to be $O(1)$, then with high probability $V(i,j)=O(\epsilon)$. Following this principle, with high probability, $V$ is in the following form</p>
+<script type="math/tex; mode=display">
+V=\frac{h^2}{\sqrt{nh^m}}\left[\begin{array}{cc}O(1)& O(h)\\O(h)&O(h^2)\end{array}\right]</script><p>Overall, we have shown that with high probability, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{1}{h^2}H=&c\left[\begin{array}{cc}I&0\\0&0\end{array}\right]+h^2\left[\begin{array}{cc}O(1)&O(1)\\O(1)&O(1)\end{array}\right]+\frac{1}{\sqrt{nh^m}}\left[\begin{array}{cc}O(1)&O(h)\\O(h)&O(h^2)\end{array}\right]
+\end{aligned}</script><p>If we set $O(\text{bias})=O(\text{variance})$, the <em>optimal bandwidth</em> $h=O(n^{-1/(m+4)})$. In this case we have</p>
+<script type="math/tex; mode=display">
+H=h^2c\left[\begin{array}{cc}I+h^2A&h^2C\\h^2C^t&h^2B\end{array}\right]=h^2c(S+h^2T)</script><p>where </p>
+<script type="math/tex; mode=display">
+S=\left[\begin{array}{cc}I&0\\0&0\end{array}\right], T=\left[\begin{array}{cc}A&C\\C^t&B\end{array}\right]</script><p>Let $\mathbf{v}$ be an eigenvector of $S+h^2T$ with respect to the eigenvalue $\mathbf{\Lambda}$. Using the following expansion on both sides of $S\mathbf{v}=\mathbf{\Lambda}\mathbf{v}$,</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\mathbf{v}=v_0+h^2v_1+h^4v_2+\cdots\\
+&\mathbf{\Lambda}=\lambda_0+h^2\lambda_1+h^4\lambda_2+\cdots
+\end{aligned}</script><p>and compare the coefficients on both sides. We have</p>
+<script type="math/tex; mode=display">
+Sv_0=\lambda_0v_0</script><p>which means that $\lambda_0=1$ and $v_0$ is in the form $[\bar{v}_0,0]^t$. For the first order term we have</p>
+<script type="math/tex; mode=display">
+Sv_1+Tv_0=\lambda_0v_1+\lambda_1v_0</script><p>Thus if we write $v_1=[\bar{v}_1,\tilde{v}_1]$ then $A\bar{v}_0=\lambda_1\bar{v}_0$ and $C^t\bar{v}_0=\tilde{v}_1$. For the second term, we have </p>
+<script type="math/tex; mode=display">
+Sv_2+Tv_1=v_2+\lambda_1v_1+\lambda_2v_0</script><p>Then $A\bar{v}_1+C\tilde{v}_1=\lambda_1\bar{v}_1+\lambda_2\bar{v}_0$. Nothing will vanish after this step. Therefore, we have $\mathbf{v}=[\bar{v}_0,0]+O(h^2)$ and $\mathbf{\Lambda}=1+h^2\lambda_A+O(h^4)$. </p>
+<p>However, if we make the leading term of $A$ different from $B$ and $C$, that is, $O(\text{variance})&gt;O(\text{bias})$ and the error mainly comes from sampling, the result will be different. As in the original paper we set $O(\text{variance})=O(h)$ which gives the sampling rate $h=O(n^{-1/(m+2)})$. In this case we have</p>
+<script type="math/tex; mode=display">
+S=\left[\begin{array}{cc}I&0\\0&0\end{array}\right], T_1=\left[\begin{array}{cc}A&0\\0&0\end{array}\right], T_2=\left[\begin{array}{cc}0&C\\C^t&B\end{array}\right]</script><p>By <a href="https://www.math.usm.edu/lambers/mat610/sum10/lecture13.pdf" target="_blank" rel="noopener">Wielandt-Hoffman theorem</a>, the eigenvalues satisfy the following inequality</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^d(\lambda_i(T_1+hT_2)-\lambda_i(T_1))^2\le\|hT_2\|_F^2</script><p>Hence if we set the eigenvalues in descending order $\lambda_1\ge\lambda_2\ge\cdots\ge\lambda_d$, then $\lambda_k(T_1+hT_2)=\lambda_k^A+O(h)$ for $k=1,\cdots,m$ and $\lambda_l(T_1+hT_2)=O(h)$ for $k=m+1,\cdots,d$. </p>
+<p>For eigenvectors we use the same method as above. Suppose $\mathbf{v}$ is a unit eigenvector of $S+hT_1+hT_2$ corresponding to the eigenvalue $\mathbf{\Lambda}$. Using Taylor expansions for $\mathbf{v}$ and $\mathbf{\Lambda}$, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\mathbf{v}=v_0+hv_1+h^2v_2+h^3v_3+h^4v_4+O(h^5)\\
+&\mathbf{\Lambda}=\lambda_0+h\lambda_1+h^2\lambda_2+h^3\lambda_3+h^4\lambda_4+O(h^5)
+\end{aligned}</script><p>and by the relation </p>
+<script type="math/tex; mode=display">
+(S+hT_1+h^2T_2)\mathbf{v}=\mathbf{\Lambda}\mathbf{v}</script><p>we compare the coefficients on both sides. For the constants we have</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&Sv_0=\lambda_0v_0
+\end{aligned}</script><p>which implies $\lambda_0=1$ and $v_0$ is in the form $[\bar{v}_0,0]^t$. For the first order term we have </p>
+<script type="math/tex; mode=display">
+Sv_1+T_1v_0=v_1+\lambda_1v_0</script><p>which implies $v_1$ is also in the form $[\bar{v}_1,0]^t$, and $A\bar{v}_0=\lambda_1\bar{v}_0$. We see that $\bar{v}_0$ is an eigenvector of $A$. For the second order term we have</p>
+<script type="math/tex; mode=display">
+T_2v_0+T_1v_1+Sv_2=v_2+\lambda_1v_1+\lambda_2v_0</script><p>Note that $T_2v_0=[0,C^t\bar{v}_0]^t$. We see that the left side is $[A\bar{v}_1+\bar{v}_2,C^t\bar{v}_0]^t$ and the right side is $[\lambda_1\bar{v}_1+\lambda_2\bar{v}_0,0]^t+[\bar{v}_2,\tilde{v}_2]^t$. This gives $\tilde{v}_2=C^t\bar{v}_0$ and </p>
+<script type="math/tex; mode=display">
+A\bar{v}_1=\lambda_1\bar{v}_1+\lambda_2\bar{v}_0</script><p>Multiplying both sides by $\bar{v}_0^t$, we have</p>
+<script type="math/tex; mode=display">
+\lambda_1\bar{v}_0^t\bar{v}_1=\lambda_1\bar{v}_0^t\bar{v}_1+\lambda_2\bar{v}_0^t\bar{v}_0</script><p>Thus, $\lambda_2=0$ and $A\bar{v}_1=\lambda_1\bar{v}_1$. If we assume the eigenvalues of $A$ are simple (as said in original paper it holds almost surely), then $\bar{v}_1=0$. For the third order term we have </p>
+<script type="math/tex; mode=display">
+Sv_3+T_1v_2+T_2v_1=v_3+\lambda_1v_2+\lambda_2v_1+\lambda_3v_0</script><p>The left side is $[\bar{v}_3+A\bar{v}_2,0]^t$ and the right side is $[\bar{v}_3+\lambda_1\bar{v}_2+\lambda_3\bar{v}_0,\tilde{v}_3+\lambda_1\tilde{v}_2]$. Hence $\tilde{v}_3=-\lambda_1\tilde{v}_2$ and $A\bar{v}_2=\lambda_1\bar{v}_2+\lambda_3\bar{v}_0$. Using the same method as before we know that $\lambda_3=0$ and $\bar{v}_2=0$. For the fourth term we have</p>
+<script type="math/tex; mode=display">
+Sv_4+T_1v_3+T_2v_2=v_4+\lambda_1v_3+\lambda_4v_0</script><p>The left side is $[\bar{v}_4+A\bar{v}_3+C\tilde{v}_2,B\tilde{v}_2]^t$ and the right side is $[\bar{v}_4+\lambda_1\bar{v}_3+\lambda_4\bar{v}_0,\lambda_1\tilde{v}_3+\tilde{v}_4]^t$. Hence $\tilde{v}_4=B\tilde{v}_2-\lambda_1\tilde{v}_3$ and </p>
+<script type="math/tex; mode=display">
+A\bar{v}_3+CC^t\bar{v}_0=\lambda_1\bar{v}_3+\lambda_4\bar{v}_0</script><p>We cannot cancel anything in this step. Overall we have shown that </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\mathbf{v}=v_0+h^2v_2+h^3v_3+O(h^4)=[\bar{v}_0+\bar{v}_3h^3+O(h^4),\tilde{v}_2h^2+O(h^3)]\\
+&\mathbf{\Lambda}=1+h\lambda_1+h^4\lambda_4+O(h^5)
+\end{aligned}</script><p>Suppose the first $m$ eigenvectors of $H$ are $u_1,\cdots,u_m$ and the eigenvectors of $A$ are $w_1,\cdots,w_m$. We have $u_k=[w_k+O(h^3),O(h^2)]^t$ for $k=1,\cdots,m$. Let $\mathbf{U}=[u_1,\cdots,u_m]$ be the $d\times m$ matrix and $\mathbf{O}=[w_1,\cdots,w_m]^t$ be the $m\times m$ orthogonal matrix. Furthermore, let $\mathbf{\Theta}=[e_1,\cdots,e_m]$ be the matrix consisting of $m$ standard basis of $\mathbb{R}^d$. We measure the deviation of the estimated $m$-plane spanned by $u_k$’s from $T_x\mathcal{M}$ by</p>
+<script type="math/tex; mode=display">
+\min_{O\in O(m)} \|\mathbf{U}^t\mathbf{\Theta}-O\|_F\le\|\mathbf{U}^t\mathbf{\Theta}-\mathbf{O}\|_F=O(h^3)</script><p>If we choose the optimal bandwidth, the order will be $O(h^2)$. Thus we see that by choosing ‘non-optimal’ bandwidth the convergence even become faster. However, from another perspective, if we want to find a rotation $\hat{O}$ such that the basis $Q=\mathbf{\Theta}\hat{O}$ is closest to $\mathbf{U}$, i.e. the error is measured by </p>
+<script type="math/tex; mode=display">
+\min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F</script><p>then the error is bounded by </p>
+<script type="math/tex; mode=display">
+\min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F\le O(h^2)</script><p>Then different bandwidths yield the same order of convergence. Note that the difference comes from the estimation of eigenvectors.</p>
+<p>A final remark is that the method used above by comparing coefficients for different orders is not very strict, since it automatically assumes that there are no fractional order terms. Generalization to fractional order convergence needs further investigation. </p>
+<hr>
+<p><strong>Update:</strong> In this <a href="https://arxiv.org/pdf/1512.02857.pdf" target="_blank" rel="noopener">paper</a> (appendix D theorem 38), a useful version of <a href="https://arxiv.org/pdf/1405.0680.pdf" target="_blank" rel="noopener">Davis-Kahan</a> theorem is stated as follows</p>
+<blockquote>
+<p>Let $O\in\mathbb{R}^{d\times d}$, $B\in\mathbb{R}^{m\times m}$ be positive semi-definite symmetric matrices such that </p>
+<script type="math/tex; mode=display">
+O=\left[\begin{array}{cc}B&0\\ 0&0\end{array}\right]+E</script><p>Let $T_0$ be the vector space spanned by the first $m$ vectors of canonical basis and $T$ be the eigenspace spanned by the first $m$ eigenvectors of $O$. Then</p>
+<script type="math/tex; mode=display">
+\angle (T_0,T)\le \frac{\sqrt{2}\|E\|_{op}}{\lambda_{\min}(B)}</script></blockquote>
+<p>Now we return back to the expression of $1/h^2H$, consider the decomposition</p>
+<script type="math/tex; mode=display">
+\frac{1}{h^2}H=\left[\begin{array}{cc}cI+O(h^2)+O(\sqrt{nh^m})&0\\0&0\end{array}\right]+\left[\begin{array}{cc}0&O(h^2+\frac{h}{\sqrt{nh^m}})\\O(h^2+\frac{h}{\sqrt{nh^m}})&O(h^2)\end{array}\right]</script><p>Note $\lambda_{\min}(cI+O(\cdot))\approx c$. Thus the convergence rate depends on the operator norm of the second matrix. If we set $1/\sqrt{nh^m}=h^\alpha$ where $0&lt;\alpha&lt;1$, then the rate is $O(h^{1+\alpha})$. If $\alpha\ge 1$, the rate is $O(h^2)$. </p>
+<hr>
+<p><strong>Update:</strong> <a href="https://djalil.chafai.net/blog/2011/12/03/the-hoffman-wielandt-inequality/" target="_blank" rel="noopener">This blog</a> gives a very nice introduction to Wielandt-Hoffman inequality. The proof is short and readable. I also write a new blog on Davis-Kahan’s $\sin(\Theta)$ theorem. See <a href="http://yueqicao.top/2021/01/12/Davis-Kahan-s-Theorem/" target="_blank" rel="noopener">this page</a> for more details.</p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/" title= "Tangent Space Estimation Using Local Polynomial Fitting">
+                    <div class="nextTitle">Tangent Space Estimation Using Local Polynomial Fitting</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/05/16/Extrinsic-Quantities-of-Euclidean-Submanifolds/" title= "Extrinsic Quantities of Euclidean Submanifolds">
+                    <div class="prevTitle">Extrinsic Quantities of Euclidean Submanifolds</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:bityueqi@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/YueqiCao" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 31
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span><a class="archive-post-title" href= "/2021/10/16/List-of-Convergence-Rates-in-TDA/" >List of Convergence Rates in TDA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2021/07/22/Error-Estimate-under-Hausdorff-Distance/" >Error Estimate under Hausdorff Distance</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/31</span><a class="archive-post-title" href= "/2021/05/31/tex2svg/" >tex2svg</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2021/04/09/Random-Perturbation-to-Low-Rank-Matrices/" >Random Perturbation to Low Rank Matrices</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2021/01/12/Davis-Kahan-s-Theorem/" >Davis-Kahan Theorem</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/2020/12/17/The-Convergence-Rate-of-Graph-Laplacian/" >The Convergence Rate of Graph Laplacian</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href= "/2020/07/11/Two-Applications-of-the-Weingarten-Map/" >Two Applications of the Weingarten Map</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2020/07/08/Local-PCA-with-Gaussian-Noise/" >Local PCA with Gaussian Noise</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/" >Tangent Space Estimation Using Local Polynomial Fitting</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2020/05/21/Tangent-Space-Estimation-Using-Local-PCA/" >Tangent Space Estimation Using Local PCA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/Extrinsic-Quantities-of-Euclidean-Submanifolds/" >Extrinsic Quantities of Euclidean Submanifolds</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/Basics-about-Riemannian-Submanifolds/" >Basics about Riemannian Submanifolds</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2020/03/27/Random-Walk-and-Graph-Spectra/" >Random Walk and Graph Spectra</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/Spectral-Graph-Partitioning/" >Spectral Graph Partitioning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Forman-Ricci-Curvature-on-Complexes/" >Forman-Ricci Curvature on Complexes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span><a class="archive-post-title" href= "/2020/01/26/Local-to-Global-Convexity/" >Local-to-Global Convexity</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2020/01/16/Gromov访谈/" >Gromov访谈</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/30</span><a class="archive-post-title" href= "/2019/12/30/Stability-Theorems-in-Topological-Data-Analysis-4/" >Stability Theorems in Topological Data Analysis (4)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2019/11/28/我是如何发现怪球的/" >我是如何发现怪球的</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/24</span><a class="archive-post-title" href= "/2019/11/24/The-Space-of-Persistence-Diagrams/" >The Space of Persistence Diagrams</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >Some Applications of Wasserstein Distances</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2019/10/02/Stability-Theorems-in-Topological-Data-Analysis-3/" >Stability Theorems in Topological Data Analysis (3)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/" >Stability Theorems in Topological Data Analysis (2)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span><a class="archive-post-title" href= "/2019/09/03/Curvature-of-Warped-Products/" >Curvature of Warped Products</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/08</span><a class="archive-post-title" href= "/2019/08/08/Remarks-on-Submanifold-density-estimation/" >Remarks on 'Submanifold density estimation'</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/01</span><a class="archive-post-title" href= "/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/" >Stability Theorems in Topological Data Analysis (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2019/07/30/MSE-of-Locally-Linear-Regression/" >MSE of Locally Linear Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2019/07/25/Concentration-in-Gauss-Space/" >Concentration in Gauss Space</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/21</span><a class="archive-post-title" href= "/2019/07/21/Bayesian-Linear-Regression/" >Bayesian Linear Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/18</span><a class="archive-post-title" href= "/2019/07/18/Notes-on-KNN-Density-Estimates(1)/" >Notes on KNN Density Estimates (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href= "/2019/07/14/a proof of everything is connected/" >A Proof of 'Everything is connected'</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
+    
+        <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+    
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
+    
+        <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
+    
+        <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
+    
+        <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
+    
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
+    
+        <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
+        <span class="sidebar-tag-name" data-tags="Random Walk"><span class="iconfont-archer">&#xe606;</span>Random Walk</span>
+    
+        <span class="sidebar-tag-name" data-tags="Spectral Graph Theory"><span class="iconfont-archer">&#xe606;</span>Spectral Graph Theory</span>
+    
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
+    
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="Latex"><span class="iconfont-archer">&#xe606;</span>Latex</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
+    
+        <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
+    
+        <span class="sidebar-category-name" data-categories="Matrix-Analysis"><span class="iconfont-archer">&#xe60a;</span>Matrix-Analysis</span>
+    
+        <span class="sidebar-category-name" data-categories="TDA"><span class="iconfont-archer">&#xe60a;</span>TDA</span>
+    
+        <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
+    
+        <span class="sidebar-category-name" data-categories="Manifold-Learning"><span class="iconfont-archer">&#xe60a;</span>Manifold-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="TDA/Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>TDA/Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Network-Analysis"><span class="iconfont-archer">&#xe60a;</span>Network-Analysis</span>
+    
+        <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
+    
+        <span class="sidebar-category-name" data-categories="CS"><span class="iconfont-archer">&#xe60a;</span>CS</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Yueqi Cao"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
+
+

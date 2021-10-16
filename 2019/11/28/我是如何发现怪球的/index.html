@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Yueqi Cao">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Yueqi Cao">
+    
+    <meta name="keywords" content="hexo,math,blog">
+    
+    <meta name="description" content="Reading & Thinking">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>我是如何发现怪球的 · Everything is Connected</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/book.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Everything is Connected</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">我是如何发现怪球的</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Everything is Connected</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/purple.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            我是如何发现怪球的
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">3.5k</span>Reading time: <span class="post-count reading-time">13 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/11/28</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>翻译自John Milnor的短文<a href="https://www.maths.ed.ac.uk/~v1ranick/papers/milnor.pdf" target="_blank" rel="noopener">Classification of $(n-1)$-connected $2n$-dimensional manifolds and the discovery of exotic spheres</a>。</p>
+<hr>
+<p>（上个世纪）50年代在普林斯顿的时候，我对理解高维流形拓扑的基本问题非常感兴趣。我尤其关注$n-1$连通的$2n$维流形，因为那看起来像是一个人最有希望取得进展的最为简单的例子。（当然，和球面有相同伦型的流形更简单。然而为了理解这类流形所提出的广义庞加莱问题似乎也太难了，我都不知从何下手。）对一个闭的$2n$维流形$M^{2n}$，并且其低于中间维数的同伦群平凡，已经有大量的技术和成果可以用来去研究它。首先，你可以轻易地描述这样一个流形的伦型。在同伦的意义下，它可以用这样的方式构造出来：取有限个相交于一点的$n$维球面，然后将一个$2n$维胞腔$e^{2n}$用一个从边界$\partial e^{2n}$到这些$n$维球面的映射粘贴到上面去，这样</p>
+<script type="math/tex; mode=display">
+M^{2n}\simeq (S^n\vee \cdots\vee S^n)\cup_{f}e^{2n}</script><p>粘贴映射$f$表示一个来自同伦群$\pi_{2n-1}(S^n\vee \cdots\vee S^n)$中的同伦类。至少在维数较低的时候，这个同伦群是很好用的。因此这类流形的同伦理论在我们的掌控之中。通过上同调，我们可以更好地理解它。如果使用整系数，$M^{2n}$的上同调在零维是无限循环群，在中间维数是自由阿贝尔群，每个球面都是一个生成元，在最高维是无限循环群，并且最高维的胞腔对应一个上同调类，也即</p>
+<script type="math/tex; mode=display">
+H^0(M^{2n})\cong\mathbb{Z},\, H^n(M^{2n})\cong\mathbb{Z}\oplus\cdots\oplus\mathbb{Z},\, H^{2n}(M^{2n})\cong\mathbb{Z},</script><p>粘贴映射$f$决定了一个上积：对中间维数的任意两个上同调类我们能对应一个最高维的上同调类，换而言之（如果流形是定向的），对应一个整数。这给出了$H^n\otimes H^n$到整数的一个双线性的配对。由庞加莱对偶，这个配对在$n$为偶数的时候是对称的，在$n$为奇数的时候是反对称的，并且其行列式为$\pm 1$。$n$为奇数时配对是一个极其简单的代数对象。然而$n$为偶数时，这个对称的配对，或等价地，整数上的二次型，构成了一个被广泛研究的困难的课题（见[7]，比较[5]。）它的一个基本的不变量是<em>符号差</em>：在实数域上对二次型对角化，然后用正的对角元的数目减去负的对角元的数目。</p>
+<p>到目前为止都还是单纯的同伦理论，但如果流形有一个光滑的结构，那么我们还有示性类，特别的，在被四整除的维数有庞特里亚金类，</p>
+<script type="math/tex; mode=display">
+p_i\in H^{4i}(M).</script><p>这些是在50年代我作为一个长期项目试图去了解的问题的开始。让我努力描述一下当时的拓扑学的知识状况。一些基本的工具已经发展出来。我非常幸运地从诺曼.斯廷罗德那学到了上同调理论和纤维丛理论，他是这个领域的领袖。这两个概念在示性类的理论中被结合起来，底空间的上同调类对应到特定的纤维丛。另外一个基本工具是阻碍理论，它给出了系数在特定同伦群中的上同调类。然而，阻碍理论在50年代初期是一个症结点，因为尽管每个人都很清楚地知道怎么使用上同调，除开一些特殊情形，没有人知道要怎么计算同伦群：绝大多数同伦群是完全不清楚的。第一个重大突破来源于塞尔的论文，在这篇论文中为了理解同伦群他发展了一个代数的工具。塞尔理论中的一个代表性的结果是球面的稳定同伦群</p>
+<script type="math/tex; mode=display">
+\Pi_n=\pi_{n+k}(S^k)\quad(k>n+1)</script><p>都是有限群。50年代初期另外一个突破来自托姆的配边理论，其中基本的对象是以流形的等价类为元素的群。他说明了这些群可以用特定的空间的同伦群来计算。紧接着他的工作之后，希策布鲁赫证明了他猜测的一个公式，这个公式将流形的示性类和符号差联系起来。对任意闭的定向$4m$维流形，使用实系数，我们可以讨论上积配对的符号差</p>
+<script type="math/tex; mode=display">
+H^{2m}(M^{4m};\mathbb{R})\otimes H^{2m}(M^{4m};\mathbb{R})\to H^{4m}(M^{4m};\mathbb{R})\cong\mathbb{R}</script><p>如果流形是光滑的，那么它也有庞特里亚金类。将不同的庞特里亚金类乘起来使其进入最高维上同调群，我们得到不同的庞特里亚金数。这些证书依赖于切丛的结构。希策布鲁赫猜想了一个公式将符号差表达为庞特里亚金书的有理线性组合。比如</p>
+<script type="math/tex; mode=display">
+\text{signature}(M^4)=\frac{1}{3}p_1[M^4]</script><p>以及</p>
+<script type="math/tex; mode=display">
+\text{signature}(M^8)=\frac{1}{45}(7p_2-(p_1)^2)[M^8].</script><p>证明所需要的东西都包含在托姆关于配边的论文中。前两个情形是直接处理的，他又提供了一些工具去证明希策布鲁赫更一般的公式。</p>
+<p>以上这些就是我试图用来去理解$n-1$连通的$2n$维流形的结构的工具。在最简单的情形，也就是中间维数的贝蒂数为零，这些构造没什么帮助。然而在次简单的情形，也就是中间维数仅有一个生成元并且$n=2m$为偶数，它们确实提供了不少关于结构的信息。如果我们想要去构造这样一个流形，就同伦论而言，我们必须从一个$2m$维流形开始，往上粘贴一个$4m$维的胞腔，最后它应该同伦等价于一个$4m$维的流形</p>
+<script type="math/tex; mode=display">
+S^{2m}\cup e^{4m}\simeq M^{4m}</script><p>关于这些对象我们能说些什么呢？一些特定的例子是知道的；最简单的是四维的复射影平面—我们可以想象它是一个二维球面（也即复射影直线）贴上一个四维的胞腔。类似的在八维有四元数射影平面，我们认为它是一个四维球面贴上一个八维胞腔，在十六维有凯莱射影平面，它的性质是类似的。（我们现在已经知道这样的流形只能在这些特殊的维数存在。）</p>
+<p>考虑一个光滑流形$M^{4m}$，假设它的伦型可以用上述方式描述。那么它可以是什么样子？我们从容易理解的$2m$维球面开始。惠特尼告诉我们，至少在$m&gt;1$的时候，这个球面可以光滑地嵌入为一个子集$S^{2m}\subset M^{4m}$，并生成了中间维数的同调群。我们考察嵌入球面的一个管状邻域，等价地，考察其$2m$维圆盘法丛$E^{4m}$。一般而言当我们环绕球面走一圈这个丛必定会扭转——它不能简简单单是个乘积流形否则它的那些性质就不对了。在纤维丛理论中，我们可以用下述方式进行考察：把$2m$维球面切成两个半球$D^{2m}<em>+$和$D^{2m}</em>-$，这两个球面相交于公共的边界$S^{2m-1}$。在每个半球上我们一定有乘积丛，并且我们一定能把两个乘积粘贴在一起形成</p>
+<script type="math/tex; mode=display">
+E^{4m}=(D^{2m}_+\times D^{2m})\cup_{F}(D^{2m}_-\times D^{2m})</script><p>这里粘贴映射$F(x,y)=(x,f(x)y)$由一个从$D^{2m}<em>+\cap D^{2m}</em>-$到$D^{2m}$的旋转群的映射$f:S^{2m-1}\to SO(2m)$决定。因此扩宽$2m$球面最一般的方式可以由同伦群$\pi_{2m-1}(SO(2m))$中的元素描述。在维数较低的时候，这个群被了解地很透彻。</p>
+<p>从最简单的情形$4m=4$开始，$S^2$上的$D^2$丛由群$\pi_1(SO(2))\cong\mathbb{Z}$中的元素决定。不难验证，不考虑定向的情况下，唯一能够以粘贴四维胞腔构作出丛的方式得到的四维流形是标准的复射影平面：这个构造没有给出什么新的东西。接下来的情形则变得更为有趣。在八维$S^4$上的$D^4$丛由群$\pi_3(SO(4))$中的元素描述。在二叶复叠的意义下，群$SO(4)$只是两个三维球面的笛卡尔积，因此$\pi_3(SO(4))\cong\mathbb{Z}\oplus\mathbb{Z}$。更确切的，将$S^3$视为为四元数中的单位三维球面。用左乘任意一个单位四元数我们得到从$S^3$到自身的映射，同样地，用右乘我们得到另一个映射。将这两个操作放在一起，一个一般的$(f)\in\pi_3(SO(4))$可以由映射$f(x)y=x^iyx^j$表示，其中$x$和$y$是单位四元数而$(i,j)\in\mathbb{Z}\oplus\mathbb{Z}$是任意一对整数。</p>
+<p>因此每个整数对$(i,j)$我们都能配以一个显式的四维球面上的四维圆盘丛。我们想要它是一个闭八维流形中的管状邻域，这意味着我们想要能够在上面粘贴一个八维胞腔来给出一个光滑流形。为使其成立，边界$M^7=\partial E^8$必须是一个七维的球面$S^7$。这样问题变成了：对哪些$i$和$j$这个边界同构于$S^7$？不难决定什么时候它有对的伦型：事实上，$M^7$有$S^7$的伦型当且仅当$i+j$等于$\pm 1$。为了固定我们的想法，假设$i+j=+1$。这仍然给出了无穷多种$i$的选择。对每个$i$，注意到$j=1-i$是确定的，并且我们得到一个作为边界的流形$M^7=\partial E^8$，它是$S^4$上的$S^3$丛有着$S^7$的伦型。那么它是流形$S^7$吗？</p>
+<p>让我们回到八维的希策布鲁赫-托姆符号差公式。它告诉我们一个理论上的八维流形的符号差可以从$(p_1)^2$和$p_2$算出来。但是这个符号差必须是$\pm 1$（记住二次型的行列式永远是$\pm 1$），并且我们可以选择定向使其是$+1$。因为限制同态将$H^4(M^8)$同构地映到$H^4(S^4)$，庞特里亚金类$p_1$被四维球面的邻域的切丛所完全决定，因此也被整数$i$和$j$完全决定。事实上$p_1$等于$2(i-j)=2(2i-1)$乘上$H^4(M^8)$的生成元，因此$p_1^2[M^8]=4(2i-1)^2$。我们没有直接的方式计算$p_2$，它依赖于整个流形。然而，我们可以从符号差公式中反解出$p_2[M^8]$，从而得到公式</p>
+<script type="math/tex; mode=display">
+p_2[M^8]=\frac{p_1^2[M^8]+45}{7}=\frac{4(2i-1)^2+45}{7}</script><p>对$i=1$它得到$p_2[M^8]=7$，对四元数射影平面它是对的。但是对于$i=2$我们得到$p_2[M^8]=\frac{81}{7}$，这不可能！因为$p_2$是带整系数的上同调类，这个庞特里亚金数$p_2[M^8]$，不管是多少，一定是一个整数。</p>
+<p>那么什么出错了？如果我们选择$p_1$使得$p_2[M]$不是一个整数，那么不可能有这样的光滑流形。流形$M^7=\partial E^8$肯定是存在的并且伦型是七维球面，然而我们不能把一个八维胞腔粘到$E^8$上去从而得到一个光滑流形。当时我以为这个$M^7$给出了七维的广义庞加莱猜想的一个反例：我以为$M^7$有七维球面的伦型，但是不同胚于标准的七维球面。</p>
+<p>然后我更进一步地探究并考察$M^7$上精细的几何。这个流形是一个相当简单的东西：一个用四元数乘法显式构造的$S^4$上的$S^3$丛。我发现我事实上能证明它同胚于标准的七维球面，我的情况看上去变得更糟了！在$M^7$上，我可以找到一个光滑的实值函数仅有两个极值点：一个非退化的最大值点和一个非退化的最小值点。这个函数的水平集是六维球面，沿着法向形变它我们得到这个流形和标准$S^7$的一个同胚（这是里布的一个定理：如果一个闭$k$维流形有一个仅有两个极值点的莫尔斯函数，那么它同胚于七维球面。）这时我才明白这个构造并不是我最初以为的是庞加莱猜想的反例。这个$M^7$确实是一个拓扑球面，但是有一个奇怪的光滑结构。</p>
+<p>这是一个更让人惊讶的结论。假设我们沿一个水平集把流形切开，这样</p>
+<script type="math/tex; mode=display">
+M^7=D^7_+\cup_fD^7_-</script><p>其中$D_{\pm}^7$微分同胚于七维圆盘。它们沿公共边界用微分同胚$f:S^6\to S^6$粘起来。<em>因此这个流形可以用两个七维圆盘在边界用微分同胚粘接得到</em>。同时，这个证明说明存在$S^6$到自身的微分同胚其本身非常怪异：它不能用光滑的同痕变为恒等映射，因为如果能这么做那么$M^7$就会微分同胚于标准的七维球面，进而与上述讨论矛盾。</p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/12/30/Stability-Theorems-in-Topological-Data-Analysis-4/" title= "Stability Theorems in Topological Data Analysis (4)">
+                    <div class="nextTitle">Stability Theorems in Topological Data Analysis (4)</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/11/24/The-Space-of-Persistence-Diagrams/" title= "The Space of Persistence Diagrams">
+                    <div class="prevTitle">The Space of Persistence Diagrams</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:bityueqi@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/YueqiCao" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 31
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span><a class="archive-post-title" href= "/2021/10/16/List-of-Convergence-Rates-in-TDA/" >List of Convergence Rates in TDA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2021/07/22/Error-Estimate-under-Hausdorff-Distance/" >Error Estimate under Hausdorff Distance</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/31</span><a class="archive-post-title" href= "/2021/05/31/tex2svg/" >tex2svg</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2021/04/09/Random-Perturbation-to-Low-Rank-Matrices/" >Random Perturbation to Low Rank Matrices</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2021/01/12/Davis-Kahan-s-Theorem/" >Davis-Kahan Theorem</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/2020/12/17/The-Convergence-Rate-of-Graph-Laplacian/" >The Convergence Rate of Graph Laplacian</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href= "/2020/07/11/Two-Applications-of-the-Weingarten-Map/" >Two Applications of the Weingarten Map</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2020/07/08/Local-PCA-with-Gaussian-Noise/" >Local PCA with Gaussian Noise</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/" >Tangent Space Estimation Using Local Polynomial Fitting</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2020/05/21/Tangent-Space-Estimation-Using-Local-PCA/" >Tangent Space Estimation Using Local PCA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/Extrinsic-Quantities-of-Euclidean-Submanifolds/" >Extrinsic Quantities of Euclidean Submanifolds</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/Basics-about-Riemannian-Submanifolds/" >Basics about Riemannian Submanifolds</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2020/03/27/Random-Walk-and-Graph-Spectra/" >Random Walk and Graph Spectra</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/Spectral-Graph-Partitioning/" >Spectral Graph Partitioning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Forman-Ricci-Curvature-on-Complexes/" >Forman-Ricci Curvature on Complexes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span><a class="archive-post-title" href= "/2020/01/26/Local-to-Global-Convexity/" >Local-to-Global Convexity</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2020/01/16/Gromov访谈/" >Gromov访谈</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/30</span><a class="archive-post-title" href= "/2019/12/30/Stability-Theorems-in-Topological-Data-Analysis-4/" >Stability Theorems in Topological Data Analysis (4)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2019/11/28/我是如何发现怪球的/" >我是如何发现怪球的</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/24</span><a class="archive-post-title" href= "/2019/11/24/The-Space-of-Persistence-Diagrams/" >The Space of Persistence Diagrams</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >Some Applications of Wasserstein Distances</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2019/10/02/Stability-Theorems-in-Topological-Data-Analysis-3/" >Stability Theorems in Topological Data Analysis (3)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/" >Stability Theorems in Topological Data Analysis (2)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span><a class="archive-post-title" href= "/2019/09/03/Curvature-of-Warped-Products/" >Curvature of Warped Products</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/08</span><a class="archive-post-title" href= "/2019/08/08/Remarks-on-Submanifold-density-estimation/" >Remarks on 'Submanifold density estimation'</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/01</span><a class="archive-post-title" href= "/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/" >Stability Theorems in Topological Data Analysis (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2019/07/30/MSE-of-Locally-Linear-Regression/" >MSE of Locally Linear Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2019/07/25/Concentration-in-Gauss-Space/" >Concentration in Gauss Space</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/21</span><a class="archive-post-title" href= "/2019/07/21/Bayesian-Linear-Regression/" >Bayesian Linear Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/18</span><a class="archive-post-title" href= "/2019/07/18/Notes-on-KNN-Density-Estimates(1)/" >Notes on KNN Density Estimates (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href= "/2019/07/14/a proof of everything is connected/" >A Proof of 'Everything is connected'</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
+    
+        <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+    
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
+    
+        <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
+    
+        <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
+    
+        <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
+    
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
+    
+        <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
+        <span class="sidebar-tag-name" data-tags="Random Walk"><span class="iconfont-archer">&#xe606;</span>Random Walk</span>
+    
+        <span class="sidebar-tag-name" data-tags="Spectral Graph Theory"><span class="iconfont-archer">&#xe606;</span>Spectral Graph Theory</span>
+    
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
+    
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="Latex"><span class="iconfont-archer">&#xe606;</span>Latex</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
+    
+        <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
+    
+        <span class="sidebar-category-name" data-categories="Matrix-Analysis"><span class="iconfont-archer">&#xe60a;</span>Matrix-Analysis</span>
+    
+        <span class="sidebar-category-name" data-categories="TDA"><span class="iconfont-archer">&#xe60a;</span>TDA</span>
+    
+        <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
+    
+        <span class="sidebar-category-name" data-categories="Manifold-Learning"><span class="iconfont-archer">&#xe60a;</span>Manifold-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="TDA/Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>TDA/Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Network-Analysis"><span class="iconfont-archer">&#xe60a;</span>Network-Analysis</span>
+    
+        <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
+    
+        <span class="sidebar-category-name" data-categories="CS"><span class="iconfont-archer">&#xe60a;</span>CS</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Yueqi Cao"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
+
+

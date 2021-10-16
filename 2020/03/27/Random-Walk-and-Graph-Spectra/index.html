@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Yueqi Cao">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Yueqi Cao">
+    
+    <meta name="keywords" content="hexo,math,blog">
+    
+    <meta name="description" content="Reading & Thinking">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Random Walk and Graph Spectra · Everything is Connected</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/book.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Everything is Connected</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Random Walk and Graph Spectra</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Everything is Connected</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/purple.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            Random Walk and Graph Spectra
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Random Walk">Random Walk</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Spectral Graph Theory">Spectral Graph Theory</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">2.3k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/03/27</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>Random walks arise in many fields in mathematics and physics, recently in network analysis, graph learning, clustering etc. It also has a natural relation with spectral graph theory. The <a href="http://web.cs.elte.hu/~lovasz/erdos.pdf" target="_blank" rel="noopener">survey</a> written by L.Lovasz presents many beautiful results concerning random walks and graph spectra. We aim to write down some computation details missing in the original succinct paper.  <a id="more"></a></p>
+<h2 id="Basic-Notions"><a href="#Basic-Notions" class="headerlink" title="Basic Notions"></a>Basic Notions</h2><p>Let $G=(V,E)$ be a connected, undirected, simple graph with $n$ nodes and $m$ edges. Consider the following random walk on $G$: start from a node $v_0$; at the $t$th step move to the neighbor of $v_t$ with probability $1/d(v_t)$. i.e. It is a Markov chain with transition matrix </p>
+<script type="math/tex; mode=display">
+M=D^{-1}A</script><p>where $A$ is the adjacency matrix and $D$ is the diagonal matrix such that $D<em>{ii}=d(i)=\sum_jA</em>{ij}$ ($\textbf{Caveat:}$ in original paper $D$ is adopted as $D^{-1}$ here, thus all the indices over $D$ are reversed in this note). Let $P_t$ be the distribution at time $t$. Then </p>
+<script type="math/tex; mode=display">
+(P_t)_i=\sum_j (P_{t-1})_jM_{ji}</script><p>If we assume $P_t$’s are column vectors, the matrix form should be written as </p>
+<script type="math/tex; mode=display">
+P_t=M^TP_{t-1}</script><p>A random walk is called stationary if $P_0=P_1$. We denote the stationary random walk by $\pi$. A simple calculation shows that $\pi=D\mathbf{1}/2m$ is a stationary distribution of $M$. The uniqueness and convergence are shown by the following.</p>
+<h2 id="Stationary-Distribution"><a href="#Stationary-Distribution" class="headerlink" title="Stationary Distribution"></a>Stationary Distribution</h2><p>Before discussing about the stationary distribution of the random walk $M$, we state the <a href="[https://en.wikipedia.org/wiki/Perron%E2%80%93Frobenius_theorem](https://en.wikipedia.org/wiki/Perron–Frobenius_theorem">Perron-Frobenius theorem</a>) which reveals some important properties about nonnegative matrices.</p>
+<p>A nonnegative matrix $A$ is called irreducible if there does <strong>NOT</strong> exist a permutation matrix $R$ such that </p>
+<script type="math/tex; mode=display">
+RAR^{-1}=\left[\begin{array}{cc}E&F\\ 0&G\end{array}\right]</script><p>For an irreducible matrix $A$, the spectral radius $\rho(A)=r&gt;0$ is an eigenvalue of $A$, whose corresponding (left /right) eigenspace is unidimensional. Moreover, $A$ has an (left/right) eigenvector $v$ associated with $r$ whose components are all positive, and conversely,  eigenvectors whose components are all positive are associated with $r$.  </p>
+<p>Consider the special case where $A$ is the adjacency matrix of an undirected simple graph. $A$ is irreducible if and only if there does not exist a nontrivial partition ${1,2,\cdots, n}=I\cup J$ such that $A_{ij}=0$ for $i\in I$ and $j\in J$. i.e. $A$ is irreducible if and only if the graph $G$ is connected. This criterion easily generalizes to any similarity matrices on graphs. For example, consider $N=D^{-1/2}AD^{-1/2}$. It is irreducible if and only if $G$ is connected. Since $N$ is symmetric, write $N$ in spectral form </p>
+<script type="math/tex; mode=display">
+N=\sum_k\lambda_kv_kv_k^T</script><p>where $\lambda_1\ge\lambda_2\ge\cdots\ge\lambda_n$ are eigenvalues of $N$ and $v_1,\cdots,v_n$ are corresponding  eigenvectors of unit length. Note that $A\mathbf{1}=D\mathbf{1}$, which gives $ND^{1/2}\mathbf{1}=D^{1/2}\mathbf{1}$. i.e. $D^{1/2}\mathbf{1}$ is an eigenvector of $N$ whose components are all positive. By Perron-Frobenius theorem, $v_1=\frac{D^{1/2}\mathbf{1}}{\sqrt{2m}}$ and $\lambda_1=1&gt;\lambda_2\ge\cdots\ge\lambda_n\ge-1$. </p>
+<p>A simple calculation shows that $M=D^{-1/2}ND^{1/2}$ is similar to $N$. Now we have</p>
+<script type="math/tex; mode=display">
+M^t=D^{-1/2}v_1v_1^TD^{1/2}+\sum_{k\ge 2}\lambda_k^tD^{-1/2}v_kv_k^TD^{1/2}=Q+\Lambda^t</script><p>where $Q_{ij}=d(j)/2m=\pi(j)$ is such that $Q^TP=\pi$ for any probability distribution $P$. Hence if we can prove $\Lambda^t\to 0$ as $t\to\infty$ we obtain that $\pi$ is the stationary distribution. In addition, since $M$ is similar to $N$ and $\lambda_1=1$ is a simple eigenvalue of $N$, we see that $\pi$ will be the only probability distribution such that $M^T\pi=\pi$. Apparently, it suffices to exclude the case where $\lambda_n=-1$.</p>
+<p>Let $L=D-A$ be the Laplacian matrix, $\mathcal{L}=D^{-1/2}LD^{-1/2}$ be the normalized Laplacian. Note that $\mathcal{L}=I-N$. Thus, $\lambda_n(N)=1-\lambda_1(\mathcal{L})$. By Rayleigh-Ritz theorem, </p>
+<script type="math/tex; mode=display">
+\lambda_1(\mathcal{L})=\sup_f\frac{f^T\mathcal{L}f}{f^Tf}</script><p>Set $g=D^{-1/2}f$. Then by the fact $(g_i-g_j)^2\le 2(g_i^2+g_j^2)$,</p>
+<script type="math/tex; mode=display">
+\lambda_1(\mathcal{L})=\sup_g\frac{1/2\sum_{i,j}a_{ij}(g_i-g_j)^2}{\sum_ig_i^2d_i}\le\sup_g\frac{\sum_{i,j}a_{ij}(g_i^2+g_j^2)}{\sum_ig_i^2d_i}=2</script><p>where equality holds if and only if $g<em>i=-g_j$ if $a</em>{ij}\neq0$. Since $g\neq 0$, the components of $g$ is partitioned into two parts. Hence $\lambda_n(N)=-1$ if and only if $\lambda_1(\mathcal{L})=-2$ if and only if $G$ is bipartite. </p>
+<p>Overall we proved the following claim about stationary distribution.</p>
+<blockquote>
+<p>Let $G$ be an undirected, simple, connected, non-bipartite graph, with transition matrix $M=D^{-1}A$. It possesses a unique stationary distribution $\pi=D\mathbf{1}/2m$ such that $M^T\pi=\pi$ and $\lim_{t\to\infty}P_t=\pi$ for any initial distribution $P_0$.</p>
+</blockquote>
+<h2 id="Spectra-and-Access-Time"><a href="#Spectra-and-Access-Time" class="headerlink" title="Spectra and Access Time"></a>Spectra and Access Time</h2><p>The access time (or hitting time) $H_{ij}$ is the expected number of steps the first time meeting node $j$ starting from node $i$. i.e. </p>
+<script type="math/tex; mode=display">
+H_{ij}=\sum n\times \text{Prob(meet node j in n steps)}</script><p>By definition $H_{ii}=0$. For $i\neq j$, by conditional expectation formula</p>
+<script type="math/tex; mode=display">
+H_{ij}=\frac{1}{d_i}(\sum_{k\sim i}1+H_{kj})=1+\frac{1}{d_i}\sum_{k\sim i}H_{kj}</script><p>Let $J=\mathbf{1}\mathbf{1}^T$ be the all-one matrix. According to the above equation, the matrix $F=J+MH-H$ is a diagonal matrix. Direct computation shows that $F^T\pi=\mathbf{1}$. Hence $F=2mD^{-1}$. The access time matrix satisfies </p>
+<script type="math/tex; mode=display">
+(I-M)H=J-2mD^{-1}</script><p>By the above discussion, the kernel of $I-M$ is unidimensional. If $X$ is a solution of (11), then $X+\mathbf{1}a^T$ gives all the solutions of (11). By the restriction $H_{ii}=0$, we can solve for the unique $H$. Let $V=[v_1,\cdots,v_n]$ be the orthogonal matrix such that </p>
+<script type="math/tex; mode=display">
+N=V\left[\begin{array}{ccc}\lambda_1&&\\&\ddots&\\&&\lambda_n\end{array}\right]V^T</script><p>Set $U=D^{-1/2}V$. Then we have </p>
+<script type="math/tex; mode=display">
+I-M=U\left[\begin{array}{ccc}0&&\\&\ddots&\\&&1-\lambda_n\end{array}\right]U^{-1}</script><p>Note the right side of (11) has nothing to do with $\lambda_i$. We try to get rid of these eigenvalues. Suppose the solution $X$ has a factor </p>
+<script type="math/tex; mode=display">
+U\left[\begin{array}{ccc}0&&\\&\ddots&\\&&\frac{1}{1-\lambda_n}\end{array}\right]U^{-1}</script><p>The multiplication with (13) gives </p>
+<script type="math/tex; mode=display">
+\sum_{k\ge 2}D^{-1/2}v_kv_k^TD^{1/2}=-D^{-1/2}v_1v_1^TD^{1/2}+I=JD/2m+I</script><p>In addition, multiplying (15) with $J-2mD^{-1}$ gives</p>
+<script type="math/tex; mode=display">
+(\frac{JD}{2m}+I)(J-2mD^{-1})=J-2mD^{-1}</script><p>Therefore one solution of (11) is</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+X&=U\left[\begin{array}{ccc}0&&\\&\ddots&\\&&\frac{1}{1-\lambda_n}\end{array}\right]U^{-1}(J-2mD^{-1})\\
+&=D^{-1/2}(\sum_{k\ge 2}\frac{v_kv_k^T}{1-\lambda_k})D^{1/2}\mathbf{1}\mathbf{1}^T-2mD^{-1/2}(\sum_{k\ge 2}\frac{v_kv_k^T}{1-\lambda_k})D^{-1/2}\\
+&=\sqrt{2m}D^{-1/2}(\sum_{k\ge 2}\frac{v_kv_k^T}{1-\lambda_k})v_1\mathbf{1}^T-2mD^{-1/2}(\sum_{k\ge 2}\frac{v_kv_k^T}{1-\lambda_k})D^{-1/2}\\
+&=-2mD^{-1/2}(\sum_{k\ge 2}\frac{v_kv_k^T}{1-\lambda_k})D^{-1/2}
+\end{aligned}</script><p>Finally, we have to subtract the diagonals of $X$. Since </p>
+<script type="math/tex; mode=display">
+X_{ii}=-2m\sum_{k\ge 2}\frac{v_{ki}^2}{(1-\lambda_k)d_i}</script><p>The access time matrix is $H=X-\mathbf{1}[X<em>{11},\cdots,X</em>{nn}]^T$. The elements are</p>
+<script type="math/tex; mode=display">
+H_{ij}=2m\sum_{k\ge 2}\frac{1}{1-\lambda_k}(\frac{v_{kj}^2}{d_j}-\frac{v_{ki}v_{kj}}{\sqrt{d_id_j}})</script><p>This equation has many applications. For example, we can quickly find the symmetric properties of $H$. </p>
+<blockquote>
+<p>For any three nodes $u,v$ and $w$, $H<em>{uv}+H</em>{vw}+H<em>{wu}=H</em>{uw}+H<em>{wv}+H</em>{vu}$.</p>
+</blockquote>
+<p>Direct computation shows that the sum $H<em>{uv}+H</em>{vw}+H_{wu}$ is </p>
+<script type="math/tex; mode=display">
+\sum_{k\ge 2}\frac{m}{1-\lambda_k}\left((\frac{v_{ku}}{\sqrt{d_u}}-\frac{v_{kv}}{\sqrt{d_v}})^2+(\frac{v_{kv}}{\sqrt{d_v}}-\frac{v_{kw}}{\sqrt{d_w}})^2+(\frac{v_{kw}}{\sqrt{d_w}}-\frac{v_{ku}}{\sqrt{d_u}})^2\right)</script><p>which is invariant under permutation.</p>
+<blockquote>
+<p>Let $\pi$ be the stationary walk. Then $\sum<em>j\pi_jH</em>{ij}=\sum_{k\ge 2}\frac{1}{1-\lambda_k}$.</p>
+</blockquote>
+<p>Use the fact that $\pi=D\mathbf{1}/2m$ and $v_1=D^{1/2}\mathbf{1}/\sqrt{2m}$ which is orthogonal to all $v_k$. In the summation,</p>
+<script type="math/tex; mode=display">
+\sum_j\pi_jH_{ij}=\sum_{k\ge 2}\frac{1}{1-\lambda_k}(\sum_jv_{kj}^2-\frac{v_{ki}}{\sqrt{d_i}}\sum_jv_{kj}v_{1j}\sqrt{2m})=\sum_{k\ge 2}\frac{1}{1-\lambda_k}</script><p>Note that this equality is independent of the starting point. Thus we can explain the formula as follows: in a stationary walk, no matter where we start on the graph, the average number of steps before meeting all the other nodes is a fix number which related to the graph spectra. Thus this formula nicely connects random walk with geometry of the graph.</p>
+<blockquote>
+<p>Let $\pi$ be the stationary walk. Then $\sum<em>i\pi_iH</em>{ij}\ge \frac{(1-\pi_j)^2}{\pi_j}$</p>
+</blockquote>
+<p>Using again $v_1$ is orthogonal to $v_k$, we have</p>
+<script type="math/tex; mode=display">
+\sum_i\pi_iH_{ij}=\frac{2m}{d_j}\sum_{k\ge 2}\frac{1}{1-\lambda_k}v_{kj}^2</script><p>By Cauchy-Schwartz inequality,</p>
+<script type="math/tex; mode=display">
+\sum_{k\ge 2}\frac{v_{kj}^2}{1-\lambda_k}\sum_{k\ge 2}(1-\lambda_k)v_{kj}^2\ge(\sum_{k\ge 2}v_{kj}^2)^2</script><p>Note that $\sum<em>{k\ge 2}v</em>{kj}^2=1-\pi(j)$, and $\sum<em>{k\ge2}(1-\lambda_k)v</em>{kj}^2=\sum<em>{k}(1-\lambda_k)v</em>{kj}^2=1-N_{jj}=1$. Thus we obtain the claim.</p>
+<p>To give an example where the access time is calculable, consider the $k$-cube $Q_k$. Let $\mathbf{0}=(0,0,\cdots,0)$ and $\mathbf{1}=(1,1,\cdots,1)$. The nodes are elements in ${0,1}^k$ and two nodes are connected by an edge if they differ by one digit (see <a href="https://en.wikipedia.org/wiki/Hypercube_graph" target="_blank" rel="noopener">hypercube graph</a> ). To find all the eigenvalues and eigenvectors of $M$ (or $A$ since $D$ is a scalar matrix), L.Lovasz’s paper gives a beautiful construction: for every vector $b\in{0,1}^k$, define $(v_b)_x=(-1)^{b\cdot x}$. i.e. the component of $v_b$ at node $x$ is $1$ if $b$ and $x$ share even number of $1$’s  and is $0$ otherwise. Note that </p>
+<script type="math/tex; mode=display">
+\sum_ja_{ij}(v_b)_j=\sum_{j:|i-j|=1}(-1)^{b\cdot j}</script><p>Now if $j$ changes one digit of $i$ where the component of $b$ is $0$, $b\cdot j=b\cdot i$. This gives $k-b\cdot\mathbf{1}$ number of $(-1)^{b\cdot i}$. Otherwise  (the component of $b$ is $1$) each change from $j$ will yields $b\cdot j=b\cdot i\pm 1$, giving $b\cdot\mathbf{1}$ number of $-(-1)^{b\cdot i}$. Hence $v_b$ is an eigenvector of $M$ with eigenvalue $1-\frac{2}{k}b\cdot\mathbf{1}$. Normalizing $v_b$ and using the formula for $H$ we have </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+H(\mathbf{0},\mathbf{1})&=\sum_{b\in\{0,1\}^k,b\neq 0}\frac{k}{b\cdot\mathbf{1}}(1-(-1)^{b\cdot\mathbf{1}})\\
+&=k\sum_{j=1}^kC_k^j\frac{1}{2j}(1-(-1)^j)\\
+&\ge \frac{k}{2(k+1)}\sum_{j=1}^{k}C_{k+1}^{j+1}(1-(-1)^j)\\
+&=\frac{k}{k+1}(2^k-1)
+\end{aligned}</script><p>To obtain an upper bound, use the identity $C<em>k^j=\sum</em>{p=0}^{k-1}C_p^{j-1}$, where $C_p^{j-1}=0$ for $p&lt;j-1$. We have </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+H(\mathbf{0},\mathbf{1})&=k\sum_{j=1}^k\sum_{p=0}^{k-1}C_{p}^{j-1}\frac{1}{2j}(1-(-1)^j)\\
+&=k\sum_{j=1}^k\sum_{p=0}^{k-1}\frac{1}{2(p+1)}C_{p+1}^{j}(1-(-1)^j)\\
+&=k\sum_{p=0}^{k-1}\frac{1}{2(p+1)}\sum_{j=1}^kC_{p+1}^j(1-(-1)^j)\\
+&= k\sum_{p=0}^{k-1}\frac{1}{2(p+1)}2^{p+1}\\
+&\le k2^{k/2-1}\sum_{p<k/2-1}\frac{1}{1+p}+2\sum_{p\ge k/2-1}2^p\\
+&\le 2^{k+1}+k\log k2^{k/2}
+\end{aligned}</script><p>Thus for large $k$ the exact value of $H(\mathbf{0},\mathbf{1})$ is between $2^k$ and $2^{k+1}$.</p>
+<h2 id="Spectra-and-Mixing-Rate"><a href="#Spectra-and-Mixing-Rate" class="headerlink" title="Spectra and Mixing Rate"></a>Spectra and Mixing Rate</h2><p>Let $\lambda=\max{|\lambda_2|,|\lambda_n|}$. By equation (6) we have</p>
+<script type="math/tex; mode=display">
+P_t=(M^T)^tP_0=Q^TP_0+(\Lambda^T)^tP_0=\pi+(\Lambda^T)^tP_0</script><p>For a random walk starting at node $i$, i.e. $P_0(i)=1$, we have</p>
+<script type="math/tex; mode=display">
+P_t(j)=\pi(j)+\sum_{k\ge 2}\lambda_k^t\sqrt{\frac{d(j)}{d(i)}}v_{kj}v_{ki}</script><p>Thus by geometric-arithmetic inequality,</p>
+<script type="math/tex; mode=display">
+|P_t(j)-\pi(j)|\le\lambda^t\sqrt{\frac{d(j)}{d(i)}}\sum\frac{v_{kj}^2+v_{ki^2}}{2}\le \sqrt{\frac{d(j)}{d(i)}}\lambda^t</script><p>Moreover, for any subset $S\subset{1,\cdots,n}$, by Cauchy inequality $\sum<em>{s\in S}\sqrt{d(s)}v</em>{ks}\le\sqrt{\sum<em>{s\in S}d(s)}\sqrt{\sum</em>{s\in S}v_{ks}}$, we have</p>
+<script type="math/tex; mode=display">
+|P_t(S)-\pi(S)|\le \frac{|S|+1}{2}\sqrt{\frac{\pi(S)}{\pi(i)}}\lambda^t</script><p>Note that $P_t(j)$ is nothing but the probability of transferring from node $i$ to node $j$ in $t$ steps. Define the mixing rate</p>
+<script type="math/tex; mode=display">
+\mu=\limsup_{t\to\infty}\max_{i,j}|M^t(i,j)-\pi(j)|</script><p>From equation (25) we immediately have $\mu=\lambda$. Thus we obtain</p>
+<blockquote>
+<p>The mixing rate of a random walk on a non-bipartite graph is $\lambda=\max{|\lambda_2|,|\lambda_n|}$.</p>
+</blockquote>
+<p>To get rid of $\lambda_n$, consider the following lazy random walk</p>
+<script type="math/tex; mode=display">
+M_L=\frac{1}{2}I+\frac{1}{2}D^{-1}A=\frac{1}{2}(I+M)</script><p>That is, we have half of the probability to stay rather than move, which is also equal to adding $d(i)$ loops at each node $i$. Set $N_L=D^{-1/2}(D+A)D^{-1/2}$. We have $D^{1/2}M_LD^{-1/2}=\frac{1}{2}N_L=\frac{1}{2}(I+N)$. If $Nv=\lambda v$, it holds $M_LD^{-1/2}v=\frac{1+\lambda}{2}D^{-1/2}v$. Thus we have $\lambda(M_L)=(1+\lambda(M))/2\ge0$. Furthermore,</p>
+<script type="math/tex; mode=display">
+M_L^t=D^{-1/2}v_1v_1^TD^{1/2}+\sum_{k\ge 2}(\frac{1+\lambda_k(M)}{2})^tD^{-1/2}v_kv_k^TD^{1/2}</script><p>we see that lazy random walk always converges to the stationary distribution, with rate $(1+\lambda_2(M))/2&gt;\lambda_2$, which makes sense that lazy walk is slower.</p>
+<p> Thus the mixing rate is closely related to $\lambda_2$, or equivalently, the spectral gap $\lambda_1-\lambda_2=1-\lambda_2$. Let $\emptyset\neq S\subset V$ and $\nabla(S)$ be the set of edges connecting $S$ to $V\backslash S=\bar{S}$, i.e. $\nabla(S)$ is the edge cut of the graph with respect to $S$ (see this <a href="http://yueqicao.top/2020/03/10/Spectral-Graph-Partitioning/" target="_blank" rel="noopener">post</a> ). Define the conductance of the set $S$ by </p>
+<script type="math/tex; mode=display">
+\Phi(S)=\frac{|\nabla(S)|}{2m\pi(S)\pi(V\backslash S)}</script><p>Here $\pi(S)=\sum_{s\in S}d(s)/2m=vol(S)/2m$. The conductance of the graph is defined by </p>
+<script type="math/tex; mode=display">
+\Phi=\min_S\Phi(S)</script><p>It turns out that the spectral gap is controlled by the graph conductance. </p>
+<blockquote>
+<p>$\frac{\Phi^2}{16}\le 1-\lambda_2\le \Phi$</p>
+</blockquote>
+<p>Recall that the normalized Laplacian is $\mathcal{L}=D^{-1/2}LD^{-1/2}=I-N$, which implies $\lambda(\mathcal{L})=1-\lambda(N)=1-\lambda(M)$. The second largest eigenvalue of $M$ is the second smallest eigenvalue of $\mathcal{L}$. By Rayleigh-Ritz theorem,</p>
+<script type="math/tex; mode=display">
+1-\lambda_2=\min_{f\perp D^{1/2}\mathbf{1}}\frac{f^T\mathcal{L}f}{f^Tf}</script><p>Let $g=D^{-1/2}f$ and set $g^TDg=1$. By the basic property of graph Laplacian,</p>
+<script type="math/tex; mode=display">
+1-\lambda_2=\min\{\sum_{i\sim j}(x_i-x_j)^2:\sum_i d(i)x_i=0,\sum_i d(i)x_i^2=1\}</script><p>Let $S$ be the set with minimum conductance, and consider the vector given by </p>
+<script type="math/tex; mode=display">
+x_i=\left\{\begin{array}{l}a,i\in S\\ b,i\in\bar{S}\end{array}\right.</script><p>where</p>
+<script type="math/tex; mode=display">
+a=\sqrt{\frac{\pi(\bar{S})}{2m\pi(S)}},b=-\sqrt{\frac{\pi(S)}{2m\pi(\bar{S})}}</script><p>Then</p>
+<script type="math/tex; mode=display">
+\sum_{i\sim j}(x_i-x_j)^2=\sum_{i\in S,j\in\bar{S}}\frac{\pi(\bar{S})}{2m\pi(S)}+\frac{\pi(S)}{2m\pi(\bar{S})}+\frac{1}{m}=\frac{|\nabla(S)|}{2m\pi(S)\pi(\bar{S})}=\Phi</script><p>This proves the upper bound. To obtain the lower bound, we first prove the following lemma</p>
+<blockquote>
+<p>Let $y\in\mathbb{R}^{|V|}$ such that $\pi({i:y<em>i&gt;0})\le 1/2$, $\pi({i:y_i&lt;0})\le 1/2$ and $\sum_i\pi(i)|y_i|=1$. Then $\sum</em>{i\sim j}|y_i-y_j|\ge m\Phi$. </p>
+</blockquote>
+<p>Sort the vector $y$ such that $y<em>1\le y_2\le\cdots\le y_t&lt;0=y</em>{t+1}=\cdots=y<em>s&lt;y</em>{s+1}\le\cdots y<em>n$. Consider the sets defined by $S_i={1,\cdots,i}$. For a fixed node $i$, in the sum $\sum</em>{i\sim j}|y<em>j-y_i|$ the quantity $y</em>{i+1}-y<em>i$ is counted for $|\nabla(S_i)|$ times if we substitute $|y_j-y_i|$ by $y</em>{j}-y<em>{j-1}+\cdots+y</em>{i+1}-y_i$. We have </p>
+<script type="math/tex; mode=display">
+\sum_{i\sim j}|y_i-y_j|=\sum_{i=1}^{n-1}|\nabla(S_i)|(y_{i+1}-y_i)\ge2m\Phi\sum_{i=1}^{n-1}(y_{i+1}-y_i)\pi(S_i)\pi(\bar{S}_i)</script><p>Since $\pi(S_i)\le 1/2$ for $i\le t$ and $\pi(S_i)\ge 1/2$ for $i\ge s+1$, we have </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\sum_{i\sim j}|y_i-y_j|&\ge m\Phi\sum_{i=1}^t(y_{i+1}-y_i)\pi(S_i)+m\Phi\sum_{i=s}^{n-1}(y_{i+1}-y_i)\pi(\bar{S}_i)\\
+&=m\Phi\sum_{i=1}^t(-y_i)\pi(i)+m\Phi\sum_{i=s+1}^{n}y_i\pi(i)\\
+&=m\Phi\sum_{i=1}^n|y_i|\pi(i)=m\Phi
+\end{aligned}</script><p>Return to the proof of lower bound. Let $x$ be any vector satisfying </p>
+<script type="math/tex; mode=display">
+\sum_i d(i)x_i=0,\sum_id(i)x_i^2=1</script><p>Assume $x<em>1\ge \cdots\ge x_n$. Let $k$ be the index such that $\pi({1,\cdots,k-1})\le 1/2$ and $\pi({1,\cdots,k})&gt;1/2$. Therefore, $x_1-x_k\ge\cdots\ge x</em>{k-1}-x<em>k\ge0\ge x</em>{k+1}-x_k\ge\cdots\ge x_n-x_k$. Set $z_i=\max{0,x_i-x_k}$. Then $z_i=0$ for $i\ge k$. </p>
+<script type="math/tex; mode=display">
+\sum_i \pi_i(x_i-x_k)^2=\sum_{i}\pi_iz_i^2+\sum_{i>k}\pi_i(x_i-x_k)^2</script><p>By replacing $x$ with $-x$ we may assume $\sum<em>{i}\pi_iz_i^2\ge\sum</em>{i&gt;k}\pi_i(x_i-x_k)^2$. Thus we have</p>
+<script type="math/tex; mode=display">
+\sum_i\pi_iz_i^2\ge \frac{1}{2}\sum_i\pi_i(x_i-x_k)^2\ge\frac{1}{4m}</script><p>Apply the above lemma to $y_i=z_i^2/\sum_i\pi_iz_i^2$. We obtain</p>
+<script type="math/tex; mode=display">
+\sum_{i\sim j}|z^2_i-z_j^2|\ge m\Phi\sum_i\pi_iz_i^2</script><p>On the other hand, by Cauchy inequality</p>
+<script type="math/tex; mode=display">
+(\sum_{i\sim j}|z_i^2-z_j^2|)^2\le(\sum_{i\sim j}(z_i-z_j)^2)(\sum_{i\sim j}(z_i+z_j)^2)</script><p>Furthermore,</p>
+<script type="math/tex; mode=display">
+\sum_{i\sim j}(z_i+z_j)^2\le 2\sum_{i\sim j}z_i^2+z_j^2=\sum_{i,j}a_{ij}(z_i^2+z_j^2)=4m\sum_i\pi_iz_i^2</script><p>Combining these results together, we have</p>
+<script type="math/tex; mode=display">
+\sum_{i\sim j}(z_i-z_j)^2\ge \frac{m^2\Phi^2}{4m}\sum_i\pi_iz_i^2\ge\frac{\Phi^2}{16}</script><p>The theorem follows from the fact that $\sum<em>{i\sim j}(x_i-x_j)^2\ge\sum</em>{i\sim j}(z_i-z_j)^2$.</p>
+<p>We remark that conductance is similar to what is so called <a href="https://en.wikipedia.org/wiki/Cheeger_constant_(graph_theory" target="_blank" rel="noopener">Cheeger constant</a>) defined as </p>
+<script type="math/tex; mode=display">
+h_G=\min_S\frac{|\nabla(S)|}{2m\min\{\pi(S),\pi(\bar{S})\}}</script><p>the lower bound lemma goes without modification for $h_G$. Thus we can feel free to  replace $\Phi$ with $h_G$.</p>
+
+    </article>
+    <!-- license  -->
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/04/25/Basics-about-Riemannian-Submanifolds/" title= "Basics about Riemannian Submanifolds">
+                    <div class="nextTitle">Basics about Riemannian Submanifolds</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/03/10/Spectral-Graph-Partitioning/" title= "Spectral Graph Partitioning">
+                    <div class="prevTitle">Spectral Graph Partitioning</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:bityueqi@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/YueqiCao" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Notions"><span class="toc-number">1.</span> <span class="toc-text">Basic Notions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stationary-Distribution"><span class="toc-number">2.</span> <span class="toc-text">Stationary Distribution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spectra-and-Access-Time"><span class="toc-number">3.</span> <span class="toc-text">Spectra and Access Time</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spectra-and-Mixing-Rate"><span class="toc-number">4.</span> <span class="toc-text">Spectra and Mixing Rate</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 31
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2021 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span><a class="archive-post-title" href= "/2021/10/16/List-of-Convergence-Rates-in-TDA/" >List of Convergence Rates in TDA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2021/07/22/Error-Estimate-under-Hausdorff-Distance/" >Error Estimate under Hausdorff Distance</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/31</span><a class="archive-post-title" href= "/2021/05/31/tex2svg/" >tex2svg</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/09</span><a class="archive-post-title" href= "/2021/04/09/Random-Perturbation-to-Low-Rank-Matrices/" >Random Perturbation to Low Rank Matrices</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/2021/01/12/Davis-Kahan-s-Theorem/" >Davis-Kahan Theorem</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/2020/12/17/The-Convergence-Rate-of-Graph-Laplacian/" >The Convergence Rate of Graph Laplacian</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href= "/2020/07/11/Two-Applications-of-the-Weingarten-Map/" >Two Applications of the Weingarten Map</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2020/07/08/Local-PCA-with-Gaussian-Noise/" >Local PCA with Gaussian Noise</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/30</span><a class="archive-post-title" href= "/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/" >Tangent Space Estimation Using Local Polynomial Fitting</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href= "/2020/05/21/Tangent-Space-Estimation-Using-Local-PCA/" >Tangent Space Estimation Using Local PCA</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/16</span><a class="archive-post-title" href= "/2020/05/16/Extrinsic-Quantities-of-Euclidean-Submanifolds/" >Extrinsic Quantities of Euclidean Submanifolds</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/25</span><a class="archive-post-title" href= "/2020/04/25/Basics-about-Riemannian-Submanifolds/" >Basics about Riemannian Submanifolds</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/2020/03/27/Random-Walk-and-Graph-Spectra/" >Random Walk and Graph Spectra</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/10</span><a class="archive-post-title" href= "/2020/03/10/Spectral-Graph-Partitioning/" >Spectral Graph Partitioning</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2020/02/16/Forman-Ricci-Curvature-on-Complexes/" >Forman-Ricci Curvature on Complexes</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/26</span><a class="archive-post-title" href= "/2020/01/26/Local-to-Global-Convexity/" >Local-to-Global Convexity</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2020/01/16/Gromov访谈/" >Gromov访谈</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/30</span><a class="archive-post-title" href= "/2019/12/30/Stability-Theorems-in-Topological-Data-Analysis-4/" >Stability Theorems in Topological Data Analysis (4)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href= "/2019/11/28/我是如何发现怪球的/" >我是如何发现怪球的</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/24</span><a class="archive-post-title" href= "/2019/11/24/The-Space-of-Persistence-Diagrams/" >The Space of Persistence Diagrams</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span><a class="archive-post-title" href= "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >Some Applications of Wasserstein Distances</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2019/10/02/Stability-Theorems-in-Topological-Data-Analysis-3/" >Stability Theorems in Topological Data Analysis (3)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/12</span><a class="archive-post-title" href= "/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/" >Stability Theorems in Topological Data Analysis (2)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/03</span><a class="archive-post-title" href= "/2019/09/03/Curvature-of-Warped-Products/" >Curvature of Warped Products</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/08</span><a class="archive-post-title" href= "/2019/08/08/Remarks-on-Submanifold-density-estimation/" >Remarks on 'Submanifold density estimation'</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/01</span><a class="archive-post-title" href= "/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/" >Stability Theorems in Topological Data Analysis (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2019/07/30/MSE-of-Locally-Linear-Regression/" >MSE of Locally Linear Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/25</span><a class="archive-post-title" href= "/2019/07/25/Concentration-in-Gauss-Space/" >Concentration in Gauss Space</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/21</span><a class="archive-post-title" href= "/2019/07/21/Bayesian-Linear-Regression/" >Bayesian Linear Regression</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/18</span><a class="archive-post-title" href= "/2019/07/18/Notes-on-KNN-Density-Estimates(1)/" >Notes on KNN Density Estimates (1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/14</span><a class="archive-post-title" href= "/2019/07/14/a proof of everything is connected/" >A Proof of 'Everything is connected'</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
+    
+        <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+    
+        <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
+    
+        <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
+    
+        <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
+    
+        <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
+    
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
+    
+        <span class="sidebar-tag-name" data-tags="Nonparametric Estimates"><span class="iconfont-archer">&#xe606;</span>Nonparametric Estimates</span>
+    
+        <span class="sidebar-tag-name" data-tags="Random Walk"><span class="iconfont-archer">&#xe606;</span>Random Walk</span>
+    
+        <span class="sidebar-tag-name" data-tags="Spectral Graph Theory"><span class="iconfont-archer">&#xe606;</span>Spectral Graph Theory</span>
+    
+        <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
+    
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
+    
+        <span class="sidebar-tag-name" data-tags="Latex"><span class="iconfont-archer">&#xe606;</span>Latex</span>
+    
+        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
+    
+        <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
+    
+        <span class="sidebar-category-name" data-categories="Matrix-Analysis"><span class="iconfont-archer">&#xe60a;</span>Matrix-Analysis</span>
+    
+        <span class="sidebar-category-name" data-categories="TDA"><span class="iconfont-archer">&#xe60a;</span>TDA</span>
+    
+        <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
+    
+        <span class="sidebar-category-name" data-categories="Manifold-Learning"><span class="iconfont-archer">&#xe60a;</span>Manifold-Learning</span>
+    
+        <span class="sidebar-category-name" data-categories="TDA/Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>TDA/Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Network-Analysis"><span class="iconfont-archer">&#xe60a;</span>Network-Analysis</span>
+    
+        <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
+    
+        <span class="sidebar-category-name" data-categories="CS"><span class="iconfont-archer">&#xe60a;</span>CS</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Yueqi Cao"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
+
+
