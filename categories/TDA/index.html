@@ -351,9 +351,12 @@
                 <span>List of Convergence Rates in TDA</span>
         </a>
         <div class="abstract-content">
-            Frechet means for distributions of persistence diagramsConsider the measure $\rho = 1/m \sum{i=1}^m \delta{Z_i}$ on the space of persistence diagrams. The population Frechet mean is defined by 
-
-Y = \arg\min_Z \int_{\mathcal{D}} d(X,Z)^2 {\rm d}\rho(X)Let $X1,\cdots, X_n$ be iid samples from $\rh...
+            Frechet means for distributions of persistence diagrams
+Consider the measure \(\rho = 1/m \sum_{i=1}^m \delta_{Z_i}\) on the space of persistence diagrams. The population Frechet mean is defined by
+\[
+Y = \arg\min_Z \int_{\mathcal{D}} d(X,Z)^2 {\rm d}\rho(X)
+\]
+Let \(X_1,\cdots, X_n\) be iid...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -382,10 +385,10 @@ Y = \arg\min_Z \int_{\mathcal{D}} d(X,Z)^2 {\rm d}\rho(X)Let $X1,\cdots, X_n$ be
                 <span>Error Estimate under Hausdorff Distance</span>
         </a>
         <div class="abstract-content">
-            This is a useful technique I learned from Convergence rates for persistence diagram estimation in topological data analysis when one wants to prove convergence results for some estimator under Hausdorff distance. Typical settings are 
+            This is a useful technique I learned from Convergence rates for persistence diagram estimation in topological data analysis when one wants to prove convergence results for some estimator under Hausdorff distance. Typical settings are
 
-A metric space $(X,\rho)$;
-A probability measure $\mu$ with s...
+A metric space \((X,\rho)\);
+A probability measure \(\mu\) ...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -414,13 +417,13 @@ A probability measure $\mu$ with s...
                 <span>Stability Theorems in Topological Data Analysis (4)</span>
         </a>
         <div class="abstract-content">
-            <p>Let $\mathbb X$ be a triangulable, compact metric space, $f,g:\mathbb X\to\mathbb R$ be tame functions (that is, $f$ and $g$ have finitely many homological critical values.) The sublevel sets of $f$ (resp. $g$) form a filtration of spaces. Using fields as coefficient groups, It gives a finite sequence of homology groups (vector spaces) in each dimension. A homology class is born if it is not an image from preceding homology groups, and is said to be died if it merges with other classes when entering succeeding homology groups. With the notion of birth and death, in each dimension one can associate $f$ (resp. $g$) a multiset in the two-plane called the persistence diagram, denoted by $D_k(f)$ (resp. $D_k(g)$) for $k=0,1,\cdots$. The bottleneck distance of $D_k(f)$ and $D_k(g)$ is defined as</p>
-<script type="math/tex; mode=display">
-d_B(D_k(f),D_k(g)):=\inf_{\gamma \text{ bijection}}\sup_{x\in D_k(f)}||x-\gamma(x)||_{\infty}</script><p>It was proved that persistence diagrams are robust to small perturbations of functions. More specifically, <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer (‘2007’)</a> proved that, for each $k$ one has</p>
-<script type="math/tex; mode=display">
-d_B(D_k(f),D_k(g))\le||f-g||_\infty</script><p>In analogy to Wasserstein distance, they note that bottleneck distance is a special case of a more general form. Let $D(f)$ be the union of all $D_k(f)$. Define the degree-$p$ Wasserstein distance between $D(f)$ and $D(g)$ by </p>
-<script type="math/tex; mode=display">
-W_p(D(f),D(g))=\left[\inf_{\gamma \text{ bijections}}\sum_{x\in D(f)}||x-\gamma(x)||_\infty^p\right]^{\frac{1}{p}}</script><p>To prove a stability result for Wasserstein distance, additional conditions are required for the space $\mathbb X$ and functions $f$ and $g$. We shall explain the details about the work of <a href="https://link.springer.com/article/10.1007%2Fs10208-010-9060-6" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer, Yuriy Mileyko (‘2010’)</a>. </p>
+            <p>Let <span class="math inline">\(\mathbb X\)</span> be a triangulable, compact metric space, <span class="math inline">\(f,g:\mathbb X\to\mathbb R\)</span> be tame functions (that is, <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> have finitely many homological critical values.) The sublevel sets of <span class="math inline">\(f\)</span> (resp. <span class="math inline">\(g\)</span>) form a filtration of spaces. Using fields as coefficient groups, It gives a finite sequence of homology groups (vector spaces) in each dimension. A homology class is born if it is not an image from preceding homology groups, and is said to be died if it merges with other classes when entering succeeding homology groups. With the notion of birth and death, in each dimension one can associate <span class="math inline">\(f\)</span> (resp. <span class="math inline">\(g\)</span>) a multiset in the two-plane called the persistence diagram, denoted by <span class="math inline">\(D_k(f)\)</span> (resp. <span class="math inline">\(D_k(g)\)</span>) for <span class="math inline">\(k=0,1,\cdots\)</span>. The bottleneck distance of <span class="math inline">\(D_k(f)\)</span> and <span class="math inline">\(D_k(g)\)</span> is defined as <span class="math display">\[
+d_B(D_k(f),D_k(g)):=\inf_{\gamma \text{ bijection}}\sup_{x\in D_k(f)}||x-\gamma(x)||_{\infty}
+\]</span> It was proved that persistence diagrams are robust to small perturbations of functions. More specifically, <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer ('2007')</a> proved that, for each <span class="math inline">\(k\)</span> one has <span class="math display">\[
+d_B(D_k(f),D_k(g))\le||f-g||_\infty
+\]</span> In analogy to Wasserstein distance, they note that bottleneck distance is a special case of a more general form. Let <span class="math inline">\(D(f)\)</span> be the union of all <span class="math inline">\(D_k(f)\)</span>. Define the degree-<span class="math inline">\(p\)</span> Wasserstein distance between <span class="math inline">\(D(f)\)</span> and <span class="math inline">\(D(g)\)</span> by <span class="math display">\[
+W_p(D(f),D(g))=\left[\inf_{\gamma \text{ bijections}}\sum_{x\in D(f)}||x-\gamma(x)||_\infty^p\right]^{\frac{1}{p}}
+\]</span> To prove a stability result for Wasserstein distance, additional conditions are required for the space <span class="math inline">\(\mathbb X\)</span> and functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>. We shall explain the details about the work of <a href="https://link.springer.com/article/10.1007%2Fs10208-010-9060-6" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer, Yuriy Mileyko ('2010')</a>.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -449,15 +452,15 @@ W_p(D(f),D(g))=\left[\inf_{\gamma \text{ bijections}}\sum_{x\in D(f)}||x-\gamma(
                 <span>The Space of Persistence Diagrams</span>
         </a>
         <div class="abstract-content">
-            <p><strong>Notation.</strong> In the following $\mathbb R^2$ is equipped with $\infty$-norm. Let $\Delta={(x,x)|x\in\mathbb R}$ denote the diagonal, $\Delta<em>+={(x,y)|y&gt;x}$ denote the upper off-diagonal points, and $\overline{\Delta}</em>+=\Delta\cup\Delta<em>+$ is the closure of $\Delta</em>+$. Set $\overline{\mathbb N}={1,2,\cdots}\cup{\infty}$.</p>
+            <p><strong>Notation.</strong> In the following <span class="math inline">\(\mathbb R^2\)</span> is equipped with <span class="math inline">\(\infty\)</span>-norm. Let <span class="math inline">\(\Delta=\{(x,x)|x\in\mathbb R\}\)</span> denote the diagonal, <span class="math inline">\(\Delta_+=\{(x,y)|y&gt;x\}\)</span> denote the upper off-diagonal points, and <span class="math inline">\(\overline{\Delta}_+=\Delta\cup\Delta_+\)</span> is the closure of <span class="math inline">\(\Delta_+\)</span>. Set <span class="math inline">\(\overline{\mathbb N}=\{1,2,\cdots\}\cup\{\infty\}\)</span>.</p>
 <hr>
-<p><strong>Definition.</strong> A persistence diagram $\mathcal T$ is a pair $(S<em>{\mathcal T},i</em>{\mathcal T})$ where $S<em>{\mathcal T}$ is a subset of $\mathbb R^2$ and $i</em>{\mathcal T}:S_{\mathcal T}\to \overline{\mathbb N}$ is a function such that </p>
-<ol>
-<li>$\Delta\subset S<em>{\mathcal T}\subset \overline{\Delta}</em>+$;</li>
-<li>$i_{\mathcal T}(\Delta)={\infty}$.</li>
+<p><strong>Definition.</strong> A persistence diagram <span class="math inline">\(\mathcal T\)</span> is a pair <span class="math inline">\((S_{\mathcal T},i_{\mathcal T})\)</span> where <span class="math inline">\(S_{\mathcal T}\)</span> is a subset of <span class="math inline">\(\mathbb R^2\)</span> and <span class="math inline">\(i_{\mathcal T}:S_{\mathcal T}\to \overline{\mathbb N}\)</span> is a function such that</p>
+<ol type="1">
+<li><span class="math inline">\(\Delta\subset S_{\mathcal T}\subset \overline{\Delta}_+\)</span>;</li>
+<li><span class="math inline">\(i_{\mathcal T}(\Delta)=\{\infty\}\)</span>.</li>
 </ol>
-<p>$S<em>{\mathcal T}$ is called the support of $\mathcal T$ while $i</em>{\mathcal T}$ is called the multiplicity function of $\mathcal T$.  </p>
-<p>Two persistence diagrams are said to be equal if they have the same support and multiplicity function. The graph of $i<em>{\mathcal T}$, defined by $G(i</em>{\mathcal T})={^k{\bf x}:=({\bf x},k)\in S<em>{\mathcal T}\times \overline{\mathbb N}|k\le i</em>{\mathcal T}({\bf x})}$, is called the bundle space over $\mathcal T$. The projection $\pi<em>{\mathcal T}:G(i</em>{\mathcal T})\to S<em>{\mathcal T}$ to the first factor defines a map from the bundle space to the support with fiber $\pi</em>{\mathcal T}^{-1}({\bf x})={1,2,\cdots,i<em>{\mathcal T}({\bf x})}$ for each point ${\bf x}\in S</em>{\mathcal T}$. It is an easy consequence that two persistence diagrams are equal if and only if they have the same bundle spaces.</p>
+<p><span class="math inline">\(S_{\mathcal T}\)</span> is called the support of <span class="math inline">\(\mathcal T\)</span> while <span class="math inline">\(i_{\mathcal T}\)</span> is called the multiplicity function of <span class="math inline">\(\mathcal T\)</span>.</p>
+<p>Two persistence diagrams are said to be equal if they have the same support and multiplicity function. The graph of <span class="math inline">\(i_{\mathcal T}\)</span>, defined by <span class="math inline">\(G(i_{\mathcal T})=\{^k{\bf x}:=({\bf x},k)\in S_{\mathcal T}\times \overline{\mathbb N}|k\le i_{\mathcal T}({\bf x})\}\)</span>, is called the bundle space over <span class="math inline">\(\mathcal T\)</span>. The projection <span class="math inline">\(\pi_{\mathcal T}:G(i_{\mathcal T})\to S_{\mathcal T}\)</span> to the first factor defines a map from the bundle space to the support with fiber <span class="math inline">\(\pi_{\mathcal T}^{-1}({\bf x})=\{1,2,\cdots,i_{\mathcal T}({\bf x})\}\)</span> for each point <span class="math inline">\({\bf x}\in S_{\mathcal T}\)</span>. It is an easy consequence that two persistence diagrams are equal if and only if they have the same bundle spaces.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -486,10 +489,10 @@ W_p(D(f),D(g))=\left[\inf_{\gamma \text{ bijections}}\sum_{x\in D(f)}||x-\gamma(
                 <span>Stability Theorems in Topological Data Analysis (3)</span>
         </a>
         <div class="abstract-content">
-            <p>Perhaps the most important case in TDA is point cloud data, i.e. finite metric spaces. The collection of all compact metric spaces makes up a metric space under <a href="[https://en.wikipedia.org/wiki/Gromov%E2%80%93Hausdorff_convergence](https://en.wikipedia.org/wiki/Gromov–Hausdorff_convergence">Gromov-Hausdorff metric</a>). If we construct Rips filtrations for point clouds,  we obtain a map between metric spaces by sending each point cloud to its persistence diagram. It is natural to ask which properties will this map have. From the work of <a href="http://fodava.gatech.edu/files/reports/FODAVA-09-24.pdf" target="_blank" rel="noopener">F. Memoli etc.</a>, it is in fact a <strong>Lipschitz</strong> map. Therefore, the bottleneck distance between two persistence diagrams is bounded by the Gromov-Hausdorff distance between two point clouds. This stability shows that one can use TDA to classify different point clouds, which is a major object in shape analysis.</p>
-<p>Let $(Z,d_Z)$ be a (compact) metric space and $X,Y$ be subsets in $Z$. The Hausdorff distance between $X$ and $Y$ is defined as</p>
-<script type="math/tex; mode=display">
-d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_Z(x,y)\}.</script><p>The intuition is follows: For each $x\in X$, we can compute the distance between $x$ and $Y$, which is $\min_{y\in Y}d_Z(x,y)$. Then we take the largest value as the distance from $X$ to $Y$. The distance is the so called one-sided Hausdorff distance. Symmetrically, we compute the distance from $Y$ to $X$. The maximum is the so called (two-sided) Hausdorff distance.</p>
+            <p>Perhaps the most important case in TDA is point cloud data, i.e. finite metric spaces. The collection of all compact metric spaces makes up a metric space under <a href="%5Bhttps://en.wikipedia.org/wiki/Gromov%E2%80%93Hausdorff_convergence%5D(https://en.wikipedia.org/wiki/Gromov–Hausdorff_convergence)">Gromov-Hausdorff metric</a>. If we construct Rips filtrations for point clouds, we obtain a map between metric spaces by sending each point cloud to its persistence diagram. It is natural to ask which properties will this map have. From the work of <a href="http://fodava.gatech.edu/files/reports/FODAVA-09-24.pdf" target="_blank" rel="noopener">F. Memoli etc.</a>, it is in fact a <strong>Lipschitz</strong> map. Therefore, the bottleneck distance between two persistence diagrams is bounded by the Gromov-Hausdorff distance between two point clouds. This stability shows that one can use TDA to classify different point clouds, which is a major object in shape analysis.</p>
+<p>Let <span class="math inline">\((Z,d_Z)\)</span> be a (compact) metric space and <span class="math inline">\(X,Y\)</span> be subsets in <span class="math inline">\(Z\)</span>. The Hausdorff distance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as <span class="math display">\[
+d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_Z(x,y)\}.
+\]</span> The intuition is follows: For each <span class="math inline">\(x\in X\)</span>, we can compute the distance between <span class="math inline">\(x\)</span> and <span class="math inline">\(Y\)</span>, which is <span class="math inline">\(\min_{y\in Y}d_Z(x,y)\)</span>. Then we take the largest value as the distance from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span>. The distance is the so called one-sided Hausdorff distance. Symmetrically, we compute the distance from <span class="math inline">\(Y\)</span> to <span class="math inline">\(X\)</span>. The maximum is the so called (two-sided) Hausdorff distance.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -518,7 +521,7 @@ d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_
                 <span>Stability Theorems in Topological Data Analysis (2)</span>
         </a>
         <div class="abstract-content">
-            <p>One observes that when proving the $L^{\infty}$ stability theorem, the functions $f$ and $g$ provide nothing but an interleaved inclusion of level sets $f^{-1}((-\infty,a])\subseteq g^{-1}((-\infty,a+\epsilon])\subseteq f^{-1}((-\infty.a+2\epsilon])$. This further gives the following commutative diagram.</p>
+            <p>One observes that when proving the <span class="math inline">\(L^{\infty}\)</span> stability theorem, the functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> provide nothing but an interleaved inclusion of level sets <span class="math inline">\(f^{-1}((-\infty,a])\subseteq g^{-1}((-\infty,a+\epsilon])\subseteq f^{-1}((-\infty.a+2\epsilon])\)</span>. This further gives the following commutative diagram.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -551,7 +554,7 @@ d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_
 <p><strong>Personal Comments</strong></p>
 <p>In this series I attempt to collect results concerning stabilities in <a href="https://en.wikipedia.org/wiki/Topological_data_analysis" target="_blank" rel="noopener">topological data analysis</a>. Researches in this direction has been increasing dramatically in recent years. Without doubt there will be more in the future. However, the best will not appear until one really understands all the progresses.</p>
 <hr>
-<p>The first stability theorem in TDA is proved by <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer</a>. It asserts that the bottleneck distance between two persistence diagrams is bounded by the $\infty$-norm of tame functions. They soon generalized this result to $L_p$ cases for tame Lipschitz functions (see <a href="https://faculty.math.illinois.edu/~ymileyko/papers/L_p-stability.pdf" target="_blank" rel="noopener">here</a>). This theorem is fundamental in TDA. And the idea is also direct — counting points in persistence diagrams. We sketch the procedure in the following.</p>
+<p>The first stability theorem in TDA is proved by <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer</a>. It asserts that the bottleneck distance between two persistence diagrams is bounded by the <span class="math inline">\(\infty\)</span>-norm of tame functions. They soon generalized this result to <span class="math inline">\(L_p\)</span> cases for tame Lipschitz functions (see <a href="https://faculty.math.illinois.edu/~ymileyko/papers/L_p-stability.pdf" target="_blank" rel="noopener">here</a>). This theorem is fundamental in TDA. And the idea is also direct -- counting points in persistence diagrams. We sketch the procedure in the following.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1078,19 +1081,19 @@ d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1147,9 +1150,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

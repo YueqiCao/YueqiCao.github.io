@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,49 +401,52 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>If $\mathcal{M}$ is an Euclidean submanifold, many intrinsic quantities can be expressed using information from the ambient Euclidean space. Here are two examples where the Weingarten map plays an important role: first is the Riemannian hessian of a smooth map, and second is the Ricci curvature tensor. Assume that $f:\mathcal{M}\to\mathbb{R}$ is a smooth function and $\widehat{f}:\mathbb{R}^d\to\mathbb{R}$ is a smooth extension of $f$. In data science, it is much more convenient to compute the gradient or hessian of $\widehat{f}$ than those of $f$. <a href="https://link.springer.com/chapter/10.1007/978-3-642-40020-9_39" target="_blank" rel="noopener">Absil etc.</a> presented the relations and applied them in Riemannian optimization. On the other hand, Ricci curvature is also a hot topic in manifold learning. An old paper of <a href="https://www.jstor.org/stable/2034680" target="_blank" rel="noopener">Hicks</a> proves that there is a simple relation between Ricci map and Weingarten map if the manifold is a hypersurface. Many problems concerning Ricci curvature thus descend to the estimation of the Weingarten map.</p>
-<h3 id="Riemannian-Hessian"><a href="#Riemannian-Hessian" class="headerlink" title="Riemannian Hessian"></a>Riemannian Hessian</h3><p>Let $\mathcal{M}$ be an $m$-dimensional submanifold in the $d$-dimensional Euclidean space $\mathbb{R}^d$. Let $\pi_x:\mathbb{R}^d\to T_x\mathcal{M}$ be the orthogonal projection to the tangent space $T_x\mathcal{M}$. It turns out that the gradient of $f$ is nothing but the projection of gradient of $\widehat{f}$. Denote $\partial\widehat{f}$ to be the usual gradient for $\widehat{f}$ and $\text{grad}(f)$ to be the Riemannian gradient for $f$. Then we have</p>
+        <p>If <span class="math inline">\(\mathcal{M}\)</span> is an Euclidean submanifold, many intrinsic quantities can be expressed using information from the ambient Euclidean space. Here are two examples where the Weingarten map plays an important role: first is the Riemannian hessian of a smooth map, and second is the Ricci curvature tensor. Assume that <span class="math inline">\(f:\mathcal{M}\to\mathbb{R}\)</span> is a smooth function and <span class="math inline">\(\widehat{f}:\mathbb{R}^d\to\mathbb{R}\)</span> is a smooth extension of <span class="math inline">\(f\)</span>. In data science, it is much more convenient to compute the gradient or hessian of <span class="math inline">\(\widehat{f}\)</span> than those of <span class="math inline">\(f\)</span>. <a href="https://link.springer.com/chapter/10.1007/978-3-642-40020-9_39" target="_blank" rel="noopener">Absil etc.</a> presented the relations and applied them in Riemannian optimization. On the other hand, Ricci curvature is also a hot topic in manifold learning. An old paper of <a href="https://www.jstor.org/stable/2034680" target="_blank" rel="noopener">Hicks</a> proves that there is a simple relation between Ricci map and Weingarten map if the manifold is a hypersurface. Many problems concerning Ricci curvature thus descend to the estimation of the Weingarten map.</p>
+<h3 id="riemannian-hessian">Riemannian Hessian</h3>
+<p>Let <span class="math inline">\(\mathcal{M}\)</span> be an <span class="math inline">\(m\)</span>-dimensional submanifold in the <span class="math inline">\(d\)</span>-dimensional Euclidean space <span class="math inline">\(\mathbb{R}^d\)</span>. Let <span class="math inline">\(\pi_x:\mathbb{R}^d\to T_x\mathcal{M}\)</span> be the orthogonal projection to the tangent space <span class="math inline">\(T_x\mathcal{M}\)</span>. It turns out that the gradient of <span class="math inline">\(f\)</span> is nothing but the projection of gradient of <span class="math inline">\(\widehat{f}\)</span>. Denote <span class="math inline">\(\partial\widehat{f}\)</span> to be the usual gradient for <span class="math inline">\(\widehat{f}\)</span> and <span class="math inline">\(\text{grad}(f)\)</span> to be the Riemannian gradient for <span class="math inline">\(f\)</span>. Then we have</p>
 <blockquote>
-<p>$\text{grad}(f)_x=\pi_x(\partial\widehat{f}_x)$ </p>
+<p><span class="math inline">\(\text{grad}(f)_x=\pi_x(\partial\widehat{f}_x)\)</span></p>
 </blockquote>
-<p>To check this equality, note that for any tangent vector $v\in T_x\mathcal{M}$ and smooth curve $\gamma$ in $\mathcal{M}$ with $\gamma(0)=x$ and $\gamma’(0)=v$ we have </p>
-<script type="math/tex; mode=display">
-\langle v,\text{grad}(f)_x\rangle=v(f)=\frac{\rm d}{\rm dt}|_0f(\gamma(t))=\frac{\rm d}{\rm dt}|_0\widehat{f}(\gamma(t))=\langle v,\pi_x(\partial\widehat{f}_x)\rangle</script><p>Let $\nabla$ be the Riemannian connection on $\mathcal{M}$. For any vector fields $X$ and $Y$, by definition, </p>
-<script type="math/tex; mode=display">
-\nabla_XY=\pi(\partial_XY)</script><p>Define the Riemannian hessian of $f$ at $x$ by</p>
-<script type="math/tex; mode=display">
-\text{Hess}f_x(v)=\nabla_v\text{grad}(f)</script><p>It is easy to check that</p>
-<script type="math/tex; mode=display">
-\langle\text{Hess}f_x(v),w\rangle=v(w(f))-\langle\nabla_vw,\text{grad}(f)\rangle=\langle\text{Hess}f_x(w),v\rangle</script><p>Thus, $\text{Hess}f_x:T_x\mathcal{M}\to T_x\mathcal{M}$ is a self-adjoint operator. However, the original definition is difficult to use in practice. Further computation shows that</p>
-<script type="math/tex; mode=display">
-\text{Hess}f_x(v)=\pi_x\partial_v(\pi\partial\widehat{f})=\pi_x((\partial_v\pi)\partial\widehat{f}_x+\partial^2\widehat{f}_x(v))</script><p>where we have used the product rule. If we understand $\pi$ as matrices then $\partial_v\pi$ contains elements which are derivatives of those in $\pi$. From the result we see that Riemannian hessian of $f$ differs from the projection of usual hessian of $\widehat{f}$ by a term involving the covariant derivative of $\pi$. Let $\pi^\perp:\mathbb{R}^d\to T^\perp_x\mathcal{M}$ be the projection operator to the normal space at $x$. Using the identity $\text{id}=\pi+\pi^\perp$, we have </p>
-<script type="math/tex; mode=display">
-\pi_x\partial_v\pi=-\pi_x\partial_v\pi^\perp</script><p>In addition, since $\pi\pi^\perp=0$, we have</p>
-<script type="math/tex; mode=display">
-0=\pi_x\partial_v(\pi\pi^\perp)=\pi_x(\partial_v\pi^\perp)_x+\pi_x(\partial_v\pi)_x\pi^\perp_x</script><p>which implies $\pi_x(\partial_v\pi^\perp)_x\pi_x=0$ and $\pi_x(\partial_v\pi)\partial\widehat{f}_x=-\pi_x(\partial_v\pi^\perp)_x\pi_x^\perp\partial\widehat{f}_x$.</p>
-<p>Recall that the Weingarten map at $x$ for $\xi\in T^\perp<em>x\mathcal{M}$ is defined by $A</em>{x,\xi}(v)=-\pi_x\partial_v\tilde{\xi}$ where $v\in T_x\mathcal{M}$ and $\tilde{\xi}$ is any extension of $\xi$. The identity implies that</p>
-<script type="math/tex; mode=display">
-A_{x,\xi}(v)=-\pi_x\partial_v(\pi^\perp\tilde{\xi})=-\pi_x(\partial_v\pi^\perp)_x\xi-\pi_x\pi_x^\perp\partial_v\tilde{\xi}=-\pi_x(\partial_v\pi^\perp)_x\xi</script><p>Utilizing the above results we have</p>
-<script type="math/tex; mode=display">
-\text{Hess}f_x(v)=\pi_x\partial^2\widehat{f}_x(v)+A_{x,\pi_x^\perp\partial\widehat{f}_x}(v)</script><h3 id="Ricci-Map"><a href="#Ricci-Map" class="headerlink" title="Ricci Map"></a>Ricci Map</h3><p>Suppose $\mathcal{M}$ is a <strong>hypersurface</strong> in Euclidean space. i.e. $\mathcal{M}$ is of codimension $1$. Let $\xi$ be a local unit normal vector field. The second fundamental form can be simplified as </p>
-<script type="math/tex; mode=display">
-h(X,Y)=\partial_XY-\nabla_XY=\langle\partial_XY,\xi\rangle\xi=\langle Y,A_\xi(X)\rangle\xi</script><p>where we have used the identity $X\langle Y,\xi\rangle=\langle\partial_XY,\xi\rangle+\langle Y,\partial_X\xi\rangle$ and the definition of Weingarten map. Recall that for Euclidean submanifolds Gauss equation reads</p>
-<script type="math/tex; mode=display">
-0=\tilde{R}(X,Y)Z=R(X,Y)Z-A_{h(Y,Z)}X+A_{h(X,Z)}Y</script><p>Substituting the expression of the second fundamental form into above, we have</p>
-<script type="math/tex; mode=display">
-R(X,Y)Z=\langle A_\xi(Y),Z\rangle A_\xi(X)-\langle A_\xi(X),Z\rangle A_\xi(Y)</script><p>Let $Z<em>1,\cdots,Z_m$ be an orthonormal base of principal vectors of $A</em>\xi$. i.e. $A<em>\xi(Z_i)=k_iZ_i$ where $k_i$’s are principal curvatures. Let $H=\sum k_i$ be the mean curvature and define $Ric:T_x\mathcal{M}\to T_x\mathcal{M}$ by $Ric(X)=\sum</em>{i=1}^m R(X,Z_i)Z_i$, called <strong>Ricci map</strong>. Then we have</p>
-<script type="math/tex; mode=display">
+<p>To check this equality, note that for any tangent vector <span class="math inline">\(v\in T_x\mathcal{M}\)</span> and smooth curve <span class="math inline">\(\gamma\)</span> in <span class="math inline">\(\mathcal{M}\)</span> with <span class="math inline">\(\gamma(0)=x\)</span> and <span class="math inline">\(\gamma&#39;(0)=v\)</span> we have <span class="math display">\[
+\langle v,\text{grad}(f)_x\rangle=v(f)=\frac{\rm d}{\rm dt}|_0f(\gamma(t))=\frac{\rm d}{\rm dt}|_0\widehat{f}(\gamma(t))=\langle v,\pi_x(\partial\widehat{f}_x)\rangle
+\]</span> Let <span class="math inline">\(\nabla\)</span> be the Riemannian connection on <span class="math inline">\(\mathcal{M}\)</span>. For any vector fields <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, by definition, <span class="math display">\[
+\nabla_XY=\pi(\partial_XY)
+\]</span> Define the Riemannian hessian of <span class="math inline">\(f\)</span> at <span class="math inline">\(x\)</span> by <span class="math display">\[
+\text{Hess}f_x(v)=\nabla_v\text{grad}(f)
+\]</span> It is easy to check that <span class="math display">\[
+\langle\text{Hess}f_x(v),w\rangle=v(w(f))-\langle\nabla_vw,\text{grad}(f)\rangle=\langle\text{Hess}f_x(w),v\rangle
+\]</span> Thus, <span class="math inline">\(\text{Hess}f_x:T_x\mathcal{M}\to T_x\mathcal{M}\)</span> is a self-adjoint operator. However, the original definition is difficult to use in practice. Further computation shows that <span class="math display">\[
+\text{Hess}f_x(v)=\pi_x\partial_v(\pi\partial\widehat{f})=\pi_x((\partial_v\pi)\partial\widehat{f}_x+\partial^2\widehat{f}_x(v))
+\]</span> where we have used the product rule. If we understand <span class="math inline">\(\pi\)</span> as matrices then <span class="math inline">\(\partial_v\pi\)</span> contains elements which are derivatives of those in <span class="math inline">\(\pi\)</span>. From the result we see that Riemannian hessian of <span class="math inline">\(f\)</span> differs from the projection of usual hessian of <span class="math inline">\(\widehat{f}\)</span> by a term involving the covariant derivative of <span class="math inline">\(\pi\)</span>. Let <span class="math inline">\(\pi^\perp:\mathbb{R}^d\to T^\perp_x\mathcal{M}\)</span> be the projection operator to the normal space at <span class="math inline">\(x\)</span>. Using the identity <span class="math inline">\(\text{id}=\pi+\pi^\perp\)</span>, we have <span class="math display">\[
+\pi_x\partial_v\pi=-\pi_x\partial_v\pi^\perp
+\]</span> In addition, since <span class="math inline">\(\pi\pi^\perp=0\)</span>, we have <span class="math display">\[
+0=\pi_x\partial_v(\pi\pi^\perp)=\pi_x(\partial_v\pi^\perp)_x+\pi_x(\partial_v\pi)_x\pi^\perp_x
+\]</span> which implies <span class="math inline">\(\pi_x(\partial_v\pi^\perp)_x\pi_x=0\)</span> and <span class="math inline">\(\pi_x(\partial_v\pi)\partial\widehat{f}_x=-\pi_x(\partial_v\pi^\perp)_x\pi_x^\perp\partial\widehat{f}_x\)</span>.</p>
+<p>Recall that the Weingarten map at <span class="math inline">\(x\)</span> for <span class="math inline">\(\xi\in T^\perp_x\mathcal{M}\)</span> is defined by <span class="math inline">\(A_{x,\xi}(v)=-\pi_x\partial_v\tilde{\xi}\)</span> where <span class="math inline">\(v\in T_x\mathcal{M}\)</span> and <span class="math inline">\(\tilde{\xi}\)</span> is any extension of <span class="math inline">\(\xi\)</span>. The identity implies that <span class="math display">\[
+A_{x,\xi}(v)=-\pi_x\partial_v(\pi^\perp\tilde{\xi})=-\pi_x(\partial_v\pi^\perp)_x\xi-\pi_x\pi_x^\perp\partial_v\tilde{\xi}=-\pi_x(\partial_v\pi^\perp)_x\xi
+\]</span> Utilizing the above results we have <span class="math display">\[
+\text{Hess}f_x(v)=\pi_x\partial^2\widehat{f}_x(v)+A_{x,\pi_x^\perp\partial\widehat{f}_x}(v)
+\]</span></p>
+<h3 id="ricci-map">Ricci Map</h3>
+<p>Suppose <span class="math inline">\(\mathcal{M}\)</span> is a <strong>hypersurface</strong> in Euclidean space. i.e. <span class="math inline">\(\mathcal{M}\)</span> is of codimension <span class="math inline">\(1\)</span>. Let <span class="math inline">\(\xi\)</span> be a local unit normal vector field. The second fundamental form can be simplified as <span class="math display">\[
+h(X,Y)=\partial_XY-\nabla_XY=\langle\partial_XY,\xi\rangle\xi=\langle Y,A_\xi(X)\rangle\xi
+\]</span> where we have used the identity <span class="math inline">\(X\langle Y,\xi\rangle=\langle\partial_XY,\xi\rangle+\langle Y,\partial_X\xi\rangle\)</span> and the definition of Weingarten map. Recall that for Euclidean submanifolds Gauss equation reads <span class="math display">\[
+0=\tilde{R}(X,Y)Z=R(X,Y)Z-A_{h(Y,Z)}X+A_{h(X,Z)}Y
+\]</span> Substituting the expression of the second fundamental form into above, we have <span class="math display">\[
+R(X,Y)Z=\langle A_\xi(Y),Z\rangle A_\xi(X)-\langle A_\xi(X),Z\rangle A_\xi(Y)
+\]</span> Let <span class="math inline">\(Z_1,\cdots,Z_m\)</span> be an orthonormal base of principal vectors of <span class="math inline">\(A_\xi\)</span>. i.e. <span class="math inline">\(A_\xi(Z_i)=k_iZ_i\)</span> where <span class="math inline">\(k_i\)</span>'s are principal curvatures. Let <span class="math inline">\(H=\sum k_i\)</span> be the mean curvature and define <span class="math inline">\(Ric:T_x\mathcal{M}\to T_x\mathcal{M}\)</span> by <span class="math inline">\(Ric(X)=\sum_{i=1}^m R(X,Z_i)Z_i\)</span>, called <strong>Ricci map</strong>. Then we have <span class="math display">\[
 \begin{aligned}
-Ric(X)&=\sum_{i=1}^mR(X,Z_i)Z_i\\
-&=\sum_{i=1}^m\langle A_\xi(Z_i),Z_i\rangle A_\xi(X)-\langle A_\xi(X),Z_i\rangle A_\xi(Z_i)\\
-&=\sum_{i=1}^m\langle k_iZ_i,Z_i\rangle A_\xi(X)-\langle A_\xi(X),Z_i\rangle k_iZ_i\\
-&=H A_\xi(X)-\sum_{i=1}^m\langle A_\xi(X),A_\xi(Z_i)\rangle Z_i\\
-&=H A_\xi(X)-\sum_{i=1}^m\langle A_\xi^2(X),Z_i\rangle Z_i\\
-&=H A_\xi(X)-A_\xi^2(X)
-\end{aligned}</script><p>Therefore we have proved the following identity relating the Ricci map with Weingarten map</p>
-<script type="math/tex; mode=display">
-A_\xi^2-HA_\xi+Ric=0</script><p>An obvious corollary is that every principal vector is also a Ricci vector. i.e. $Ric$ has the same eigenvectors as $A_\xi$.</p>
-<p><strong>Example.</strong> Let $\mathcal{M}$ be a surface in the three space. The characteristic equation for Weingarten map is $A^2-HA+KI=0$ where $K$ is Gauss curvature. Comparing both equations we have $Ric=KI$.</p>
+Ric(X)&amp;=\sum_{i=1}^mR(X,Z_i)Z_i\\
+&amp;=\sum_{i=1}^m\langle A_\xi(Z_i),Z_i\rangle A_\xi(X)-\langle A_\xi(X),Z_i\rangle A_\xi(Z_i)\\
+&amp;=\sum_{i=1}^m\langle k_iZ_i,Z_i\rangle A_\xi(X)-\langle A_\xi(X),Z_i\rangle k_iZ_i\\
+&amp;=H A_\xi(X)-\sum_{i=1}^m\langle A_\xi(X),A_\xi(Z_i)\rangle Z_i\\
+&amp;=H A_\xi(X)-\sum_{i=1}^m\langle A_\xi^2(X),Z_i\rangle Z_i\\
+&amp;=H A_\xi(X)-A_\xi^2(X)
+\end{aligned}
+\]</span> Therefore we have proved the following identity relating the Ricci map with Weingarten map <span class="math display">\[
+A_\xi^2-HA_\xi+Ric=0
+\]</span> An obvious corollary is that every principal vector is also a Ricci vector. i.e. <span class="math inline">\(Ric\)</span> has the same eigenvectors as <span class="math inline">\(A_\xi\)</span>.</p>
+<p><strong>Example.</strong> Let <span class="math inline">\(\mathcal{M}\)</span> be a surface in the three space. The characteristic equation for Weingarten map is <span class="math inline">\(A^2-HA+KI=0\)</span> where <span class="math inline">\(K\)</span> is Gauss curvature. Comparing both equations we have <span class="math inline">\(Ric=KI\)</span>.</p>
 
     </article>
     <!-- license  -->
@@ -578,7 +581,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Riemannian-Hessian"><span class="toc-number">1.</span> <span class="toc-text">Riemannian Hessian</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ricci-Map"><span class="toc-number">2.</span> <span class="toc-text">Ricci Map</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#riemannian-hessian"><span class="toc-number">1.</span> <span class="toc-text">Riemannian Hessian</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ricci-map"><span class="toc-number">2.</span> <span class="toc-text">Ricci Map</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1006,19 +1009,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1075,9 +1078,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

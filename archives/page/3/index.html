@@ -351,11 +351,12 @@
                 <span>Some Applications of Wasserstein Distances</span>
         </a>
         <div class="abstract-content">
-            <h2 id="OMT-I"><a href="#OMT-I" class="headerlink" title="OMT I"></a>OMT I</h2><p>The original setting for optimal mass transportation (OMT) consists of three objects.</p>
-<ol>
-<li>Two probability spaces $(X,\mu)$ and $(Y,\nu)$. i.e. $\mu(X)=\nu(Y)=1$;</li>
-<li>A measurable map $T:X\to Y$ such that $T_*\mu=\nu$. i.e. for any Borel set $B\subset Y$ it holds $\nu(B)=\mu(T^{-1}(B))$.</li>
-<li>A cost function $c:X\times Y\to \mathbb R_+\cup{\infty}$ such that for any $T$ in 2. the map $c_T(x)=c(x,T(x))$ is measurable. The integration $\int_X c(x,T(x))d\mu$ is called the total cost.</li>
+            <h2 id="omt-i">OMT I</h2>
+<p>The original setting for optimal mass transportation (OMT) consists of three objects.</p>
+<ol type="1">
+<li>Two probability spaces <span class="math inline">\((X,\mu)\)</span> and <span class="math inline">\((Y,\nu)\)</span>. i.e. <span class="math inline">\(\mu(X)=\nu(Y)=1\)</span>;</li>
+<li>A measurable map <span class="math inline">\(T:X\to Y\)</span> such that <span class="math inline">\(T_*\mu=\nu\)</span>. i.e. for any Borel set <span class="math inline">\(B\subset Y\)</span> it holds <span class="math inline">\(\nu(B)=\mu(T^{-1}(B))\)</span>.</li>
+<li>A cost function <span class="math inline">\(c:X\times Y\to \mathbb R_+\cup\{\infty\}\)</span> such that for any <span class="math inline">\(T\)</span> in 2. the map <span class="math inline">\(c_T(x)=c(x,T(x))\)</span> is measurable. The integration <span class="math inline">\(\int_X c(x,T(x))d\mu\)</span> is called the total cost.</li>
 </ol>
         </div>
         <div class="abstract-post-meta">
@@ -385,10 +386,10 @@
                 <span>Stability Theorems in Topological Data Analysis (3)</span>
         </a>
         <div class="abstract-content">
-            <p>Perhaps the most important case in TDA is point cloud data, i.e. finite metric spaces. The collection of all compact metric spaces makes up a metric space under <a href="[https://en.wikipedia.org/wiki/Gromov%E2%80%93Hausdorff_convergence](https://en.wikipedia.org/wiki/Gromov–Hausdorff_convergence">Gromov-Hausdorff metric</a>). If we construct Rips filtrations for point clouds,  we obtain a map between metric spaces by sending each point cloud to its persistence diagram. It is natural to ask which properties will this map have. From the work of <a href="http://fodava.gatech.edu/files/reports/FODAVA-09-24.pdf" target="_blank" rel="noopener">F. Memoli etc.</a>, it is in fact a <strong>Lipschitz</strong> map. Therefore, the bottleneck distance between two persistence diagrams is bounded by the Gromov-Hausdorff distance between two point clouds. This stability shows that one can use TDA to classify different point clouds, which is a major object in shape analysis.</p>
-<p>Let $(Z,d_Z)$ be a (compact) metric space and $X,Y$ be subsets in $Z$. The Hausdorff distance between $X$ and $Y$ is defined as</p>
-<script type="math/tex; mode=display">
-d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_Z(x,y)\}.</script><p>The intuition is follows: For each $x\in X$, we can compute the distance between $x$ and $Y$, which is $\min_{y\in Y}d_Z(x,y)$. Then we take the largest value as the distance from $X$ to $Y$. The distance is the so called one-sided Hausdorff distance. Symmetrically, we compute the distance from $Y$ to $X$. The maximum is the so called (two-sided) Hausdorff distance.</p>
+            <p>Perhaps the most important case in TDA is point cloud data, i.e. finite metric spaces. The collection of all compact metric spaces makes up a metric space under <a href="%5Bhttps://en.wikipedia.org/wiki/Gromov%E2%80%93Hausdorff_convergence%5D(https://en.wikipedia.org/wiki/Gromov–Hausdorff_convergence)">Gromov-Hausdorff metric</a>. If we construct Rips filtrations for point clouds, we obtain a map between metric spaces by sending each point cloud to its persistence diagram. It is natural to ask which properties will this map have. From the work of <a href="http://fodava.gatech.edu/files/reports/FODAVA-09-24.pdf" target="_blank" rel="noopener">F. Memoli etc.</a>, it is in fact a <strong>Lipschitz</strong> map. Therefore, the bottleneck distance between two persistence diagrams is bounded by the Gromov-Hausdorff distance between two point clouds. This stability shows that one can use TDA to classify different point clouds, which is a major object in shape analysis.</p>
+<p>Let <span class="math inline">\((Z,d_Z)\)</span> be a (compact) metric space and <span class="math inline">\(X,Y\)</span> be subsets in <span class="math inline">\(Z\)</span>. The Hausdorff distance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as <span class="math display">\[
+d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_Z(x,y)\}.
+\]</span> The intuition is follows: For each <span class="math inline">\(x\in X\)</span>, we can compute the distance between <span class="math inline">\(x\)</span> and <span class="math inline">\(Y\)</span>, which is <span class="math inline">\(\min_{y\in Y}d_Z(x,y)\)</span>. Then we take the largest value as the distance from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span>. The distance is the so called one-sided Hausdorff distance. Symmetrically, we compute the distance from <span class="math inline">\(Y\)</span> to <span class="math inline">\(X\)</span>. The maximum is the so called (two-sided) Hausdorff distance.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -417,7 +418,7 @@ d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_
                 <span>Stability Theorems in Topological Data Analysis (2)</span>
         </a>
         <div class="abstract-content">
-            <p>One observes that when proving the $L^{\infty}$ stability theorem, the functions $f$ and $g$ provide nothing but an interleaved inclusion of level sets $f^{-1}((-\infty,a])\subseteq g^{-1}((-\infty,a+\epsilon])\subseteq f^{-1}((-\infty.a+2\epsilon])$. This further gives the following commutative diagram.</p>
+            <p>One observes that when proving the <span class="math inline">\(L^{\infty}\)</span> stability theorem, the functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> provide nothing but an interleaved inclusion of level sets <span class="math inline">\(f^{-1}((-\infty,a])\subseteq g^{-1}((-\infty,a+\epsilon])\subseteq f^{-1}((-\infty.a+2\epsilon])\)</span>. This further gives the following commutative diagram.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -446,9 +447,10 @@ d_H^Z(X,Y)=\max\{\max_{x\in X}\min_{y\in Y}d_Z(x,y),\max_{y\in Y}\min_{x\in X}d_
                 <span>Curvature of Warped Products</span>
         </a>
         <div class="abstract-content">
-            <h2 id="Curvature-of-Coupled-Planes"><a href="#Curvature-of-Coupled-Planes" class="headerlink" title="Curvature of Coupled Planes"></a>Curvature of Coupled Planes</h2><p>Consider the product of two planes $\mathbb R^2\times\mathbb R^2$, with the following Riemannian metric</p>
-<script type="math/tex; mode=display">
-ds^2=dx^2+dy^2+e^{2f(x,y)}(du^2+dv^2),</script><p>where $f(x,y)$ is a smooth function. We compute the sectional/Ricci/scalar curvature of the ‘coupled’ planes using orthonormal frames. Basics about moving frames are referred to <a href="https://link.springer.com/book/10.1007/978-3-319-55084-8" target="_blank" rel="noopener">Loring W. Tu</a>.    </p>
+            <h2 id="curvature-of-coupled-planes">Curvature of Coupled Planes</h2>
+<p>Consider the product of two planes <span class="math inline">\(\mathbb R^2\times\mathbb R^2\)</span>, with the following Riemannian metric <span class="math display">\[
+ds^2=dx^2+dy^2+e^{2f(x,y)}(du^2+dv^2),
+\]</span> where <span class="math inline">\(f(x,y)\)</span> is a smooth function. We compute the sectional/Ricci/scalar curvature of the 'coupled' planes using orthonormal frames. Basics about moving frames are referred to <a href="https://link.springer.com/book/10.1007/978-3-319-55084-8" target="_blank" rel="noopener">Loring W. Tu</a>.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -478,18 +480,18 @@ ds^2=dx^2+dy^2+e^{2f(x,y)}(du^2+dv^2),</script><p>where $f(x,y)$ is a smooth fun
         </a>
         <div class="abstract-content">
             <p>There seems to be a gap in <a href="http://papers.nips.cc/paper/3826-submanifold-density-estimation" target="_blank" rel="noopener">Submanifold density estimation</a>.</p>
-<p>In the deduction of variance, one needs to estimate </p>
+<p>In the deduction of variance, one needs to estimate</p>
 <blockquote>
-<p>$\frac{1}{h_m^n}\int_M f(q)\frac{1}{h_m^n}K^2(\frac{u_p(q)}{h_m})dV(q)$</p>
+<p><span class="math inline">\(\frac{1}{h_m^n}\int_M f(q)\frac{1}{h_m^n}K^2(\frac{u_p(q)}{h_m})dV(q)\)</span></p>
 </blockquote>
-<p>Apply theorem 3.1 to function $K^2$ one obtains</p>
-<script type="math/tex; mode=display">
-\frac{1}{h^n}\int_M K^2(\frac{u_p(q)}{h})\xi(q)dV(q)\to\xi(p)\int_{\mathbb{R}^n}K^2(\|z\|)d^nz,h\to 0.</script><p>It seems $h_m^{2n}$ will cause trouble in estimation. Whatever, they claimed that the integration will converges to $f(p)\int K^2(|z|)d^nz$. However, in the expression of variance</p>
+<p>Apply theorem 3.1 to function <span class="math inline">\(K^2\)</span> one obtains <span class="math display">\[
+\frac{1}{h^n}\int_M K^2(\frac{u_p(q)}{h})\xi(q)dV(q)\to\xi(p)\int_{\mathbb{R}^n}K^2(\|z\|)d^nz,h\to 0.
+\]</span> It seems <span class="math inline">\(h_m^{2n}\)</span> will cause trouble in estimation. Whatever, they claimed that the integration will converges to <span class="math inline">\(f(p)\int K^2(\|z\|)d^nz\)</span>. However, in the expression of variance</p>
 <blockquote>
-<p>$Var[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})]=E[\frac{1}{h_m^{2n}}K^2(\frac{u_p(q)}{h_m})]-(E[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})])^2$</p>
+<p><span class="math inline">\(Var[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})]=E[\frac{1}{h_m^{2n}}K^2(\frac{u_p(q)}{h_m})]-(E[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})])^2\)</span></p>
 </blockquote>
-<p>the first term will converge to a constant times $f(p)$, while the latter will converge to $f(p)^2$. Thus the variance will not converge to 0.</p>
-<p>The idea of proof is straightforward. Since $K$ will be supported in $[0,1]$, one notes that when the bandwidth $h$ is small, the integration will be zero outside the normal coordinate. Therefore, everything goes back to Euclidean space.</p>
+<p>the first term will converge to a constant times <span class="math inline">\(f(p)\)</span>, while the latter will converge to <span class="math inline">\(f(p)^2\)</span>. Thus the variance will not converge to 0.</p>
+<p>The idea of proof is straightforward. Since <span class="math inline">\(K\)</span> will be supported in <span class="math inline">\([0,1]\)</span>, one notes that when the bandwidth <span class="math inline">\(h\)</span> is small, the integration will be zero outside the normal coordinate. Therefore, everything goes back to Euclidean space.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -522,7 +524,7 @@ ds^2=dx^2+dy^2+e^{2f(x,y)}(du^2+dv^2),</script><p>where $f(x,y)$ is a smooth fun
 <p><strong>Personal Comments</strong></p>
 <p>In this series I attempt to collect results concerning stabilities in <a href="https://en.wikipedia.org/wiki/Topological_data_analysis" target="_blank" rel="noopener">topological data analysis</a>. Researches in this direction has been increasing dramatically in recent years. Without doubt there will be more in the future. However, the best will not appear until one really understands all the progresses.</p>
 <hr>
-<p>The first stability theorem in TDA is proved by <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer</a>. It asserts that the bottleneck distance between two persistence diagrams is bounded by the $\infty$-norm of tame functions. They soon generalized this result to $L_p$ cases for tame Lipschitz functions (see <a href="https://faculty.math.illinois.edu/~ymileyko/papers/L_p-stability.pdf" target="_blank" rel="noopener">here</a>). This theorem is fundamental in TDA. And the idea is also direct — counting points in persistence diagrams. We sketch the procedure in the following.</p>
+<p>The first stability theorem in TDA is proved by <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer</a>. It asserts that the bottleneck distance between two persistence diagrams is bounded by the <span class="math inline">\(\infty\)</span>-norm of tame functions. They soon generalized this result to <span class="math inline">\(L_p\)</span> cases for tame Lipschitz functions (see <a href="https://faculty.math.illinois.edu/~ymileyko/papers/L_p-stability.pdf" target="_blank" rel="noopener">here</a>). This theorem is fundamental in TDA. And the idea is also direct -- counting points in persistence diagrams. We sketch the procedure in the following.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -551,11 +553,12 @@ ds^2=dx^2+dy^2+e^{2f(x,y)}(du^2+dv^2),</script><p>where $f(x,y)$ is a smooth fun
                 <span>MSE of Locally Linear Regression</span>
         </a>
         <div class="abstract-content">
-            <h2 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h2><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
-<script type="math/tex; mode=display">
-y=g(x)+\epsilon(x),</script><p>where $g$ is a any smooth function, and $\epsilon(x)$ is a variable with zero mean and finite variance. Let $X_1,X_2,\cdots,X_n$ be i.i.d. samples with bounded density $f$, and $Y_1,Y_2,\cdots, Y_n$ be the corresponding responses (assume $X_i$’s are scalars ‘). By Taylor expansion, we have</p>
-<script type="math/tex; mode=display">
-Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
+            <h2 id="backgrounds">Backgrounds</h2>
+<p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model <span class="math display">\[
+y=g(x)+\epsilon(x),
+\]</span> where <span class="math inline">\(g\)</span> is a any smooth function, and <span class="math inline">\(\epsilon(x)\)</span> is a variable with zero mean and finite variance. Let <span class="math inline">\(X_1,X_2,\cdots,X_n\)</span> be i.i.d. samples with bounded density <span class="math inline">\(f\)</span>, and <span class="math inline">\(Y_1,Y_2,\cdots, Y_n\)</span> be the corresponding responses (assume <span class="math inline">\(X_i\)</span>'s are scalars '). By Taylor expansion, we have <span class="math display">\[
+Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).
+\]</span></p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -589,11 +592,12 @@ Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
         </a>
         <div class="abstract-content">
             <p>This article aims to solve an exercise in <a href="https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html#" target="_blank" rel="noopener">High-Dimensional Probability</a> (Page 112, Exercise 5.2.3).</p>
-<h2 id="Gaussian-Isoperimetric-Inequality"><a href="#Gaussian-Isoperimetric-Inequality" class="headerlink" title="Gaussian Isoperimetric Inequality"></a>Gaussian Isoperimetric Inequality</h2><p>Let $\mathbb R^n$ equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> $\gamma_n$:</p>
-<script type="math/tex; mode=display">
-\gamma_n(E)=\frac{1}{(2\pi)^{n/2}}\int_E\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x</script><p>where $E\subseteq \mathbb R^n$ is a Borel set. Then $(\mathbb R^n,\gamma_n)$ is called Gauss space. Gaussian isoperimetric inequality states that, among all the measurable sets with given volume, half spaces have the <strong>smallest perimeter</strong>. Moreover, define the Minkowski sum </p>
-<script type="math/tex; mode=display">
-A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statement.</p>
+<h2 id="gaussian-isoperimetric-inequality">Gaussian Isoperimetric Inequality</h2>
+<p>Let <span class="math inline">\(\mathbb R^n\)</span> equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> <span class="math inline">\(\gamma_n\)</span>: <span class="math display">\[
+\gamma_n(E)=\frac{1}{(2\pi)^{n/2}}\int_E\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x
+\]</span> where <span class="math inline">\(E\subseteq \mathbb R^n\)</span> is a Borel set. Then <span class="math inline">\((\mathbb R^n,\gamma_n)\)</span> is called Gauss space. Gaussian isoperimetric inequality states that, among all the measurable sets with given volume, half spaces have the <strong>smallest perimeter</strong>. Moreover, define the Minkowski sum <span class="math display">\[
+A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.
+\]</span> We have the following statement.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -622,7 +626,8 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
                 <span>Bayesian Linear Regression</span>
         </a>
         <div class="abstract-content">
-            <h2 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h2><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise.</p>
+            <h2 id="the-linear-regression-model">The Linear Regression Model</h2>
+<p>A <em>normal linear regression model</em> assumes an output variable <span class="math inline">\(Y\)</span>, a vector of covariates <span class="math inline">\({\bf x}=(x_1,\cdots ,x_p)\)</span>, and <span class="math inline">\(Y\)</span> is linear deterministic function <span class="math inline">\(\bf \beta^Tx\)</span> with additive Gaussian noise.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -653,10 +658,11 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
                 <span>Notes on KNN Density Estimates (1)</span>
         </a>
         <div class="abstract-content">
-            <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>‘s work in 1979. </p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Suppose we have a <strong>bounded, twice differentiable density</strong> function $f$ on $\mathbb R^p$. Let $X_1,X_2,\cdots,X_n$ be $n$ i.i.d. samples of $f$. Let $x\in\mathbb R^p$ be a fixed point so that $f(x)&gt;0$. We want to estimate $f(x)$ based on $n$ samples. The KNN estimate is given by </p>
-<script type="math/tex; mode=display">
-f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where $Z_n$ is the distance between $x$ and its $k$th nearest neighbor, and $\omega$ is a <strong>bounded integrable</strong> weight function with $\int\omega(u){\rm d}u=1$. </p>
+            <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>'s work in 1979.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Suppose we have a <strong>bounded, twice differentiable density</strong> function <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb R^p\)</span>. Let <span class="math inline">\(X_1,X_2,\cdots,X_n\)</span> be <span class="math inline">\(n\)</span> i.i.d. samples of <span class="math inline">\(f\)</span>. Let <span class="math inline">\(x\in\mathbb R^p\)</span> be a fixed point so that <span class="math inline">\(f(x)&gt;0\)</span>. We want to estimate <span class="math inline">\(f(x)\)</span> based on <span class="math inline">\(n\)</span> samples. The KNN estimate is given by <span class="math display">\[
+f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
+\]</span> where <span class="math inline">\(Z_n\)</span> is the distance between <span class="math inline">\(x\)</span> and its <span class="math inline">\(k\)</span>th nearest neighbor, and <span class="math inline">\(\omega\)</span> is a <strong>bounded integrable</strong> weight function with <span class="math inline">\(\int\omega(u){\rm d}u=1\)</span>.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1189,19 +1195,19 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1258,9 +1264,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

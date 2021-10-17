@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.4k</span>Reading time: <span class="post-count reading-time">14 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.5k</span>Reading time: <span class="post-count reading-time">15 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,141 +401,152 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="The-Second-Fundamental-Form"><a href="#The-Second-Fundamental-Form" class="headerlink" title="The Second Fundamental Form"></a>The Second Fundamental Form</h2><p>Let $(\tilde{M},\tilde{g})$ be a Riemannian manifold and $M\subset \tilde{M}$ be a submanifold. By restricting $\tilde{g}$ on $M$ the submanifold is assigned with a natural Riemannian metric.  At each point $p$ we have the orthogonal decomposition with respect to $\tilde{g}_p$,</p>
-<script type="math/tex; mode=display">
-T_p\tilde{M}=T_pM\oplus T_p^\perp M</script><p>where $T<em>p^\perp M$, called the normal space at $p$, denotes the orthogonal complement of $T_pM$ in $T_p\tilde{M}$. Let $T^\perp M=\cup</em>{p\in M}T_p^\perp M$. It can be verified that $T^\perp M$ is a vector bundle on $M$, called the normal bundle. The idea to study Riemannian submanifolds is straightforward: <strong>we differentiate the vector fields along $M$ and look at its tangent components and normal components respectively</strong>.<a id="more"></a> Let $\tilde{\nabla}$ be the metric connection on $\tilde{M}$ and $X\in\Gamma(TM)$ be a tangent vector field on $M$. On the one hand, for any vector fields $X,Y\in \Gamma(TM)$, we have </p>
-<script type="math/tex; mode=display">
-\tilde{\nabla}_XY=(\tilde{\nabla}_XY)^\top+(\tilde{\nabla}_XY)^\perp</script><p>The first term is nothing but the covariant derivative of $Y$ on $M$. Let $\nabla$ be the metric connection on $M$ with respect to the induced Riemannian metric. Then $(\tilde{\nabla}_XY)^\top=\nabla_XY$. Define </p>
-<script type="math/tex; mode=display">
-h(X,Y)=(\tilde{\nabla}_XY)^\perp=\tilde{\nabla}_XY-\nabla_XY</script><p>It can be verified that $h$ is a normal-bundle-valued symmetric tensor field on $M$, called <strong>the second fundamental form</strong>. Equation (3) is called <strong>the Gauss formula</strong>.</p>
-<p><strong>Remark.</strong> Given $\xi\in \Gamma(T^\perp M)$, we can define a tensor field $\Pi_\xi(X,Y)=\tilde{g}(h(X,Y),\xi)$. In literature $\Pi$ is also called the second fundamental form. </p>
-<p>On the other hand, for a vector field $\xi\in \Gamma(T^\perp M)$, we have </p>
-<script type="math/tex; mode=display">
-\tilde{\nabla}_X\xi=(\tilde{\nabla}_X\xi)^\top+(\tilde{\nabla}_X\xi)^\perp</script><p>Define the connection $\nabla^\perp:\Gamma(T^\perp M)\times\Gamma(TM)\to \Gamma(T^\perp M)$ by $(\nabla^\perp)_X\xi=(\tilde{\nabla}_X\xi)^\perp$. It can be verified that $\nabla^\perp$ is a connection on the normal bundle $T^\perp M$ which is compatible with the bundle metric, called <strong>the normal connection</strong>. Define </p>
-<script type="math/tex; mode=display">
-A_\xi(X)=-(\tilde{\nabla}_X\xi)^\top</script><p>The operator $A_\xi:T_pM\to T_pM$ is called <strong>the shape operator</strong> or <strong>the Weingarten map</strong>. The minus sign is chosen so that the following equation holds</p>
-<script type="math/tex; mode=display">
-\tilde{g}(A_\xi(X),Y)=\tilde{g}(h(X,Y),\xi)</script><p>The equation</p>
-<script type="math/tex; mode=display">
-\tilde{\nabla}_X\xi=-A_\xi(X)+\nabla^\perp_X\xi</script><p>is called <strong>the Weingarten formula</strong>.</p>
-<p><strong>Example.</strong> Let $M^{d-1}\subseteq \mathbb{E}^d$ be a hypersurface, $\xi$ be a unit normal vector field on $M$. <strong>The Gauss map</strong> $g:M\to \mathbb{S}^{d-1}$ is defined by $g(p)=\xi_p$. For any $X\in T_pM$, let $\gamma$ be a smooth curve such that $\gamma’(0)=X$. Then</p>
-<script type="math/tex; mode=display">
-A_\xi X=-(\xi(\gamma)'(0))^\top=-g(\gamma)'(0)=-g_*(X)</script><p>that is, $-A<em>\xi=g</em>*$ is the differential of Gauss map. It is clear from this example that for hypersurfaces the normal connection is trivial.</p>
-<p>Let $e<em>1,\cdots,e_m$ be a basis of the tangent space and $\xi_1,\cdots,\xi</em>{d-m}$ be a basis of the normal space. Assume</p>
-<script type="math/tex; mode=display">
-A_{\xi_\alpha}e_i=\sum_{j=1}^mA_{\alpha i}^je_j</script><p>Easy computation shows that</p>
-<script type="math/tex; mode=display">
+        <h2 id="the-second-fundamental-form">The Second Fundamental Form</h2>
+<p>Let <span class="math inline">\((\tilde{M},\tilde{g})\)</span> be a Riemannian manifold and <span class="math inline">\(M\subset \tilde{M}\)</span> be a submanifold. By restricting <span class="math inline">\(\tilde{g}\)</span> on <span class="math inline">\(M\)</span> the submanifold is assigned with a natural Riemannian metric. At each point <span class="math inline">\(p\)</span> we have the orthogonal decomposition with respect to <span class="math inline">\(\tilde{g}_p\)</span>, <span class="math display">\[
+T_p\tilde{M}=T_pM\oplus T_p^\perp M
+\]</span> where <span class="math inline">\(T_p^\perp M\)</span>, called the normal space at <span class="math inline">\(p\)</span>, denotes the orthogonal complement of <span class="math inline">\(T_pM\)</span> in <span class="math inline">\(T_p\tilde{M}\)</span>. Let <span class="math inline">\(T^\perp M=\cup_{p\in M}T_p^\perp M\)</span>. It can be verified that <span class="math inline">\(T^\perp M\)</span> is a vector bundle on <span class="math inline">\(M\)</span>, called the normal bundle. The idea to study Riemannian submanifolds is straightforward: <strong>we differentiate the vector fields along <span class="math inline">\(M\)</span> and look at its tangent components and normal components respectively</strong>.<a id="more"></a> Let <span class="math inline">\(\tilde{\nabla}\)</span> be the metric connection on <span class="math inline">\(\tilde{M}\)</span> and <span class="math inline">\(X\in\Gamma(TM)\)</span> be a tangent vector field on <span class="math inline">\(M\)</span>. On the one hand, for any vector fields <span class="math inline">\(X,Y\in \Gamma(TM)\)</span>, we have <span class="math display">\[
+\tilde{\nabla}_XY=(\tilde{\nabla}_XY)^\top+(\tilde{\nabla}_XY)^\perp
+\]</span> The first term is nothing but the covariant derivative of <span class="math inline">\(Y\)</span> on <span class="math inline">\(M\)</span>. Let <span class="math inline">\(\nabla\)</span> be the metric connection on <span class="math inline">\(M\)</span> with respect to the induced Riemannian metric. Then <span class="math inline">\((\tilde{\nabla}_XY)^\top=\nabla_XY\)</span>. Define <span class="math display">\[
+h(X,Y)=(\tilde{\nabla}_XY)^\perp=\tilde{\nabla}_XY-\nabla_XY
+\]</span> It can be verified that <span class="math inline">\(h\)</span> is a normal-bundle-valued symmetric tensor field on <span class="math inline">\(M\)</span>, called <strong>the second fundamental form</strong>. Equation (3) is called <strong>the Gauss formula</strong>.</p>
+<p><strong>Remark.</strong> Given <span class="math inline">\(\xi\in \Gamma(T^\perp M)\)</span>, we can define a tensor field <span class="math inline">\(\Pi_\xi(X,Y)=\tilde{g}(h(X,Y),\xi)\)</span>. In literature <span class="math inline">\(\Pi\)</span> is also called the second fundamental form.</p>
+<p>On the other hand, for a vector field <span class="math inline">\(\xi\in \Gamma(T^\perp M)\)</span>, we have <span class="math display">\[
+\tilde{\nabla}_X\xi=(\tilde{\nabla}_X\xi)^\top+(\tilde{\nabla}_X\xi)^\perp
+\]</span> Define the connection <span class="math inline">\(\nabla^\perp:\Gamma(T^\perp M)\times\Gamma(TM)\to \Gamma(T^\perp M)\)</span> by <span class="math inline">\((\nabla^\perp)_X\xi=(\tilde{\nabla}_X\xi)^\perp\)</span>. It can be verified that <span class="math inline">\(\nabla^\perp\)</span> is a connection on the normal bundle <span class="math inline">\(T^\perp M\)</span> which is compatible with the bundle metric, called <strong>the normal connection</strong>. Define <span class="math display">\[
+A_\xi(X)=-(\tilde{\nabla}_X\xi)^\top
+\]</span> The operator <span class="math inline">\(A_\xi:T_pM\to T_pM\)</span> is called <strong>the shape operator</strong> or <strong>the Weingarten map</strong>. The minus sign is chosen so that the following equation holds <span class="math display">\[
+\tilde{g}(A_\xi(X),Y)=\tilde{g}(h(X,Y),\xi)
+\]</span> The equation <span class="math display">\[
+\tilde{\nabla}_X\xi=-A_\xi(X)+\nabla^\perp_X\xi
+\]</span> is called <strong>the Weingarten formula</strong>.</p>
+<p><strong>Example.</strong> Let <span class="math inline">\(M^{d-1}\subseteq \mathbb{E}^d\)</span> be a hypersurface, <span class="math inline">\(\xi\)</span> be a unit normal vector field on <span class="math inline">\(M\)</span>. <strong>The Gauss map</strong> <span class="math inline">\(g:M\to \mathbb{S}^{d-1}\)</span> is defined by <span class="math inline">\(g(p)=\xi_p\)</span>. For any <span class="math inline">\(X\in T_pM\)</span>, let <span class="math inline">\(\gamma\)</span> be a smooth curve such that <span class="math inline">\(\gamma&#39;(0)=X\)</span>. Then <span class="math display">\[
+A_\xi X=-(\xi(\gamma)&#39;(0))^\top=-g(\gamma)&#39;(0)=-g_*(X)
+\]</span> that is, <span class="math inline">\(-A_\xi=g_*\)</span> is the differential of Gauss map. It is clear from this example that for hypersurfaces the normal connection is trivial.</p>
+<p>Let <span class="math inline">\(e_1,\cdots,e_m\)</span> be a basis of the tangent space and <span class="math inline">\(\xi_1,\cdots,\xi_{d-m}\)</span> be a basis of the normal space. Assume <span class="math display">\[
+A_{\xi_\alpha}e_i=\sum_{j=1}^mA_{\alpha i}^je_j
+\]</span> Easy computation shows that <span class="math display">\[
 \begin{aligned}
-&\Pi_{\xi_\alpha}(e_i,e_j)=A_{\alpha i}^j\\
-&h(e_i,e_j)=\sum_{\alpha=1}^{d-m}A_{\alpha i}^j\xi_\alpha
-\end{aligned}</script><p>Define the mean curvature vector field on $M$ by $H=\frac{1}{m}trace(h)$ where $m$ is the dimension of $M$. By definition $H$ is independent of the choice of basis. Under the above notation we have</p>
-<script type="math/tex; mode=display">
-H=\frac{1}{m}\sum_{i=1}^m h(e_i,e_i)=\frac{1}{m}\sum_{i=1}^m\sum_{\alpha=1}^{d-m}A_{\alpha i}^i\xi_\alpha=\sum_{\alpha=1}^{d-m}(\frac{1}{m}\text{trace}(A_{\alpha})\xi_{\alpha})=\sum_{\alpha=1}^{d-m}H^\alpha\xi_\alpha</script><p>where $H^\xi=\tilde{g}(H,\xi)$ is called the mean curvature along $\xi$. The value $|H|=(\sum<em>\alpha|H^\alpha|^2)^{1/2}=\frac{1}{m}(\sum</em>{\alpha=1}^{d-m}\text{trace}(A<em>\alpha)^2)^{1/2}$ is called the mean curvature. If $M$ is a hypersurface, $|H|=\frac{1}{m}|\text{trace}(A</em>\alpha)|$. For a surface in 3-dimensional Euclidean space, this coincides with <strong>the absolute mean curvature</strong>. </p>
-<h2 id="Fundamental-Equations"><a href="#Fundamental-Equations" class="headerlink" title="Fundamental Equations"></a>Fundamental Equations</h2><p>To involve the curvature tensor, we need second order derivative. Thus, we differentiate the Gauss formula and the Weingarten formula. For Gauss formula we have</p>
-<script type="math/tex; mode=display">
+&amp;\Pi_{\xi_\alpha}(e_i,e_j)=A_{\alpha i}^j\\
+&amp;h(e_i,e_j)=\sum_{\alpha=1}^{d-m}A_{\alpha i}^j\xi_\alpha
+\end{aligned}
+\]</span> Define the mean curvature vector field on <span class="math inline">\(M\)</span> by <span class="math inline">\(H=\frac{1}{m}trace(h)\)</span> where <span class="math inline">\(m\)</span> is the dimension of <span class="math inline">\(M\)</span>. By definition <span class="math inline">\(H\)</span> is independent of the choice of basis. Under the above notation we have <span class="math display">\[
+H=\frac{1}{m}\sum_{i=1}^m h(e_i,e_i)=\frac{1}{m}\sum_{i=1}^m\sum_{\alpha=1}^{d-m}A_{\alpha i}^i\xi_\alpha=\sum_{\alpha=1}^{d-m}(\frac{1}{m}\text{trace}(A_{\alpha})\xi_{\alpha})=\sum_{\alpha=1}^{d-m}H^\alpha\xi_\alpha
+\]</span> where <span class="math inline">\(H^\xi=\tilde{g}(H,\xi)\)</span> is called the mean curvature along <span class="math inline">\(\xi\)</span>. The value <span class="math inline">\(\|H\|=(\sum_\alpha\|H^\alpha\|^2)^{1/2}=\frac{1}{m}(\sum_{\alpha=1}^{d-m}\text{trace}(A_\alpha)^2)^{1/2}\)</span> is called the mean curvature. If <span class="math inline">\(M\)</span> is a hypersurface, <span class="math inline">\(\|H\|=\frac{1}{m}|\text{trace}(A_\alpha)|\)</span>. For a surface in 3-dimensional Euclidean space, this coincides with <strong>the absolute mean curvature</strong>.</p>
+<h2 id="fundamental-equations">Fundamental Equations</h2>
+<p>To involve the curvature tensor, we need second order derivative. Thus, we differentiate the Gauss formula and the Weingarten formula. For Gauss formula we have <span class="math display">\[
 \begin{aligned}
-\tilde{\nabla}_X\tilde{\nabla}_YZ&=\tilde{\nabla}_X\nabla_YZ+\tilde{\nabla}_Xh(Y,Z)\\
-&=\nabla_X\nabla_Y+h(X,\nabla_YZ)-A_{h(Y,Z)}(X)+\nabla^\perp_Xh(Y,Z)
-\end{aligned}</script><p>If we define the curvature tensor to be $\tilde{R}(X,Y)=[\tilde{\nabla}<em>X,\tilde{\nabla}_Y]-\tilde{\nabla}</em>{[X,Y]}$, we have</p>
-<script type="math/tex; mode=display">
+\tilde{\nabla}_X\tilde{\nabla}_YZ&amp;=\tilde{\nabla}_X\nabla_YZ+\tilde{\nabla}_Xh(Y,Z)\\
+&amp;=\nabla_X\nabla_Y+h(X,\nabla_YZ)-A_{h(Y,Z)}(X)+\nabla^\perp_Xh(Y,Z)
+\end{aligned}
+\]</span> If we define the curvature tensor to be <span class="math inline">\(\tilde{R}(X,Y)=[\tilde{\nabla}_X,\tilde{\nabla}_Y]-\tilde{\nabla}_{[X,Y]}\)</span>, we have <span class="math display">\[
 \begin{aligned}
-\tilde{R}(X,Y)Z=&R(X,Y)Z+h(X,\nabla_YZ)-h(Y,\nabla_XZ)-h([X,Y],Z)\\
-&-A_{h(Y,Z)}(X)+A_{h(X,Z)}(Y)+\nabla^\perp_Xh(Y,Z)-\nabla^\perp_Yh(X,Z)
-\end{aligned}</script><p>Define the covariant differentiation of $h$ to be</p>
-<script type="math/tex; mode=display">
-(\nabla_Xh)(Y,Z)=\nabla^\perp_Xh(Y,Z)-h(\nabla_XY,Z)-h(\nabla_XZ,Y)</script><p>Then the tangent component of $\tilde{R}(X,Y)Z$ is </p>
-<script type="math/tex; mode=display">
-(\tilde{R}(X,Y)Z)^\top=R(X,Y)Z+A_{h(X,Z)}(Y)-A_{h(Y,Z)}(X)</script><p>while the normal component is</p>
-<script type="math/tex; mode=display">
-(\tilde{R}(X,Y)Z)^\perp=(\nabla_Xh)(Y,Z)-(\nabla_Yh)(X,Z)</script><p>Equation (12) is called <strong>the Gauss equation</strong> and equation (13) is called <strong>the Codazzi equation</strong>. We can rewrite the Gauss equation as </p>
-<script type="math/tex; mode=display">
-\tilde{R}(X,Y,Z,W)=R(X,Y,Z,W)+\langle h(X,Z),h(Y,W)\rangle-\langle h(Y,Z),h(X,W)\rangle</script><p>Especially the sectional curvature can be expressed as </p>
-<script type="math/tex; mode=display">
-\tilde{K}(X,Y)=K(X,Y)-\langle h(X,X),h(Y,Y)\rangle+\|h(X,Y)\|^2</script><p>If the ambient space is Euclidean, then $\overline{R}$ vanishes identically. Let $e<em>i,e_j$ span a two-plane $\pi</em>{ij}$, then the sectional curvature of $\pi_{ij}$ is </p>
-<script type="math/tex; mode=display">
-K(\pi_{ij})=-\|h(e_i,e_j)\|^2+\langle h(e_i,e_i),h(e_j,e_j)\rangle=\sum_{\alpha=1}^{d-m}(-(A_{\alpha i}^j)^2+A_{\alpha i}^iA_{\alpha j}^j)</script><p>From $A<em>\alpha$ we extract the $2\times 2$ submatrix $A</em>\alpha|<em>{\pi</em>{ij}}$ with $i$th and $j$th row and column. Then </p>
-<script type="math/tex; mode=display">
-K(\pi_{ij})=\sum_{\alpha=1}^{d-m}\det(A_\alpha|_{\pi_{ij}})</script><p><strong>Example.</strong> If $M$ is a hypersurface of $\mathbb{E}^d$ with a unit normal vector field $\xi$, the sectional curvature is $K(\pi<em>{ij})=\det(A</em>\xi|<em>{\pi</em>{ij}})$. If $e<em>1,\cdots,e</em>{d-1}$ is a basis that diagonalizes the shape operator with eigenvalues $\lambda<em>1,\cdots,\lambda</em>{d-1}$, then $K(\pi<em>{ij})=\lambda_i\lambda_j$.  The eigenvalues are called <strong>principal curvature</strong> and eigenvectors are called <strong>principal directions</strong>. The determinant of $A</em>\xi$ is called <strong>the Gauss-Kronecker curvature</strong>.</p>
-<p>Similarly we can differentiate the Weingarten formula, which yields</p>
-<script type="math/tex; mode=display">
+\tilde{R}(X,Y)Z=&amp;R(X,Y)Z+h(X,\nabla_YZ)-h(Y,\nabla_XZ)-h([X,Y],Z)\\
+&amp;-A_{h(Y,Z)}(X)+A_{h(X,Z)}(Y)+\nabla^\perp_Xh(Y,Z)-\nabla^\perp_Yh(X,Z)
+\end{aligned}
+\]</span> Define the covariant differentiation of <span class="math inline">\(h\)</span> to be <span class="math display">\[
+(\nabla_Xh)(Y,Z)=\nabla^\perp_Xh(Y,Z)-h(\nabla_XY,Z)-h(\nabla_XZ,Y)
+\]</span> Then the tangent component of <span class="math inline">\(\tilde{R}(X,Y)Z\)</span> is <span class="math display">\[
+(\tilde{R}(X,Y)Z)^\top=R(X,Y)Z+A_{h(X,Z)}(Y)-A_{h(Y,Z)}(X)
+\]</span> while the normal component is <span class="math display">\[
+(\tilde{R}(X,Y)Z)^\perp=(\nabla_Xh)(Y,Z)-(\nabla_Yh)(X,Z)
+\]</span> Equation (12) is called <strong>the Gauss equation</strong> and equation (13) is called <strong>the Codazzi equation</strong>. We can rewrite the Gauss equation as <span class="math display">\[
+\tilde{R}(X,Y,Z,W)=R(X,Y,Z,W)+\langle h(X,Z),h(Y,W)\rangle-\langle h(Y,Z),h(X,W)\rangle
+\]</span> Especially the sectional curvature can be expressed as <span class="math display">\[
+\tilde{K}(X,Y)=K(X,Y)-\langle h(X,X),h(Y,Y)\rangle+\|h(X,Y)\|^2
+\]</span> If the ambient space is Euclidean, then <span class="math inline">\(\overline{R}\)</span> vanishes identically. Let <span class="math inline">\(e_i,e_j\)</span> span a two-plane <span class="math inline">\(\pi_{ij}\)</span>, then the sectional curvature of <span class="math inline">\(\pi_{ij}\)</span> is <span class="math display">\[
+K(\pi_{ij})=-\|h(e_i,e_j)\|^2+\langle h(e_i,e_i),h(e_j,e_j)\rangle=\sum_{\alpha=1}^{d-m}(-(A_{\alpha i}^j)^2+A_{\alpha i}^iA_{\alpha j}^j)
+\]</span> From <span class="math inline">\(A_\alpha\)</span> we extract the <span class="math inline">\(2\times 2\)</span> submatrix <span class="math inline">\(A_\alpha|_{\pi_{ij}}\)</span> with <span class="math inline">\(i\)</span>th and <span class="math inline">\(j\)</span>th row and column. Then <span class="math display">\[
+K(\pi_{ij})=\sum_{\alpha=1}^{d-m}\det(A_\alpha|_{\pi_{ij}})
+\]</span> <strong>Example.</strong> If <span class="math inline">\(M\)</span> is a hypersurface of <span class="math inline">\(\mathbb{E}^d\)</span> with a unit normal vector field <span class="math inline">\(\xi\)</span>, the sectional curvature is <span class="math inline">\(K(\pi_{ij})=\det(A_\xi|_{\pi_{ij}})\)</span>. If <span class="math inline">\(e_1,\cdots,e_{d-1}\)</span> is a basis that diagonalizes the shape operator with eigenvalues <span class="math inline">\(\lambda_1,\cdots,\lambda_{d-1}\)</span>, then <span class="math inline">\(K(\pi_{ij})=\lambda_i\lambda_j\)</span>. The eigenvalues are called <strong>principal curvature</strong> and eigenvectors are called <strong>principal directions</strong>. The determinant of <span class="math inline">\(A_\xi\)</span> is called <strong>the Gauss-Kronecker curvature</strong>.</p>
+<p>Similarly we can differentiate the Weingarten formula, which yields <span class="math display">\[
 \begin{aligned}
-\tilde{\nabla}_X\tilde{\nabla}_Y\xi&=-\tilde{\nabla}_XA_\xi(Y)+\tilde{\nabla}_X\nabla^\perp_Y\xi\\
-&=-\nabla_X A_\xi(Y)-h(X,A_\xi(Y))-A_{\nabla^\perp_Y\xi}(X)+\nabla^\perp_X\nabla^\perp_Y\xi
-\end{aligned}</script><p>Define the curvature tensor on the normal bundle by $R^\perp(X,Y)\xi=[\nabla^\perp<em>X,\nabla^\perp_Y]\xi-\nabla^\perp</em>{[X,Y]}\xi$, and define the covariant differentiation of the shape operator by $(\nabla<em>XA)</em>\xi(Y)=\nabla<em>X(A</em>\xi Y)-A<em>{\nabla^\perp_X\xi}(Y)-A</em>\xi(\nabla_XY)$. We obtain that</p>
-<script type="math/tex; mode=display">
+\tilde{\nabla}_X\tilde{\nabla}_Y\xi&amp;=-\tilde{\nabla}_XA_\xi(Y)+\tilde{\nabla}_X\nabla^\perp_Y\xi\\
+&amp;=-\nabla_X A_\xi(Y)-h(X,A_\xi(Y))-A_{\nabla^\perp_Y\xi}(X)+\nabla^\perp_X\nabla^\perp_Y\xi
+\end{aligned}
+\]</span> Define the curvature tensor on the normal bundle by <span class="math inline">\(R^\perp(X,Y)\xi=[\nabla^\perp_X,\nabla^\perp_Y]\xi-\nabla^\perp_{[X,Y]}\xi\)</span>, and define the covariant differentiation of the shape operator by <span class="math inline">\((\nabla_XA)_\xi(Y)=\nabla_X(A_\xi Y)-A_{\nabla^\perp_X\xi}(Y)-A_\xi(\nabla_XY)\)</span>. We obtain that <span class="math display">\[
 \begin{aligned}
-\tilde{R}(X,Y)\xi=&R^\perp(X,Y)\xi-(\nabla_X A)_\xi(Y)+(\nabla_Y A)_\xi(X)\\
-&-h(X,A_\xi(Y))+h(Y,A_\xi(X))
-\end{aligned}</script><p>The tangent component is </p>
-<script type="math/tex; mode=display">
-(\tilde{R}(X,Y)\xi)^\top=-(\nabla_X A)_\xi(Y)+(\nabla_Y A)_\xi(X)</script><p>while the normal component is </p>
-<script type="math/tex; mode=display">
-(\tilde{R}(X,Y)\xi)^\perp=R^\perp(X,Y)\xi+h(X,A_\xi(Y))-h(Y,A_\xi(X))</script><p>Equation (19) is called <strong>the Ricci equation</strong>. Note that equation (18) is equivalent to the Codazzi equation as follows</p>
-<script type="math/tex; mode=display">
+\tilde{R}(X,Y)\xi=&amp;R^\perp(X,Y)\xi-(\nabla_X A)_\xi(Y)+(\nabla_Y A)_\xi(X)\\
+&amp;-h(X,A_\xi(Y))+h(Y,A_\xi(X))
+\end{aligned}
+\]</span> The tangent component is <span class="math display">\[
+(\tilde{R}(X,Y)\xi)^\top=-(\nabla_X A)_\xi(Y)+(\nabla_Y A)_\xi(X)
+\]</span> while the normal component is <span class="math display">\[
+(\tilde{R}(X,Y)\xi)^\perp=R^\perp(X,Y)\xi+h(X,A_\xi(Y))-h(Y,A_\xi(X))
+\]</span> Equation (19) is called <strong>the Ricci equation</strong>. Note that equation (18) is equivalent to the Codazzi equation as follows <span class="math display">\[
 \begin{aligned}
-\langle\tilde{R}(X,Y)\xi,Z\rangle=&\langle-(\nabla_X A)_\xi(Y),Z\rangle+\langle(\nabla_Y A)_\xi(X),Z\rangle\\
-=&\langle\nabla_X(A_\xi Y)-A_{\nabla^\perp_X\xi}(Y)-A_\xi(\nabla_XY),Z\rangle\\
-&+\langle\nabla_Y(A_\xi X)-A_{\nabla^\perp_Y\xi}(X)-A_\xi(\nabla_YX),Z\rangle\\
-=&-\langle\nabla^\perp_X\xi,h(Y,Z)\rangle-\langle\nabla^\perp_Y\xi,h(X,Z)\rangle-\langle h(\nabla_XY,Z),\xi\rangle\\
-&-\langle h(\nabla_YX,Z),\xi\rangle+X\langle h(Y,Z),\xi\rangle-\langle h(\nabla_XZ,Y),\xi \rangle\\
-&+Y\langle h(X,Z),\xi\rangle-\langle h(\nabla_YZ,X),\xi\rangle\\
-=&\langle\nabla_X^\perp h(Y,Z),\xi\rangle+\langle\nabla_Y^\perp h(X,Z),\xi\rangle-\langle h(\nabla_XY,Z),\xi\rangle\\
-&-\langle h(\nabla_YX,Z),\xi\rangle-\langle h(\nabla_XZ,Y),\xi \rangle-\langle h(\nabla_YZ,X),\xi\rangle\\
-=&\langle(\nabla_X h)(Y,Z)-(\nabla_Y h)(X,Z),\xi\rangle\\
-=&\langle\tilde{R}(X,Y)Z,\xi\rangle
-\end{aligned}</script><p>The three equations (Gauss, Codazzi, Ricci) are called fundamental equations for a submanifold $M\hookrightarrow\tilde{M}$. </p>
-<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><h3 id="Planar-Curves"><a href="#Planar-Curves" class="headerlink" title="Planar Curves"></a>Planar Curves</h3><p>A planar curve is a 1-dimensional manifold embedded in the 2-plane. Let $\mathbf{t}$ be the tangent vector field and $\mathbf{n}$ be the normal vector field. We have </p>
-<script type="math/tex; mode=display">
-A_{\mathbf{n}}\mathbf{t}=-(\overline{D}_{\mathbf{n}}\mathbf{t})^\top=\kappa \mathbf{t}</script><p>where $\kappa$ is the curvature. Thus the estimation can be simply given by </p>
-<script type="math/tex; mode=display">
-\hat{A}=\frac{\Delta\mathbf{n}\cdot\mathbf{t}}{\Delta p\cdot\mathbf{t}}\approx \kappa</script><h3 id="Space-Curves"><a href="#Space-Curves" class="headerlink" title="Space Curves"></a>Space Curves</h3><p>A space curve is a 1-dimensional manifold embedded in 3-space. Let $\mathbf{t}$ be the tangent vector field, $\mathbf{n}$ be the normal vector field, and $\mathbf{b}$ be the binormal vector field. We have the Frenet formula</p>
-<script type="math/tex; mode=display">
-\frac{d}{ds}\left(\begin{array}{c}\mathbf{t}\\ \mathbf{n}\\ \mathbf{b}\end{array}\right)=\left(\begin{array}{ccc}0&\kappa&0\\ -\kappa&0&\tau\\ 0&-\tau&0\end{array}\right)\left(\begin{array}{c}\mathbf{t}\\ \mathbf{n}\\ \mathbf{b}\end{array}\right)</script><p>where $\kappa$ is curvature and $\tau$ is torsion. Let $\xi=\cos(\theta)\mathbf{n}+\sin(\theta)\mathbf{b}$ be a unit normal vector field. We have</p>
-<script type="math/tex; mode=display">
-A_\xi\mathbf{t}=\cos(\theta)A_\mathbf{n}\mathbf{t}+\sin(\theta)A_\mathbf{b}\mathbf{t}=\cos(\theta)\kappa\mathbf{t}</script><p>Similarly, let $\xi_\perp=-\sin(\theta)\mathbf{n}+\cos(\theta)\mathbf{b}$ be the unit normal vector perpendicular to $\xi$. Then</p>
-<script type="math/tex; mode=display">
-A_{\xi_\perp}\mathbf{t}=-\sin(\theta)\kappa\mathbf{t}</script><p>By definition the mean vector field is $H=\cos(\theta)\kappa\xi-\sin(\theta)\kappa\xi_\perp=\kappa\mathbf{n}$. The mean curvature is $|H|=\kappa$.</p>
-<h3 id="Surfaces"><a href="#Surfaces" class="headerlink" title="Surfaces"></a>Surfaces</h3><p>A surface is a 2-dimensional manifold embedded in 3-space. The shape operator coincides with the differential of Gauss map (with an additional minus sign). Thus the norm of mean curvature vector $|H|$ is in fact the absolute value of mean curvature for surfaces. The sectional curvature is Gaussian curvature for surfaces. </p>
-<h3 id="Clifford-Torus"><a href="#Clifford-Torus" class="headerlink" title="Clifford Torus"></a>Clifford Torus</h3><p>Let $f:\mathbb{R}^2\to\mathbb{R}^4$ be defined by </p>
-<script type="math/tex; mode=display">
-f(\theta,\phi)=\frac{1}{\sqrt{2}}(\cos(\sqrt{2}\theta),\sin(\sqrt{2}\theta),\cos(\sqrt{2}\phi),\sin(\sqrt{2}\phi))</script><p>The image of $f$ is $\mathbb{S}^1(\sqrt{1/2})\times\mathbb{S}^1(\sqrt{1/2})$, hence a torus. By computation the tangent vector fields are</p>
-<script type="math/tex; mode=display">
+\langle\tilde{R}(X,Y)\xi,Z\rangle=&amp;\langle-(\nabla_X A)_\xi(Y),Z\rangle+\langle(\nabla_Y A)_\xi(X),Z\rangle\\
+=&amp;\langle\nabla_X(A_\xi Y)-A_{\nabla^\perp_X\xi}(Y)-A_\xi(\nabla_XY),Z\rangle\\
+&amp;+\langle\nabla_Y(A_\xi X)-A_{\nabla^\perp_Y\xi}(X)-A_\xi(\nabla_YX),Z\rangle\\
+=&amp;-\langle\nabla^\perp_X\xi,h(Y,Z)\rangle-\langle\nabla^\perp_Y\xi,h(X,Z)\rangle-\langle h(\nabla_XY,Z),\xi\rangle\\
+&amp;-\langle h(\nabla_YX,Z),\xi\rangle+X\langle h(Y,Z),\xi\rangle-\langle h(\nabla_XZ,Y),\xi \rangle\\
+&amp;+Y\langle h(X,Z),\xi\rangle-\langle h(\nabla_YZ,X),\xi\rangle\\
+=&amp;\langle\nabla_X^\perp h(Y,Z),\xi\rangle+\langle\nabla_Y^\perp h(X,Z),\xi\rangle-\langle h(\nabla_XY,Z),\xi\rangle\\
+&amp;-\langle h(\nabla_YX,Z),\xi\rangle-\langle h(\nabla_XZ,Y),\xi \rangle-\langle h(\nabla_YZ,X),\xi\rangle\\
+=&amp;\langle(\nabla_X h)(Y,Z)-(\nabla_Y h)(X,Z),\xi\rangle\\
+=&amp;\langle\tilde{R}(X,Y)Z,\xi\rangle
+\end{aligned}
+\]</span> The three equations (Gauss, Codazzi, Ricci) are called fundamental equations for a submanifold <span class="math inline">\(M\hookrightarrow\tilde{M}\)</span>.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="planar-curves">Planar Curves</h3>
+<p>A planar curve is a 1-dimensional manifold embedded in the 2-plane. Let <span class="math inline">\(\mathbf{t}\)</span> be the tangent vector field and <span class="math inline">\(\mathbf{n}\)</span> be the normal vector field. We have <span class="math display">\[
+A_{\mathbf{n}}\mathbf{t}=-(\overline{D}_{\mathbf{n}}\mathbf{t})^\top=\kappa \mathbf{t}
+\]</span> where <span class="math inline">\(\kappa\)</span> is the curvature. Thus the estimation can be simply given by <span class="math display">\[
+\hat{A}=\frac{\Delta\mathbf{n}\cdot\mathbf{t}}{\Delta p\cdot\mathbf{t}}\approx \kappa
+\]</span></p>
+<h3 id="space-curves">Space Curves</h3>
+<p>A space curve is a 1-dimensional manifold embedded in 3-space. Let <span class="math inline">\(\mathbf{t}\)</span> be the tangent vector field, <span class="math inline">\(\mathbf{n}\)</span> be the normal vector field, and <span class="math inline">\(\mathbf{b}\)</span> be the binormal vector field. We have the Frenet formula <span class="math display">\[
+\frac{d}{ds}\left(\begin{array}{c}\mathbf{t}\\ \mathbf{n}\\ \mathbf{b}\end{array}\right)=\left(\begin{array}{ccc}0&amp;\kappa&amp;0\\ -\kappa&amp;0&amp;\tau\\ 0&amp;-\tau&amp;0\end{array}\right)\left(\begin{array}{c}\mathbf{t}\\ \mathbf{n}\\ \mathbf{b}\end{array}\right)
+\]</span> where <span class="math inline">\(\kappa\)</span> is curvature and <span class="math inline">\(\tau\)</span> is torsion. Let <span class="math inline">\(\xi=\cos(\theta)\mathbf{n}+\sin(\theta)\mathbf{b}\)</span> be a unit normal vector field. We have <span class="math display">\[
+A_\xi\mathbf{t}=\cos(\theta)A_\mathbf{n}\mathbf{t}+\sin(\theta)A_\mathbf{b}\mathbf{t}=\cos(\theta)\kappa\mathbf{t}
+\]</span> Similarly, let <span class="math inline">\(\xi_\perp=-\sin(\theta)\mathbf{n}+\cos(\theta)\mathbf{b}\)</span> be the unit normal vector perpendicular to <span class="math inline">\(\xi\)</span>. Then <span class="math display">\[
+A_{\xi_\perp}\mathbf{t}=-\sin(\theta)\kappa\mathbf{t}
+\]</span> By definition the mean vector field is <span class="math inline">\(H=\cos(\theta)\kappa\xi-\sin(\theta)\kappa\xi_\perp=\kappa\mathbf{n}\)</span>. The mean curvature is <span class="math inline">\(\|H\|=\kappa\)</span>.</p>
+<h3 id="surfaces">Surfaces</h3>
+<p>A surface is a 2-dimensional manifold embedded in 3-space. The shape operator coincides with the differential of Gauss map (with an additional minus sign). Thus the norm of mean curvature vector <span class="math inline">\(\|H\|\)</span> is in fact the absolute value of mean curvature for surfaces. The sectional curvature is Gaussian curvature for surfaces.</p>
+<h3 id="clifford-torus">Clifford Torus</h3>
+<p>Let <span class="math inline">\(f:\mathbb{R}^2\to\mathbb{R}^4\)</span> be defined by <span class="math display">\[
+f(\theta,\phi)=\frac{1}{\sqrt{2}}(\cos(\sqrt{2}\theta),\sin(\sqrt{2}\theta),\cos(\sqrt{2}\phi),\sin(\sqrt{2}\phi))
+\]</span> The image of <span class="math inline">\(f\)</span> is <span class="math inline">\(\mathbb{S}^1(\sqrt{1/2})\times\mathbb{S}^1(\sqrt{1/2})\)</span>, hence a torus. By computation the tangent vector fields are <span class="math display">\[
 \begin{aligned}
-& f_\theta = (-\sin(\sqrt{2}\theta),\cos(\sqrt{2}\theta),0,0)\\
-& f_\phi = (0,0,-\sin(\sqrt{2}\phi),\cos(\sqrt{2}\phi))
-\end{aligned}</script><p>The Riemannian metric is given by </p>
-<script type="math/tex; mode=display">
-g = d\theta^2+d\phi^2</script><p>which is a flat metric, implying the sectional curvature is identically zero. The normal vector fields are given by</p>
-<script type="math/tex; mode=display">
+&amp; f_\theta = (-\sin(\sqrt{2}\theta),\cos(\sqrt{2}\theta),0,0)\\
+&amp; f_\phi = (0,0,-\sin(\sqrt{2}\phi),\cos(\sqrt{2}\phi))
+\end{aligned}
+\]</span> The Riemannian metric is given by <span class="math display">\[
+g = d\theta^2+d\phi^2
+\]</span> which is a flat metric, implying the sectional curvature is identically zero. The normal vector fields are given by <span class="math display">\[
 \begin{aligned}
-& \xi = \frac{1}{\sqrt{2}}(-\cos(\sqrt{2}\theta),-\sin(\sqrt{2}\theta),\cos(\sqrt{2}\phi),\sin(\sqrt{2}\phi))\\
-& \nu =\frac{1}{\sqrt{2}}(\cos(\sqrt{2}\theta),\sin(\sqrt{2}\theta),\cos(\sqrt{2}\phi),\sin(\sqrt{2}\phi))
-\end{aligned}</script><p>By definition the shape operators are given by </p>
-<script type="math/tex; mode=display">
+&amp; \xi = \frac{1}{\sqrt{2}}(-\cos(\sqrt{2}\theta),-\sin(\sqrt{2}\theta),\cos(\sqrt{2}\phi),\sin(\sqrt{2}\phi))\\
+&amp; \nu =\frac{1}{\sqrt{2}}(\cos(\sqrt{2}\theta),\sin(\sqrt{2}\theta),\cos(\sqrt{2}\phi),\sin(\sqrt{2}\phi))
+\end{aligned}
+\]</span> By definition the shape operators are given by <span class="math display">\[
 \begin{aligned}
-&A_\xi[f_\theta,f_\phi]=[f_\theta,f_\phi]\left[\begin{array}{cc}1&0\\0&-1\end{array}\right]\\
-&A_\nu[f_\theta,f_\phi]=[f_\theta,f_\phi]\left[\begin{array}{cc}-1&0\\0&-1\end{array}\right]
-\end{aligned}</script><p>Therefore, the mean curvature vector field is $H=-\nu$ and the mean curvature is $1$.</p>
-<h3 id="Rotation-Group"><a href="#Rotation-Group" class="headerlink" title="Rotation Group"></a>Rotation Group</h3><p>Let $SO(2)$ be the rotation group which consists of matrices in the form</p>
-<script type="math/tex; mode=display">
-\left[\begin{array}{cc}\cos(\theta)&-\sin(\theta)\\ \sin(\theta)& \cos(\theta)\end{array}\right]</script><p>which can be viewed as a curve in the 4-space. Consider the parametrization</p>
-<script type="math/tex; mode=display">
-f(\theta)=(\cos(\theta),\sin(\theta),-\sin(\theta),\cos(\theta))</script><p>Direct computation shows that the tangent vector field is </p>
-<script type="math/tex; mode=display">
-e_\theta=1/\sqrt{2}(-\sin(\theta),\cos(\theta),-\cos(\theta),-\sin(\theta))</script><p>and consider the following basis of normal space</p>
-<script type="math/tex; mode=display">
+&amp;A_\xi[f_\theta,f_\phi]=[f_\theta,f_\phi]\left[\begin{array}{cc}1&amp;0\\0&amp;-1\end{array}\right]\\
+&amp;A_\nu[f_\theta,f_\phi]=[f_\theta,f_\phi]\left[\begin{array}{cc}-1&amp;0\\0&amp;-1\end{array}\right]
+\end{aligned}
+\]</span> Therefore, the mean curvature vector field is <span class="math inline">\(H=-\nu\)</span> and the mean curvature is <span class="math inline">\(1\)</span>.</p>
+<h3 id="rotation-group">Rotation Group</h3>
+<p>Let <span class="math inline">\(SO(2)\)</span> be the rotation group which consists of matrices in the form <span class="math display">\[
+\left[\begin{array}{cc}\cos(\theta)&amp;-\sin(\theta)\\ \sin(\theta)&amp; \cos(\theta)\end{array}\right]
+\]</span> which can be viewed as a curve in the 4-space. Consider the parametrization <span class="math display">\[
+f(\theta)=(\cos(\theta),\sin(\theta),-\sin(\theta),\cos(\theta))
+\]</span> Direct computation shows that the tangent vector field is <span class="math display">\[
+e_\theta=1/\sqrt{2}(-\sin(\theta),\cos(\theta),-\cos(\theta),-\sin(\theta))
+\]</span> and consider the following basis of normal space <span class="math display">\[
 \begin{aligned}
-& \xi_1=(\cos(\theta),\sin(\theta),0,0)\\
-& \xi_2=(0,0,\sin(\theta),-\cos(\theta))\\
-& \xi_3=1/\sqrt{2}(-\sin(\theta),\cos(\theta),\cos(\theta),\sin(\theta))
-\end{aligned}</script><p>Then the shape operators are</p>
-<script type="math/tex; mode=display">
-A_{\xi_1}e_\theta=-1/\sqrt{2}e_\theta,A_{\xi_2}e_\theta=1/\sqrt{2}e_\theta,A_{\xi_3}e_\theta=0</script><p>Hence the mean vector field is $H(\theta)=-1/\sqrt{2}\xi_1+1/\sqrt{2}\xi_2=-1/\sqrt{2}f(\theta)$. </p>
-<h3 id="Ellipsoid"><a href="#Ellipsoid" class="headerlink" title="Ellipsoid"></a>Ellipsoid</h3><p>Let $F:\mathbb{R}^{n+1}\to\mathbb{R}$ be the function </p>
-<script type="math/tex; mode=display">
-F(x^1,\cdots,x^{n+1})=\sum_{i=1}^{n+1}(\frac{x^i}{a^i})^2-1</script><p>Since $\nabla F(x)\neq 0$ for all $x$ such that $F(x)=0$, the level set $M=F^{-1}(0)$ is a $n$-dimensional submanifold. $\nabla F/|\nabla F|$ serves as the unit normal vector field on $M$. The mean curvature is given by the following formula</p>
-<script type="math/tex; mode=display">
-H=-\frac{1}{n}div(\frac{\nabla F}{\|\nabla F\|})</script>
+&amp; \xi_1=(\cos(\theta),\sin(\theta),0,0)\\
+&amp; \xi_2=(0,0,\sin(\theta),-\cos(\theta))\\
+&amp; \xi_3=1/\sqrt{2}(-\sin(\theta),\cos(\theta),\cos(\theta),\sin(\theta))
+\end{aligned}
+\]</span> Then the shape operators are <span class="math display">\[
+A_{\xi_1}e_\theta=-1/\sqrt{2}e_\theta,A_{\xi_2}e_\theta=1/\sqrt{2}e_\theta,A_{\xi_3}e_\theta=0
+\]</span> Hence the mean vector field is <span class="math inline">\(H(\theta)=-1/\sqrt{2}\xi_1+1/\sqrt{2}\xi_2=-1/\sqrt{2}f(\theta)\)</span>.</p>
+<h3 id="ellipsoid">Ellipsoid</h3>
+<p>Let <span class="math inline">\(F:\mathbb{R}^{n+1}\to\mathbb{R}\)</span> be the function <span class="math display">\[
+F(x^1,\cdots,x^{n+1})=\sum_{i=1}^{n+1}(\frac{x^i}{a^i})^2-1
+\]</span> Since <span class="math inline">\(\nabla F(x)\neq 0\)</span> for all <span class="math inline">\(x\)</span> such that <span class="math inline">\(F(x)=0\)</span>, the level set <span class="math inline">\(M=F^{-1}(0)\)</span> is a <span class="math inline">\(n\)</span>-dimensional submanifold. <span class="math inline">\(\nabla F/\|\nabla F\|\)</span> serves as the unit normal vector field on <span class="math inline">\(M\)</span>. The mean curvature is given by the following formula <span class="math display">\[
+H=-\frac{1}{n}div(\frac{\nabla F}{\|\nabla F\|})
+\]</span></p>
+
     </article>
     <!-- license  -->
     
@@ -669,7 +680,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Second-Fundamental-Form"><span class="toc-number">1.</span> <span class="toc-text">The Second Fundamental Form</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fundamental-Equations"><span class="toc-number">2.</span> <span class="toc-text">Fundamental Equations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples"><span class="toc-number">3.</span> <span class="toc-text">Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Planar-Curves"><span class="toc-number">3.1.</span> <span class="toc-text">Planar Curves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Space-Curves"><span class="toc-number">3.2.</span> <span class="toc-text">Space Curves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Surfaces"><span class="toc-number">3.3.</span> <span class="toc-text">Surfaces</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Clifford-Torus"><span class="toc-number">3.4.</span> <span class="toc-text">Clifford Torus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotation-Group"><span class="toc-number">3.5.</span> <span class="toc-text">Rotation Group</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ellipsoid"><span class="toc-number">3.6.</span> <span class="toc-text">Ellipsoid</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#the-second-fundamental-form"><span class="toc-number">1.</span> <span class="toc-text">The Second Fundamental Form</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fundamental-equations"><span class="toc-number">2.</span> <span class="toc-text">Fundamental Equations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#examples"><span class="toc-number">3.</span> <span class="toc-text">Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#planar-curves"><span class="toc-number">3.1.</span> <span class="toc-text">Planar Curves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#space-curves"><span class="toc-number">3.2.</span> <span class="toc-text">Space Curves</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#surfaces"><span class="toc-number">3.3.</span> <span class="toc-text">Surfaces</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clifford-torus"><span class="toc-number">3.4.</span> <span class="toc-text">Clifford Torus</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rotation-group"><span class="toc-number">3.5.</span> <span class="toc-text">Rotation Group</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ellipsoid"><span class="toc-number">3.6.</span> <span class="toc-text">Ellipsoid</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1097,19 +1108,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1166,9 +1177,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

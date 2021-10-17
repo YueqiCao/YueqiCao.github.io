@@ -352,18 +352,18 @@
         </a>
         <div class="abstract-content">
             <p>There seems to be a gap in <a href="http://papers.nips.cc/paper/3826-submanifold-density-estimation" target="_blank" rel="noopener">Submanifold density estimation</a>.</p>
-<p>In the deduction of variance, one needs to estimate </p>
+<p>In the deduction of variance, one needs to estimate</p>
 <blockquote>
-<p>$\frac{1}{h_m^n}\int_M f(q)\frac{1}{h_m^n}K^2(\frac{u_p(q)}{h_m})dV(q)$</p>
+<p><span class="math inline">\(\frac{1}{h_m^n}\int_M f(q)\frac{1}{h_m^n}K^2(\frac{u_p(q)}{h_m})dV(q)\)</span></p>
 </blockquote>
-<p>Apply theorem 3.1 to function $K^2$ one obtains</p>
-<script type="math/tex; mode=display">
-\frac{1}{h^n}\int_M K^2(\frac{u_p(q)}{h})\xi(q)dV(q)\to\xi(p)\int_{\mathbb{R}^n}K^2(\|z\|)d^nz,h\to 0.</script><p>It seems $h_m^{2n}$ will cause trouble in estimation. Whatever, they claimed that the integration will converges to $f(p)\int K^2(|z|)d^nz$. However, in the expression of variance</p>
+<p>Apply theorem 3.1 to function <span class="math inline">\(K^2\)</span> one obtains <span class="math display">\[
+\frac{1}{h^n}\int_M K^2(\frac{u_p(q)}{h})\xi(q)dV(q)\to\xi(p)\int_{\mathbb{R}^n}K^2(\|z\|)d^nz,h\to 0.
+\]</span> It seems <span class="math inline">\(h_m^{2n}\)</span> will cause trouble in estimation. Whatever, they claimed that the integration will converges to <span class="math inline">\(f(p)\int K^2(\|z\|)d^nz\)</span>. However, in the expression of variance</p>
 <blockquote>
-<p>$Var[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})]=E[\frac{1}{h_m^{2n}}K^2(\frac{u_p(q)}{h_m})]-(E[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})])^2$</p>
+<p><span class="math inline">\(Var[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})]=E[\frac{1}{h_m^{2n}}K^2(\frac{u_p(q)}{h_m})]-(E[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})])^2\)</span></p>
 </blockquote>
-<p>the first term will converge to a constant times $f(p)$, while the latter will converge to $f(p)^2$. Thus the variance will not converge to 0.</p>
-<p>The idea of proof is straightforward. Since $K$ will be supported in $[0,1]$, one notes that when the bandwidth $h$ is small, the integration will be zero outside the normal coordinate. Therefore, everything goes back to Euclidean space.</p>
+<p>the first term will converge to a constant times <span class="math inline">\(f(p)\)</span>, while the latter will converge to <span class="math inline">\(f(p)^2\)</span>. Thus the variance will not converge to 0.</p>
+<p>The idea of proof is straightforward. Since <span class="math inline">\(K\)</span> will be supported in <span class="math inline">\([0,1]\)</span>, one notes that when the bandwidth <span class="math inline">\(h\)</span> is small, the integration will be zero outside the normal coordinate. Therefore, everything goes back to Euclidean space.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -396,7 +396,7 @@
 <p><strong>Personal Comments</strong></p>
 <p>In this series I attempt to collect results concerning stabilities in <a href="https://en.wikipedia.org/wiki/Topological_data_analysis" target="_blank" rel="noopener">topological data analysis</a>. Researches in this direction has been increasing dramatically in recent years. Without doubt there will be more in the future. However, the best will not appear until one really understands all the progresses.</p>
 <hr>
-<p>The first stability theorem in TDA is proved by <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer</a>. It asserts that the bottleneck distance between two persistence diagrams is bounded by the $\infty$-norm of tame functions. They soon generalized this result to $L_p$ cases for tame Lipschitz functions (see <a href="https://faculty.math.illinois.edu/~ymileyko/papers/L_p-stability.pdf" target="_blank" rel="noopener">here</a>). This theorem is fundamental in TDA. And the idea is also direct — counting points in persistence diagrams. We sketch the procedure in the following.</p>
+<p>The first stability theorem in TDA is proved by <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer</a>. It asserts that the bottleneck distance between two persistence diagrams is bounded by the <span class="math inline">\(\infty\)</span>-norm of tame functions. They soon generalized this result to <span class="math inline">\(L_p\)</span> cases for tame Lipschitz functions (see <a href="https://faculty.math.illinois.edu/~ymileyko/papers/L_p-stability.pdf" target="_blank" rel="noopener">here</a>). This theorem is fundamental in TDA. And the idea is also direct -- counting points in persistence diagrams. We sketch the procedure in the following.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -923,19 +923,19 @@
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -992,9 +992,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

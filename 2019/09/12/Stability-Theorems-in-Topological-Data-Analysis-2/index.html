@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">6 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,39 +401,45 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>One observes that when proving the $L^{\infty}$ stability theorem, the functions $f$ and $g$ provide nothing but an interleaved inclusion of level sets $f^{-1}((-\infty,a])\subseteq g^{-1}((-\infty,a+\epsilon])\subseteq f^{-1}((-\infty.a+2\epsilon])$. This further gives the following commutative diagram.</p>
+        <p>One observes that when proving the <span class="math inline">\(L^{\infty}\)</span> stability theorem, the functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> provide nothing but an interleaved inclusion of level sets <span class="math inline">\(f^{-1}((-\infty,a])\subseteq g^{-1}((-\infty,a+\epsilon])\subseteq f^{-1}((-\infty.a+2\epsilon])\)</span>. This further gives the following commutative diagram.</p>
 <a id="more"></a>
-<p><img src="/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/interleavedmodules.png" alt="interleaved modules"></p>
-<p>Instead of taking functions and spaces into account, let us forget about geometry and work on algebra directly. That is, we consider two sequences of modules such that the above diagram commutes. In the terminology of <a href="https://geometry.stanford.edu/papers/ccggo-ppmd-09/ccggo-ppmd-09.pdf" target="_blank" rel="noopener">F. Chazal etc.</a>, the two sequences of modules are called <em>(weakly/strongly) $\epsilon$-interleaved</em>. It would be no surprise that the distance between two persistence diagrams are bounded by $\epsilon$. However, when working in an algebraic approach, we can drop many restrictions on spaces and functions. Furthermore, we generalize the definition of persistence diagrams hence the conclusion is also strengthened. </p>
+<figure>
+<img src="/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/interleavedmodules.png" alt="interleaved modules"><figcaption aria-hidden="true">interleaved modules</figcaption>
+</figure>
+<p>Instead of taking functions and spaces into account, let us forget about geometry and work on algebra directly. That is, we consider two sequences of modules such that the above diagram commutes. In the terminology of <a href="https://geometry.stanford.edu/papers/ccggo-ppmd-09/ccggo-ppmd-09.pdf" target="_blank" rel="noopener">F. Chazal etc.</a>, the two sequences of modules are called <em>(weakly/strongly) <span class="math inline">\(\epsilon\)</span>-interleaved</em>. It would be no surprise that the distance between two persistence diagrams are bounded by <span class="math inline">\(\epsilon\)</span>. However, when working in an algebraic approach, we can drop many restrictions on spaces and functions. Furthermore, we generalize the definition of persistence diagrams hence the conclusion is also strengthened.</p>
 <hr>
-<p>Let $A$ be a subset of $\mathbb{R}$ and $R$ be a field. A <strong>persistence module</strong> $\mathcal{F}<em>A$ is a collection of vector spaces ${F</em>{\alpha}}<em>{\alpha\in A}$ together with linear maps ${f</em>{\alpha}^{\alpha’}:F<em>\alpha\to F</em>{\alpha’}}$ such that for any $\alpha\le \alpha’\le\alpha’’$, we have $f^{\alpha’’}<em>\alpha=f^{\alpha’’}</em>{\alpha’}\circ f^{\alpha’}<em>\alpha$ and $f^\alpha</em>\alpha=id<em>{F</em>\alpha}$. A persistence module is called <strong>tame</strong> if each vector space is of finite dimension. In the following all persistence modules are assumed to be tame.</p>
-<p>Let $\Delta$ be the diagonal ${(x,x)|x\in\bar{\mathbb{R}}}$ and $\Delta<em>{+}$ be the space on and upon the diagonal ${(x,y)|y\ge x}$. If $A$ is discrete with no accumulation point, we can define the <strong>persistence diagram</strong> of $\mathcal{F}_A$ to be a multiset $\mathcal{DF}_A$ in $\Delta</em>{+}$. The points in $\mathcal{DF}_A$ are in the form $(\alpha,\alpha’)$ where $\alpha\le \alpha’\in A$. For each point on the diagonal $\Delta$ the multiplicity is $\infty$. For each point off the diagonal, the multiplicity is </p>
-<script type="math/tex; mode=display">
+<p>Let <span class="math inline">\(A\)</span> be a subset of <span class="math inline">\(\mathbb{R}\)</span> and <span class="math inline">\(R\)</span> be a field. A <strong>persistence module</strong> <span class="math inline">\(\mathcal{F}_A\)</span> is a collection of vector spaces <span class="math inline">\(\{F_{\alpha}\}_{\alpha\in A}\)</span> together with linear maps <span class="math inline">\(\{f_{\alpha}^{\alpha&#39;}:F_\alpha\to F_{\alpha&#39;}\}\)</span> such that for any <span class="math inline">\(\alpha\le \alpha&#39;\le\alpha&#39;&#39;\)</span>, we have <span class="math inline">\(f^{\alpha&#39;&#39;}_\alpha=f^{\alpha&#39;&#39;}_{\alpha&#39;}\circ f^{\alpha&#39;}_\alpha\)</span> and <span class="math inline">\(f^\alpha_\alpha=id_{F_\alpha}\)</span>. A persistence module is called <strong>tame</strong> if each vector space is of finite dimension. In the following all persistence modules are assumed to be tame.</p>
+<p>Let <span class="math inline">\(\Delta\)</span> be the diagonal <span class="math inline">\(\{(x,x)|x\in\bar{\mathbb{R}}\}\)</span> and <span class="math inline">\(\Delta_{+}\)</span> be the space on and upon the diagonal <span class="math inline">\(\{(x,y)|y\ge x\}\)</span>. If <span class="math inline">\(A\)</span> is discrete with no accumulation point, we can define the <strong>persistence diagram</strong> of <span class="math inline">\(\mathcal{F}_A\)</span> to be a multiset <span class="math inline">\(\mathcal{DF}_A\)</span> in <span class="math inline">\(\Delta_{+}\)</span>. The points in <span class="math inline">\(\mathcal{DF}_A\)</span> are in the form <span class="math inline">\((\alpha,\alpha&#39;)\)</span> where <span class="math inline">\(\alpha\le \alpha&#39;\in A\)</span>. For each point on the diagonal <span class="math inline">\(\Delta\)</span> the multiplicity is <span class="math inline">\(\infty\)</span>. For each point off the diagonal, the multiplicity is <span class="math display">\[
 \mu(\alpha_i,\alpha_j)=\left\{\begin{array}{l}rank(f^{\alpha_{j-1}}_{\alpha_i})-rank(f^{\alpha_j}_{\alpha_i}),\alpha_i=\inf A\\
-rank(f^{\alpha_{j-1}}_{\alpha_i})-rank(f^{\alpha_j}_{\alpha_i})+rank(f^{\alpha_j}_{\alpha_{i-1}})-rank(f^{\alpha_{j-1}}_{\alpha_{i-1}}),else\end{array}\right.</script><p>This coincides with the <a href="http://yueqicao.top/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/" target="_blank" rel="noopener">previous definition</a>. To define the persistence diagram of an arbitrary index set needs some preparation.</p>
-<p>Let $B\subseteq A$ be a subset with no accumulation point. Let $\Gamma<em>B$ be the grid ${(\beta_i,\beta_j)|\beta\in B}$. To each grid $\Gamma_B$ is associated with a <em>B-pixelization map</em> $pix_B:\Delta</em>{+}\to \Gamma_B\cup\Delta$. If a cell does not hit the diagonal, $pix_B$ sends each point in the cell to the upper right grid point. If a cell hits the diagonal, then each point is send to the closest point on the diagonal.</p>
-<p><img src="/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/pixelization.png" alt="pixelizationmap"></p>
-<p>Since we can always pick out a subsequence in the persistence module, it is natural to define the persistence diagram of $\mathcal{F}_A$ through an approximation of $\mathcal{DF}_B$ with $B\subseteq A$. </p>
-<p>Let us say a persistence module $\mathcal{F}_B$ is $\epsilon$-periodic is the index set $B=\alpha_0+\epsilon \mathbb{Z}$. Then we have the following lemma</p>
+rank(f^{\alpha_{j-1}}_{\alpha_i})-rank(f^{\alpha_j}_{\alpha_i})+rank(f^{\alpha_j}_{\alpha_{i-1}})-rank(f^{\alpha_{j-1}}_{\alpha_{i-1}}),else\end{array}\right.
+\]</span> This coincides with the <a href="http://yueqicao.top/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/">previous definition</a>. To define the persistence diagram of an arbitrary index set needs some preparation.</p>
+<p>Let <span class="math inline">\(B\subseteq A\)</span> be a subset with no accumulation point. Let <span class="math inline">\(\Gamma_B\)</span> be the grid <span class="math inline">\(\{(\beta_i,\beta_j)|\beta\in B\}\)</span>. To each grid <span class="math inline">\(\Gamma_B\)</span> is associated with a <em>B-pixelization map</em> <span class="math inline">\(pix_B:\Delta_{+}\to \Gamma_B\cup\Delta\)</span>. If a cell does not hit the diagonal, <span class="math inline">\(pix_B\)</span> sends each point in the cell to the upper right grid point. If a cell hits the diagonal, then each point is send to the closest point on the diagonal.</p>
+<figure>
+<img src="/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/pixelization.png" alt="pixelizationmap"><figcaption aria-hidden="true">pixelizationmap</figcaption>
+</figure>
+<p>Since we can always pick out a subsequence in the persistence module, it is natural to define the persistence diagram of <span class="math inline">\(\mathcal{F}_A\)</span> through an approximation of <span class="math inline">\(\mathcal{DF}_B\)</span> with <span class="math inline">\(B\subseteq A\)</span>.</p>
+<p>Let us say a persistence module <span class="math inline">\(\mathcal{F}_B\)</span> is <span class="math inline">\(\epsilon\)</span>-periodic is the index set <span class="math inline">\(B=\alpha_0+\epsilon \mathbb{Z}\)</span>. Then we have the following lemma</p>
 <blockquote>
-<p> Let $B,C\subseteq A$. The pixelization map $pix<em>B$ defines a multi-bijection between $\mathcal{DF}</em>{B\cup C}$ and $\mathcal{DF}_B$. Furthermore, for any $\epsilon$-periodic persistence modules $\mathcal{F}_B$ and $\mathcal{F}_C$, we have $d_B^{\infty}(\mathcal{DF}_B,\mathcal{DF}_A)\le \epsilon$. </p>
+<p>Let <span class="math inline">\(B,C\subseteq A\)</span>. The pixelization map <span class="math inline">\(pix_B\)</span> defines a multi-bijection between <span class="math inline">\(\mathcal{DF}_{B\cup C}\)</span> and <span class="math inline">\(\mathcal{DF}_B\)</span>. Furthermore, for any <span class="math inline">\(\epsilon\)</span>-periodic persistence modules <span class="math inline">\(\mathcal{F}_B\)</span> and <span class="math inline">\(\mathcal{F}_C\)</span>, we have <span class="math inline">\(d_B^{\infty}(\mathcal{DF}_B,\mathcal{DF}_A)\le \epsilon\)</span>.</p>
 </blockquote>
-<p>Therefore, Set $\epsilon=2^{-n}$, the persistence diagrams $\mathcal{DF}_{B_n}$ will form a Cauchy sequence under bottleneck distance. The diagram of $\mathcal{F}_A$ is defined to be the limit of this sequence.</p>
+<p>Therefore, Set <span class="math inline">\(\epsilon=2^{-n}\)</span>, the persistence diagrams <span class="math inline">\(\mathcal{DF}_{B_n}\)</span> will form a Cauchy sequence under bottleneck distance. The diagram of <span class="math inline">\(\mathcal{F}_A\)</span> is defined to be the limit of this sequence.</p>
 <hr>
-<p>As mentioned in the beginning, the interleaving between level sets of spaces become interleaving between persistence modules. Two persistence modules $\mathcal{F}<em>{\mathbb{R}}$ and $\mathcal{G}</em>{\mathbb{R}}$ are <strong>strongly $\epsilon$-interleaved</strong> if there exists two families of homomorphisms ${\phi<em>\alpha:F</em>\alpha\to G<em>{\alpha+\epsilon}}$ and ${\psi</em>{\alpha}:G<em>\alpha:\to F</em>{\alpha+\epsilon}}$ such that the diagram in the beginning commutes. Then we have the following theorem about stability</p>
+<p>As mentioned in the beginning, the interleaving between level sets of spaces become interleaving between persistence modules. Two persistence modules <span class="math inline">\(\mathcal{F}_{\mathbb{R}}\)</span> and <span class="math inline">\(\mathcal{G}_{\mathbb{R}}\)</span> are <strong>strongly <span class="math inline">\(\epsilon\)</span>-interleaved</strong> if there exists two families of homomorphisms <span class="math inline">\(\{\phi_\alpha:F_\alpha\to G_{\alpha+\epsilon}\}\)</span> and <span class="math inline">\(\{\psi_{\alpha}:G_\alpha:\to F_{\alpha+\epsilon}\}\)</span> such that the diagram in the beginning commutes. Then we have the following theorem about stability</p>
 <blockquote>
-<p>Let  $\mathcal{F}<em>{\mathbb{R}}$ and $\mathcal{G}</em>{\mathbb{R}}$ be tame persistence modules. If  $\mathcal{F}<em>{\mathbb{R}}$ and $\mathcal{G}</em>{\mathbb{R}}$ are strongly $\epsilon$-interleaved, then $d<em>B^{\infty}(\mathcal{DF}</em>{\mathbb R},\mathcal{DG}_{\mathbb R})\le \epsilon$.</p>
+<p>Let <span class="math inline">\(\mathcal{F}_{\mathbb{R}}\)</span> and <span class="math inline">\(\mathcal{G}_{\mathbb{R}}\)</span> be tame persistence modules. If <span class="math inline">\(\mathcal{F}_{\mathbb{R}}\)</span> and <span class="math inline">\(\mathcal{G}_{\mathbb{R}}\)</span> are strongly <span class="math inline">\(\epsilon\)</span>-interleaved, then <span class="math inline">\(d_B^{\infty}(\mathcal{DF}_{\mathbb R},\mathcal{DG}_{\mathbb R})\le \epsilon\)</span>.</p>
 </blockquote>
-<p>The proof of this theorem is lengthy. However, for persistence diagrams with finite points off the diagonal, the idea is nothing but an algebraic analogy to the geometric stability proof — one constructs a family of persistence modules $\mathcal{H}^s$ which interpolates between  $\mathcal{F}<em>{\mathbb{R}}$ and $\mathcal{G}</em>{\mathbb{R}}$. Then, for close enough $\mathcal{H}^s$ and $\mathcal{H}^{s’}$ the distance between persistence diagrams can be bounded by the <a href="http://yueqicao.top/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/" target="_blank" rel="noopener">Box Lemma</a>. The bound for $\mathcal{DF}<em>{\mathbb R}$ and $\mathcal{DG}</em>{\mathbb R}$ is obtained by triangle inequality.    </p>
-<p>For general persistence diagram (with possibly infinite points off the diagonal), more techniques are involved. Two persistence diagrams $\mathcal{F}_A$ and $\mathcal{G}_B$ are <strong>weakly $\epsilon$-interleaved</strong> if there exists some $\alpha_0$ such that $\alpha_0+2\epsilon\mathbb Z\subseteq A$ and $\alpha_0+\epsilon+2\epsilon\mathbb Z\subseteq B$ and there are homomorphisms such that the following diagram commutes</p>
-<p><img src="/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/weaklyinter.png" alt="weakly interleaving"></p>
+<p>The proof of this theorem is lengthy. However, for persistence diagrams with finite points off the diagonal, the idea is nothing but an algebraic analogy to the geometric stability proof -- one constructs a family of persistence modules <span class="math inline">\(\mathcal{H}^s\)</span> which interpolates between <span class="math inline">\(\mathcal{F}_{\mathbb{R}}\)</span> and <span class="math inline">\(\mathcal{G}_{\mathbb{R}}\)</span>. Then, for close enough <span class="math inline">\(\mathcal{H}^s\)</span> and <span class="math inline">\(\mathcal{H}^{s&#39;}\)</span> the distance between persistence diagrams can be bounded by the <a href="http://yueqicao.top/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/">Box Lemma</a>. The bound for <span class="math inline">\(\mathcal{DF}_{\mathbb R}\)</span> and <span class="math inline">\(\mathcal{DG}_{\mathbb R}\)</span> is obtained by triangle inequality.</p>
+<p>For general persistence diagram (with possibly infinite points off the diagonal), more techniques are involved. Two persistence diagrams <span class="math inline">\(\mathcal{F}_A\)</span> and <span class="math inline">\(\mathcal{G}_B\)</span> are <strong>weakly <span class="math inline">\(\epsilon\)</span>-interleaved</strong> if there exists some <span class="math inline">\(\alpha_0\)</span> such that <span class="math inline">\(\alpha_0+2\epsilon\mathbb Z\subseteq A\)</span> and <span class="math inline">\(\alpha_0+\epsilon+2\epsilon\mathbb Z\subseteq B\)</span> and there are homomorphisms such that the following diagram commutes</p>
+<figure>
+<img src="/2019/09/12/Stability-Theorems-in-Topological-Data-Analysis-2/weaklyinter.png" alt="weakly interleaving"><figcaption aria-hidden="true">weakly interleaving</figcaption>
+</figure>
 <p>One needs to prove a weakly stability theorem to assist the strong one.</p>
 <blockquote>
-<p>Let  $\mathcal{F}<em>{A}$ and $\mathcal{G}</em>{B}$ be tame persistence modules. If  $\mathcal{F}_A$ and $\mathcal{G}_B$ are weakly $\epsilon$-interleaved, then $d_B^{\infty}(\mathcal{DF}_A,\mathcal{DG}_B)\le 3\epsilon$, and the bound is tight.</p>
+<p>Let <span class="math inline">\(\mathcal{F}_{A}\)</span> and <span class="math inline">\(\mathcal{G}_{B}\)</span> be tame persistence modules. If <span class="math inline">\(\mathcal{F}_A\)</span> and <span class="math inline">\(\mathcal{G}_B\)</span> are weakly <span class="math inline">\(\epsilon\)</span>-interleaved, then <span class="math inline">\(d_B^{\infty}(\mathcal{DF}_A,\mathcal{DG}_B)\le 3\epsilon\)</span>, and the bound is tight.</p>
 </blockquote>
-<p>To obtain the $3\epsilon$ bound we need to investigate the pixelization map carefully. But we can use the pixelization lemma to prove a loose bound easily. Let $\mathcal{H}$ be the persistence module</p>
-<script type="math/tex; mode=display">
-\cdots\to G_{\alpha_0+(2n-1)\epsilon}\to F_{\alpha_0+2n\epsilon}\to G_{\alpha_0+(2n+1)\epsilon}\to\cdots</script><p>Then $\mathcal{F}<em>{\alpha_0+2\epsilon\mathbb Z}$ and $\mathcal{G}</em>{\alpha<em>0+\epsilon+2\epsilon\mathbb Z}$ are subcollections of $\mathcal{H}$. By the pixelization lemma, we have $d_B^{\infty}(\mathcal{DF}</em>{\alpha<em>0+2\epsilon\mathbb Z},\mathcal{DG}</em>{\alpha<em>0+\epsilon+2\epsilon\mathbb Z})\le 2\epsilon$. Similarly, we have $d_B^{\infty}(\mathcal{DF}</em>{\alpha<em>0+2\epsilon\mathbb Z},\mathcal{DF}_A)\le 2\epsilon$ and $d_B^{\infty}(\mathcal{DG}</em>{\alpha_0+\epsilon+2\epsilon\mathbb Z},\mathcal{DG}_B)\le 2\epsilon$. By triangle inequality, we have the bound $6\epsilon$.</p>
+<p>To obtain the <span class="math inline">\(3\epsilon\)</span> bound we need to investigate the pixelization map carefully. But we can use the pixelization lemma to prove a loose bound easily. Let <span class="math inline">\(\mathcal{H}\)</span> be the persistence module <span class="math display">\[
+\cdots\to G_{\alpha_0+(2n-1)\epsilon}\to F_{\alpha_0+2n\epsilon}\to G_{\alpha_0+(2n+1)\epsilon}\to\cdots
+\]</span> Then <span class="math inline">\(\mathcal{F}_{\alpha_0+2\epsilon\mathbb Z}\)</span> and <span class="math inline">\(\mathcal{G}_{\alpha_0+\epsilon+2\epsilon\mathbb Z}\)</span> are subcollections of <span class="math inline">\(\mathcal{H}\)</span>. By the pixelization lemma, we have <span class="math inline">\(d_B^{\infty}(\mathcal{DF}_{\alpha_0+2\epsilon\mathbb Z},\mathcal{DG}_{\alpha_0+\epsilon+2\epsilon\mathbb Z})\le 2\epsilon\)</span>. Similarly, we have <span class="math inline">\(d_B^{\infty}(\mathcal{DF}_{\alpha_0+2\epsilon\mathbb Z},\mathcal{DF}_A)\le 2\epsilon\)</span> and <span class="math inline">\(d_B^{\infty}(\mathcal{DG}_{\alpha_0+\epsilon+2\epsilon\mathbb Z},\mathcal{DG}_B)\le 2\epsilon\)</span>. By triangle inequality, we have the bound <span class="math inline">\(6\epsilon\)</span>.</p>
 
     </article>
     <!-- license  -->
@@ -996,19 +1002,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1065,9 +1071,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

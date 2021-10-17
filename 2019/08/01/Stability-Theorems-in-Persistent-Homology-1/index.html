@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">343</span>Reading time: <span class="post-count reading-time">2 min</span></span>
+                        <span>Word count: <span class="post-count word-count">904</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -405,47 +405,53 @@ height:50vh;
 <p><strong>Personal Comments</strong></p>
 <p>In this series I attempt to collect results concerning stabilities in <a href="https://en.wikipedia.org/wiki/Topological_data_analysis" target="_blank" rel="noopener">topological data analysis</a>. Researches in this direction has been increasing dramatically in recent years. Without doubt there will be more in the future. However, the best will not appear until one really understands all the progresses.</p>
 <hr>
-<p>The first stability theorem in TDA is proved by <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer</a>. It asserts that the bottleneck distance between two persistence diagrams is bounded by the $\infty$-norm of tame functions. They soon generalized this result to $L_p$ cases for tame Lipschitz functions (see <a href="https://faculty.math.illinois.edu/~ymileyko/papers/L_p-stability.pdf" target="_blank" rel="noopener">here</a>). This theorem is fundamental in TDA. And the idea is also direct — counting points in persistence diagrams. We sketch the procedure in the following.</p>
+<p>The first stability theorem in TDA is proved by <a href="https://link.springer.com/article/10.1007%2Fs00454-006-1276-5" target="_blank" rel="noopener">David Cohen-Steiner, Herbert Edelsbrunner, John Harer</a>. It asserts that the bottleneck distance between two persistence diagrams is bounded by the <span class="math inline">\(\infty\)</span>-norm of tame functions. They soon generalized this result to <span class="math inline">\(L_p\)</span> cases for tame Lipschitz functions (see <a href="https://faculty.math.illinois.edu/~ymileyko/papers/L_p-stability.pdf" target="_blank" rel="noopener">here</a>). This theorem is fundamental in TDA. And the idea is also direct -- counting points in persistence diagrams. We sketch the procedure in the following.</p>
 <a id="more"></a>
-<p>Recall that a <em>persistence diagram</em> is a multiset in the extended plane $\bar{\mathbb R}=\mathbb R\cup {\infty}$. A <em>tame</em> function $f:X\to\mathbb R$ defined on a topological space induces a finite filtration</p>
-<script type="math/tex; mode=display">
-\emptyset=f^{-1}((-\infty,a_0])\to\cdots\to f^{-1}((-\infty,a_i])\to\cdots\to f^{-1}((-\infty,a_n])=X.</script><p>Each $a<em>i$ is called a homological critical value. Thus, at $a_i$ the homotopy type of the sublevel sets of $f$ is changed. Tameness means that it changes finite types. Let $b_i&lt;a_i&lt;b</em>{i+1}$ be interleaved sequences. The maps $H<em>k(f^{-1}(-\infty,b_i])\to H_k(f^{-1}(-\infty,b</em>{i+1}])$  are <strong>not</strong> isomorphisms. For simplicity, let us drop the subscript $k$, and denote the homology group by $H(b<em>i)$. Let $f</em>{x,y}$ denote the map $H(x)\to H(y)$. The image of $f_{x,y}$ is denoted by $H(x,y)$. Set $\beta(x,y)={\rm dim} H(x,y)$. We can define the <em>multiplicity</em> of a point $(a_i,a_j)$ in persistence diagram $D(f)$ as</p>
-<script type="math/tex; mode=display">
-\mu(i,j)=\beta(b_{i-1},b_j)-\beta(b_i,b_j)+\beta(b_i,b_{j-1})-\beta(b_{i-1},b_{j-1}).</script><p>Then the <em>total multiplicity</em> (or <em>size</em>) of the persistence diagram over the diagonal is </p>
-<script type="math/tex; mode=display">
-\#(D(f)-\Delta)=\sum_{i<j}\mu(i,j).</script><p>Next we <strong>count</strong> multiplicities in different areas on the diagram.</p>
+<p>Recall that a <em>persistence diagram</em> is a multiset in the extended plane <span class="math inline">\(\bar{\mathbb R}=\mathbb R\cup \{\infty\}\)</span>. A <em>tame</em> function <span class="math inline">\(f:X\to\mathbb R\)</span> defined on a topological space induces a finite filtration <span class="math display">\[
+\emptyset=f^{-1}((-\infty,a_0])\to\cdots\to f^{-1}((-\infty,a_i])\to\cdots\to f^{-1}((-\infty,a_n])=X.
+\]</span> Each <span class="math inline">\(a_i\)</span> is called a homological critical value. Thus, at <span class="math inline">\(a_i\)</span> the homotopy type of the sublevel sets of <span class="math inline">\(f\)</span> is changed. Tameness means that it changes finite types. Let <span class="math inline">\(b_i&lt;a_i&lt;b_{i+1}\)</span> be interleaved sequences. The maps <span class="math inline">\(H_k(f^{-1}(-\infty,b_i])\to H_k(f^{-1}(-\infty,b_{i+1}])\)</span> are <strong>not</strong> isomorphisms. For simplicity, let us drop the subscript <span class="math inline">\(k\)</span>, and denote the homology group by <span class="math inline">\(H(b_i)\)</span>. Let <span class="math inline">\(f_{x,y}\)</span> denote the map <span class="math inline">\(H(x)\to H(y)\)</span>. The image of <span class="math inline">\(f_{x,y}\)</span> is denoted by <span class="math inline">\(H(x,y)\)</span>. Set <span class="math inline">\(\beta(x,y)={\rm dim} H(x,y)\)</span>. We can define the <em>multiplicity</em> of a point <span class="math inline">\((a_i,a_j)\)</span> in persistence diagram <span class="math inline">\(D(f)\)</span> as <span class="math display">\[
+\mu(i,j)=\beta(b_{i-1},b_j)-\beta(b_i,b_j)+\beta(b_i,b_{j-1})-\beta(b_{i-1},b_{j-1}).
+\]</span> Then the <em>total multiplicity</em> (or <em>size</em>) of the persistence diagram over the diagonal is <span class="math display">\[
+\#(D(f)-\Delta)=\sum_{i&lt;j}\mu(i,j).
+\]</span> Next we <strong>count</strong> multiplicities in different areas on the diagram.</p>
 <hr>
-<p>Let $Q_x^y=[-\infty,x]\times[y,\infty]$ be the closed upper left quadrant. <strong>k-Triangle Lemma</strong> asserts that for $x&lt;y$ different from homological critical values, then</p>
-<script type="math/tex; mode=display">
-\#(D(f)\cap Q_x^y)=\beta(x,y).</script><p>The proof is shown in the following figure. Note that the small square with plus and minus notations explains the multiplicity at a point. When summing over, plus and minus cancels. </p>
-<p><img src="/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/ktriangle.png" alt="k-triangle lemma"> </p>
+<p>Let <span class="math inline">\(Q_x^y=[-\infty,x]\times[y,\infty]\)</span> be the closed upper left quadrant. <strong>k-Triangle Lemma</strong> asserts that for <span class="math inline">\(x&lt;y\)</span> different from homological critical values, then <span class="math display">\[
+\#(D(f)\cap Q_x^y)=\beta(x,y).
+\]</span> The proof is shown in the following figure. Note that the small square with plus and minus notations explains the multiplicity at a point. When summing over, plus and minus cancels.</p>
+<figure>
+<img src="/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/ktriangle.png" alt="k-triangle lemma"><figcaption aria-hidden="true">k-triangle lemma</figcaption>
+</figure>
 <hr>
-<p>Let $f$ and $g$ be two tame functions on the same topological space. Let $\epsilon=|f-g|_{\infty}$. We want to compare the multiplicities of quadrants for $f$ and $g$. In fact, the <strong>Quadrant Lemma</strong> asserts that</p>
-<script type="math/tex; mode=display">
-\#(D(f)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(g)\cap Q_x^y).</script><p>Symmetrically, we also have </p>
-<script type="math/tex; mode=display">
-\#(D(g)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(f)\cap Q_x^y).</script><p>Intuitively, when we shift the quadrant upper left by $\epsilon$, the multiplicity decreases. </p>
-<p><img src="/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/quadrant.png" alt="quadrant lemma"></p>
+<p>Let <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> be two tame functions on the same topological space. Let <span class="math inline">\(\epsilon=\|f-g\|_{\infty}\)</span>. We want to compare the multiplicities of quadrants for <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>. In fact, the <strong>Quadrant Lemma</strong> asserts that <span class="math display">\[
+\#(D(f)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(g)\cap Q_x^y).
+\]</span> Symmetrically, we also have <span class="math display">\[
+\#(D(g)\cap Q_{x-\epsilon}^{y+\epsilon})\le \#(D(f)\cap Q_x^y).
+\]</span> Intuitively, when we shift the quadrant upper left by <span class="math inline">\(\epsilon\)</span>, the multiplicity decreases.</p>
+<figure>
+<img src="/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/quadrant.png" alt="quadrant lemma"><figcaption aria-hidden="true">quadrant lemma</figcaption>
+</figure>
 <hr>
-<p>Let $R=[a,b]\times[c,d]$ be a closed rectangle where $a&lt;b&lt;c&lt;d$. Let $R_{\epsilon}=[a+\epsilon,c-\epsilon]\times[c+\epsilon,d-\epsilon]$ be a smaller rectangle. The <strong>Box Lemma</strong> asserts that the points in the smaller box have less multiplicities. </p>
-<script type="math/tex; mode=display">
-\#(D(f)\cap R_{\epsilon})\le \#(D(g)\cap R).</script><p>Similarly, the positions of $f$ and $g$ can be exchanged in the inequality. </p>
-<p><img src="/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/box.png" alt="box lemma"></p>
+<p>Let <span class="math inline">\(R=[a,b]\times[c,d]\)</span> be a closed rectangle where <span class="math inline">\(a&lt;b&lt;c&lt;d\)</span>. Let <span class="math inline">\(R_{\epsilon}=[a+\epsilon,c-\epsilon]\times[c+\epsilon,d-\epsilon]\)</span> be a smaller rectangle. The <strong>Box Lemma</strong> asserts that the points in the smaller box have less multiplicities. <span class="math display">\[
+\#(D(f)\cap R_{\epsilon})\le \#(D(g)\cap R).
+\]</span> Similarly, the positions of <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> can be exchanged in the inequality.</p>
+<figure>
+<img src="/2019/08/01/Stability-Theorems-in-Persistent-Homology-1/box.png" alt="box lemma"><figcaption aria-hidden="true">box lemma</figcaption>
+</figure>
 <hr>
-<p>Let $A$ and $B$ be multisets in the extended plane. The Hausdorff distance between $A$ and $B$ is defined as </p>
-<script type="math/tex; mode=display">
-d_{\mathcal H}(A,B)=\max\{\sup_x\inf_y\|x-y\|_{\infty},\sup_y\inf_x\|y-x\|_{\infty}\},</script><p>where $x\in A$ and $y\in B$. Using box lemma, we can easily deduce that</p>
-<script type="math/tex; mode=display">
-d_{\mathcal H}(D(f),D(g))\le \|f-g\|_{\infty},</script><p>since for each point in $D(f)$, there is at least one point in $D(g)$. </p>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be multisets in the extended plane. The Hausdorff distance between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is defined as <span class="math display">\[
+d_{\mathcal H}(A,B)=\max\{\sup_x\inf_y\|x-y\|_{\infty},\sup_y\inf_x\|y-x\|_{\infty}\},
+\]</span> where <span class="math inline">\(x\in A\)</span> and <span class="math inline">\(y\in B\)</span>. Using box lemma, we can easily deduce that <span class="math display">\[
+d_{\mathcal H}(D(f),D(g))\le \|f-g\|_{\infty},
+\]</span> since for each point in <span class="math inline">\(D(f)\)</span>, there is at least one point in <span class="math inline">\(D(g)\)</span>.</p>
 <hr>
-<p>The final step is to generalize the inequality to bottleneck distance. By definition, the bottleneck distance between $A$ and $B$ is </p>
-<script type="math/tex; mode=display">
-d_{\mathcal B}(A,B)=\inf_{\gamma}\sup_x\|x-\gamma(x)\|_{\infty},</script><p>where $\gamma:A\to B$ is <strong>bijection</strong>. Note that $D(f)$ contains the diagonal with infinite points. Therefore, the bottleneck distance is well defined. Since there are finitely many points off the diagonal in a persistence diagram, we can assume that $f$ and $g$ are so close that in a square of length $|f-g|<em>{\infty}$ there is only one point in $D(f)$. On the other hand, by box lemma we also have a point in $D(g)$. This enables us to construct a bijection but the distance is $|f-g|</em>{\infty}$. For general $f$ and $g$, we interpolate piecewise linear functions and use triangle inequality to pass the conclusion to $\hat{f}$ and $\hat{g}$. In a word, we obtain the main theorem </p>
+<p>The final step is to generalize the inequality to bottleneck distance. By definition, the bottleneck distance between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is <span class="math display">\[
+d_{\mathcal B}(A,B)=\inf_{\gamma}\sup_x\|x-\gamma(x)\|_{\infty},
+\]</span> where <span class="math inline">\(\gamma:A\to B\)</span> is <strong>bijection</strong>. Note that <span class="math inline">\(D(f)\)</span> contains the diagonal with infinite points. Therefore, the bottleneck distance is well defined. Since there are finitely many points off the diagonal in a persistence diagram, we can assume that <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are so close that in a square of length <span class="math inline">\(\|f-g\|_{\infty}\)</span> there is only one point in <span class="math inline">\(D(f)\)</span>. On the other hand, by box lemma we also have a point in <span class="math inline">\(D(g)\)</span>. This enables us to construct a bijection but the distance is <span class="math inline">\(\|f-g\|_{\infty}\)</span>. For general <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>, we interpolate piecewise linear functions and use triangle inequality to pass the conclusion to <span class="math inline">\(\hat{f}\)</span> and <span class="math inline">\(\hat{g}\)</span>. In a word, we obtain the main theorem</p>
 <blockquote>
-<p>Let $X$ be a triangulable space with continuous tame functions $f,h:X\to \mathbb R$. Then the persistence diagrams satisfy $d<em>{\mathcal B}(D(f),D(g))\le|f-g|</em>{\infty}$.</p>
+<p>Let <span class="math inline">\(X\)</span> be a triangulable space with continuous tame functions <span class="math inline">\(f,h:X\to \mathbb R\)</span>. Then the persistence diagrams satisfy <span class="math inline">\(d_{\mathcal B}(D(f),D(g))\le\|f-g\|_{\infty}\)</span>.</p>
 </blockquote>
 <hr>
-<p>In proving the quadrant lemma and box lemma, one notice that there is an interleaving phenomenon of the level sets of $f$ and $g$. This interleaving is generalized to modules, which is purely algebraic. See <a href="https://geometry.stanford.edu/papers/ccggo-ppmd-09/ccggo-ppmd-09.pdf" target="_blank" rel="noopener">F. Chazal etc.</a> for references.  </p>
+<p>In proving the quadrant lemma and box lemma, one notice that there is an interleaving phenomenon of the level sets of <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>. This interleaving is generalized to modules, which is purely algebraic. See <a href="https://geometry.stanford.edu/papers/ccggo-ppmd-09/ccggo-ppmd-09.pdf" target="_blank" rel="noopener">F. Chazal etc.</a> for references.</p>
 
     </article>
     <!-- license  -->
@@ -1008,19 +1014,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1077,9 +1083,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

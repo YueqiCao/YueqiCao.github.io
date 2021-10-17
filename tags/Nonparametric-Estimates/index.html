@@ -352,18 +352,18 @@
         </a>
         <div class="abstract-content">
             <p>There seems to be a gap in <a href="http://papers.nips.cc/paper/3826-submanifold-density-estimation" target="_blank" rel="noopener">Submanifold density estimation</a>.</p>
-<p>In the deduction of variance, one needs to estimate </p>
+<p>In the deduction of variance, one needs to estimate</p>
 <blockquote>
-<p>$\frac{1}{h_m^n}\int_M f(q)\frac{1}{h_m^n}K^2(\frac{u_p(q)}{h_m})dV(q)$</p>
+<p><span class="math inline">\(\frac{1}{h_m^n}\int_M f(q)\frac{1}{h_m^n}K^2(\frac{u_p(q)}{h_m})dV(q)\)</span></p>
 </blockquote>
-<p>Apply theorem 3.1 to function $K^2$ one obtains</p>
-<script type="math/tex; mode=display">
-\frac{1}{h^n}\int_M K^2(\frac{u_p(q)}{h})\xi(q)dV(q)\to\xi(p)\int_{\mathbb{R}^n}K^2(\|z\|)d^nz,h\to 0.</script><p>It seems $h_m^{2n}$ will cause trouble in estimation. Whatever, they claimed that the integration will converges to $f(p)\int K^2(|z|)d^nz$. However, in the expression of variance</p>
+<p>Apply theorem 3.1 to function <span class="math inline">\(K^2\)</span> one obtains <span class="math display">\[
+\frac{1}{h^n}\int_M K^2(\frac{u_p(q)}{h})\xi(q)dV(q)\to\xi(p)\int_{\mathbb{R}^n}K^2(\|z\|)d^nz,h\to 0.
+\]</span> It seems <span class="math inline">\(h_m^{2n}\)</span> will cause trouble in estimation. Whatever, they claimed that the integration will converges to <span class="math inline">\(f(p)\int K^2(\|z\|)d^nz\)</span>. However, in the expression of variance</p>
 <blockquote>
-<p>$Var[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})]=E[\frac{1}{h_m^{2n}}K^2(\frac{u_p(q)}{h_m})]-(E[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})])^2$</p>
+<p><span class="math inline">\(Var[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})]=E[\frac{1}{h_m^{2n}}K^2(\frac{u_p(q)}{h_m})]-(E[\frac{1}{h_m^n}K(\frac{u_p(q)}{h_m})])^2\)</span></p>
 </blockquote>
-<p>the first term will converge to a constant times $f(p)$, while the latter will converge to $f(p)^2$. Thus the variance will not converge to 0.</p>
-<p>The idea of proof is straightforward. Since $K$ will be supported in $[0,1]$, one notes that when the bandwidth $h$ is small, the integration will be zero outside the normal coordinate. Therefore, everything goes back to Euclidean space.</p>
+<p>the first term will converge to a constant times <span class="math inline">\(f(p)\)</span>, while the latter will converge to <span class="math inline">\(f(p)^2\)</span>. Thus the variance will not converge to 0.</p>
+<p>The idea of proof is straightforward. Since <span class="math inline">\(K\)</span> will be supported in <span class="math inline">\([0,1]\)</span>, one notes that when the bandwidth <span class="math inline">\(h\)</span> is small, the integration will be zero outside the normal coordinate. Therefore, everything goes back to Euclidean space.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -392,11 +392,12 @@
                 <span>MSE of Locally Linear Regression</span>
         </a>
         <div class="abstract-content">
-            <h2 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h2><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
-<script type="math/tex; mode=display">
-y=g(x)+\epsilon(x),</script><p>where $g$ is a any smooth function, and $\epsilon(x)$ is a variable with zero mean and finite variance. Let $X_1,X_2,\cdots,X_n$ be i.i.d. samples with bounded density $f$, and $Y_1,Y_2,\cdots, Y_n$ be the corresponding responses (assume $X_i$’s are scalars ‘). By Taylor expansion, we have</p>
-<script type="math/tex; mode=display">
-Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
+            <h2 id="backgrounds">Backgrounds</h2>
+<p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model <span class="math display">\[
+y=g(x)+\epsilon(x),
+\]</span> where <span class="math inline">\(g\)</span> is a any smooth function, and <span class="math inline">\(\epsilon(x)\)</span> is a variable with zero mean and finite variance. Let <span class="math inline">\(X_1,X_2,\cdots,X_n\)</span> be i.i.d. samples with bounded density <span class="math inline">\(f\)</span>, and <span class="math inline">\(Y_1,Y_2,\cdots, Y_n\)</span> be the corresponding responses (assume <span class="math inline">\(X_i\)</span>'s are scalars '). By Taylor expansion, we have <span class="math display">\[
+Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).
+\]</span></p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -429,10 +430,11 @@ Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script>
                 <span>Notes on KNN Density Estimates (1)</span>
         </a>
         <div class="abstract-content">
-            <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>‘s work in 1979. </p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Suppose we have a <strong>bounded, twice differentiable density</strong> function $f$ on $\mathbb R^p$. Let $X_1,X_2,\cdots,X_n$ be $n$ i.i.d. samples of $f$. Let $x\in\mathbb R^p$ be a fixed point so that $f(x)&gt;0$. We want to estimate $f(x)$ based on $n$ samples. The KNN estimate is given by </p>
-<script type="math/tex; mode=display">
-f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where $Z_n$ is the distance between $x$ and its $k$th nearest neighbor, and $\omega$ is a <strong>bounded integrable</strong> weight function with $\int\omega(u){\rm d}u=1$. </p>
+            <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>'s work in 1979.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Suppose we have a <strong>bounded, twice differentiable density</strong> function <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb R^p\)</span>. Let <span class="math inline">\(X_1,X_2,\cdots,X_n\)</span> be <span class="math inline">\(n\)</span> i.i.d. samples of <span class="math inline">\(f\)</span>. Let <span class="math inline">\(x\in\mathbb R^p\)</span> be a fixed point so that <span class="math inline">\(f(x)&gt;0\)</span>. We want to estimate <span class="math inline">\(f(x)\)</span> based on <span class="math inline">\(n\)</span> samples. The KNN estimate is given by <span class="math display">\[
+f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
+\]</span> where <span class="math inline">\(Z_n\)</span> is the distance between <span class="math inline">\(x\)</span> and its <span class="math inline">\(k\)</span>th nearest neighbor, and <span class="math inline">\(\omega\)</span> is a <strong>bounded integrable</strong> weight function with <span class="math inline">\(\int\omega(u){\rm d}u=1\)</span>.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -961,19 +963,19 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1030,9 +1032,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

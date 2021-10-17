@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">850</span>Reading time: <span class="post-count reading-time">5 min</span></span>
+                        <span>Word count: <span class="post-count word-count">865</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -402,48 +402,51 @@ height:50vh;
             <main class="main post-page">
     <article class="article-entry">
         <p>This article aims to solve an exercise in <a href="https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html#" target="_blank" rel="noopener">High-Dimensional Probability</a> (Page 112, Exercise 5.2.3).</p>
-<h2 id="Gaussian-Isoperimetric-Inequality"><a href="#Gaussian-Isoperimetric-Inequality" class="headerlink" title="Gaussian Isoperimetric Inequality"></a>Gaussian Isoperimetric Inequality</h2><p>Let $\mathbb R^n$ equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> $\gamma_n$:</p>
-<script type="math/tex; mode=display">
-\gamma_n(E)=\frac{1}{(2\pi)^{n/2}}\int_E\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x</script><p>where $E\subseteq \mathbb R^n$ is a Borel set. Then $(\mathbb R^n,\gamma_n)$ is called Gauss space. Gaussian isoperimetric inequality states that, among all the measurable sets with given volume, half spaces have the <strong>smallest perimeter</strong>. Moreover, define the Minkowski sum </p>
-<script type="math/tex; mode=display">
-A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statement.</p>
+<h2 id="gaussian-isoperimetric-inequality">Gaussian Isoperimetric Inequality</h2>
+<p>Let <span class="math inline">\(\mathbb R^n\)</span> equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> <span class="math inline">\(\gamma_n\)</span>: <span class="math display">\[
+\gamma_n(E)=\frac{1}{(2\pi)^{n/2}}\int_E\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x
+\]</span> where <span class="math inline">\(E\subseteq \mathbb R^n\)</span> is a Borel set. Then <span class="math inline">\((\mathbb R^n,\gamma_n)\)</span> is called Gauss space. Gaussian isoperimetric inequality states that, among all the measurable sets with given volume, half spaces have the <strong>smallest perimeter</strong>. Moreover, define the Minkowski sum <span class="math display">\[
+A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.
+\]</span> We have the following statement.</p>
 <a id="more"></a>
-<p><strong>Theorem.</strong> Let $\epsilon&gt;0$. Among all sets $A\subseteq \mathbb R^n$ with fixed Gauss measure $\gamma_n(A)$, the half spaces minimizes the Gauss measure $\gamma_n(A+B^n(\epsilon))$, where $B^n(\epsilon)$ is a solid ball centered at origin with radius $\epsilon$.</p>
+<p><strong>Theorem.</strong> Let <span class="math inline">\(\epsilon&gt;0\)</span>. Among all sets <span class="math inline">\(A\subseteq \mathbb R^n\)</span> with fixed Gauss measure <span class="math inline">\(\gamma_n(A)\)</span>, the half spaces minimizes the Gauss measure <span class="math inline">\(\gamma_n(A+B^n(\epsilon))\)</span>, where <span class="math inline">\(B^n(\epsilon)\)</span> is a solid ball centered at origin with radius <span class="math inline">\(\epsilon\)</span>.</p>
 <p>See <a href="https://link.springer.com/content/pdf/10.1007/BF01425510.pdf" target="_blank" rel="noopener">here</a> for a general definition of Gauss space and proof of the above theorem. See <a href="https://www.jstor.org/stable/29782707?seq=1#page_scan_tab_contents" target="_blank" rel="noopener">this paper</a> for a friendly introduction of Gaussian isoperimetric inequality.</p>
-<h2 id="Concentration"><a href="#Concentration" class="headerlink" title="Concentration"></a>Concentration</h2><p>We want to prove the following concentration inequality in Gauss spaces.</p>
-<p><strong>Theorem.</strong> Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. $f:\mathbb R^n\to \mathbb R$ is a Lipschitz function with respect to the standard Euclidean metric. Then $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. That is,</p>
-<script type="math/tex; mode=display">
-\mathbb P(|f(X)-\mathbb Ef(X)|>t)\le \exp(-ct^2),\forall t>0,</script><p>where $c&gt;0$ is a constant.</p>
+<h2 id="concentration">Concentration</h2>
+<p>We want to prove the following concentration inequality in Gauss spaces.</p>
+<p><strong>Theorem.</strong> Let <span class="math inline">\(X\sim\mathcal N(0,I_n)\)</span> be a Gauss variable. <span class="math inline">\(f:\mathbb R^n\to \mathbb R\)</span> is a Lipschitz function with respect to the standard Euclidean metric. Then <span class="math inline">\(f(X)-\mathbb Ef(X)\)</span> is a sub-gaussian variable. That is, <span class="math display">\[
+\mathbb P(|f(X)-\mathbb Ef(X)|&gt;t)\le \exp(-ct^2),\forall t&gt;0,
+\]</span> where <span class="math inline">\(c&gt;0\)</span> is a constant.</p>
 <p>First we prove a blow-up lemma using isoperimetric inequality.</p>
-<p><strong>Lemma.</strong> Let $A$ be a subset in Gauss space. If $\gamma_n(A)&gt;1/2$, then for any $t&gt;0$, $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp{-t^2/2}$.</p>
-<p><strong>Proof of Lemma.</strong> Let $H={x\in\mathbb R^n:x_1\le 0}$ be the half space. By assumption, $\gamma_n(A)&gt;\gamma_n(H)$. The Gaussian isoperimetric inequality implies </p>
-<script type="math/tex; mode=display">
-\gamma_n(A+B^n(t))>\gamma_n(H+B^n(t)).</script><p>Note that $H+B^n(t)={x\in\mathbb R_n:x_1\le t}$ is also a half space. Direct computation shows that </p>
-<script type="math/tex; mode=display">
+<p><strong>Lemma.</strong> Let <span class="math inline">\(A\)</span> be a subset in Gauss space. If <span class="math inline">\(\gamma_n(A)&gt;1/2\)</span>, then for any <span class="math inline">\(t&gt;0\)</span>, <span class="math inline">\(\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp\{-t^2/2\}\)</span>.</p>
+<p><strong>Proof of Lemma.</strong> Let <span class="math inline">\(H=\{x\in\mathbb R^n:x_1\le 0\}\)</span> be the half space. By assumption, <span class="math inline">\(\gamma_n(A)&gt;\gamma_n(H)\)</span>. The Gaussian isoperimetric inequality implies <span class="math display">\[
+\gamma_n(A+B^n(t))&gt;\gamma_n(H+B^n(t)).
+\]</span> Note that <span class="math inline">\(H+B^n(t)=\{x\in\mathbb R_n:x_1\le t\}\)</span> is also a half space. Direct computation shows that <span class="math display">\[
 \begin{aligned}
-\gamma_n(H+B^n(t))&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^t\exp\{-\frac{x_1^2}{2}\}{\rm d}x_1\\
-&=1-\frac{1}{\sqrt{2\pi}}\int_t^{\infty}\exp\{-\frac{x_1^2}{2}\}{\rm d}x_1\\
-&=1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{(t+y)^2}{2}\}{\rm d}y\\
-&\ge 1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{t^2}{2}\}\exp\{-\frac{y^2}{2}\}{\rm d}y\\
-&=1-\frac{1}{2}\exp\{-\frac{t^2}{2}\}.
-\end{aligned}</script><p>Therefore, we have $\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp{-t^2/2}$. $\blacksquare$ </p>
+\gamma_n(H+B^n(t))&amp;=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^t\exp\{-\frac{x_1^2}{2}\}{\rm d}x_1\\
+&amp;=1-\frac{1}{\sqrt{2\pi}}\int_t^{\infty}\exp\{-\frac{x_1^2}{2}\}{\rm d}x_1\\
+&amp;=1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{(t+y)^2}{2}\}{\rm d}y\\
+&amp;\ge 1-\frac{1}{\sqrt{2\pi}}\int_0^{\infty}\exp\{-\frac{t^2}{2}\}\exp\{-\frac{y^2}{2}\}{\rm d}y\\
+&amp;=1-\frac{1}{2}\exp\{-\frac{t^2}{2}\}.
+\end{aligned}
+\]</span> Therefore, we have <span class="math inline">\(\gamma_n(A+B^n(t))\ge1-\frac{1}{2}\exp\{-t^2/2\}\)</span>. <span class="math inline">\(\blacksquare\)</span></p>
 <p>This blow-up lemma enables us to prove the main theorem.</p>
-<p><strong>Proof of Main Theorem.</strong> Without loss of generality, we assume $|f(x)-f(y)|\le |x-y|$. Let $m$ denote the median of $f(X)$. That is,</p>
-<script type="math/tex; mode=display">
-\mathbb P(f(X)\le m)\ge 1/2,\mathbb P(f(X)\ge m)\ge 1/2.</script><p>Consider the level set $A=f^{-1}((-\infty,m])$. Note that $\mathbb P(f(X)\le m)=\gamma_n(A)\ge 1/2$. By blow-up lemma, $\gamma_n(A+B^n(t))\ge  1-1/2\exp{-t^2/2}$. On the other hand, if $x\in A+B^n(t) $, there exists $y\in A$ such that $|x-y|\le t$. Therefore, </p>
-<script type="math/tex; mode=display">
-f(x)\le \|x-y\|+f(y)=f(y)+t.</script><p>This implies $\mathbb P(f(X)\le m+t)\ge \gamma_n(A+B^n(t))$, i.e. $\mathbb P(f(X)-m&gt;t)\le 1/2\exp{-t^2/2}$. </p>
-<p>Replace $f$ with $-f$. We can obtain a similar inequality as $\mathbb P(f(X)-m&lt;-t)\le 1/2\exp{-t^2/2}$. Hence, </p>
-<script type="math/tex; mode=display">
-\mathbb P(|f(X)-m|>t)\le \exp\{-t^2/2\},</script><p>which implies $f(X)-m$ is a sub-gaussian variable. Note that $\mathbb E(f(X)-m)=\mathbb E(f(X))-m$. We know that $f(X)-\mathbb Ef(X)$ is a sub-gaussian variable. $\blacksquare$</p>
-<h2 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h2><p>Let us take $f:\mathbb R^n\to\mathbb R$ to be the norm $|\cdot|$. Let $X\sim\mathcal N(0,I_n)$ be a Gauss variable. Direct computation shows that</p>
-<script type="math/tex; mode=display">
+<p><strong>Proof of Main Theorem.</strong> Without loss of generality, we assume <span class="math inline">\(|f(x)-f(y)|\le \|x-y\|\)</span>. Let <span class="math inline">\(m\)</span> denote the median of <span class="math inline">\(f(X)\)</span>. That is, <span class="math display">\[
+\mathbb P(f(X)\le m)\ge 1/2,\mathbb P(f(X)\ge m)\ge 1/2.
+\]</span> Consider the level set <span class="math inline">\(A=f^{-1}((-\infty,m])\)</span>. Note that <span class="math inline">\(\mathbb P(f(X)\le m)=\gamma_n(A)\ge 1/2\)</span>. By blow-up lemma, <span class="math inline">\(\gamma_n(A+B^n(t))\ge 1-1/2\exp\{-t^2/2\}\)</span>. On the other hand, if $xA+B^n(t) $, there exists <span class="math inline">\(y\in A\)</span> such that <span class="math inline">\(\|x-y\|\le t\)</span>. Therefore, <span class="math display">\[
+f(x)\le \|x-y\|+f(y)=f(y)+t.
+\]</span> This implies <span class="math inline">\(\mathbb P(f(X)\le m+t)\ge \gamma_n(A+B^n(t))\)</span>, i.e. <span class="math inline">\(\mathbb P(f(X)-m&gt;t)\le 1/2\exp\{-t^2/2\}\)</span>.</p>
+<p>Replace <span class="math inline">\(f\)</span> with <span class="math inline">\(-f\)</span>. We can obtain a similar inequality as <span class="math inline">\(\mathbb P(f(X)-m&lt;-t)\le 1/2\exp\{-t^2/2\}\)</span>. Hence, <span class="math display">\[
+\mathbb P(|f(X)-m|&gt;t)\le \exp\{-t^2/2\},
+\]</span> which implies <span class="math inline">\(f(X)-m\)</span> is a sub-gaussian variable. Note that <span class="math inline">\(\mathbb E(f(X)-m)=\mathbb E(f(X))-m\)</span>. We know that <span class="math inline">\(f(X)-\mathbb Ef(X)\)</span> is a sub-gaussian variable. <span class="math inline">\(\blacksquare\)</span></p>
+<h2 id="applications">Applications</h2>
+<p>Let us take <span class="math inline">\(f:\mathbb R^n\to\mathbb R\)</span> to be the norm <span class="math inline">\(\|\cdot\|\)</span>. Let <span class="math inline">\(X\sim\mathcal N(0,I_n)\)</span> be a Gauss variable. Direct computation shows that <span class="math display">\[
 \begin{aligned}
-\mathbb Ef(X)&=\mathbb E\|X\|=\frac{1}{(2\pi)^{n/2}}\int \|x\|\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x\\
-&=\frac{1}{(2\pi)^{n/2}}\int_0^{\infty}\rho\exp\{-\rho^2/2\}{\rm d}\rho\int_{S^{n-1}(\rho)}{\rm d}\sigma\\
-&=\frac{1}{(2\pi)^{n/2}}\times\frac{n\pi^{n/2}}{\Gamma(\frac{n}{2}+1)}\times 2^{(n-1)/2}\Gamma(\frac{n+1}{2})\\
-&=\frac{n}{\sqrt{2}}\times\frac{\Gamma(\frac{n+1}{2})}{\Gamma(\frac{n+2}{2})}.
-\end{aligned}</script><p>By <a href="[https://en.wikipedia.org/wiki/Stirling%27s_approximation](https://en.wikipedia.org/wiki/Stirling&#39;s_approximation">Stirling’s formula</a>), the expectation is about $\sqrt{n}$ when $n$ is large. This shows that in high dimensions, the points concentrate in a sphere of radius $\sqrt{n}$. </p>
+\mathbb Ef(X)&amp;=\mathbb E\|X\|=\frac{1}{(2\pi)^{n/2}}\int \|x\|\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x\\
+&amp;=\frac{1}{(2\pi)^{n/2}}\int_0^{\infty}\rho\exp\{-\rho^2/2\}{\rm d}\rho\int_{S^{n-1}(\rho)}{\rm d}\sigma\\
+&amp;=\frac{1}{(2\pi)^{n/2}}\times\frac{n\pi^{n/2}}{\Gamma(\frac{n}{2}+1)}\times 2^{(n-1)/2}\Gamma(\frac{n+1}{2})\\
+&amp;=\frac{n}{\sqrt{2}}\times\frac{\Gamma(\frac{n+1}{2})}{\Gamma(\frac{n+2}{2})}.
+\end{aligned}
+\]</span> By <a href="%5Bhttps://en.wikipedia.org/wiki/Stirling%27s_approximation%5D(https://en.wikipedia.org/wiki/Stirling&#39;s_approximation)">Stirling's formula</a>, the expectation is about <span class="math inline">\(\sqrt{n}\)</span> when <span class="math inline">\(n\)</span> is large. This shows that in high dimensions, the points concentrate in a sphere of radius <span class="math inline">\(\sqrt{n}\)</span>.</p>
 
     </article>
     <!-- license  -->
@@ -578,7 +581,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gaussian-Isoperimetric-Inequality"><span class="toc-number">1.</span> <span class="toc-text">Gaussian Isoperimetric Inequality</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Concentration"><span class="toc-number">2.</span> <span class="toc-text">Concentration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Applications"><span class="toc-number">3.</span> <span class="toc-text">Applications</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gaussian-isoperimetric-inequality"><span class="toc-number">1.</span> <span class="toc-text">Gaussian Isoperimetric Inequality</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#concentration"><span class="toc-number">2.</span> <span class="toc-text">Concentration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#applications"><span class="toc-number">3.</span> <span class="toc-text">Applications</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1006,19 +1009,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1075,9 +1078,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

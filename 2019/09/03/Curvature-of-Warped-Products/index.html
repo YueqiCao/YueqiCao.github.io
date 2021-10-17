@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.6k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.7k</span>Reading time: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,109 +401,116 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Curvature-of-Coupled-Planes"><a href="#Curvature-of-Coupled-Planes" class="headerlink" title="Curvature of Coupled Planes"></a>Curvature of Coupled Planes</h2><p>Consider the product of two planes $\mathbb R^2\times\mathbb R^2$, with the following Riemannian metric</p>
-<script type="math/tex; mode=display">
-ds^2=dx^2+dy^2+e^{2f(x,y)}(du^2+dv^2),</script><p>where $f(x,y)$ is a smooth function. We compute the sectional/Ricci/scalar curvature of the ‘coupled’ planes using orthonormal frames. Basics about moving frames are referred to <a href="https://link.springer.com/book/10.1007/978-3-319-55084-8" target="_blank" rel="noopener">Loring W. Tu</a>.    </p>
+        <h2 id="curvature-of-coupled-planes">Curvature of Coupled Planes</h2>
+<p>Consider the product of two planes <span class="math inline">\(\mathbb R^2\times\mathbb R^2\)</span>, with the following Riemannian metric <span class="math display">\[
+ds^2=dx^2+dy^2+e^{2f(x,y)}(du^2+dv^2),
+\]</span> where <span class="math inline">\(f(x,y)\)</span> is a smooth function. We compute the sectional/Ricci/scalar curvature of the 'coupled' planes using orthonormal frames. Basics about moving frames are referred to <a href="https://link.springer.com/book/10.1007/978-3-319-55084-8" target="_blank" rel="noopener">Loring W. Tu</a>.</p>
 <a id="more"></a>
-<p>Consider the following orthonormal bases</p>
-<script type="math/tex; mode=display">
-e_1=\partial_x,e_2=\partial_y,e_3=e^{-f}\partial_u,e_4=e^{-f}\partial_v.</script><p>The dual 1-forms are </p>
-<script type="math/tex; mode=display">
-\theta^1=dx,\theta^2=dy,\theta^3=e^{f}du,\theta^4=e^fdv.</script><p>There exists a unique skew-symmetric matrix of 1-forms $[\omega^i_j]$ such that</p>
-<script type="math/tex; mode=display">
-d\theta^i+\omega^i_j\wedge\theta^j=0.</script><p>The $\omega^i_j$’s are called the connection 1-forms, and the above equation is called <em>the first structure equation</em>. Suppose $\omega^i_j=a^i_jdx+b^i_jdy+c^i_jdu+d^i_jdv$. Substituting into the first structure equation, we solve all the connection 1-forms</p>
-<script type="math/tex; mode=display">
+<p>Consider the following orthonormal bases <span class="math display">\[
+e_1=\partial_x,e_2=\partial_y,e_3=e^{-f}\partial_u,e_4=e^{-f}\partial_v.
+\]</span> The dual 1-forms are <span class="math display">\[
+\theta^1=dx,\theta^2=dy,\theta^3=e^{f}du,\theta^4=e^fdv.
+\]</span> There exists a unique skew-symmetric matrix of 1-forms <span class="math inline">\([\omega^i_j]\)</span> such that <span class="math display">\[
+d\theta^i+\omega^i_j\wedge\theta^j=0.
+\]</span> The <span class="math inline">\(\omega^i_j\)</span>'s are called the connection 1-forms, and the above equation is called <em>the first structure equation</em>. Suppose <span class="math inline">\(\omega^i_j=a^i_jdx+b^i_jdy+c^i_jdu+d^i_jdv\)</span>. Substituting into the first structure equation, we solve all the connection 1-forms <span class="math display">\[
 \begin{aligned}
-&\omega^1_2=\omega^3_4=0,\\
-&\omega^1_3=-e^ff_xdu,\omega^1_4=-e^ff_xdv,\\
-&\omega^2_3=-e^ff_ydu,\omega^2_4=-e^ff_ydv.
-\end{aligned}</script><p>The curvature 2-forms are defined by <em>the second structure equation</em></p>
-<script type="math/tex; mode=display">
-\Omega^i_j=d\omega^i_j+\omega^i_k\wedge\omega^k_j.</script><p>Therefore, we write out all the curvature forms</p>
-<script type="math/tex; mode=display">
+&amp;\omega^1_2=\omega^3_4=0,\\
+&amp;\omega^1_3=-e^ff_xdu,\omega^1_4=-e^ff_xdv,\\
+&amp;\omega^2_3=-e^ff_ydu,\omega^2_4=-e^ff_ydv.
+\end{aligned}
+\]</span> The curvature 2-forms are defined by <em>the second structure equation</em> <span class="math display">\[
+\Omega^i_j=d\omega^i_j+\omega^i_k\wedge\omega^k_j.
+\]</span> Therefore, we write out all the curvature forms <span class="math display">\[
 \begin{aligned}
-&\Omega^1_2=0,\\
-&\Omega^1_3=-e^f(f_{xx}+f_x^2)dx\wedge du-e^f(f_{xy}+f_xf_y)dy\wedge du,\\
-&\Omega^1_4=-e^f(f_{xx}+f_x^2)dx\wedge dv-e^f(f_{xy}+f_xf_y)dy\wedge dv,\\
-&\Omega^2_3=-e^f(f_{xy}+f_xf_y)dx\wedge du-e^f(f_{yy}+f_y^2)dy\wedge du,\\
-&\Omega^2_4=-e^f(f_{xy}+f_xf_y)dx\wedge dv-e^f(f_{yy}+f_y^2)dy\wedge dv,\\
-&\Omega^3_4=-e^{2f}(f_x^2+f_y^2)du\wedge dv.
-\end{aligned}</script><p>By the definition of sectional curvature, for any plane spanned by $e_i,e_j$,</p>
-<script type="math/tex; mode=display">
-K_{ij}=\langle R(e_i,e_j)e_j,e_i\rangle=\Omega_j^i(e_i,e_j).</script><p>Hence, we can compute all the sectional curvature using curvature forms,</p>
-<script type="math/tex; mode=display">
+&amp;\Omega^1_2=0,\\
+&amp;\Omega^1_3=-e^f(f_{xx}+f_x^2)dx\wedge du-e^f(f_{xy}+f_xf_y)dy\wedge du,\\
+&amp;\Omega^1_4=-e^f(f_{xx}+f_x^2)dx\wedge dv-e^f(f_{xy}+f_xf_y)dy\wedge dv,\\
+&amp;\Omega^2_3=-e^f(f_{xy}+f_xf_y)dx\wedge du-e^f(f_{yy}+f_y^2)dy\wedge du,\\
+&amp;\Omega^2_4=-e^f(f_{xy}+f_xf_y)dx\wedge dv-e^f(f_{yy}+f_y^2)dy\wedge dv,\\
+&amp;\Omega^3_4=-e^{2f}(f_x^2+f_y^2)du\wedge dv.
+\end{aligned}
+\]</span> By the definition of sectional curvature, for any plane spanned by <span class="math inline">\(e_i,e_j\)</span>, <span class="math display">\[
+K_{ij}=\langle R(e_i,e_j)e_j,e_i\rangle=\Omega_j^i(e_i,e_j).
+\]</span> Hence, we can compute all the sectional curvature using curvature forms, <span class="math display">\[
 \begin{aligned}
-&K_{12}=0,\\
-&K_{13}=K_{14}=-(f_{xx}+f_x^2),\\
-&K_{23}=K_{24}=-(f_{yy}+f_y^2),\\
-&K_{34}=-(f_x^2+f_y^2).
-\end{aligned}</script><p>Ricci curvature is the sum of sectional curvatures, thus,</p>
-<script type="math/tex; mode=display">
+&amp;K_{12}=0,\\
+&amp;K_{13}=K_{14}=-(f_{xx}+f_x^2),\\
+&amp;K_{23}=K_{24}=-(f_{yy}+f_y^2),\\
+&amp;K_{34}=-(f_x^2+f_y^2).
+\end{aligned}
+\]</span> Ricci curvature is the sum of sectional curvatures, thus, <span class="math display">\[
 \begin{aligned}
-&Ric_{11}=K_{12}+K_{13}+K_{14}=-2(f_{xx}+f_x^2),\\
-&Ric_{22}=K_{12}+K_{23}+K_{24}=-2(f_{yy}+f_y^2),\\
-&Ric_{33}=K_{13}+K_{23}+K_{34}=-(f_{xx}+f_{yy}+2f_x^2+2f_y^2),\\
-&Ric_{44}=K_{14}+K_{24}+K_{34}=-(f_{xx}+f_{yy}+2f_x^2+2f_y^2),\\
-\end{aligned}</script><p>Scalar curvature is the sum of Ricci curvature, thus,</p>
-<script type="math/tex; mode=display">
-S=Ric_{11}+Ric_{22}+Ric_{33}+Ric_{44}.</script><h2 id="Curvature-of-4-Dimensional-Warped-Product-Spaces"><a href="#Curvature-of-4-Dimensional-Warped-Product-Spaces" class="headerlink" title="Curvature of 4 Dimensional Warped Product Spaces"></a>Curvature of 4 Dimensional Warped Product Spaces</h2><p>More generally, let $M$ and $N$ be two Riemannian manifolds with metric $g_M$ and $g_N$, respectively. Consider the product space $M\times N$ with the following metric</p>
-<script type="math/tex; mode=display">
-g=g_M+e^{2f}g_N,</script><p>where $f$ is a smooth function on $M$. This is called the <strong>warped products</strong> of $M$ and $N$, and often denoted by $M\times_{e^f}N$ (see <a href="https://max.book118.com/html/2019/0228/6024223150002012.shtm" target="_blank" rel="noopener">John Lee, Example 2.24</a>).  Let $\theta^1,\theta^2$ be the orthonormal coframe on $M$ and $\omega^1_2$ be the corresponding connection form. Similarly, let $\theta^3,\theta^4,\omega^3_4$ be the orthonormal coframe and connection form on $N$. For the product space $M\times N$, we have the orthonormal coframe</p>
-<script type="math/tex; mode=display">
-\bar{\theta^1}=\theta^1,\bar{\theta^2}=\theta^2,\bar{\theta^3}=e^f\theta^3,\bar{\theta^4}=e^f\theta^4.</script><p>Assume that the connection 1-form for $M\times N$ is</p>
-<script type="math/tex; mode=display">
-\bar{\omega^i_j}=a^i_j\bar{\theta_1}+b_j^i\bar{\theta_2}+c^i_j\bar{\theta_3}+d^i_j\bar{\theta_4}.</script><p>Substituting the connection 1-forms into the first structure equation, we have</p>
-<script type="math/tex; mode=display">
+&amp;Ric_{11}=K_{12}+K_{13}+K_{14}=-2(f_{xx}+f_x^2),\\
+&amp;Ric_{22}=K_{12}+K_{23}+K_{24}=-2(f_{yy}+f_y^2),\\
+&amp;Ric_{33}=K_{13}+K_{23}+K_{34}=-(f_{xx}+f_{yy}+2f_x^2+2f_y^2),\\
+&amp;Ric_{44}=K_{14}+K_{24}+K_{34}=-(f_{xx}+f_{yy}+2f_x^2+2f_y^2),\\
+\end{aligned}
+\]</span> Scalar curvature is the sum of Ricci curvature, thus, <span class="math display">\[
+S=Ric_{11}+Ric_{22}+Ric_{33}+Ric_{44}.
+\]</span></p>
+<h2 id="curvature-of-4-dimensional-warped-product-spaces">Curvature of 4 Dimensional Warped Product Spaces</h2>
+<p>More generally, let <span class="math inline">\(M\)</span> and <span class="math inline">\(N\)</span> be two Riemannian manifolds with metric <span class="math inline">\(g_M\)</span> and <span class="math inline">\(g_N\)</span>, respectively. Consider the product space <span class="math inline">\(M\times N\)</span> with the following metric <span class="math display">\[
+g=g_M+e^{2f}g_N,
+\]</span> where <span class="math inline">\(f\)</span> is a smooth function on <span class="math inline">\(M\)</span>. This is called the <strong>warped products</strong> of <span class="math inline">\(M\)</span> and <span class="math inline">\(N\)</span>, and often denoted by <span class="math inline">\(M\times_{e^f}N\)</span> (see <a href="https://max.book118.com/html/2019/0228/6024223150002012.shtm" target="_blank" rel="noopener">John Lee, Example 2.24</a>). Let <span class="math inline">\(\theta^1,\theta^2\)</span> be the orthonormal coframe on <span class="math inline">\(M\)</span> and <span class="math inline">\(\omega^1_2\)</span> be the corresponding connection form. Similarly, let <span class="math inline">\(\theta^3,\theta^4,\omega^3_4\)</span> be the orthonormal coframe and connection form on <span class="math inline">\(N\)</span>. For the product space <span class="math inline">\(M\times N\)</span>, we have the orthonormal coframe <span class="math display">\[
+\bar{\theta^1}=\theta^1,\bar{\theta^2}=\theta^2,\bar{\theta^3}=e^f\theta^3,\bar{\theta^4}=e^f\theta^4.
+\]</span> Assume that the connection 1-form for <span class="math inline">\(M\times N\)</span> is <span class="math display">\[
+\bar{\omega^i_j}=a^i_j\bar{\theta_1}+b_j^i\bar{\theta_2}+c^i_j\bar{\theta_3}+d^i_j\bar{\theta_4}.
+\]</span> Substituting the connection 1-forms into the first structure equation, we have <span class="math display">\[
 \begin{aligned}
-&\bar{\omega^1_2}=\omega^1_2,\\
-&\bar{\omega^1_3}=-e^{-f}\frac{de^f}{\theta^1}\bar{\theta^3},\\
-&\bar{\omega^1_4}=-e^{-f}\frac{de^f}{\theta^1}\bar{\theta^4},\\
-&\bar{\omega^2_3}=-e^{-f}\frac{de^f}{\theta^2}\bar{\theta^3},\\
-&\bar{\omega^2_4}=-e^{-f}\frac{de^f}{\theta^2}\bar{\theta^4},\\
-&\bar{\omega^3_4}=\omega^3_4.
-\end{aligned}</script><p>Since $de^f$ is a 1-form on $M$, it can be written as a linear combination of $\theta^1$ and $\theta^2$. Let $de^f/\theta^1$ and $de^f/\theta^2$ be the coefficients. Similarly, let $\omega^1_2=a\theta^1+b\theta^2$, by structure equation, $d\theta^1=-\omega^1_2\wedge\theta^2=-a\theta^1\wedge\theta^2$, $d\theta^2=-\omega^2_1\wedge\theta^1=-b\theta^1\wedge\theta^2$. We can write </p>
-<script type="math/tex; mode=display">
+&amp;\bar{\omega^1_2}=\omega^1_2,\\
+&amp;\bar{\omega^1_3}=-e^{-f}\frac{de^f}{\theta^1}\bar{\theta^3},\\
+&amp;\bar{\omega^1_4}=-e^{-f}\frac{de^f}{\theta^1}\bar{\theta^4},\\
+&amp;\bar{\omega^2_3}=-e^{-f}\frac{de^f}{\theta^2}\bar{\theta^3},\\
+&amp;\bar{\omega^2_4}=-e^{-f}\frac{de^f}{\theta^2}\bar{\theta^4},\\
+&amp;\bar{\omega^3_4}=\omega^3_4.
+\end{aligned}
+\]</span> Since <span class="math inline">\(de^f\)</span> is a 1-form on <span class="math inline">\(M\)</span>, it can be written as a linear combination of <span class="math inline">\(\theta^1\)</span> and <span class="math inline">\(\theta^2\)</span>. Let <span class="math inline">\(de^f/\theta^1\)</span> and <span class="math inline">\(de^f/\theta^2\)</span> be the coefficients. Similarly, let <span class="math inline">\(\omega^1_2=a\theta^1+b\theta^2\)</span>, by structure equation, <span class="math inline">\(d\theta^1=-\omega^1_2\wedge\theta^2=-a\theta^1\wedge\theta^2\)</span>, <span class="math inline">\(d\theta^2=-\omega^2_1\wedge\theta^1=-b\theta^1\wedge\theta^2\)</span>. We can write <span class="math display">\[
 \begin{aligned}
-&\omega^1_2=-\frac{d\theta^1}{\theta^1\wedge\theta^2}\theta^1-\frac{d\theta^2}{\theta^1\wedge\theta^2}\theta^2,\\
-&\omega^3_4=-\frac{d\theta^3}{\theta^3\wedge\theta^4}\theta^3-\frac{d\theta^4}{\theta^3\wedge\theta^4}\theta^4.
-\end{aligned}</script><p>With these notations, we can list all the curvature 2-forms </p>
-<script type="math/tex; mode=display">
+&amp;\omega^1_2=-\frac{d\theta^1}{\theta^1\wedge\theta^2}\theta^1-\frac{d\theta^2}{\theta^1\wedge\theta^2}\theta^2,\\
+&amp;\omega^3_4=-\frac{d\theta^3}{\theta^3\wedge\theta^4}\theta^3-\frac{d\theta^4}{\theta^3\wedge\theta^4}\theta^4.
+\end{aligned}
+\]</span> With these notations, we can list all the curvature 2-forms <span class="math display">\[
 \begin{aligned}
-&\bar{\Omega^1_2}=d\omega^1_2=\Omega^1_2,\\
-&\bar{\Omega^1_3}=(\frac{de^f}{\theta^2}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^1)^2})\theta^1\wedge\theta^3+(\frac{de^f}{\theta^2}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{\theta^1\theta^2})\theta^2\wedge\theta^3,\\
-&\bar{\Omega^1_4}=(\frac{de^f}{\theta^2}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^1)^2})\theta^1\wedge\theta^4+(\frac{de^f}{\theta^2}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{\theta^1\theta^2})\theta^2\wedge\theta^4,\\
-&\bar{\Omega^2_3}=(-\frac{de^f}{\theta^1}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{\theta^2\theta^1})\theta^1\wedge\theta^3+(-\frac{de^f}{\theta^1}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^2)^2})\theta^2\wedge\theta^3,\\
-&\bar{\Omega^2_4}=(-\frac{de^f}{\theta^1}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{\theta^2\theta^1})\theta^1\wedge\theta^4+(-\frac{de^f}{\theta^1}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^2)^2})\theta^2\wedge\theta^4,\\
-&\bar{\Omega^3_4}=\Omega^3_4-((\frac{de^f}{\theta^1})^2+(\frac{de^f}{\theta^2})^2)\theta^3\wedge\theta^4.
-\end{aligned}</script><p>Hence, the sectional curvatures are </p>
-<script type="math/tex; mode=display">
+&amp;\bar{\Omega^1_2}=d\omega^1_2=\Omega^1_2,\\
+&amp;\bar{\Omega^1_3}=(\frac{de^f}{\theta^2}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^1)^2})\theta^1\wedge\theta^3+(\frac{de^f}{\theta^2}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{\theta^1\theta^2})\theta^2\wedge\theta^3,\\
+&amp;\bar{\Omega^1_4}=(\frac{de^f}{\theta^2}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^1)^2})\theta^1\wedge\theta^4+(\frac{de^f}{\theta^2}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{\theta^1\theta^2})\theta^2\wedge\theta^4,\\
+&amp;\bar{\Omega^2_3}=(-\frac{de^f}{\theta^1}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{\theta^2\theta^1})\theta^1\wedge\theta^3+(-\frac{de^f}{\theta^1}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^2)^2})\theta^2\wedge\theta^3,\\
+&amp;\bar{\Omega^2_4}=(-\frac{de^f}{\theta^1}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{\theta^2\theta^1})\theta^1\wedge\theta^4+(-\frac{de^f}{\theta^1}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^2)^2})\theta^2\wedge\theta^4,\\
+&amp;\bar{\Omega^3_4}=\Omega^3_4-((\frac{de^f}{\theta^1})^2+(\frac{de^f}{\theta^2})^2)\theta^3\wedge\theta^4.
+\end{aligned}
+\]</span> Hence, the sectional curvatures are <span class="math display">\[
 \begin{aligned}
-&\bar{K}_{12}=K_{12},\\
-&\bar{K}_{13}=\bar{K}_{14}=e^{-f}(\frac{de^f}{\theta^2}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^1)^2}),\\
-&\bar{K}_{23}=\bar{K}_{24}=e^{-f}(-\frac{de^f}{\theta^1}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^2)^2}),\\
-&\bar{K}_{34}=e^{-2f}(K_{34}-(\frac{de^f}{\theta^1})^2-(\frac{de^f}{\theta^2})^2).
-\end{aligned}</script><h2 id="More-Examples"><a href="#More-Examples" class="headerlink" title="More Examples"></a>More Examples</h2><p>Let $\mathbb S^2$ be the unit sphere in $\mathbb R^3$. Using stereographic projection, the <em>round metric</em> in local coordinate $(x,y)$ is </p>
-<script type="math/tex; mode=display">
-g_{\mathbb S^2}=\frac{4}{(1+x^2+y^2)^2}(dx^2+dy^2).</script><p>Let $\theta^1=2/(1+x^2+y^2)dx$ and $\theta^2=2/(1+x^2+y^2)dy$ be the orthonormal coframe. We compute that the connection 1-form is $\omega^1_2=-y\theta^1+x\theta^2$. Therefore, </p>
-<script type="math/tex; mode=display">
-\frac{d\theta^1}{\theta^1\wedge\theta^2}=y,\frac{d\theta^2}{\theta^1\wedge\theta^2}=-x.</script><p>Denote $(1+x^2+y^2)/2$ by $J$. Then,</p>
-<script type="math/tex; mode=display">
+&amp;\bar{K}_{12}=K_{12},\\
+&amp;\bar{K}_{13}=\bar{K}_{14}=e^{-f}(\frac{de^f}{\theta^2}\frac{d\theta^1}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^1)^2}),\\
+&amp;\bar{K}_{23}=\bar{K}_{24}=e^{-f}(-\frac{de^f}{\theta^1}\frac{d\theta^2}{\theta^1\wedge\theta^2}-\frac{d^2e^f}{(\theta^2)^2}),\\
+&amp;\bar{K}_{34}=e^{-2f}(K_{34}-(\frac{de^f}{\theta^1})^2-(\frac{de^f}{\theta^2})^2).
+\end{aligned}
+\]</span></p>
+<h2 id="more-examples">More Examples</h2>
+<p>Let <span class="math inline">\(\mathbb S^2\)</span> be the unit sphere in <span class="math inline">\(\mathbb R^3\)</span>. Using stereographic projection, the <em>round metric</em> in local coordinate <span class="math inline">\((x,y)\)</span> is <span class="math display">\[
+g_{\mathbb S^2}=\frac{4}{(1+x^2+y^2)^2}(dx^2+dy^2).
+\]</span> Let <span class="math inline">\(\theta^1=2/(1+x^2+y^2)dx\)</span> and <span class="math inline">\(\theta^2=2/(1+x^2+y^2)dy\)</span> be the orthonormal coframe. We compute that the connection 1-form is <span class="math inline">\(\omega^1_2=-y\theta^1+x\theta^2\)</span>. Therefore, <span class="math display">\[
+\frac{d\theta^1}{\theta^1\wedge\theta^2}=y,\frac{d\theta^2}{\theta^1\wedge\theta^2}=-x.
+\]</span> Denote <span class="math inline">\((1+x^2+y^2)/2\)</span> by <span class="math inline">\(J\)</span>. Then, <span class="math display">\[
 \begin{aligned}
-&\frac{de^f}{\theta^1}=\frac{e^ff_xdx+e^ff_ydy}{\theta^1}=e^ff_xJ,\\
-&\frac{d^2e^f}{(\theta^1)^2}=\frac{d(e^ff_xJ)}{\theta^1}=e^f(f_x)^2J^2+e^ff_{xx}J^2+xe^ff_xJ,\\
-&\frac{d^2e^f}{\theta^1\theta^2}=\frac{d(e^ff_xJ)}{\theta^2}=e^ff_xf_yJ^2+e^ff_{xy}J^2+ye^ff_xJ,\\
-\end{aligned}</script><p>Similarly, we have</p>
-<script type="math/tex; mode=display">
+&amp;\frac{de^f}{\theta^1}=\frac{e^ff_xdx+e^ff_ydy}{\theta^1}=e^ff_xJ,\\
+&amp;\frac{d^2e^f}{(\theta^1)^2}=\frac{d(e^ff_xJ)}{\theta^1}=e^f(f_x)^2J^2+e^ff_{xx}J^2+xe^ff_xJ,\\
+&amp;\frac{d^2e^f}{\theta^1\theta^2}=\frac{d(e^ff_xJ)}{\theta^2}=e^ff_xf_yJ^2+e^ff_{xy}J^2+ye^ff_xJ,\\
+\end{aligned}
+\]</span> Similarly, we have <span class="math display">\[
 \begin{aligned}
-&\frac{de^f}{\theta^2}=\frac{e^ff_xdx+e^ff_ydy}{\theta^2}=e^ff_yJ,\\
-&\frac{d^2e^f}{(\theta^2)^2}=\frac{d(e^ff_xJ)}{\theta^2}=e^f(f_y)^2J^2+e^ff_{yy}J^2+ye^ff_yJ,\\
-&\frac{d^2e^f}{\theta^2\theta^1}=\frac{d(e^ff_xJ)}{\theta^1}=e^ff_xf_yJ^2+e^ff_{xy}J^2+xe^ff_yJ,\\
-\end{aligned}</script><p>Note that $\frac{d^2e^f}{\theta^1\theta^2}\neq\frac{d^2e^f}{\theta^2\theta^1}$. </p>
-<p>Let $\mathbb H^2$ be the upper plane with <em>hyperbolic metric</em>  </p>
-<script type="math/tex; mode=display">
-g_{\mathbb H^2}=\frac{1}{v^2}(du^2+dv^2).</script><p>Under this metric $\mathbb H^2$ will be a Riemannian manifold with constant curvature $-1$. Consider the warped product $\mathbb S^2\times_f \mathbb H^2$. The sectional curvatures are </p>
-<script type="math/tex; mode=display">
-\begin{aligned}&\bar{K}_{12}=1,\\&\bar{K}_{13}=\bar{K}_{14}=yf_yJ-(f_x)^2J^2-f_{xx}J^2-xf_xJ,\\&\bar{K}_{23}=\bar{K}_{24}=xf_xJ-(f_y)^2J^2-f_{yy}J^2-yf_yJ,\\&\bar{K}_{34}=e^{-2f}(-1-e^{2f}(f_x)^2J^2-e^{2f}(f_y)^2J^2).\end{aligned}</script>
+&amp;\frac{de^f}{\theta^2}=\frac{e^ff_xdx+e^ff_ydy}{\theta^2}=e^ff_yJ,\\
+&amp;\frac{d^2e^f}{(\theta^2)^2}=\frac{d(e^ff_xJ)}{\theta^2}=e^f(f_y)^2J^2+e^ff_{yy}J^2+ye^ff_yJ,\\
+&amp;\frac{d^2e^f}{\theta^2\theta^1}=\frac{d(e^ff_xJ)}{\theta^1}=e^ff_xf_yJ^2+e^ff_{xy}J^2+xe^ff_yJ,\\
+\end{aligned}
+\]</span> Note that <span class="math inline">\(\frac{d^2e^f}{\theta^1\theta^2}\neq\frac{d^2e^f}{\theta^2\theta^1}\)</span>.</p>
+<p>Let <span class="math inline">\(\mathbb H^2\)</span> be the upper plane with <em>hyperbolic metric</em><br>
+<span class="math display">\[
+g_{\mathbb H^2}=\frac{1}{v^2}(du^2+dv^2).
+\]</span> Under this metric <span class="math inline">\(\mathbb H^2\)</span> will be a Riemannian manifold with constant curvature <span class="math inline">\(-1\)</span>. Consider the warped product <span class="math inline">\(\mathbb S^2\times_f \mathbb H^2\)</span>. The sectional curvatures are <span class="math display">\[
+\begin{aligned}&amp;\bar{K}_{12}=1,\\&amp;\bar{K}_{13}=\bar{K}_{14}=yf_yJ-(f_x)^2J^2-f_{xx}J^2-xf_xJ,\\&amp;\bar{K}_{23}=\bar{K}_{24}=xf_xJ-(f_y)^2J^2-f_{yy}J^2-yf_yJ,\\&amp;\bar{K}_{34}=e^{-2f}(-1-e^{2f}(f_x)^2J^2-e^{2f}(f_y)^2J^2).\end{aligned}
+\]</span></p>
+
     </article>
     <!-- license  -->
     
@@ -637,7 +644,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Curvature-of-Coupled-Planes"><span class="toc-number">1.</span> <span class="toc-text">Curvature of Coupled Planes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Curvature-of-4-Dimensional-Warped-Product-Spaces"><span class="toc-number">2.</span> <span class="toc-text">Curvature of 4 Dimensional Warped Product Spaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More-Examples"><span class="toc-number">3.</span> <span class="toc-text">More Examples</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#curvature-of-coupled-planes"><span class="toc-number">1.</span> <span class="toc-text">Curvature of Coupled Planes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#curvature-of-4-dimensional-warped-product-spaces"><span class="toc-number">2.</span> <span class="toc-text">Curvature of 4 Dimensional Warped Product Spaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#more-examples"><span class="toc-number">3.</span> <span class="toc-text">More Examples</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1065,19 +1072,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1134,9 +1141,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

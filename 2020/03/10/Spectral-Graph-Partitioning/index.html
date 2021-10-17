@@ -401,100 +401,105 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Informally, the problem of graph partitioning, or graph clustering, can be stated as follows: we want to partition a graph into several parts such that there are fewer edges between groups but more edges within groups. If there is a measurement on edges, i.e. the edges are weighted, then it can also be stated that we want a partition that nodes within groups are more similar. Graph partitioning can be encountered in many areas such as <a href="http://www.stat.cmu.edu/~larry/=sml/" target="_blank" rel="noopener">statistical learning</a>, <a href="http://www.leonidzhukov.net/hse/2015/networks/" target="_blank" rel="noopener">network analysis</a>, <a href="https://web.stanford.edu/class/cs224w/" target="_blank" rel="noopener">graph learning</a>. Other than data science, it is also related to graph theory and computer vision. One recalls that there is a classical problem called <a href="https://en.wikipedia.org/wiki/Minimum_cut" target="_blank" rel="noopener">minimum cut</a> in graph theory, which can be solved in polynomial time by the <a href="[https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm](https://en.wikipedia.org/wiki/Stoer–Wagner_algorithm">Stoer-Wagner algorithm</a>). Graph partitioning can be regarded as a strengthened min-cut problem, since we not only want to find the minimal cut but also an ‘equitable’ partition.</p>
-<p> <a href="https://en.wikipedia.org/wiki/Spectral_clustering" target="_blank" rel="noopener">Spectral clustering</a> is one of the most popular approaches to solve graph partitioning. It has a long history which can date back to 1970s and it is popularized in data science as a machine learning method. Results obtained by spectral clustering often outperform traditional methods. Moreover, it is very simple to implement and the mathematics is nothing but standard linear algebra. A comprehensive <a href="https://arxiv.org/pdf/0711.0189.pdf" target="_blank" rel="noopener">tutorial</a> written by U. von Luxburg provides many different aspects to understand spectral clustering including random walk, perturbation theory and so on. Here we may cover the basics from the easiest way: linear algebra. <a id="more"></a></p>
-<p><img src="/2020/03/10/Spectral-Graph-Partitioning/demo.jpg" alt="demo"></p>
-<p>Suppose we want to partition the graph into two parts. Let $A\subset V$ be a subset and $\bar{A}$ be the compliment of $A$ in $V$. Define the (unnormalized) graph cut to be </p>
-<script type="math/tex; mode=display">
-cut(A,\bar{A})=\sum_{i\in A,j\in\bar{A}}w_{ij}</script><p>where $w<em>{ij}$ is the weight of edge $e</em>{ij}$. $w_{ij}=0$ if and only if $i$ and $j$ are not connected. Let $s$ be the indicator vector such that if $v_i\in A$ then $s_i=1$ and if $v_i\notin A$ then $s_i=-1$. We can rewrite graph cut as</p>
-<script type="math/tex; mode=display">
+        <p>Informally, the problem of graph partitioning, or graph clustering, can be stated as follows: we want to partition a graph into several parts such that there are fewer edges between groups but more edges within groups. If there is a measurement on edges, i.e. the edges are weighted, then it can also be stated that we want a partition that nodes within groups are more similar. Graph partitioning can be encountered in many areas such as <a href="http://www.stat.cmu.edu/~larry/=sml/" target="_blank" rel="noopener">statistical learning</a>, <a href="http://www.leonidzhukov.net/hse/2015/networks/" target="_blank" rel="noopener">network analysis</a>, <a href="https://web.stanford.edu/class/cs224w/" target="_blank" rel="noopener">graph learning</a>. Other than data science, it is also related to graph theory and computer vision. One recalls that there is a classical problem called <a href="https://en.wikipedia.org/wiki/Minimum_cut" target="_blank" rel="noopener">minimum cut</a> in graph theory, which can be solved in polynomial time by the <a href="%5Bhttps://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm%5D(https://en.wikipedia.org/wiki/Stoer–Wagner_algorithm)">Stoer-Wagner algorithm</a>. Graph partitioning can be regarded as a strengthened min-cut problem, since we not only want to find the minimal cut but also an 'equitable' partition.</p>
+<p><a href="https://en.wikipedia.org/wiki/Spectral_clustering" target="_blank" rel="noopener">Spectral clustering</a> is one of the most popular approaches to solve graph partitioning. It has a long history which can date back to 1970s and it is popularized in data science as a machine learning method. Results obtained by spectral clustering often outperform traditional methods. Moreover, it is very simple to implement and the mathematics is nothing but standard linear algebra. A comprehensive <a href="https://arxiv.org/pdf/0711.0189.pdf" target="_blank" rel="noopener">tutorial</a> written by U. von Luxburg provides many different aspects to understand spectral clustering including random walk, perturbation theory and so on. Here we may cover the basics from the easiest way: linear algebra. <a id="more"></a></p>
+<figure>
+<img src="/2020/03/10/Spectral-Graph-Partitioning/demo.jpg" alt="demo"><figcaption aria-hidden="true">demo</figcaption>
+</figure>
+<p>Suppose we want to partition the graph into two parts. Let <span class="math inline">\(A\subset V\)</span> be a subset and <span class="math inline">\(\bar{A}\)</span> be the compliment of <span class="math inline">\(A\)</span> in <span class="math inline">\(V\)</span>. Define the (unnormalized) graph cut to be <span class="math display">\[
+cut(A,\bar{A})=\sum_{i\in A,j\in\bar{A}}w_{ij}
+\]</span> where <span class="math inline">\(w_{ij}\)</span> is the weight of edge <span class="math inline">\(e_{ij}\)</span>. <span class="math inline">\(w_{ij}=0\)</span> if and only if <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are not connected. Let <span class="math inline">\(s\)</span> be the indicator vector such that if <span class="math inline">\(v_i\in A\)</span> then <span class="math inline">\(s_i=1\)</span> and if <span class="math inline">\(v_i\notin A\)</span> then <span class="math inline">\(s_i=-1\)</span>. We can rewrite graph cut as <span class="math display">\[
 \begin{equation}
 \begin{aligned}
-cut(A,\bar{A})&=\frac{1}{4}\sum_{i\in A,j\in\bar{A}}w_{ij}(s_i-s_j)^2\\
-&=\frac{1}{8}\sum_{i,j}w_{ij}(s_i-s_j)^2\\
-&=\frac{1}{4}\sum_{i,j}((\sum_{j}w_{ij})s_i^2\delta_{ij}-w_{ij}s_is_j)
+cut(A,\bar{A})&amp;=\frac{1}{4}\sum_{i\in A,j\in\bar{A}}w_{ij}(s_i-s_j)^2\\
+&amp;=\frac{1}{8}\sum_{i,j}w_{ij}(s_i-s_j)^2\\
+&amp;=\frac{1}{4}\sum_{i,j}((\sum_{j}w_{ij})s_i^2\delta_{ij}-w_{ij}s_is_j)
 \end{aligned}
-\end{equation}</script><p>Let $D$ be the diagonal matrix such that $d<em>{ii}=\sum</em>{j}w<em>{ij}$. The graph Laplacian is defined as $L=D-W$. From the computation we see that $s^TLs=\frac{1}{2}\sum</em>{ij}w_{ij}(s_i-s_j)^2$ for any vector $s$ and the graph cut is $cut(A,\bar{A})=\frac{1}{4}s^TLs$. By construction $\sum_i s_i^2=n$. In addition, we want ‘equitable’ partition. Therefore we have the so called balanced cut constraint $\sum_i s_i=0$. i.e. $|A|=|\bar{A}|$. This integer minimization problem is, however, NP-hard. An accurate solution is not attainable. So we need to find ways to approximate the solution. One way is to relax the indicator vector $s$ to be any vector $x\in\mathbb{R}^n$ satisfying the constraints. Then we can deal with a much easier continuous optimization problem.</p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> Let <span class="math inline">\(D\)</span> be the diagonal matrix such that <span class="math inline">\(d_{ii}=\sum_{j}w_{ij}\)</span>. The graph Laplacian is defined as <span class="math inline">\(L=D-W\)</span>. From the computation we see that <span class="math inline">\(s^TLs=\frac{1}{2}\sum_{ij}w_{ij}(s_i-s_j)^2\)</span> for any vector <span class="math inline">\(s\)</span> and the graph cut is <span class="math inline">\(cut(A,\bar{A})=\frac{1}{4}s^TLs\)</span>. By construction <span class="math inline">\(\sum_i s_i^2=n\)</span>. In addition, we want 'equitable' partition. Therefore we have the so called balanced cut constraint <span class="math inline">\(\sum_i s_i=0\)</span>. i.e. <span class="math inline">\(|A|=|\bar{A}|\)</span>. This integer minimization problem is, however, NP-hard. An accurate solution is not attainable. So we need to find ways to approximate the solution. One way is to relax the indicator vector <span class="math inline">\(s\)</span> to be any vector <span class="math inline">\(x\in\mathbb{R}^n\)</span> satisfying the constraints. Then we can deal with a much easier continuous optimization problem. <span class="math display">\[
 \begin{equation}
 \begin{aligned}
-\min\quad& Q(x)=\frac{1}{4}x^TLx\\
-s.t.\quad& \sum_i x_i=0,\sum_i x_i^2=n
+\min\quad&amp; Q(x)=\frac{1}{4}x^TLx\\
+s.t.\quad&amp; \sum_i x_i=0,\sum_i x_i^2=n
 \end{aligned}
-\end{equation}</script><p>Let $\mathbf{1}$ be the constant vector. The first constraint $\sum_i x_i=0$ is equivalent to the condition $x\perp \mathbf{1}$. The second constraint is equivalent to that $x$ is on a sphere. Then optimization is equivalent to  </p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> Let <span class="math inline">\(\mathbf{1}\)</span> be the constant vector. The first constraint <span class="math inline">\(\sum_i x_i=0\)</span> is equivalent to the condition <span class="math inline">\(x\perp \mathbf{1}\)</span>. The second constraint is equivalent to that <span class="math inline">\(x\)</span> is on a sphere. Then optimization is equivalent to<br>
+<span class="math display">\[
 \begin{equation}
 \min_{x\perp \mathbf{1}}\frac{x^TLx}{x^Tx}
-\end{equation}</script><p>By Rayleigh-Ritz theorem, we just pick the eigenvector with respect to the second least eigenvalue (note that $\mathbf{1}$ corresponds to the eigenvalue 0 of $L$). </p>
-<p>The last step is to revert the eigenvector $x$ to the indicator vector $s$. A simple criterion is to map positive numbers to $1$ and negative numbers to $-1$. In general, one can apply $k$-means clustering to $x$ (here $k=2$), which is a common method if we want to obtain a $k$ partition.</p>
-<p>The relaxation from integral optimization to real optimization seems to weaken the restriction $|A|=|\bar{A}|$. For integral optimization it is equivalent to $\sum s_i=0$. However, for real optimization $\sum x_i=0$ may not imply $|{x_i&gt;0}|=|{x_i&lt;0}|$. One way to overcome this shortcoming is to place the balance restriction to the objective function. We define the ratio cut </p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> By Rayleigh-Ritz theorem, we just pick the eigenvector with respect to the second least eigenvalue (note that <span class="math inline">\(\mathbf{1}\)</span> corresponds to the eigenvalue 0 of <span class="math inline">\(L\)</span>).</p>
+<p>The last step is to revert the eigenvector <span class="math inline">\(x\)</span> to the indicator vector <span class="math inline">\(s\)</span>. A simple criterion is to map positive numbers to <span class="math inline">\(1\)</span> and negative numbers to <span class="math inline">\(-1\)</span>. In general, one can apply <span class="math inline">\(k\)</span>-means clustering to <span class="math inline">\(x\)</span> (here <span class="math inline">\(k=2\)</span>), which is a common method if we want to obtain a <span class="math inline">\(k\)</span> partition.</p>
+<p>The relaxation from integral optimization to real optimization seems to weaken the restriction <span class="math inline">\(|A|=|\bar{A}|\)</span>. For integral optimization it is equivalent to <span class="math inline">\(\sum s_i=0\)</span>. However, for real optimization <span class="math inline">\(\sum x_i=0\)</span> may not imply <span class="math inline">\(|\{x_i&gt;0\}|=|\{x_i&lt;0\}|\)</span>. One way to overcome this shortcoming is to place the balance restriction to the objective function. We define the ratio cut <span class="math display">\[
 \begin{equation}
 Rcut(A,\bar{A})=\frac{cut(A,\bar{A})}{|A|}+\frac{cut(A,\bar{A})}{|\bar{A}|}
-\end{equation}</script><p>Define the indicator vector $f=(f_1,\cdots,f_n)$ such that </p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> Define the indicator vector <span class="math inline">\(f=(f_1,\cdots,f_n)\)</span> such that <span class="math display">\[
 \begin{equation}
 f_i=\left\{\begin{array}{l}\sqrt{|\bar{A}|/|A|},v_i\in A\\ -\sqrt{|A|/|\bar{A}|},v_i\in\bar{A} \end{array}\right.
-\end{equation}</script><p>Then the ratio cut is equivalent to </p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> Then the ratio cut is equivalent to <span class="math display">\[
 \begin{equation}
 Rcut(A,\bar{A})=\frac{1}{n}f^TLf
-\end{equation}</script><p>By definition $f$ satisfies </p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> By definition <span class="math inline">\(f\)</span> satisfies <span class="math display">\[
 \begin{equation}
 \sum_i f_i=0, \|f\|=\sqrt{n}
-\end{equation}</script><p>When we use the same relaxation method we can find that the problem is the same as (3). Therefore, we have not made any progress than what we have done at first.</p>
-<p>However, one can easily generalize the ratio cut to arbitrary $k$-partition. We define</p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> When we use the same relaxation method we can find that the problem is the same as (3). Therefore, we have not made any progress than what we have done at first.</p>
+<p>However, one can easily generalize the ratio cut to arbitrary <span class="math inline">\(k\)</span>-partition. We define <span class="math display">\[
 \begin{equation}
 Rcut(A_1,\cdots, A_k)=\sum_{i=1}^k\frac{cut(A_i,\bar{A}_i)}{|A_i|}
-\end{equation}</script><p>Unlike the previous methods, we define $k$ indicator vectors $h^1,\cdots, h^k$. For each $h^i$, $h^i<em>j=1/\sqrt{|A_i|}$ if $v_j\in A_i$ and $h^i_j=0$ otherwise. Let $H=[h^1,\cdots,h^k]$ be the $n\times k$ matrix. It satisfies $H^TH=I</em>{k\times k}$. A direct computation shows that </p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> Unlike the previous methods, we define <span class="math inline">\(k\)</span> indicator vectors <span class="math inline">\(h^1,\cdots, h^k\)</span>. For each <span class="math inline">\(h^i\)</span>, <span class="math inline">\(h^i_j=1/\sqrt{|A_i|}\)</span> if <span class="math inline">\(v_j\in A_i\)</span> and <span class="math inline">\(h^i_j=0\)</span> otherwise. Let <span class="math inline">\(H=[h^1,\cdots,h^k]\)</span> be the <span class="math inline">\(n\times k\)</span> matrix. It satisfies <span class="math inline">\(H^TH=I_{k\times k}\)</span>. A direct computation shows that <span class="math display">\[
 \begin{equation}
 Rcut(A_1,\cdots,A_k)=Tr(H^TLH)
-\end{equation}</script><p>Therefore, we come to the optimization </p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> Therefore, we come to the optimization <span class="math display">\[
 \begin{equation}
 \begin{aligned}
-\min\quad& Tr(H^TLH)\\
-s.t\quad& H^TH=I_{k\times k}
+\min\quad&amp; Tr(H^TLH)\\
+s.t\quad&amp; H^TH=I_{k\times k}
 \end{aligned}
-\end{equation}</script><p>By Rayleigh-Ritz theorem, the minimizer is the matrix consisting the eigenvectors corresponding to the $k$ least eigenvalues. The last problem is that how to revert the matrix $H$ to partitions of the graph. View $H$ as $n$ points in the $k$ plane $\mathbb{R}^k$. That is, we construct a ‘dimension reduction’ map $v_i\to H_i$. Then we can cluster the points using $k$-means clustering.</p>
-<p>In ratio cut, the size of partition is measured by the number of vertices. One can also measure the size by the total weights of edges. Let $vol(A)=\sum<em>{i\in A}d</em>{ii}$. The normalized cut is </p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> By Rayleigh-Ritz theorem, the minimizer is the matrix consisting the eigenvectors corresponding to the <span class="math inline">\(k\)</span> least eigenvalues. The last problem is that how to revert the matrix <span class="math inline">\(H\)</span> to partitions of the graph. View <span class="math inline">\(H\)</span> as <span class="math inline">\(n\)</span> points in the <span class="math inline">\(k\)</span> plane <span class="math inline">\(\mathbb{R}^k\)</span>. That is, we construct a 'dimension reduction' map <span class="math inline">\(v_i\to H_i\)</span>. Then we can cluster the points using <span class="math inline">\(k\)</span>-means clustering.</p>
+<p>In ratio cut, the size of partition is measured by the number of vertices. One can also measure the size by the total weights of edges. Let <span class="math inline">\(vol(A)=\sum_{i\in A}d_{ii}\)</span>. The normalized cut is <span class="math display">\[
 \begin{equation}
 Ncut(A_i,\cdots,A_k)=\sum_{i=1}^k\frac{cut(A_i,\bar{A}_i)}{vol(A_i)}
-\end{equation}</script><p>Similarly, we define $k$ indicator vectors $h^1,\cdots, h^k$ such that $h^i_j=1/\sqrt{vol(A_i)}$ for $v_i\in A_i$ and 0 otherwise. Let $H=[h^1,\cdots,h^k]$. Then $H^TDH=I$, and</p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> Similarly, we define <span class="math inline">\(k\)</span> indicator vectors <span class="math inline">\(h^1,\cdots, h^k\)</span> such that <span class="math inline">\(h^i_j=1/\sqrt{vol(A_i)}\)</span> for <span class="math inline">\(v_i\in A_i\)</span> and 0 otherwise. Let <span class="math inline">\(H=[h^1,\cdots,h^k]\)</span>. Then <span class="math inline">\(H^TDH=I\)</span>, and <span class="math display">\[
 \begin{equation}
 Ncut(A_1,\cdots,A_k)=Tr(H^TLH)
-\end{equation}</script><p>Let $T=D^{1/2}H$ and $L_s=D^{-1/2}LD^{-1/2}$ be the normalized graph Laplacian. We want to solve</p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> Let <span class="math inline">\(T=D^{1/2}H\)</span> and <span class="math inline">\(L_s=D^{-1/2}LD^{-1/2}\)</span> be the normalized graph Laplacian. We want to solve <span class="math display">\[
 \begin{equation}
 \begin{aligned}
-\min\quad& Tr(T^TL_sT)\\
-s.t\quad& T^TT=I_{k\times k}
+\min\quad&amp; Tr(T^TL_sT)\\
+s.t\quad&amp; T^TT=I_{k\times k}
 \end{aligned}
-\end{equation}</script><p>which is in the same form as ratio cut. To revert to the discrete case, we apply $k$ means clustering to $H$. </p>
-<p>One remarkable thing about normalized cut is that it has a beautiful explanation from the perspective of random walk. Let $p<em>{ij}=w</em>{ij}/d_i$ be the one-step transition probability from node $i$ to node $j$. If the graph is connected and non-bipartite, this random walk will always possess a stationary distribution $\pi$ such that $\pi_i=d_i/vol(V)$. Let $P(A|B)=P(v_i\in A|v_j\in B)$ denote the probability that points in $B$ walk to $A$ in one step. Then </p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> which is in the same form as ratio cut. To revert to the discrete case, we apply <span class="math inline">\(k\)</span> means clustering to <span class="math inline">\(H\)</span>.</p>
+<p>One remarkable thing about normalized cut is that it has a beautiful explanation from the perspective of random walk. Let <span class="math inline">\(p_{ij}=w_{ij}/d_i\)</span> be the one-step transition probability from node <span class="math inline">\(i\)</span> to node <span class="math inline">\(j\)</span>. If the graph is connected and non-bipartite, this random walk will always possess a stationary distribution <span class="math inline">\(\pi\)</span> such that <span class="math inline">\(\pi_i=d_i/vol(V)\)</span>. Let <span class="math inline">\(P(A|B)=P(v_i\in A|v_j\in B)\)</span> denote the probability that points in <span class="math inline">\(B\)</span> walk to <span class="math inline">\(A\)</span> in one step. Then <span class="math display">\[
 \begin{equation}
 \begin{aligned}
-P(A,\bar{A})&=\sum_{i\in A,j\in \bar{A}}\pi_ip_{ij}\\
-&=\sum_{i\in A,j\in \bar{A}}\frac{d_i}{vol(V)}\frac{w_{ij}}{d_i}\\
-&=\sum_{i\in A,j\in \bar{A}}\frac{w_{ij}}{vol(V)}
+P(A,\bar{A})&amp;=\sum_{i\in A,j\in \bar{A}}\pi_ip_{ij}\\
+&amp;=\sum_{i\in A,j\in \bar{A}}\frac{d_i}{vol(V)}\frac{w_{ij}}{d_i}\\
+&amp;=\sum_{i\in A,j\in \bar{A}}\frac{w_{ij}}{vol(V)}
 \end{aligned}
-\end{equation}</script><p>Therefore,</p>
-<script type="math/tex; mode=display">
+\end{equation}
+\]</span> Therefore, <span class="math display">\[
 \begin{equation}
 \begin{aligned}
-P(A|\bar{A})&=\frac{P(A,\bar{A})}{P(\bar{A})}\\
-&=\frac{\sum_{i\in A,j\in\bar{A}}w_{ij}/vol(V)}{vol(A)/vol(V)}\\
-&=\sum_{i\in A,j\in\bar{A}}\frac{w_{ij}}{vol(A)}\\
-&=\frac{cut(A,\bar{A})}{vol(A)}
+P(A|\bar{A})&amp;=\frac{P(A,\bar{A})}{P(\bar{A})}\\
+&amp;=\frac{\sum_{i\in A,j\in\bar{A}}w_{ij}/vol(V)}{vol(A)/vol(V)}\\
+&amp;=\sum_{i\in A,j\in\bar{A}}\frac{w_{ij}}{vol(A)}\\
+&amp;=\frac{cut(A,\bar{A})}{vol(A)}
 \end{aligned}
-\end{equation}</script><p>We see that $Ncut(A,\bar{A})=P(A|\bar{A})+P(\bar{A}|A)$. When we are minimizing the normalized cut we are trying to find a partition such that points have low probability that transfer from one community to the other.</p>
-<p><img src="/2020/03/10/Spectral-Graph-Partitioning/spec.jpg" alt="spec"></p>
+\end{equation}
+\]</span> We see that <span class="math inline">\(Ncut(A,\bar{A})=P(A|\bar{A})+P(\bar{A}|A)\)</span>. When we are minimizing the normalized cut we are trying to find a partition such that points have low probability that transfer from one community to the other.</p>
+<figure>
+<img src="/2020/03/10/Spectral-Graph-Partitioning/spec.jpg" alt="spec"><figcaption aria-hidden="true">spec</figcaption>
+</figure>
 
     </article>
     <!-- license  -->
@@ -1057,19 +1062,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1126,9 +1131,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

@@ -276,7 +276,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.3k</span>Reading time: <span class="post-count reading-time">8 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.4k</span>Reading time: <span class="post-count reading-time">8 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -405,93 +405,100 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Backgrounds"><a href="#Backgrounds" class="headerlink" title="Backgrounds"></a>Backgrounds</h2><p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model</p>
-<script type="math/tex; mode=display">
-y=g(x)+\epsilon(x),</script><p>where $g$ is a any smooth function, and $\epsilon(x)$ is a variable with zero mean and finite variance. Let $X_1,X_2,\cdots,X_n$ be i.i.d. samples with bounded density $f$, and $Y_1,Y_2,\cdots, Y_n$ be the corresponding responses (assume $X_i$’s are scalars ‘). By Taylor expansion, we have</p>
-<script type="math/tex; mode=display">
-Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).</script><a id="more"></a>
-<p>To emphasize the local information around $x$, we introduce the kernel function $K_h(u)=K(u/h)/h$, where $\int K(u){\rm d}u=1$ and $h&gt;0$ is called the bandwidth.  And consider the following optimization</p>
-<script type="math/tex; mode=display">
-\arg\min_{g,\beta}\sum_{i=1}^n(Y_i-g-\beta(X_i-x))^2K_h(X_i-x).</script><p>We introduce the following notations</p>
-<script type="math/tex; mode=display">
+        <h2 id="backgrounds">Backgrounds</h2>
+<p>Locally linear regression (also called locally weighted least squares) is an important method in nonparametric regression. Its understanding is intuitive. Suppose one has a general model <span class="math display">\[
+y=g(x)+\epsilon(x),
+\]</span> where <span class="math inline">\(g\)</span> is a any smooth function, and <span class="math inline">\(\epsilon(x)\)</span> is a variable with zero mean and finite variance. Let <span class="math inline">\(X_1,X_2,\cdots,X_n\)</span> be i.i.d. samples with bounded density <span class="math inline">\(f\)</span>, and <span class="math inline">\(Y_1,Y_2,\cdots, Y_n\)</span> be the corresponding responses (assume <span class="math inline">\(X_i\)</span>'s are scalars '). By Taylor expansion, we have <span class="math display">\[
+Y_i-g(x)\approx \beta(X_i-x)+\epsilon(x).
+\]</span> <a id="more"></a></p>
+<p>To emphasize the local information around <span class="math inline">\(x\)</span>, we introduce the kernel function <span class="math inline">\(K_h(u)=K(u/h)/h\)</span>, where <span class="math inline">\(\int K(u){\rm d}u=1\)</span> and <span class="math inline">\(h&gt;0\)</span> is called the bandwidth. And consider the following optimization <span class="math display">\[
+\arg\min_{g,\beta}\sum_{i=1}^n(Y_i-g-\beta(X_i-x))^2K_h(X_i-x).
+\]</span> We introduce the following notations <span class="math display">\[
 \begin{gather}
 {\bf Y}=[Y_1,Y_2,\cdots,Y_n]^T,\\
-{\bf X}=\left[\begin{array}{cc}1&X_1-x\\1&X_2-x\\ \cdots&\cdots\\ 1&X_n-x\end{array}\right],\\
+{\bf X}=\left[\begin{array}{cc}1&amp;X_1-x\\1&amp;X_2-x\\ \cdots&amp;\cdots\\ 1&amp;X_n-x\end{array}\right],\\
 {\bf W}={\rm diag}\{K_h(X_1-x),\cdots,K_h(X_n-x)\},\\
 e_1=[1,0]^T,\\
 e_2=[0,1]^T.
-\end{gather}</script><p>Then the optimization has a closed solution</p>
-<script type="math/tex; mode=display">
+\end{gather}
+\]</span> Then the optimization has a closed solution <span class="math display">\[
 \begin{gather}
 \hat{g}(x)=e_1^T({\bf X^TWX})^{-1}{\bf X^TWY},\\
 \hat{\beta}=e_2^T({\bf X^TWX})^{-1}{\bf X^TWY}.
-\end{gather}</script><p>For the present we analyze the conditional bias and variance of $\hat{g}(x)$. Note that by assumptions we have $\mathbb E[Y|X]=g(X)$,$\mathbb E[(Y-g(X))^2|X]=\sigma^2(X)$. Let $g({\bf X})=[g(X_1),g(X_2),\cdots,g(X_n)]^T$. We have the following decomposition</p>
-<script type="math/tex; mode=display">
+\end{gather}
+\]</span> For the present we analyze the conditional bias and variance of <span class="math inline">\(\hat{g}(x)\)</span>. Note that by assumptions we have <span class="math inline">\(\mathbb E[Y|X]=g(X)\)</span>,<span class="math inline">\(\mathbb E[(Y-g(X))^2|X]=\sigma^2(X)\)</span>. Let <span class="math inline">\(g({\bf X})=[g(X_1),g(X_2),\cdots,g(X_n)]^T\)</span>. We have the following decomposition <span class="math display">\[
 \begin{aligned}
-\hat{g}(x)-g(x)=&e_1^T({\bf X^TWX})^{-1}{\bf X^TW}({\bf Y}-g({\bf X}))\\
-&+e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x).
-\end{aligned}</script><p>Taking expectations on both sizes, we have</p>
-<script type="math/tex; mode=display">
+\hat{g}(x)-g(x)=&amp;e_1^T({\bf X^TWX})^{-1}{\bf X^TW}({\bf Y}-g({\bf X}))\\
+&amp;+e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x).
+\end{aligned}
+\]</span> Taking expectations on both sizes, we have <span class="math display">\[
 \begin{aligned}
-\mathbb E[(\hat{g}(x)-g(x))^2|{\bf X}]=&\mathbb E[(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}({\bf Y}-g({\bf X})))^2|{\bf X}]\\
-&+(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x))^2.
-\end{aligned}</script><p>The first term is variance and the second term is square of bias.</p>
-<h2 id="Variance"><a href="#Variance" class="headerlink" title="Variance"></a>Variance</h2><p>Let ${\bf \Sigma}={\rm diag}{\sigma^2(X_1),\cdots,\sigma^2(X_n)}$. Variance can be simplified as</p>
-<script type="math/tex; mode=display">
-e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1.</script><p>Denote $\sum_{i=1}^n K_h(X_i-x)(X_i-x)^j$ by $S_j$ for $j=0,1,2$. Then we have </p>
-<script type="math/tex; mode=display">
-{\bf X^TWX}=\left[\begin{array}{cc}S_0&S_1\\S_1&S_2\end{array}\right].</script><p>Note that</p>
-<script type="math/tex; mode=display">
-\mathbb E[S_j/nh^j|{\bf X}]=\int K(u)u^jf(x+hu){\rm d}u=\mu_jf(x)+o(1),</script><p>where $\mu_j=\int K(u)u^j{\rm d}u&lt;\infty$. Furthermore,</p>
-<script type="math/tex; mode=display">
+\mathbb E[(\hat{g}(x)-g(x))^2|{\bf X}]=&amp;\mathbb E[(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}({\bf Y}-g({\bf X})))^2|{\bf X}]\\
+&amp;+(e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x))^2.
+\end{aligned}
+\]</span></p>
+<p>The first term is variance and the second term is square of bias.</p>
+<h2 id="variance">Variance</h2>
+<p>Let <span class="math inline">\({\bf \Sigma}={\rm diag}\{\sigma^2(X_1),\cdots,\sigma^2(X_n)\}\)</span>. Variance can be simplified as <span class="math display">\[
+e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1.
+\]</span> Denote <span class="math inline">\(\sum_{i=1}^n K_h(X_i-x)(X_i-x)^j\)</span> by <span class="math inline">\(S_j\)</span> for <span class="math inline">\(j=0,1,2\)</span>. Then we have <span class="math display">\[
+{\bf X^TWX}=\left[\begin{array}{cc}S_0&amp;S_1\\S_1&amp;S_2\end{array}\right].
+\]</span> Note that <span class="math display">\[
+\mathbb E[S_j/nh^j|{\bf X}]=\int K(u)u^jf(x+hu){\rm d}u=\mu_jf(x)+o(1),
+\]</span> where <span class="math inline">\(\mu_j=\int K(u)u^j{\rm d}u&lt;\infty\)</span>. Furthermore, <span class="math display">\[
 \begin{aligned}
-{\rm Var}[S_j/nh^j|{\bf X}]&\le\frac{1}{n}\mathbb E[K_h(X_i-x)^2((X_i-x)/h)^{2j}|{\bf X}]\\
-&\le \frac{1}{nh}\int K(u)^2u^{2j}f(x+hu){\rm d}u.
-\end{aligned}</script><p>Therefore, $\rm Var\to 0$ as $nh\to \infty$. By Chebyshev’s inequality, we can write </p>
-<script type="math/tex; mode=display">
-S_j/nh^j=\mu_jf(x)+o_{\mathbb P}(1),</script><p>where $o_{\mathbb P}(1)$ denotes an infinitesimal in probability. Let ${\bf H}={\rm diag}{1,h}$. Then </p>
-<script type="math/tex; mode=display">
-\frac{1}{n}{\bf H^{-1}X^TWXH^{-1}}=f(x)\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]+o_{\mathbb P}(1),</script><p>where we assume that $\mu_j=0$ for odd $j$. </p>
-<p>Let $\nu_j=\int K(u)^2u^j{\rm d}u$. By a similar argument we have </p>
-<script type="math/tex; mode=display">
-\frac{1}{n}{\bf H^{-1}X^TW\Sigma WXH^{-1}}=f(x)\sigma^2(x)\left[\begin{array}{cc}\nu_0&0\\0&\nu_2\end{array}\right]+o_{\mathbb P}(1).</script><p>Now we can obtain that</p>
-<script type="math/tex; mode=display">
+{\rm Var}[S_j/nh^j|{\bf X}]&amp;\le\frac{1}{n}\mathbb E[K_h(X_i-x)^2((X_i-x)/h)^{2j}|{\bf X}]\\
+&amp;\le \frac{1}{nh}\int K(u)^2u^{2j}f(x+hu){\rm d}u.
+\end{aligned}
+\]</span> Therefore, <span class="math inline">\(\rm Var\to 0\)</span> as <span class="math inline">\(nh\to \infty\)</span>. By Chebyshev's inequality, we can write <span class="math display">\[
+S_j/nh^j=\mu_jf(x)+o_{\mathbb P}(1),
+\]</span> where <span class="math inline">\(o_{\mathbb P}(1)\)</span> denotes an infinitesimal in probability. Let <span class="math inline">\({\bf H}={\rm diag}\{1,h\}\)</span>. Then <span class="math display">\[
+\frac{1}{n}{\bf H^{-1}X^TWXH^{-1}}=f(x)\left[\begin{array}{cc}1&amp;0\\0&amp;\mu_2\end{array}\right]+o_{\mathbb P}(1),
+\]</span> where we assume that <span class="math inline">\(\mu_j=0\)</span> for odd <span class="math inline">\(j\)</span>.</p>
+<p>Let <span class="math inline">\(\nu_j=\int K(u)^2u^j{\rm d}u\)</span>. By a similar argument we have <span class="math display">\[
+\frac{1}{n}{\bf H^{-1}X^TW\Sigma WXH^{-1}}=f(x)\sigma^2(x)\left[\begin{array}{cc}\nu_0&amp;0\\0&amp;\nu_2\end{array}\right]+o_{\mathbb P}(1).
+\]</span> Now we can obtain that <span class="math display">\[
 \begin{aligned}
-&e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1\\
-=&\frac{1}{nh}e_1^T{\bf H^{-1}}({\bf H^{-1}X^TWXH^{-1}}/n)^{-1}(\frac{h}{n}{\bf H^{-1}X^TW\Sigma WXH^{-1}})\\
-&({\bf H^{-1}X^TWXH^{-1}}/n)^{-1}{\bf H^{-1}}e_1\\
-=&\frac{1}{nh}\left(\left(e_1^T\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]^{-1}\left[\begin{array}{cc}\nu_1&0\\0&\nu_2\end{array}\right]\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]^{-1}e_1\right)\frac{\sigma^2(x)}{f(x)}+o_{\mathbb P}(1)\right)\\
-=&\frac{1}{nh}(\frac{\nu_0\sigma^2(x)}{f(x)}+o_{\mathbb P}(1)).
-\end{aligned}</script><h2 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h2><p>Consider the Taylor expansion for $g$,</p>
-<script type="math/tex; mode=display">
-g(X_i)=g(x)+g'(x)(X_i-x)+\frac{1}{2}g''(x)(X_i-x)^2+\frac{1}{6}g'''(\bar{X}_i)(X_i-x)^3.</script><p>Write $r(X_i)=g(X_i)-g(x)-g’(x)(X_i-x)$. Then we have</p>
-<script type="math/tex; mode=display">
-g({\bf X})=g(x){\bf X}e_1+g'(x){\bf X}e_2+r({\bf X}).</script><p>Therefore, the bias term is </p>
-<script type="math/tex; mode=display">
+&amp;e_1^T({\bf X^TWX})^{-1}{\bf X^TW\Sigma WX}({\bf X^TWX})^{-1}e_1\\
+=&amp;\frac{1}{nh}e_1^T{\bf H^{-1}}({\bf H^{-1}X^TWXH^{-1}}/n)^{-1}(\frac{h}{n}{\bf H^{-1}X^TW\Sigma WXH^{-1}})\\
+&amp;({\bf H^{-1}X^TWXH^{-1}}/n)^{-1}{\bf H^{-1}}e_1\\
+=&amp;\frac{1}{nh}\left(\left(e_1^T\left[\begin{array}{cc}1&amp;0\\0&amp;\mu_2\end{array}\right]^{-1}\left[\begin{array}{cc}\nu_1&amp;0\\0&amp;\nu_2\end{array}\right]\left[\begin{array}{cc}1&amp;0\\0&amp;\mu_2\end{array}\right]^{-1}e_1\right)\frac{\sigma^2(x)}{f(x)}+o_{\mathbb P}(1)\right)\\
+=&amp;\frac{1}{nh}(\frac{\nu_0\sigma^2(x)}{f(x)}+o_{\mathbb P}(1)).
+\end{aligned}
+\]</span></p>
+<h2 id="bias">Bias</h2>
+<p>Consider the Taylor expansion for <span class="math inline">\(g\)</span>, <span class="math display">\[
+g(X_i)=g(x)+g&#39;(x)(X_i-x)+\frac{1}{2}g&#39;&#39;(x)(X_i-x)^2+\frac{1}{6}g&#39;&#39;&#39;(\bar{X}_i)(X_i-x)^3.
+\]</span> Write <span class="math inline">\(r(X_i)=g(X_i)-g(x)-g&#39;(x)(X_i-x)\)</span>. Then we have <span class="math display">\[
+g({\bf X})=g(x){\bf X}e_1+g&#39;(x){\bf X}e_2+r({\bf X}).
+\]</span> Therefore, the bias term is <span class="math display">\[
 \begin{aligned}
-&e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x)\\
-=&g(x)e_1^T({\bf X^TWX})^{-1}{\bf X^TWX}e_1+g'(x)e_1^T({\bf X^TWX})^{-1}{\bf X^TWX}e_2\\
-&+e_1^T({\bf X^TWX})^{-1}{\bf X^TW}r({\bf X})-g(x)\\
-=&e_1^T({\bf X^TWX})^{-1}{\bf X^TW}r({\bf X}).
-\end{aligned}</script><p>For the second order term we have the following estimation</p>
-<script type="math/tex; mode=display">
-\frac{g''(x)}{2nh^2}{\bf H^{-1}X^TW}[(X_1-x)^2,\cdots,(X_n-x)^2]^T=\left(\begin{array}{c}\frac{1}{2}\mu_2f(x)g''(x)\\0\end{array}\right)+o_{\mathbb P}(1).</script><p>For the third order term, we assume that $g’’’(\bar{X}_i)$ are bounded. The matrix norm is bounded by</p>
-<script type="math/tex; mode=display">
+&amp;e_1^T({\bf X^TWX})^{-1}{\bf X^TW}g({\bf X})-g(x)\\
+=&amp;g(x)e_1^T({\bf X^TWX})^{-1}{\bf X^TWX}e_1+g&#39;(x)e_1^T({\bf X^TWX})^{-1}{\bf X^TWX}e_2\\
+&amp;+e_1^T({\bf X^TWX})^{-1}{\bf X^TW}r({\bf X})-g(x)\\
+=&amp;e_1^T({\bf X^TWX})^{-1}{\bf X^TW}r({\bf X}).
+\end{aligned}
+\]</span> For the second order term we have the following estimation <span class="math display">\[
+\frac{g&#39;&#39;(x)}{2nh^2}{\bf H^{-1}X^TW}[(X_1-x)^2,\cdots,(X_n-x)^2]^T=\left(\begin{array}{c}\frac{1}{2}\mu_2f(x)g&#39;&#39;(x)\\0\end{array}\right)+o_{\mathbb P}(1).
+\]</span> For the third order term, we assume that <span class="math inline">\(g&#39;&#39;&#39;(\bar{X}_i)\)</span> are bounded. The matrix norm is bounded by <span class="math display">\[
 \begin{aligned}
-&\|\frac{1}{nh^2}{\bf H^{-1}X^TW}[(X_1-x)^3g(\bar{X}_1),\cdots,(X_n-x)^3g(\bar{X}_n)]^T\|\\
-\le & C\max\{\frac{1}{nh^2}\sum_{i=1}^n K_h(X_i-x)|X_i-x|^3,\frac{1}{nh^2}S_4\}.
-\end{aligned}</script><p>By a similar argument as above, the bound is $o_{\mathbb P}(1)$ when $n\to\infty$. Therefore, the bias is</p>
-<script type="math/tex; mode=display">
+&amp;\|\frac{1}{nh^2}{\bf H^{-1}X^TW}[(X_1-x)^3g(\bar{X}_1),\cdots,(X_n-x)^3g(\bar{X}_n)]^T\|\\
+\le &amp; C\max\{\frac{1}{nh^2}\sum_{i=1}^n K_h(X_i-x)|X_i-x|^3,\frac{1}{nh^2}S_4\}.
+\end{aligned}
+\]</span> By a similar argument as above, the bound is <span class="math inline">\(o_{\mathbb P}(1)\)</span> when <span class="math inline">\(n\to\infty\)</span>. Therefore, the bias is <span class="math display">\[
 \begin{aligned}
-&e_1^T({\bf X^TWX})^{-1}{\bf X^TW}r({\bf X})\\
-=&h^2e_1^T{\bf H^{-1}}(\frac{1}{n}{\bf H^{-1}X^TWXH^{-1}})^{-1}\frac{1}{nh^2}{\bf H^{-1}X^TW}r({\bf X})\\
-=&\frac{h^2}{2}\left(g''(x)e_1^T\left[\begin{array}{cc}1&0\\0&\mu_2\end{array}\right]^{-1}\left[\begin{array}{cc}\mu_2\\\mu_3\end{array}\right]+o_{\mathbb P}(1)\right)\\
-=&\frac{h^2}{2}(g''(x)\mu_2+o_{\mathbb P}(1))
-\end{aligned}</script><p>Note that if $g$ is a linear function then we will <strong>NOT</strong> have bias.</p>
-<h2 id="Derivative-Estimation"><a href="#Derivative-Estimation" class="headerlink" title="Derivative Estimation"></a>Derivative Estimation</h2><p>Finally we consider the conditional bias and variance for $\hat{\beta}$. The main difference is that ${\bf H}^{-1}e_2=e_2/h$. Therefore we will have order $O(1/{nh^3})$ in variance, and $O(h)$ in bias.  </p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>The whole procedure can be generalized to multivariate case, where $X$ is a vector and $K(\cdot)$ is a multivariate kernel. The details are displayed in <a href="https://projecteuclid.org/download/pdf_1/euclid.aos/1176325632" target="_blank" rel="noopener">D. Ruppert and M.P. Wand</a>‘s paper.</p>
+&amp;e_1^T({\bf X^TWX})^{-1}{\bf X^TW}r({\bf X})\\
+=&amp;h^2e_1^T{\bf H^{-1}}(\frac{1}{n}{\bf H^{-1}X^TWXH^{-1}})^{-1}\frac{1}{nh^2}{\bf H^{-1}X^TW}r({\bf X})\\
+=&amp;\frac{h^2}{2}\left(g&#39;&#39;(x)e_1^T\left[\begin{array}{cc}1&amp;0\\0&amp;\mu_2\end{array}\right]^{-1}\left[\begin{array}{cc}\mu_2\\\mu_3\end{array}\right]+o_{\mathbb P}(1)\right)\\
+=&amp;\frac{h^2}{2}(g&#39;&#39;(x)\mu_2+o_{\mathbb P}(1))
+\end{aligned}
+\]</span> Note that if <span class="math inline">\(g\)</span> is a linear function then we will <strong>NOT</strong> have bias.</p>
+<h2 id="derivative-estimation">Derivative Estimation</h2>
+<p>Finally we consider the conditional bias and variance for <span class="math inline">\(\hat{\beta}\)</span>. The main difference is that <span class="math inline">\({\bf H}^{-1}e_2=e_2/h\)</span>. Therefore we will have order <span class="math inline">\(O(1/{nh^3})\)</span> in variance, and <span class="math inline">\(O(h)\)</span> in bias.</p>
+<h2 id="references">References</h2>
+<p>The whole procedure can be generalized to multivariate case, where <span class="math inline">\(X\)</span> is a vector and <span class="math inline">\(K(\cdot)\)</span> is a multivariate kernel. The details are displayed in <a href="https://projecteuclid.org/download/pdf_1/euclid.aos/1176325632" target="_blank" rel="noopener">D. Ruppert and M.P. Wand</a>'s paper.</p>
 <p>Also in this paper, they considered locally polynomial regression for univariate case. Conditional bias and variance are deduced for derivatives in any order. They also explained why one can not drop <em>condition</em> in asymptotic analysis for locally linear regression.</p>
-<p>A nice introduction to LLR (and other topics in nonparametric estimates) can be found in the <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/" target="_blank" rel="noopener">lecture notes</a>. This article mainly follows <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/local_lin_reg.pdf" target="_blank" rel="noopener">local linear regression</a>.  </p>
+<p>A nice introduction to LLR (and other topics in nonparametric estimates) can be found in the <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/" target="_blank" rel="noopener">lecture notes</a>. This article mainly follows <a href="https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/local_lin_reg.pdf" target="_blank" rel="noopener">local linear regression</a>.</p>
 
     </article>
     <!-- license  -->
@@ -626,7 +633,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Backgrounds"><span class="toc-number">1.</span> <span class="toc-text">Backgrounds</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Variance"><span class="toc-number">2.</span> <span class="toc-text">Variance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bias"><span class="toc-number">3.</span> <span class="toc-text">Bias</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Derivative-Estimation"><span class="toc-number">4.</span> <span class="toc-text">Derivative Estimation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#backgrounds"><span class="toc-number">1.</span> <span class="toc-text">Backgrounds</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#variance"><span class="toc-number">2.</span> <span class="toc-text">Variance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bias"><span class="toc-number">3.</span> <span class="toc-text">Bias</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#derivative-estimation"><span class="toc-number">4.</span> <span class="toc-text">Derivative Estimation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1054,19 +1061,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1123,9 +1130,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

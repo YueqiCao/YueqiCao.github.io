@@ -403,60 +403,67 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>‘s work in 1979. </p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Suppose we have a <strong>bounded, twice differentiable density</strong> function $f$ on $\mathbb R^p$. Let $X_1,X_2,\cdots,X_n$ be $n$ i.i.d. samples of $f$. Let $x\in\mathbb R^p$ be a fixed point so that $f(x)&gt;0$. We want to estimate $f(x)$ based on $n$ samples. The KNN estimate is given by </p>
-<script type="math/tex; mode=display">
-f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where $Z_n$ is the distance between $x$ and its $k$th nearest neighbor, and $\omega$ is a <strong>bounded integrable</strong> weight function with $\int\omega(u){\rm d}u=1$. </p>
+        <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>'s work in 1979.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Suppose we have a <strong>bounded, twice differentiable density</strong> function <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb R^p\)</span>. Let <span class="math inline">\(X_1,X_2,\cdots,X_n\)</span> be <span class="math inline">\(n\)</span> i.i.d. samples of <span class="math inline">\(f\)</span>. Let <span class="math inline">\(x\in\mathbb R^p\)</span> be a fixed point so that <span class="math inline">\(f(x)&gt;0\)</span>. We want to estimate <span class="math inline">\(f(x)\)</span> based on <span class="math inline">\(n\)</span> samples. The KNN estimate is given by <span class="math display">\[
+f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
+\]</span> where <span class="math inline">\(Z_n\)</span> is the distance between <span class="math inline">\(x\)</span> and its <span class="math inline">\(k\)</span>th nearest neighbor, and <span class="math inline">\(\omega\)</span> is a <strong>bounded integrable</strong> weight function with <span class="math inline">\(\int\omega(u){\rm d}u=1\)</span>.</p>
 <a id="more"></a>
-<p>Let $\omega(u)=\frac{1}{|B<em>0(1)|}\chi</em>{B_0(1)}(u)$, where $B_0(1)={x\in\mathbb R^p:|x|\le 1}$ is the solid ball centered at origin with radius 1, and $|B_0(1)|=\frac{\pi^{p/2}}{\Gamma(\frac{p+2}{2})}$ is the volume of unit ball. Under these settings we see that the KNN estimate is </p>
-<script type="math/tex; mode=display">
-f_n(x)=\frac{1}{n(Z_n)^p}\cdot\frac{k}{|B_0(1)|}=\frac{k}{n}\cdot\frac{1}{|B_0(Z_n)|}.</script><p>If we see $\frac{k}{n}$ as the probability that points lie in a ball around $x$, then it is a naive analogy of $\text{probability}=\int\text{density}\approx\text{density}\times \text{area}$. In the following we always assume that $k=k(n)$ is a function of sample size $n$ and $k(n)\to \infty,k(n)/n\to0$ as $n\to\infty$.</p>
-<p>We first investigate several properties of $Z_n$. For simplicity, we call $Z_n$ the KNN distance variable.</p>
-<h2 id="KNN-distance-variable-Z-n"><a href="#KNN-distance-variable-Z-n" class="headerlink" title="KNN distance variable $Z_n$"></a>KNN distance variable $Z_n$</h2><h3 id="CDF-and-PDF-of-Z-n"><a href="#CDF-and-PDF-of-Z-n" class="headerlink" title="CDF and PDF of $Z_n$"></a>CDF and PDF of $Z_n$</h3><p>For fixed $x\in\mathbb R^p$, note that $Z_n$ is a function of $n$ i.i.d. samples. Let $H(r)$ be the cumulative distribution function (<strong>CDF</strong>) of $Z_n$. Let </p>
-<script type="math/tex; mode=display">
-G(r)=\mathbb P(B_x(r))=\int_{B_x(r)}f(u){\rm d}u.</script><p>For any $\epsilon&gt;0$, consider the probability $H(r+\epsilon)-H(r)=\mathbb P(r\le Z_n\le r+\epsilon)$. Suppose $\epsilon$ is small enough so that there is <strong>exactly one</strong> point lying in the shell of thickness $\epsilon$ (It happens when multiple points lie in the shell, but they will not contribute to our deduction since higher order of $\epsilon$ vanishes when taking limit). There are $n$ choices of $k$th nearest point, $\binom{n-1}{k-1}$ choices of $k-1$ points lying within the $r$ ball and others are outside the $r+\epsilon$ ball. Therefore, we have</p>
-<script type="math/tex; mode=display">
-H(r+\epsilon)-H(r)=n(G(r+\epsilon)-G(r))\binom{n-1}{k-1}G(r)^{k-1}(1-G(r+\epsilon))^{n-k}.</script><p>Let $h(r)$ be the probability density function (<strong>PDF</strong>) of $Z_n$. By definition, we have</p>
-<script type="math/tex; mode=display">
-h(r)=\lim\limits_{\epsilon\to0}\frac{H(r+\epsilon)-H(r)}{\epsilon}=n\binom{n-1}{k-1}G(r)^{k-1}(1-G(r))^{n-k}G'(r).</script><p>Furthermore, $G’(r)$ can be expressed as an integration of $f$. Note that</p>
-<script type="math/tex; mode=display">
+<p>Let <span class="math inline">\(\omega(u)=\frac{1}{|B_0(1)|}\chi_{B_0(1)}(u)\)</span>, where <span class="math inline">\(B_0(1)=\{x\in\mathbb R^p:\|x\|\le 1\}\)</span> is the solid ball centered at origin with radius 1, and <span class="math inline">\(|B_0(1)|=\frac{\pi^{p/2}}{\Gamma(\frac{p+2}{2})}\)</span> is the volume of unit ball. Under these settings we see that the KNN estimate is <span class="math display">\[
+f_n(x)=\frac{1}{n(Z_n)^p}\cdot\frac{k}{|B_0(1)|}=\frac{k}{n}\cdot\frac{1}{|B_0(Z_n)|}.
+\]</span> If we see <span class="math inline">\(\frac{k}{n}\)</span> as the probability that points lie in a ball around <span class="math inline">\(x\)</span>, then it is a naive analogy of <span class="math inline">\(\text{probability}=\int\text{density}\approx\text{density}\times \text{area}\)</span>. In the following we always assume that <span class="math inline">\(k=k(n)\)</span> is a function of sample size <span class="math inline">\(n\)</span> and <span class="math inline">\(k(n)\to \infty,k(n)/n\to0\)</span> as <span class="math inline">\(n\to\infty\)</span>.</p>
+<p>We first investigate several properties of <span class="math inline">\(Z_n\)</span>. For simplicity, we call <span class="math inline">\(Z_n\)</span> the KNN distance variable.</p>
+<h2 id="knn-distance-variable-z_n">KNN distance variable <span class="math inline">\(Z_n\)</span></h2>
+<h3 id="cdf-and-pdf-of-z_n">CDF and PDF of <span class="math inline">\(Z_n\)</span></h3>
+<p>For fixed <span class="math inline">\(x\in\mathbb R^p\)</span>, note that <span class="math inline">\(Z_n\)</span> is a function of <span class="math inline">\(n\)</span> i.i.d. samples. Let <span class="math inline">\(H(r)\)</span> be the cumulative distribution function (<strong>CDF</strong>) of <span class="math inline">\(Z_n\)</span>. Let <span class="math display">\[
+G(r)=\mathbb P(B_x(r))=\int_{B_x(r)}f(u){\rm d}u.
+\]</span> For any <span class="math inline">\(\epsilon&gt;0\)</span>, consider the probability <span class="math inline">\(H(r+\epsilon)-H(r)=\mathbb P(r\le Z_n\le r+\epsilon)\)</span>. Suppose <span class="math inline">\(\epsilon\)</span> is small enough so that there is <strong>exactly one</strong> point lying in the shell of thickness <span class="math inline">\(\epsilon\)</span> (It happens when multiple points lie in the shell, but they will not contribute to our deduction since higher order of <span class="math inline">\(\epsilon\)</span> vanishes when taking limit). There are <span class="math inline">\(n\)</span> choices of <span class="math inline">\(k\)</span>th nearest point, <span class="math inline">\(\binom{n-1}{k-1}\)</span> choices of <span class="math inline">\(k-1\)</span> points lying within the <span class="math inline">\(r\)</span> ball and others are outside the <span class="math inline">\(r+\epsilon\)</span> ball. Therefore, we have <span class="math display">\[
+H(r+\epsilon)-H(r)=n(G(r+\epsilon)-G(r))\binom{n-1}{k-1}G(r)^{k-1}(1-G(r+\epsilon))^{n-k}.
+\]</span> Let <span class="math inline">\(h(r)\)</span> be the probability density function (<strong>PDF</strong>) of <span class="math inline">\(Z_n\)</span>. By definition, we have <span class="math display">\[
+h(r)=\lim\limits_{\epsilon\to0}\frac{H(r+\epsilon)-H(r)}{\epsilon}=n\binom{n-1}{k-1}G(r)^{k-1}(1-G(r))^{n-k}G&#39;(r).
+\]</span> Furthermore, <span class="math inline">\(G&#39;(r)\)</span> can be expressed as an integration of <span class="math inline">\(f\)</span>. Note that <span class="math display">\[
 \begin{aligned}
-G'(r)&=\lim\limits_{\delta\to 0}\frac{1}{\delta}[\int_{B_x(r+\delta)}f(u){\rm d}u-\int_{B_x(r)}f(u){\rm d}u]\\
-&=\lim_{\delta\to0}\frac{1}{\delta}\int_r^{r+\delta}\rho^{p-1}{\rm d}\rho\int_{S_x(1)}f(\rho,t){\rm d}\sigma(t)\\
-&=\int_{S_x(r)}f(t){\rm d}\sigma(t),
-\end{aligned}</script><p>where $S_x(r)={y\in\mathbb R^p:|y-x|=r}$ is the sphere centered at $x$ with radius $r$, and ${\rm d}\sigma$ is the volume element on the sphere. </p>
-<p>On the other hand, for each $X_i$, $|X_i-x|$ is a random variable with CDF $G(r)$ and   PDF $G’(r)$. Note that $Z_n$ is exactly the <strong>$k$th order statistic</strong> from i.i.d. samples $|X_i-x|$. The $k$th order statistic gives the same $h(r)$ as we deduced above.</p>
-<h3 id="Moments-of-Z-n"><a href="#Moments-of-Z-n" class="headerlink" title="Moments of $Z_n$"></a>Moments of $Z_n$</h3><p>In general, for a measurable function $\phi$, we want to compute the expectation $\mathbb{E}\phi(Z_n)$. By definition,</p>
-<script type="math/tex; mode=display">
+G&#39;(r)&amp;=\lim\limits_{\delta\to 0}\frac{1}{\delta}[\int_{B_x(r+\delta)}f(u){\rm d}u-\int_{B_x(r)}f(u){\rm d}u]\\
+&amp;=\lim_{\delta\to0}\frac{1}{\delta}\int_r^{r+\delta}\rho^{p-1}{\rm d}\rho\int_{S_x(1)}f(\rho,t){\rm d}\sigma(t)\\
+&amp;=\int_{S_x(r)}f(t){\rm d}\sigma(t),
+\end{aligned}
+\]</span> where <span class="math inline">\(S_x(r)=\{y\in\mathbb R^p:\|y-x\|=r\}\)</span> is the sphere centered at <span class="math inline">\(x\)</span> with radius <span class="math inline">\(r\)</span>, and <span class="math inline">\({\rm d}\sigma\)</span> is the volume element on the sphere.</p>
+<p>On the other hand, for each <span class="math inline">\(X_i\)</span>, <span class="math inline">\(\|X_i-x\|\)</span> is a random variable with CDF <span class="math inline">\(G(r)\)</span> and PDF <span class="math inline">\(G&#39;(r)\)</span>. Note that <span class="math inline">\(Z_n\)</span> is exactly the <strong><span class="math inline">\(k\)</span>th order statistic</strong> from i.i.d. samples <span class="math inline">\(\|X_i-x\|\)</span>. The <span class="math inline">\(k\)</span>th order statistic gives the same <span class="math inline">\(h(r)\)</span> as we deduced above.</p>
+<h3 id="moments-of-z_n">Moments of <span class="math inline">\(Z_n\)</span></h3>
+<p>In general, for a measurable function <span class="math inline">\(\phi\)</span>, we want to compute the expectation <span class="math inline">\(\mathbb{E}\phi(Z_n)\)</span>. By definition, <span class="math display">\[
 \begin{aligned}
-\mathbb E\phi(Z_n)&=\int_0^{\infty}\phi(r)h(r){\rm d}r\\
-&=n\binom{n-1}{k-1}\int_0^{\infty}\phi(r)G(r)^{k-1}(1-G(r))^{n-k}{\rm d}G(r).
-\end{aligned}</script><p>In our situation, we consider a specific function of the type</p>
-<script type="math/tex; mode=display">
-\phi(r)=\frac{r^{\lambda}}{G(r)^\gamma(1-G(r))^\beta},</script><p>where $\lambda,\gamma,\beta$ are nonnegative integers. Note that $G(r)\in[0,1]$. To ensure that the integration exists, we assume that $1-G(r)=O(r^{-\xi})$, where $\xi&gt;0$, as $r\to \infty$.  </p>
-<p>Since $G(r)$ is a monotonically increasing function, we can solve $r=G^{-1}(t)$ where $t\in[0,1]$. On the one hand,</p>
-<script type="math/tex; mode=display">
+\mathbb E\phi(Z_n)&amp;=\int_0^{\infty}\phi(r)h(r){\rm d}r\\
+&amp;=n\binom{n-1}{k-1}\int_0^{\infty}\phi(r)G(r)^{k-1}(1-G(r))^{n-k}{\rm d}G(r).
+\end{aligned}
+\]</span> In our situation, we consider a specific function of the type <span class="math display">\[
+\phi(r)=\frac{r^{\lambda}}{G(r)^\gamma(1-G(r))^\beta},
+\]</span> where <span class="math inline">\(\lambda,\gamma,\beta\)</span> are nonnegative integers. Note that <span class="math inline">\(G(r)\in[0,1]\)</span>. To ensure that the integration exists, we assume that <span class="math inline">\(1-G(r)=O(r^{-\xi})\)</span>, where <span class="math inline">\(\xi&gt;0\)</span>, as <span class="math inline">\(r\to \infty\)</span>.</p>
+<p>Since <span class="math inline">\(G(r)\)</span> is a monotonically increasing function, we can solve <span class="math inline">\(r=G^{-1}(t)\)</span> where <span class="math inline">\(t\in[0,1]\)</span>. On the one hand, <span class="math display">\[
 \begin{aligned}
-G(r)&=\int_{B_x(r)}f(u){\rm d}u\\
-&=f(x)|B_x(r)|+\int_{B_x(r)}f(u)-f(x){\rm d}u,\\
-\end{aligned}</script><p>where</p>
-<script type="math/tex; mode=display">
-\int_{B_x(r)}|f(u)-f(x|{\rm d}u\le K(r)\int_{B_x(r)}\|u-x\|{\rm d  }u=\frac{K(r)}{n+1}r^{p+1}|S_x(1)|.</script><p>Therefore, $t=G(r)=cf(x)r^p+o(r^p)$ as $r\to 0$, where $c=|B_x(1)|$. From the assumption $1-G(r)=O(r^{-\xi})$, we see that $t=1-O(r^{-\xi})$ as $r\to\infty$. We can write $r$ as</p>
-<script type="math/tex; mode=display">
-r=G^{-1}(t)=(\frac{t}{cf(x)})^{1/p}+\eta(t),</script><p>where $\eta(t)=o(t^{1/p})$ as $t\to 0$ and $\eta(t)=O(\frac{1}{(1-t)^\xi})$ as $t\to 1$.</p>
-<p>Using the change of variable $t=G(r)$, we see that</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-\mathbb E\phi(Z_n)&=n\binom{n-1}{k-1}\int_0^1(\frac{t}{cf(x)}+\eta(t))^\lambda t^{k-1-\gamma}(1-t)^{n-k-\beta}{\rm d}t\\
+G(r)&amp;=\int_{B_x(r)}f(u){\rm d}u\\
+&amp;=f(x)|B_x(r)|+\int_{B_x(r)}f(u)-f(x){\rm d}u,\\
+\end{aligned}
+\]</span> where <span class="math display">\[
+\int_{B_x(r)}|f(u)-f(x|{\rm d}u\le K(r)\int_{B_x(r)}\|u-x\|{\rm d  }u=\frac{K(r)}{n+1}r^{p+1}|S_x(1)|.
+\]</span> Therefore, <span class="math inline">\(t=G(r)=cf(x)r^p+o(r^p)\)</span> as <span class="math inline">\(r\to 0\)</span>, where <span class="math inline">\(c=|B_x(1)|\)</span>. From the assumption <span class="math inline">\(1-G(r)=O(r^{-\xi})\)</span>, we see that <span class="math inline">\(t=1-O(r^{-\xi})\)</span> as <span class="math inline">\(r\to\infty\)</span>. We can write <span class="math inline">\(r\)</span> as <span class="math display">\[
+r=G^{-1}(t)=(\frac{t}{cf(x)})^{1/p}+\eta(t),
+\]</span> where <span class="math inline">\(\eta(t)=o(t^{1/p})\)</span> as <span class="math inline">\(t\to 0\)</span> and <span class="math inline">\(\eta(t)=O(\frac{1}{(1-t)^\xi})\)</span> as <span class="math inline">\(t\to 1\)</span>.</p>
+Using the change of variable <span class="math inline">\(t=G(r)\)</span>, we see that $$
+<span class="math display">\[\begin{aligned}
+\mathbb E\phi(Z_n)&amp;=n\binom{n-1}{k-1}\int_0^1(\frac{t}{cf(x)}+\eta(t))^\lambda t^{k-1-\gamma}(1-t)^{n-k-\beta}{\rm d}t\\
 
-\end{aligned}</script><hr>
+\end{aligned}\]</span>
+<p>$$</p>
+<hr>
 <p><strong>Personal Comments</strong></p>
-<p>I was intended to study <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>‘s paper thoroughly to understand the asymptotic behaviors of kNN estimator. Both results and techniques in proofs are important for me. However, I was very upset to find many subtle details I could not get through. The biggest problem appears in equation (12)</p>
+<p>I was intended to study <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>'s paper thoroughly to understand the asymptotic behaviors of kNN estimator. Both results and techniques in proofs are important for me. However, I was very upset to find many subtle details I could not get through. The biggest problem appears in equation (12)</p>
 <blockquote>
-<script type="math/tex; mode=display">
-\mathbb E \phi(R_n)=n\binom{n-1}{k-1}\int_0^1((\frac{t}{cf(x)})^\lambda+o(t^\lambda))t^{k-1-\gamma}(1-t)^{n-k-\beta}{\rm d}t</script></blockquote>
-<p>The notation $o(t)$ is misleading. It is correct when $t$ is small. However, when $t$ is close to 1, this term tends to infinity. Therefore, the estimation for this expectation is not easy. One cannot simply drop the $o(t)$ integration. But according to the paper (though they did not display the computation), $o(t)$ was simply dropped. </p>
-<p>It was also disappointing that I found there were few papers concerning the asymptotic behaviors about kNN. One could find that the asymptotic moments for kNN distance variable are well-known. But the references were not mentioned. </p>
+<p><span class="math display">\[
+\mathbb E \phi(R_n)=n\binom{n-1}{k-1}\int_0^1((\frac{t}{cf(x)})^\lambda+o(t^\lambda))t^{k-1-\gamma}(1-t)^{n-k-\beta}{\rm d}t
+\]</span></p>
+</blockquote>
+<p>The notation <span class="math inline">\(o(t)\)</span> is misleading. It is correct when <span class="math inline">\(t\)</span> is small. However, when <span class="math inline">\(t\)</span> is close to 1, this term tends to infinity. Therefore, the estimation for this expectation is not easy. One cannot simply drop the <span class="math inline">\(o(t)\)</span> integration. But according to the paper (though they did not display the computation), <span class="math inline">\(o(t)\)</span> was simply dropped.</p>
+<p>It was also disappointing that I found there were few papers concerning the asymptotic behaviors about kNN. One could find that the asymptotic moments for kNN distance variable are well-known. But the references were not mentioned.</p>
 <p>There is another paper discussing the asymptotic moments of kNN distance. But it restricts to compact convex area. See <a href="https://royalsocietypublishing.org/doi/abs/10.1098/rspa.2002.1011" target="_blank" rel="noopener">Asymptotic moments of near–neighbour distance distributions</a>.</p>
 <p>I will keep on tracking about this topic.</p>
 
@@ -593,7 +600,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KNN-distance-variable-Z-n"><span class="toc-number">2.</span> <span class="toc-text">KNN distance variable $Z_n$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CDF-and-PDF-of-Z-n"><span class="toc-number">2.1.</span> <span class="toc-text">CDF and PDF of $Z_n$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Moments-of-Z-n"><span class="toc-number">2.2.</span> <span class="toc-text">Moments of $Z_n$</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#knn-distance-variable-z_n"><span class="toc-number">2.</span> <span class="toc-text">KNN distance variable \(Z_n\)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cdf-and-pdf-of-z_n"><span class="toc-number">2.1.</span> <span class="toc-text">CDF and PDF of \(Z_n\)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#moments-of-z_n"><span class="toc-number">2.2.</span> <span class="toc-text">Moments of \(Z_n\)</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1021,19 +1028,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1090,9 +1097,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

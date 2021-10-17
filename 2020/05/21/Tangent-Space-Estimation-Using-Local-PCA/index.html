@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">16 min</span></span>
+                        <span>Word count: <span class="post-count word-count">2.7k</span>Reading time: <span class="post-count reading-time">17 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,127 +403,129 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>In <a href="https://arxiv.org/abs/1102.0075" target="_blank" rel="noopener">this paper</a>, A.Singer and H.-T. Wu derived an explicit expression for the bias and variance of local PCA in tangent space estimation. One thing to notice: when we have estimated a basis $\widehat{E}$ and want to compare with the true basis $E$, we can either</p>
+        <p>In <a href="https://arxiv.org/abs/1102.0075" target="_blank" rel="noopener">this paper</a>, A.Singer and H.-T. Wu derived an explicit expression for the bias and variance of local PCA in tangent space estimation. One thing to notice: when we have estimated a basis <span class="math inline">\(\widehat{E}\)</span> and want to compare with the true basis <span class="math inline">\(E\)</span>, we can either</p>
 <ul>
-<li>consider the error between two projection operators $|\widehat{E}\widehat{E}^T-EE^T|$, </li>
+<li>consider the error between two projection operators <span class="math inline">\(\|\widehat{E}\widehat{E}^T-EE^T\|\)</span>,</li>
 </ul>
-<p>or </p>
+<p>or</p>
 <ul>
-<li>consider the error up to rotation $\min_{O}|O\widehat{E}-E|$.</li>
+<li>consider the error up to rotation <span class="math inline">\(\min_{O}\|O\widehat{E}-E\|\)</span>.</li>
 </ul>
-<p>However, according to the original paper, the convergence rates for above two errors are different. Moreover, the authors did not claim the choice of bandwidth is optimal. So other choices of bandwidth may also by possible. </p>
-<p>Let $\mathcal{M}$ be an $m$-dimensional compact submanifold in a Euclidean space $\mathbb{R}^d$. Fix $x\in\mathcal{M}$. Without loss of generality assume that $x$ is placed at the origin and the tangent space $T_x\mathcal{M}$ coincides with the coordinate space spanned by the first $m$ standard vectors ${e_1,\cdots,e_m}$ in $\mathbb{R}^d$. Suppose $X$ is a random vector valued in $\mathcal{M}$ with a smooth positive density function $f:\mathcal{M}\to \mathbb{R}$. Let $K:\mathbb{R}\to\mathbb{R}$ be a smooth function supported on $[0,1]$ and $h&gt;0$ be a positive number. To estimate the tangent space at $x$, we start by finding a direction $v$ such that the projection to $v$ is maximized</p>
-<script type="math/tex; mode=display">
-\mathbb{E}[((X-x)\cdot v)^2K_h(X-x)]</script><p>where $K_h:\mathbb{R}^d\to\mathbb{R}$ is the function $K_h(u)=1/h^mK(|u|/h)$. Therefore, we consider the following Lagrange function</p>
-<script type="math/tex; mode=display">
-f(v)=\mathbb{E}[((X-x)\cdot v)^2K_h(X-x)]-\lambda(\|v\|-1)</script><p>Setting $df/dv=0$ we have $\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]v=\lambda v$ and the objective function is $\lambda$. Thus we choose the eigenvector of $\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]$ with respect to the largest eigenvalue. </p>
-<p>Next, we proceed by finding another direction $v’$ orthogonal to $v$ such that the same objective function is maximized. The result turns out that the optimal $v’$ is the eigenvector of $\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]$ of the second largest eigenvalue.  Iteratively, to estimate the tangent space $T_x\mathcal{M}$ we attempt to find the first $m$ eigenvectors of the matrix $\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]$. We set </p>
-<script type="math/tex; mode=display">
-\mathbb{H}=\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]</script><p>and call it the <strong>population covariance matrix</strong>. In practice, $\mathbb{H}$ is not available. Suppose $X_1,\cdots,X_n$ are i.i.d. samples of $X$.  Then we can replace $\mathbb{H}$ by the empirical mean,</p>
-<script type="math/tex; mode=display">
-H=\frac{1}{n}\sum_{i=1}^n(X_i-x)(X_i-x)^tK_h(X_i-x)</script><p>which is called the <strong>empirical covariance matrix</strong>. Note that these are not in fact covariance matrices since the mean is forced to be $x$. But it will bring technical convenience for our analysis. We first give a detailed analysis of the covariance matrices.</p>
-<p>For $h$ small enough, the contributed points will lie in a normal patch of $x$. Hence we can use the exponential map. Suppose $X=\exp_x(s_X\theta_X)$ where $|\theta_X|=1$. Then </p>
-<script type="math/tex; mode=display">
-X-x=s_X\theta_X+\frac{1}{2}\Pi(\theta_X,\theta_X)s_X^2-\frac{1}{6}A_{\Pi(\theta_X,\theta_X)}(\theta_X)s^3+\frac{1}{6}(\nabla_{\theta_X}\Pi)(\theta_X,\theta_X)s^3+o(s^3)</script><p>Thus we have the following expansion for $\mathbb{H}$,</p>
-<script type="math/tex; mode=display">
+<p>However, according to the original paper, the convergence rates for above two errors are different. Moreover, the authors did not claim the choice of bandwidth is optimal. So other choices of bandwidth may also by possible.</p>
+<p>Let <span class="math inline">\(\mathcal{M}\)</span> be an <span class="math inline">\(m\)</span>-dimensional compact submanifold in a Euclidean space <span class="math inline">\(\mathbb{R}^d\)</span>. Fix <span class="math inline">\(x\in\mathcal{M}\)</span>. Without loss of generality assume that <span class="math inline">\(x\)</span> is placed at the origin and the tangent space <span class="math inline">\(T_x\mathcal{M}\)</span> coincides with the coordinate space spanned by the first <span class="math inline">\(m\)</span> standard vectors <span class="math inline">\(\{e_1,\cdots,e_m\}\)</span> in <span class="math inline">\(\mathbb{R}^d\)</span>. Suppose <span class="math inline">\(X\)</span> is a random vector valued in <span class="math inline">\(\mathcal{M}\)</span> with a smooth positive density function <span class="math inline">\(f:\mathcal{M}\to \mathbb{R}\)</span>. Let <span class="math inline">\(K:\mathbb{R}\to\mathbb{R}\)</span> be a smooth function supported on <span class="math inline">\([0,1]\)</span> and <span class="math inline">\(h&gt;0\)</span> be a positive number. To estimate the tangent space at <span class="math inline">\(x\)</span>, we start by finding a direction <span class="math inline">\(v\)</span> such that the projection to <span class="math inline">\(v\)</span> is maximized <span class="math display">\[
+\mathbb{E}[((X-x)\cdot v)^2K_h(X-x)]
+\]</span> where <span class="math inline">\(K_h:\mathbb{R}^d\to\mathbb{R}\)</span> is the function <span class="math inline">\(K_h(u)=1/h^mK(\|u\|/h)\)</span>. Therefore, we consider the following Lagrange function <span class="math display">\[
+f(v)=\mathbb{E}[((X-x)\cdot v)^2K_h(X-x)]-\lambda(\|v\|-1)
+\]</span> Setting <span class="math inline">\(df/dv=0\)</span> we have <span class="math inline">\(\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]v=\lambda v\)</span> and the objective function is <span class="math inline">\(\lambda\)</span>. Thus we choose the eigenvector of <span class="math inline">\(\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]\)</span> with respect to the largest eigenvalue.</p>
+<p>Next, we proceed by finding another direction <span class="math inline">\(v&#39;\)</span> orthogonal to <span class="math inline">\(v\)</span> such that the same objective function is maximized. The result turns out that the optimal <span class="math inline">\(v&#39;\)</span> is the eigenvector of <span class="math inline">\(\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]\)</span> of the second largest eigenvalue. Iteratively, to estimate the tangent space <span class="math inline">\(T_x\mathcal{M}\)</span> we attempt to find the first <span class="math inline">\(m\)</span> eigenvectors of the matrix <span class="math inline">\(\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]\)</span>. We set <span class="math display">\[
+\mathbb{H}=\mathbb{E}[(X-x)(X-x)^tK_h(X-x)]
+\]</span> and call it the <strong>population covariance matrix</strong>. In practice, <span class="math inline">\(\mathbb{H}\)</span> is not available. Suppose <span class="math inline">\(X_1,\cdots,X_n\)</span> are i.i.d. samples of <span class="math inline">\(X\)</span>. Then we can replace <span class="math inline">\(\mathbb{H}\)</span> by the empirical mean, <span class="math display">\[
+H=\frac{1}{n}\sum_{i=1}^n(X_i-x)(X_i-x)^tK_h(X_i-x)
+\]</span> which is called the <strong>empirical covariance matrix</strong>. Note that these are not in fact covariance matrices since the mean is forced to be <span class="math inline">\(x\)</span>. But it will bring technical convenience for our analysis. We first give a detailed analysis of the covariance matrices.</p>
+<p>For <span class="math inline">\(h\)</span> small enough, the contributed points will lie in a normal patch of <span class="math inline">\(x\)</span>. Hence we can use the exponential map. Suppose <span class="math inline">\(X=\exp_x(s_X\theta_X)\)</span> where <span class="math inline">\(\|\theta_X\|=1\)</span>. Then <span class="math display">\[
+X-x=s_X\theta_X+\frac{1}{2}\Pi(\theta_X,\theta_X)s_X^2-\frac{1}{6}A_{\Pi(\theta_X,\theta_X)}(\theta_X)s^3+\frac{1}{6}(\nabla_{\theta_X}\Pi)(\theta_X,\theta_X)s^3+o(s^3)
+\]</span> Thus we have the following expansion for <span class="math inline">\(\mathbb{H}\)</span>, <span class="math display">\[
 \begin{aligned}
-\mathbb{H}=&\underbrace{\mathbb{E}[(\theta_X\theta_X^ts_X^2-\frac{1}{6}(\theta_XA_\Pi^t+A_\Pi^t\theta_X)s_X^4+o(s^4_X))K_h(X-x)]}_{\mathbf{H}}\\
-+&\underbrace{\mathbb{E}[(\frac{1}{2}(\theta_X\Pi^t+\Pi\theta_X^t)s_X^3+\frac{1}{6}(\theta_X(\nabla\Pi)^t+(\nabla\Pi)\theta^t)s_X^4+o(s_X^4))K_h(X-x)]}_{\mathbf{B}_r}\\
-+&\underbrace{\mathbb{E}[(\frac{1}{4}\Pi\Pi^ts^4)K_h(X-x)]}_{\mathbf{B}_s}
-\end{aligned}</script><p>Note that $\mathbf{H}$, $\mathbf{B}_r$ and $\mathbf{B}_s$ are blocked matrices. i.e.</p>
-<script type="math/tex; mode=display">
-\mathbf{H}=\left[\begin{array}{cc}*&0\\0&0\end{array}\right],\mathbf{B}_r=\left[\begin{array}{cc}0&*\\*&0\end{array}\right],\mathbf{B}_s=\left[\begin{array}{cc}0&0\\0&*\end{array}\right]</script><p>Call $\mathbf{H}$ the true covariance matrix since the eigenvectors of $\mathbf{H}$ will give the true basis of the tangent space. $\mathbf{B}_r$ and $\mathbf{B}_s$ will called the basis matrices and we see from the expansion that the bias comes from the curvature of the manifold $\mathcal{M}$. </p>
-<p>Integration in the normal patch gives the leading terms of each matrices. Note that odd terms of $\theta$ will vanish. Therefore,</p>
-<script type="math/tex; mode=display">
-\mathbf{H}=\left[\begin{array}{cc}ch^2I+O(h^4)&0\\0&0\end{array}\right],\mathbf{B}_r=\left[\begin{array}{cc}0&O(h^4)\\O(h^4)&0\end{array}\right],\mathbf{B}_s=\left[\begin{array}{cc}0&0\\0&O(h^4)\end{array}\right]</script><p>Thus the bias deviates from the true matrix will be of order $O(h^4)$.</p>
-<p>Then we consider the variance coming from $\mathbb{H}$ and $H$. By definition, $\mathbb{E}[H]=\mathbb{H}$. Thus we may write</p>
-<script type="math/tex; mode=display">
-H=\mathbb{H}+V</script><p>where $\mathbb{E}[V]=0$. For each element in $V$, the variance is</p>
-<script type="math/tex; mode=display">
-\mathbb{Var}[V(i,j)]=\mathbb{E}[(H(i,j)-\mathbb{H}(i,j))^2]\le\frac{1}{n}\mathbb{E}[(X-x)_i^2(X-x)^2_jK^2_h(X-x)]</script><p>By computation the second moments are given by</p>
-<script type="math/tex; mode=display">
-\mathbb{E}[(X-x)_i^2(X-x)_j^2K_h(X-x)]=\left\{\begin{array}{l}O(\frac{h^4}{h^m})\quad i,j=1,\cdots,m\\ O(\frac{h^8}{h^m})\quad i,j=m+1,\cdots,d\\ O(\frac{h^6}{h^m})\quad \text{otherwise}\end{array}\right.</script><p>Therefore, the variance matrix is given by</p>
-<script type="math/tex; mode=display">
-\mathbb{Var}[V(i,j)]=\left\{\begin{array}{l}O(\frac{h^4}{nh^m})\quad i,j=1,\cdots,m\\ O(\frac{h^8}{nh^m})\quad i,j=m+1,\cdots,d\\ O(\frac{h^6}{nh^m})\quad \text{otherwise}\end{array}\right.</script><p>Using Chebyshev’s inequality, we see that for any $\epsilon&gt;0$,</p>
-<script type="math/tex; mode=display">
-\mathbb{Pr}\{|H(i,j)-\mathbb{H}(i,j)|>\epsilon\}\le\frac{\mathbb{Var}(V(i,j))}{\epsilon^2}</script><p>If we set the right hand side to be $O(1)$, then with high probability $V(i,j)=O(\epsilon)$. Following this principle, with high probability, $V$ is in the following form</p>
-<script type="math/tex; mode=display">
-V=\frac{h^2}{\sqrt{nh^m}}\left[\begin{array}{cc}O(1)& O(h)\\O(h)&O(h^2)\end{array}\right]</script><p>Overall, we have shown that with high probability, </p>
-<script type="math/tex; mode=display">
+\mathbb{H}=&amp;\underbrace{\mathbb{E}[(\theta_X\theta_X^ts_X^2-\frac{1}{6}(\theta_XA_\Pi^t+A_\Pi^t\theta_X)s_X^4+o(s^4_X))K_h(X-x)]}_{\mathbf{H}}\\
++&amp;\underbrace{\mathbb{E}[(\frac{1}{2}(\theta_X\Pi^t+\Pi\theta_X^t)s_X^3+\frac{1}{6}(\theta_X(\nabla\Pi)^t+(\nabla\Pi)\theta^t)s_X^4+o(s_X^4))K_h(X-x)]}_{\mathbf{B}_r}\\
++&amp;\underbrace{\mathbb{E}[(\frac{1}{4}\Pi\Pi^ts^4)K_h(X-x)]}_{\mathbf{B}_s}
+\end{aligned}
+\]</span> Note that <span class="math inline">\(\mathbf{H}\)</span>, <span class="math inline">\(\mathbf{B}_r\)</span> and <span class="math inline">\(\mathbf{B}_s\)</span> are blocked matrices. i.e. <span class="math display">\[
+\mathbf{H}=\left[\begin{array}{cc}*&amp;0\\0&amp;0\end{array}\right],\mathbf{B}_r=\left[\begin{array}{cc}0&amp;*\\*&amp;0\end{array}\right],\mathbf{B}_s=\left[\begin{array}{cc}0&amp;0\\0&amp;*\end{array}\right]
+\]</span> Call <span class="math inline">\(\mathbf{H}\)</span> the true covariance matrix since the eigenvectors of <span class="math inline">\(\mathbf{H}\)</span> will give the true basis of the tangent space. <span class="math inline">\(\mathbf{B}_r\)</span> and <span class="math inline">\(\mathbf{B}_s\)</span> will called the basis matrices and we see from the expansion that the bias comes from the curvature of the manifold <span class="math inline">\(\mathcal{M}\)</span>.</p>
+<p>Integration in the normal patch gives the leading terms of each matrices. Note that odd terms of <span class="math inline">\(\theta\)</span> will vanish. Therefore, <span class="math display">\[
+\mathbf{H}=\left[\begin{array}{cc}ch^2I+O(h^4)&amp;0\\0&amp;0\end{array}\right],\mathbf{B}_r=\left[\begin{array}{cc}0&amp;O(h^4)\\O(h^4)&amp;0\end{array}\right],\mathbf{B}_s=\left[\begin{array}{cc}0&amp;0\\0&amp;O(h^4)\end{array}\right]
+\]</span> Thus the bias deviates from the true matrix will be of order <span class="math inline">\(O(h^4)\)</span>.</p>
+<p>Then we consider the variance coming from <span class="math inline">\(\mathbb{H}\)</span> and <span class="math inline">\(H\)</span>. By definition, <span class="math inline">\(\mathbb{E}[H]=\mathbb{H}\)</span>. Thus we may write <span class="math display">\[
+H=\mathbb{H}+V
+\]</span> where <span class="math inline">\(\mathbb{E}[V]=0\)</span>. For each element in <span class="math inline">\(V\)</span>, the variance is <span class="math display">\[
+\mathbb{Var}[V(i,j)]=\mathbb{E}[(H(i,j)-\mathbb{H}(i,j))^2]\le\frac{1}{n}\mathbb{E}[(X-x)_i^2(X-x)^2_jK^2_h(X-x)]
+\]</span> By computation the second moments are given by <span class="math display">\[
+\mathbb{E}[(X-x)_i^2(X-x)_j^2K_h(X-x)]=\left\{\begin{array}{l}O(\frac{h^4}{h^m})\quad i,j=1,\cdots,m\\ O(\frac{h^8}{h^m})\quad i,j=m+1,\cdots,d\\ O(\frac{h^6}{h^m})\quad \text{otherwise}\end{array}\right.
+\]</span> Therefore, the variance matrix is given by <span class="math display">\[
+\mathbb{Var}[V(i,j)]=\left\{\begin{array}{l}O(\frac{h^4}{nh^m})\quad i,j=1,\cdots,m\\ O(\frac{h^8}{nh^m})\quad i,j=m+1,\cdots,d\\ O(\frac{h^6}{nh^m})\quad \text{otherwise}\end{array}\right.
+\]</span> Using Chebyshev's inequality, we see that for any <span class="math inline">\(\epsilon&gt;0\)</span>, <span class="math display">\[
+\mathbb{Pr}\{|H(i,j)-\mathbb{H}(i,j)|&gt;\epsilon\}\le\frac{\mathbb{Var}(V(i,j))}{\epsilon^2}
+\]</span> If we set the right hand side to be <span class="math inline">\(O(1)\)</span>, then with high probability <span class="math inline">\(V(i,j)=O(\epsilon)\)</span>. Following this principle, with high probability, <span class="math inline">\(V\)</span> is in the following form <span class="math display">\[
+V=\frac{h^2}{\sqrt{nh^m}}\left[\begin{array}{cc}O(1)&amp; O(h)\\O(h)&amp;O(h^2)\end{array}\right]
+\]</span></p>
+<p>Overall, we have shown that with high probability, <span class="math display">\[
 \begin{aligned}
-\frac{1}{h^2}H=&c\left[\begin{array}{cc}I&0\\0&0\end{array}\right]+h^2\left[\begin{array}{cc}O(1)&O(1)\\O(1)&O(1)\end{array}\right]+\frac{1}{\sqrt{nh^m}}\left[\begin{array}{cc}O(1)&O(h)\\O(h)&O(h^2)\end{array}\right]
-\end{aligned}</script><p>If we set $O(\text{bias})=O(\text{variance})$, the <em>optimal bandwidth</em> $h=O(n^{-1/(m+4)})$. In this case we have</p>
-<script type="math/tex; mode=display">
-H=h^2c\left[\begin{array}{cc}I+h^2A&h^2C\\h^2C^t&h^2B\end{array}\right]=h^2c(S+h^2T)</script><p>where </p>
-<script type="math/tex; mode=display">
-S=\left[\begin{array}{cc}I&0\\0&0\end{array}\right], T=\left[\begin{array}{cc}A&C\\C^t&B\end{array}\right]</script><p>Let $\mathbf{v}$ be an eigenvector of $S+h^2T$ with respect to the eigenvalue $\mathbf{\Lambda}$. Using the following expansion on both sides of $S\mathbf{v}=\mathbf{\Lambda}\mathbf{v}$,</p>
-<script type="math/tex; mode=display">
+\frac{1}{h^2}H=&amp;c\left[\begin{array}{cc}I&amp;0\\0&amp;0\end{array}\right]+h^2\left[\begin{array}{cc}O(1)&amp;O(1)\\O(1)&amp;O(1)\end{array}\right]+\frac{1}{\sqrt{nh^m}}\left[\begin{array}{cc}O(1)&amp;O(h)\\O(h)&amp;O(h^2)\end{array}\right]
+\end{aligned}
+\]</span> If we set <span class="math inline">\(O(\text{bias})=O(\text{variance})\)</span>, the <em>optimal bandwidth</em> <span class="math inline">\(h=O(n^{-1/(m+4)})\)</span>. In this case we have <span class="math display">\[
+H=h^2c\left[\begin{array}{cc}I+h^2A&amp;h^2C\\h^2C^t&amp;h^2B\end{array}\right]=h^2c(S+h^2T)
+\]</span> where <span class="math display">\[
+S=\left[\begin{array}{cc}I&amp;0\\0&amp;0\end{array}\right], T=\left[\begin{array}{cc}A&amp;C\\C^t&amp;B\end{array}\right]
+\]</span> Let <span class="math inline">\(\mathbf{v}\)</span> be an eigenvector of <span class="math inline">\(S+h^2T\)</span> with respect to the eigenvalue <span class="math inline">\(\mathbf{\Lambda}\)</span>. Using the following expansion on both sides of <span class="math inline">\(S\mathbf{v}=\mathbf{\Lambda}\mathbf{v}\)</span>, <span class="math display">\[
 \begin{aligned}
-&\mathbf{v}=v_0+h^2v_1+h^4v_2+\cdots\\
-&\mathbf{\Lambda}=\lambda_0+h^2\lambda_1+h^4\lambda_2+\cdots
-\end{aligned}</script><p>and compare the coefficients on both sides. We have</p>
-<script type="math/tex; mode=display">
-Sv_0=\lambda_0v_0</script><p>which means that $\lambda_0=1$ and $v_0$ is in the form $[\bar{v}_0,0]^t$. For the first order term we have</p>
-<script type="math/tex; mode=display">
-Sv_1+Tv_0=\lambda_0v_1+\lambda_1v_0</script><p>Thus if we write $v_1=[\bar{v}_1,\tilde{v}_1]$ then $A\bar{v}_0=\lambda_1\bar{v}_0$ and $C^t\bar{v}_0=\tilde{v}_1$. For the second term, we have </p>
-<script type="math/tex; mode=display">
-Sv_2+Tv_1=v_2+\lambda_1v_1+\lambda_2v_0</script><p>Then $A\bar{v}_1+C\tilde{v}_1=\lambda_1\bar{v}_1+\lambda_2\bar{v}_0$. Nothing will vanish after this step. Therefore, we have $\mathbf{v}=[\bar{v}_0,0]+O(h^2)$ and $\mathbf{\Lambda}=1+h^2\lambda_A+O(h^4)$. </p>
-<p>However, if we make the leading term of $A$ different from $B$ and $C$, that is, $O(\text{variance})&gt;O(\text{bias})$ and the error mainly comes from sampling, the result will be different. As in the original paper we set $O(\text{variance})=O(h)$ which gives the sampling rate $h=O(n^{-1/(m+2)})$. In this case we have</p>
-<script type="math/tex; mode=display">
-S=\left[\begin{array}{cc}I&0\\0&0\end{array}\right], T_1=\left[\begin{array}{cc}A&0\\0&0\end{array}\right], T_2=\left[\begin{array}{cc}0&C\\C^t&B\end{array}\right]</script><p>By <a href="https://www.math.usm.edu/lambers/mat610/sum10/lecture13.pdf" target="_blank" rel="noopener">Wielandt-Hoffman theorem</a>, the eigenvalues satisfy the following inequality</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^d(\lambda_i(T_1+hT_2)-\lambda_i(T_1))^2\le\|hT_2\|_F^2</script><p>Hence if we set the eigenvalues in descending order $\lambda_1\ge\lambda_2\ge\cdots\ge\lambda_d$, then $\lambda_k(T_1+hT_2)=\lambda_k^A+O(h)$ for $k=1,\cdots,m$ and $\lambda_l(T_1+hT_2)=O(h)$ for $k=m+1,\cdots,d$. </p>
-<p>For eigenvectors we use the same method as above. Suppose $\mathbf{v}$ is a unit eigenvector of $S+hT_1+hT_2$ corresponding to the eigenvalue $\mathbf{\Lambda}$. Using Taylor expansions for $\mathbf{v}$ and $\mathbf{\Lambda}$, </p>
-<script type="math/tex; mode=display">
+&amp;\mathbf{v}=v_0+h^2v_1+h^4v_2+\cdots\\
+&amp;\mathbf{\Lambda}=\lambda_0+h^2\lambda_1+h^4\lambda_2+\cdots
+\end{aligned}
+\]</span> and compare the coefficients on both sides. We have <span class="math display">\[
+Sv_0=\lambda_0v_0
+\]</span> which means that <span class="math inline">\(\lambda_0=1\)</span> and <span class="math inline">\(v_0\)</span> is in the form <span class="math inline">\([\bar{v}_0,0]^t\)</span>. For the first order term we have <span class="math display">\[
+Sv_1+Tv_0=\lambda_0v_1+\lambda_1v_0
+\]</span> Thus if we write <span class="math inline">\(v_1=[\bar{v}_1,\tilde{v}_1]\)</span> then <span class="math inline">\(A\bar{v}_0=\lambda_1\bar{v}_0\)</span> and <span class="math inline">\(C^t\bar{v}_0=\tilde{v}_1\)</span>. For the second term, we have <span class="math display">\[
+Sv_2+Tv_1=v_2+\lambda_1v_1+\lambda_2v_0
+\]</span> Then <span class="math inline">\(A\bar{v}_1+C\tilde{v}_1=\lambda_1\bar{v}_1+\lambda_2\bar{v}_0\)</span>. Nothing will vanish after this step. Therefore, we have <span class="math inline">\(\mathbf{v}=[\bar{v}_0,0]+O(h^2)\)</span> and <span class="math inline">\(\mathbf{\Lambda}=1+h^2\lambda_A+O(h^4)\)</span>.</p>
+<p>However, if we make the leading term of <span class="math inline">\(A\)</span> different from <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span>, that is, <span class="math inline">\(O(\text{variance})&gt;O(\text{bias})\)</span> and the error mainly comes from sampling, the result will be different. As in the original paper we set <span class="math inline">\(O(\text{variance})=O(h)\)</span> which gives the sampling rate <span class="math inline">\(h=O(n^{-1/(m+2)})\)</span>. In this case we have <span class="math display">\[
+S=\left[\begin{array}{cc}I&amp;0\\0&amp;0\end{array}\right], T_1=\left[\begin{array}{cc}A&amp;0\\0&amp;0\end{array}\right], T_2=\left[\begin{array}{cc}0&amp;C\\C^t&amp;B\end{array}\right]
+\]</span> By <a href="https://www.math.usm.edu/lambers/mat610/sum10/lecture13.pdf" target="_blank" rel="noopener">Wielandt-Hoffman theorem</a>, the eigenvalues satisfy the following inequality <span class="math display">\[
+\sum_{i=1}^d(\lambda_i(T_1+hT_2)-\lambda_i(T_1))^2\le\|hT_2\|_F^2
+\]</span> Hence if we set the eigenvalues in descending order <span class="math inline">\(\lambda_1\ge\lambda_2\ge\cdots\ge\lambda_d\)</span>, then <span class="math inline">\(\lambda_k(T_1+hT_2)=\lambda_k^A+O(h)\)</span> for <span class="math inline">\(k=1,\cdots,m\)</span> and <span class="math inline">\(\lambda_l(T_1+hT_2)=O(h)\)</span> for <span class="math inline">\(k=m+1,\cdots,d\)</span>.</p>
+<p>For eigenvectors we use the same method as above. Suppose <span class="math inline">\(\mathbf{v}\)</span> is a unit eigenvector of <span class="math inline">\(S+hT_1+hT_2\)</span> corresponding to the eigenvalue <span class="math inline">\(\mathbf{\Lambda}\)</span>. Using Taylor expansions for <span class="math inline">\(\mathbf{v}\)</span> and <span class="math inline">\(\mathbf{\Lambda}\)</span>, <span class="math display">\[
 \begin{aligned}
-&\mathbf{v}=v_0+hv_1+h^2v_2+h^3v_3+h^4v_4+O(h^5)\\
-&\mathbf{\Lambda}=\lambda_0+h\lambda_1+h^2\lambda_2+h^3\lambda_3+h^4\lambda_4+O(h^5)
-\end{aligned}</script><p>and by the relation </p>
-<script type="math/tex; mode=display">
-(S+hT_1+h^2T_2)\mathbf{v}=\mathbf{\Lambda}\mathbf{v}</script><p>we compare the coefficients on both sides. For the constants we have</p>
-<script type="math/tex; mode=display">
+&amp;\mathbf{v}=v_0+hv_1+h^2v_2+h^3v_3+h^4v_4+O(h^5)\\
+&amp;\mathbf{\Lambda}=\lambda_0+h\lambda_1+h^2\lambda_2+h^3\lambda_3+h^4\lambda_4+O(h^5)
+\end{aligned}
+\]</span> and by the relation <span class="math display">\[
+(S+hT_1+h^2T_2)\mathbf{v}=\mathbf{\Lambda}\mathbf{v}
+\]</span> we compare the coefficients on both sides. For the constants we have <span class="math display">\[
 \begin{aligned}
-&Sv_0=\lambda_0v_0
-\end{aligned}</script><p>which implies $\lambda_0=1$ and $v_0$ is in the form $[\bar{v}_0,0]^t$. For the first order term we have </p>
-<script type="math/tex; mode=display">
-Sv_1+T_1v_0=v_1+\lambda_1v_0</script><p>which implies $v_1$ is also in the form $[\bar{v}_1,0]^t$, and $A\bar{v}_0=\lambda_1\bar{v}_0$. We see that $\bar{v}_0$ is an eigenvector of $A$. For the second order term we have</p>
-<script type="math/tex; mode=display">
-T_2v_0+T_1v_1+Sv_2=v_2+\lambda_1v_1+\lambda_2v_0</script><p>Note that $T_2v_0=[0,C^t\bar{v}_0]^t$. We see that the left side is $[A\bar{v}_1+\bar{v}_2,C^t\bar{v}_0]^t$ and the right side is $[\lambda_1\bar{v}_1+\lambda_2\bar{v}_0,0]^t+[\bar{v}_2,\tilde{v}_2]^t$. This gives $\tilde{v}_2=C^t\bar{v}_0$ and </p>
-<script type="math/tex; mode=display">
-A\bar{v}_1=\lambda_1\bar{v}_1+\lambda_2\bar{v}_0</script><p>Multiplying both sides by $\bar{v}_0^t$, we have</p>
-<script type="math/tex; mode=display">
-\lambda_1\bar{v}_0^t\bar{v}_1=\lambda_1\bar{v}_0^t\bar{v}_1+\lambda_2\bar{v}_0^t\bar{v}_0</script><p>Thus, $\lambda_2=0$ and $A\bar{v}_1=\lambda_1\bar{v}_1$. If we assume the eigenvalues of $A$ are simple (as said in original paper it holds almost surely), then $\bar{v}_1=0$. For the third order term we have </p>
-<script type="math/tex; mode=display">
-Sv_3+T_1v_2+T_2v_1=v_3+\lambda_1v_2+\lambda_2v_1+\lambda_3v_0</script><p>The left side is $[\bar{v}_3+A\bar{v}_2,0]^t$ and the right side is $[\bar{v}_3+\lambda_1\bar{v}_2+\lambda_3\bar{v}_0,\tilde{v}_3+\lambda_1\tilde{v}_2]$. Hence $\tilde{v}_3=-\lambda_1\tilde{v}_2$ and $A\bar{v}_2=\lambda_1\bar{v}_2+\lambda_3\bar{v}_0$. Using the same method as before we know that $\lambda_3=0$ and $\bar{v}_2=0$. For the fourth term we have</p>
-<script type="math/tex; mode=display">
-Sv_4+T_1v_3+T_2v_2=v_4+\lambda_1v_3+\lambda_4v_0</script><p>The left side is $[\bar{v}_4+A\bar{v}_3+C\tilde{v}_2,B\tilde{v}_2]^t$ and the right side is $[\bar{v}_4+\lambda_1\bar{v}_3+\lambda_4\bar{v}_0,\lambda_1\tilde{v}_3+\tilde{v}_4]^t$. Hence $\tilde{v}_4=B\tilde{v}_2-\lambda_1\tilde{v}_3$ and </p>
-<script type="math/tex; mode=display">
-A\bar{v}_3+CC^t\bar{v}_0=\lambda_1\bar{v}_3+\lambda_4\bar{v}_0</script><p>We cannot cancel anything in this step. Overall we have shown that </p>
-<script type="math/tex; mode=display">
+&amp;Sv_0=\lambda_0v_0
+\end{aligned}
+\]</span> which implies <span class="math inline">\(\lambda_0=1\)</span> and <span class="math inline">\(v_0\)</span> is in the form <span class="math inline">\([\bar{v}_0,0]^t\)</span>. For the first order term we have <span class="math display">\[
+Sv_1+T_1v_0=v_1+\lambda_1v_0
+\]</span> which implies <span class="math inline">\(v_1\)</span> is also in the form <span class="math inline">\([\bar{v}_1,0]^t\)</span>, and <span class="math inline">\(A\bar{v}_0=\lambda_1\bar{v}_0\)</span>. We see that <span class="math inline">\(\bar{v}_0\)</span> is an eigenvector of <span class="math inline">\(A\)</span>. For the second order term we have <span class="math display">\[
+T_2v_0+T_1v_1+Sv_2=v_2+\lambda_1v_1+\lambda_2v_0
+\]</span> Note that <span class="math inline">\(T_2v_0=[0,C^t\bar{v}_0]^t\)</span>. We see that the left side is <span class="math inline">\([A\bar{v}_1+\bar{v}_2,C^t\bar{v}_0]^t\)</span> and the right side is <span class="math inline">\([\lambda_1\bar{v}_1+\lambda_2\bar{v}_0,0]^t+[\bar{v}_2,\tilde{v}_2]^t\)</span>. This gives <span class="math inline">\(\tilde{v}_2=C^t\bar{v}_0\)</span> and <span class="math display">\[
+A\bar{v}_1=\lambda_1\bar{v}_1+\lambda_2\bar{v}_0
+\]</span> Multiplying both sides by <span class="math inline">\(\bar{v}_0^t\)</span>, we have <span class="math display">\[
+\lambda_1\bar{v}_0^t\bar{v}_1=\lambda_1\bar{v}_0^t\bar{v}_1+\lambda_2\bar{v}_0^t\bar{v}_0
+\]</span> Thus, <span class="math inline">\(\lambda_2=0\)</span> and <span class="math inline">\(A\bar{v}_1=\lambda_1\bar{v}_1\)</span>. If we assume the eigenvalues of <span class="math inline">\(A\)</span> are simple (as said in original paper it holds almost surely), then <span class="math inline">\(\bar{v}_1=0\)</span>. For the third order term we have <span class="math display">\[
+Sv_3+T_1v_2+T_2v_1=v_3+\lambda_1v_2+\lambda_2v_1+\lambda_3v_0
+\]</span> The left side is <span class="math inline">\([\bar{v}_3+A\bar{v}_2,0]^t\)</span> and the right side is <span class="math inline">\([\bar{v}_3+\lambda_1\bar{v}_2+\lambda_3\bar{v}_0,\tilde{v}_3+\lambda_1\tilde{v}_2]\)</span>. Hence <span class="math inline">\(\tilde{v}_3=-\lambda_1\tilde{v}_2\)</span> and <span class="math inline">\(A\bar{v}_2=\lambda_1\bar{v}_2+\lambda_3\bar{v}_0\)</span>. Using the same method as before we know that <span class="math inline">\(\lambda_3=0\)</span> and <span class="math inline">\(\bar{v}_2=0\)</span>. For the fourth term we have <span class="math display">\[
+Sv_4+T_1v_3+T_2v_2=v_4+\lambda_1v_3+\lambda_4v_0
+\]</span> The left side is <span class="math inline">\([\bar{v}_4+A\bar{v}_3+C\tilde{v}_2,B\tilde{v}_2]^t\)</span> and the right side is <span class="math inline">\([\bar{v}_4+\lambda_1\bar{v}_3+\lambda_4\bar{v}_0,\lambda_1\tilde{v}_3+\tilde{v}_4]^t\)</span>. Hence <span class="math inline">\(\tilde{v}_4=B\tilde{v}_2-\lambda_1\tilde{v}_3\)</span> and <span class="math display">\[
+A\bar{v}_3+CC^t\bar{v}_0=\lambda_1\bar{v}_3+\lambda_4\bar{v}_0
+\]</span> We cannot cancel anything in this step. Overall we have shown that <span class="math display">\[
 \begin{aligned}
-&\mathbf{v}=v_0+h^2v_2+h^3v_3+O(h^4)=[\bar{v}_0+\bar{v}_3h^3+O(h^4),\tilde{v}_2h^2+O(h^3)]\\
-&\mathbf{\Lambda}=1+h\lambda_1+h^4\lambda_4+O(h^5)
-\end{aligned}</script><p>Suppose the first $m$ eigenvectors of $H$ are $u_1,\cdots,u_m$ and the eigenvectors of $A$ are $w_1,\cdots,w_m$. We have $u_k=[w_k+O(h^3),O(h^2)]^t$ for $k=1,\cdots,m$. Let $\mathbf{U}=[u_1,\cdots,u_m]$ be the $d\times m$ matrix and $\mathbf{O}=[w_1,\cdots,w_m]^t$ be the $m\times m$ orthogonal matrix. Furthermore, let $\mathbf{\Theta}=[e_1,\cdots,e_m]$ be the matrix consisting of $m$ standard basis of $\mathbb{R}^d$. We measure the deviation of the estimated $m$-plane spanned by $u_k$’s from $T_x\mathcal{M}$ by</p>
-<script type="math/tex; mode=display">
-\min_{O\in O(m)} \|\mathbf{U}^t\mathbf{\Theta}-O\|_F\le\|\mathbf{U}^t\mathbf{\Theta}-\mathbf{O}\|_F=O(h^3)</script><p>If we choose the optimal bandwidth, the order will be $O(h^2)$. Thus we see that by choosing ‘non-optimal’ bandwidth the convergence even become faster. However, from another perspective, if we want to find a rotation $\hat{O}$ such that the basis $Q=\mathbf{\Theta}\hat{O}$ is closest to $\mathbf{U}$, i.e. the error is measured by </p>
-<script type="math/tex; mode=display">
-\min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F</script><p>then the error is bounded by </p>
-<script type="math/tex; mode=display">
-\min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F\le O(h^2)</script><p>Then different bandwidths yield the same order of convergence. Note that the difference comes from the estimation of eigenvectors.</p>
-<p>A final remark is that the method used above by comparing coefficients for different orders is not very strict, since it automatically assumes that there are no fractional order terms. Generalization to fractional order convergence needs further investigation. </p>
+&amp;\mathbf{v}=v_0+h^2v_2+h^3v_3+O(h^4)=[\bar{v}_0+\bar{v}_3h^3+O(h^4),\tilde{v}_2h^2+O(h^3)]\\
+&amp;\mathbf{\Lambda}=1+h\lambda_1+h^4\lambda_4+O(h^5)
+\end{aligned}
+\]</span> Suppose the first <span class="math inline">\(m\)</span> eigenvectors of <span class="math inline">\(H\)</span> are <span class="math inline">\(u_1,\cdots,u_m\)</span> and the eigenvectors of <span class="math inline">\(A\)</span> are <span class="math inline">\(w_1,\cdots,w_m\)</span>. We have <span class="math inline">\(u_k=[w_k+O(h^3),O(h^2)]^t\)</span> for <span class="math inline">\(k=1,\cdots,m\)</span>. Let <span class="math inline">\(\mathbf{U}=[u_1,\cdots,u_m]\)</span> be the <span class="math inline">\(d\times m\)</span> matrix and <span class="math inline">\(\mathbf{O}=[w_1,\cdots,w_m]^t\)</span> be the <span class="math inline">\(m\times m\)</span> orthogonal matrix. Furthermore, let <span class="math inline">\(\mathbf{\Theta}=[e_1,\cdots,e_m]\)</span> be the matrix consisting of <span class="math inline">\(m\)</span> standard basis of <span class="math inline">\(\mathbb{R}^d\)</span>. We measure the deviation of the estimated <span class="math inline">\(m\)</span>-plane spanned by <span class="math inline">\(u_k\)</span>'s from <span class="math inline">\(T_x\mathcal{M}\)</span> by <span class="math display">\[
+\min_{O\in O(m)} \|\mathbf{U}^t\mathbf{\Theta}-O\|_F\le\|\mathbf{U}^t\mathbf{\Theta}-\mathbf{O}\|_F=O(h^3)
+\]</span> If we choose the optimal bandwidth, the order will be <span class="math inline">\(O(h^2)\)</span>. Thus we see that by choosing 'non-optimal' bandwidth the convergence even become faster. However, from another perspective, if we want to find a rotation <span class="math inline">\(\hat{O}\)</span> such that the basis <span class="math inline">\(Q=\mathbf{\Theta}\hat{O}\)</span> is closest to <span class="math inline">\(\mathbf{U}\)</span>, i.e. the error is measured by <span class="math display">\[
+\min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F
+\]</span> then the error is bounded by <span class="math display">\[
+\min_{\hat{O}\in O(m)}\|\mathbf{U}-\mathbf{\Theta}\hat{O}\|_F\le O(h^2)
+\]</span> Then different bandwidths yield the same order of convergence. Note that the difference comes from the estimation of eigenvectors.</p>
+<p>A final remark is that the method used above by comparing coefficients for different orders is not very strict, since it automatically assumes that there are no fractional order terms. Generalization to fractional order convergence needs further investigation.</p>
 <hr>
 <p><strong>Update:</strong> In this <a href="https://arxiv.org/pdf/1512.02857.pdf" target="_blank" rel="noopener">paper</a> (appendix D theorem 38), a useful version of <a href="https://arxiv.org/pdf/1405.0680.pdf" target="_blank" rel="noopener">Davis-Kahan</a> theorem is stated as follows</p>
 <blockquote>
-<p>Let $O\in\mathbb{R}^{d\times d}$, $B\in\mathbb{R}^{m\times m}$ be positive semi-definite symmetric matrices such that </p>
-<script type="math/tex; mode=display">
-O=\left[\begin{array}{cc}B&0\\ 0&0\end{array}\right]+E</script><p>Let $T_0$ be the vector space spanned by the first $m$ vectors of canonical basis and $T$ be the eigenspace spanned by the first $m$ eigenvectors of $O$. Then</p>
-<script type="math/tex; mode=display">
-\angle (T_0,T)\le \frac{\sqrt{2}\|E\|_{op}}{\lambda_{\min}(B)}</script></blockquote>
-<p>Now we return back to the expression of $1/h^2H$, consider the decomposition</p>
-<script type="math/tex; mode=display">
-\frac{1}{h^2}H=\left[\begin{array}{cc}cI+O(h^2)+O(\sqrt{nh^m})&0\\0&0\end{array}\right]+\left[\begin{array}{cc}0&O(h^2+\frac{h}{\sqrt{nh^m}})\\O(h^2+\frac{h}{\sqrt{nh^m}})&O(h^2)\end{array}\right]</script><p>Note $\lambda_{\min}(cI+O(\cdot))\approx c$. Thus the convergence rate depends on the operator norm of the second matrix. If we set $1/\sqrt{nh^m}=h^\alpha$ where $0&lt;\alpha&lt;1$, then the rate is $O(h^{1+\alpha})$. If $\alpha\ge 1$, the rate is $O(h^2)$. </p>
+<p>Let <span class="math inline">\(O\in\mathbb{R}^{d\times d}\)</span>, <span class="math inline">\(B\in\mathbb{R}^{m\times m}\)</span> be positive semi-definite symmetric matrices such that <span class="math display">\[
+O=\left[\begin{array}{cc}B&amp;0\\ 0&amp;0\end{array}\right]+E
+\]</span> Let <span class="math inline">\(T_0\)</span> be the vector space spanned by the first <span class="math inline">\(m\)</span> vectors of canonical basis and <span class="math inline">\(T\)</span> be the eigenspace spanned by the first <span class="math inline">\(m\)</span> eigenvectors of <span class="math inline">\(O\)</span>. Then <span class="math display">\[
+\angle (T_0,T)\le \frac{\sqrt{2}\|E\|_{op}}{\lambda_{\min}(B)}
+\]</span></p>
+</blockquote>
+<p>Now we return back to the expression of <span class="math inline">\(1/h^2H\)</span>, consider the decomposition <span class="math display">\[
+\frac{1}{h^2}H=\left[\begin{array}{cc}cI+O(h^2)+O(\sqrt{nh^m})&amp;0\\0&amp;0\end{array}\right]+\left[\begin{array}{cc}0&amp;O(h^2+\frac{h}{\sqrt{nh^m}})\\O(h^2+\frac{h}{\sqrt{nh^m}})&amp;O(h^2)\end{array}\right]
+\]</span> Note <span class="math inline">\(\lambda_{\min}(cI+O(\cdot))\approx c\)</span>. Thus the convergence rate depends on the operator norm of the second matrix. If we set <span class="math inline">\(1/\sqrt{nh^m}=h^\alpha\)</span> where <span class="math inline">\(0&lt;\alpha&lt;1\)</span>, then the rate is <span class="math inline">\(O(h^{1+\alpha})\)</span>. If <span class="math inline">\(\alpha\ge 1\)</span>, the rate is <span class="math inline">\(O(h^2)\)</span>.</p>
 <hr>
-<p><strong>Update:</strong> <a href="https://djalil.chafai.net/blog/2011/12/03/the-hoffman-wielandt-inequality/" target="_blank" rel="noopener">This blog</a> gives a very nice introduction to Wielandt-Hoffman inequality. The proof is short and readable. I also write a new blog on Davis-Kahan’s $\sin(\Theta)$ theorem. See <a href="http://yueqicao.top/2021/01/12/Davis-Kahan-s-Theorem/" target="_blank" rel="noopener">this page</a> for more details.</p>
+<p><strong>Update:</strong> <a href="https://djalil.chafai.net/blog/2011/12/03/the-hoffman-wielandt-inequality/" target="_blank" rel="noopener">This blog</a> gives a very nice introduction to Wielandt-Hoffman inequality. The proof is short and readable. I also write a new blog on Davis-Kahan's <span class="math inline">\(\sin(\Theta)\)</span> theorem. See <a href="http://yueqicao.top/2021/01/12/Davis-Kahan-s-Theorem/">this page</a> for more details.</p>
 
     </article>
     <!-- license  -->
@@ -1086,19 +1088,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1155,9 +1157,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

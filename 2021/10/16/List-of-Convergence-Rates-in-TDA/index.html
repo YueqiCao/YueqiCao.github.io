@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">717</span>Reading time: <span class="post-count reading-time">4 min</span></span>
+                        <span>Word count: <span class="post-count word-count">722</span>Reading time: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,43 +401,61 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Frechet-means-for-distributions-of-persistence-diagrams"><a href="#Frechet-means-for-distributions-of-persistence-diagrams" class="headerlink" title="Frechet means for distributions of persistence diagrams"></a>Frechet means for distributions of persistence diagrams</h2><p>Consider the measure $\rho = 1/m \sum<em>{i=1}^m \delta</em>{Z_i}$ on the space of persistence diagrams. The population Frechet mean is defined by </p>
-<script type="math/tex; mode=display">
-Y = \arg\min_Z \int_{\mathcal{D}} d(X,Z)^2 {\rm d}\rho(X)</script><p>Let $X<em>1,\cdots, X_n$ be iid samples from $\rho$. Let $\rho_n = 1/n\sum</em>{i=1}^n \delta_{X_i}$. The empirical Frechet mean is defined by</p>
-<script type="math/tex; mode=display">
-Y_n = \arg\min_Z \int_{\mathcal{D}} d(X,Z)^2 {\rm d}\rho_n(X)</script><blockquote>
-<p>There exists a $Y_n$ such that with probability greater than $1-\delta$</p>
-<script type="math/tex; mode=display">
-d(Y,Y_n)^2\le \frac{m^2F(Y)}{n}\log(\frac{m}{\delta})</script><p>for $n\ge 8m\log(m/\delta)$ and the right hand side is less than $r^2$ where $r$ characterizes the separation between the local minima of $F$.</p>
-</blockquote>
-<h2 id="Convergence-rates-for-persistence-diagrams-estimation-in-topological-data-analysis"><a href="#Convergence-rates-for-persistence-diagrams-estimation-in-topological-data-analysis" class="headerlink" title="Convergence rates for persistence diagrams estimation in topological data analysis"></a>Convergence rates for persistence diagrams estimation in topological data analysis</h2><p>Let $(M,\rho)$ be a metric space and $\mu$ is a measure on it with support $M<em>\mu$. Further, assume that $\mu$ satisfies the $(a,b)$-standard assumption: for any $x$ in $M</em>\mu$ and $r&gt;0$, $\mu(B(x,r))\ge \min(ar^b,1)$ (usually $b=d$ if in $\mathbb{R}^d$). Let $\mathbb{X}={X_1,\cdots,X_n}$ be iid samples from $\mu$. Then we have </p>
+        <h2 id="frechet-means-for-distributions-of-persistence-diagrams">Frechet means for distributions of persistence diagrams</h2>
+<p>Consider the measure <span class="math inline">\(\rho = 1/m \sum_{i=1}^m \delta_{Z_i}\)</span> on the space of persistence diagrams. The population Frechet mean is defined by</p>
+<p><span class="math display">\[
+Y = \arg\min_Z \int_{\mathcal{D}} d(X,Z)^2 {\rm d}\rho(X)
+\]</span></p>
+<p>Let <span class="math inline">\(X_1,\cdots, X_n\)</span> be iid samples from <span class="math inline">\(\rho\)</span>. Let <span class="math inline">\(\rho_n = 1/n\sum_{i=1}^n \delta_{X_i}\)</span>. The empirical Frechet mean is defined by</p>
+<p><span class="math display">\[
+Y_n = \arg\min_Z \int_{\mathcal{D}} d(X,Z)^2 {\rm d}\rho_n(X)
+\]</span></p>
 <blockquote>
-<p>$\mathbb{E}[d<em>\infty(\text{Dgm}(M</em>\mu),\text{Dgm}(\mathbb{X}))]\le C(\frac{\log n}{n})^{1/b}$<br>where $C$ is a constant depending on $a$ and $b$. </p>
+<p>There exists a <span class="math inline">\(Y_n\)</span> such that with probability greater than <span class="math inline">\(1-\delta\)</span> <span class="math display">\[
+d(Y,Y_n)^2\le \frac{m^2F(Y)}{n}\log(\frac{m}{\delta})
+\]</span> for <span class="math inline">\(n\ge 8m\log(m/\delta)\)</span> and the right hand side is less than <span class="math inline">\(r^2\)</span> where <span class="math inline">\(r\)</span> characterizes the separation between the local minima of <span class="math inline">\(F\)</span>.</p>
 </blockquote>
-<p>Essentially the result comes from the stability theorem of persistence diagrams and convergence for random sets with respect to Hausdorff distance. In fact, we have </p>
+<h2 id="convergence-rates-for-persistence-diagrams-estimation-in-topological-data-analysis">Convergence rates for persistence diagrams estimation in topological data analysis</h2>
+<p>Let <span class="math inline">\((M,\rho)\)</span> be a metric space and <span class="math inline">\(\mu\)</span> is a measure on it with support <span class="math inline">\(M_\mu\)</span>. Further, assume that <span class="math inline">\(\mu\)</span> satisfies the <span class="math inline">\((a,b)\)</span>-standard assumption: for any <span class="math inline">\(x\)</span> in <span class="math inline">\(M_\mu\)</span> and <span class="math inline">\(r&gt;0\)</span>, <span class="math inline">\(\mu(B(x,r))\ge \min(ar^b,1)\)</span> (usually <span class="math inline">\(b=d\)</span> if in <span class="math inline">\(\mathbb{R}^d\)</span>). Let <span class="math inline">\(\mathbb{X}=\{X_1,\cdots,X_n\}\)</span> be iid samples from <span class="math inline">\(\mu\)</span>. Then we have</p>
 <blockquote>
-<p>for any $\epsilon&gt;0$, $\mathbb{P}[d<em>H(M</em>\mu,\mathbb{X})]\le \frac{2^b}{a\epsilon^b}\exp(-na\epsilon^b)\wedge 1$</p>
+<p><span class="math inline">\(\mathbb{E}[d_\infty(\text{Dgm}(M_\mu),\text{Dgm}(\mathbb{X}))]\le C(\frac{\log n}{n})^{1/b}\)</span> where <span class="math inline">\(C\)</span> is a constant depending on <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
 </blockquote>
-<h2 id="Subsampling-methods-for-persistent-homology"><a href="#Subsampling-methods-for-persistent-homology" class="headerlink" title="Subsampling methods for persistent homology"></a>Subsampling methods for persistent homology</h2><p>Let $(M,\rho,\mu)$ be the metric measure space satisfying the $(a,b)$-standard assumption. Let $S_1,\cdots,S_n$ be $n$ iid samples of size $m$ from $\mu$. Define the empirical average landscape by </p>
-<script type="math/tex; mode=display">
-(\hat\lambda) = \frac{1}{n}\sum_{i=1}^n\lambda_{S_i}</script><p>The empirical average landscape is supposed to converge to the population average landscape which is </p>
-<script type="math/tex; mode=display">
-\mathbb{E}_{(\mu^{\otimes m})_*}[\lambda]</script><p>The bias part is controlled by the following</p>
+<p>Essentially the result comes from the stability theorem of persistence diagrams and convergence for random sets with respect to Hausdorff distance. In fact, we have</p>
 <blockquote>
-<p>Let $r<em>m = 2(\frac{\log m}{am})^{1/b}$. If $\mu$ satisfies the $(a,b,r_0)$ assumption, then<br>$|\lambda</em>{M<em>\mu}-\mathbb{E}[\lambda]|</em>\infty\le r<em>0+r_m 1</em>{(r_0,\infty)}(r_m)+C(a,b)\frac{r_m}{(\log m)^2}$</p>
+<p>for any <span class="math inline">\(\epsilon&gt;0\)</span>, <span class="math inline">\(\mathbb{P}[d_H(M_\mu,\mathbb{X})]\le \frac{2^b}{a\epsilon^b}\exp(-na\epsilon^b)\wedge 1\)</span></p>
 </blockquote>
-<p>The variance part is controlled by </p>
+<h2 id="subsampling-methods-for-persistent-homology">Subsampling methods for persistent homology</h2>
+<p>Let <span class="math inline">\((M,\rho,\mu)\)</span> be the metric measure space satisfying the <span class="math inline">\((a,b)\)</span>-standard assumption. Let <span class="math inline">\(S_1,\cdots,S_n\)</span> be <span class="math inline">\(n\)</span> iid samples of size <span class="math inline">\(m\)</span> from <span class="math inline">\(\mu\)</span>. Define the empirical average landscape by</p>
+<p><span class="math display">\[
+(\hat\lambda) = \frac{1}{n}\sum_{i=1}^n\lambda_{S_i}
+\]</span></p>
+<p>The empirical average landscape is supposed to converge to the population average landscape which is</p>
+<p><span class="math display">\[
+\mathbb{E}_{(\mu^{\otimes m})_*}[\lambda]
+\]</span></p>
+<p>The bias part is controlled by the following</p>
 <blockquote>
-<p>$\mathbb{E}|\hat{\lambda}-\mathbb{E}[\lambda]|_\infty\le O(1/\sqrt{n})$</p>
+<p>Let <span class="math inline">\(r_m = 2(\frac{\log m}{am})^{1/b}\)</span>. If <span class="math inline">\(\mu\)</span> satisfies the <span class="math inline">\((a,b,r_0)\)</span> assumption, then <span class="math inline">\(\|\lambda_{M_\mu}-\mathbb{E}[\lambda]\|_\infty\le r_0+r_m 1_{(r_0,\infty)}(r_m)+C(a,b)\frac{r_m}{(\log m)^2}\)</span></p>
 </blockquote>
-<h2 id="Estimation-and-quantization-of-expected-persistence-diagrams"><a href="#Estimation-and-quantization-of-expected-persistence-diagrams" class="headerlink" title="Estimation and quantization of expected persistence diagrams"></a>Estimation and quantization of expected persistence diagrams</h2><p>Let $\Omega={(x,y)|y&gt;x}$ be the open half-plane, and $\partial\Omega={(x,x)|x\in\mathbb{R}}$ be the boundary of $\Omega$. Let $\mathcal{M}^p$ be the space of Radon measures supported on $\Omega$ that have finite total $p$-persistence, i.e. $\int |x-\partial\Omega|^p {\rm d}\mu(x)&lt;\infty$. Define the distance between two measures $\mu$ and $\nu$ by </p>
-<script type="math/tex; mode=display">
-\textrm{OT}_p = \inf_{\pi}\left(\int_{\bar{\Omega}\times\bar{\Omega}}\|x-y\|^p {\rm d}\pi(x,y)\right)</script><p>where $\pi$ ranges all measures supported on $\bar{\Omega}\times\bar{\Omega}$ whose first marginal coincides with $\mu$ and second marginal coincides with $\nu$. Let $P$ be a probability distribution supported on $(\mathcal{M}^p,\textrm{OT}_p)$. Let $\mathbf{E}(P)$ be the measure defined by, for $A\subset \Omega$ compact, </p>
-<script type="math/tex; mode=display">
-\mathbb{E}(P)[A] = \mathbb{E}_P[\mu(A)]</script><p>$\mathbf{E}(P)$ is called the expected persistence diagram. If $P$ is a distribution supported on the space of persistence diagrams, it is proved under mild assumptions, $\mathbb{E}(P)$ admits a density with respect to the Lebesgue measure on $\Omega$.</p>
-<p>Given iid samples $\mu_1,\cdots,\mu_n\sim P$, the empirical expected persistence diagram is defined by $\bar{\mu}_n=\frac{1}{n}\sum \mu_i$. We have $\bar{\mu}_n\rightarrow\mathbf{E}(P)$ under $\textrm{OT}_p$ almost surely. Specifically,</p>
-<script type="math/tex; mode=display">
-\mathbb{E}[\textrm{OT}_p^p(\bar{\mu}_n, \mathbf{E}(P))] = O(\frac{1}{n^{1/2}}+\frac{a_p(n)}{n^{p-q}})</script><p>where $1\le p&lt;\infty$, $0\le q&lt; p$, and $P$ is a distribution with ‘some’ restrictions. </p>
+<p>The variance part is controlled by</p>
+<blockquote>
+<p><span class="math inline">\(\mathbb{E}\|\hat{\lambda}-\mathbb{E}[\lambda]\|_\infty\le O(1/\sqrt{n})\)</span></p>
+</blockquote>
+<h2 id="estimation-and-quantization-of-expected-persistence-diagrams">Estimation and quantization of expected persistence diagrams</h2>
+<p>Let <span class="math inline">\(\Omega=\{(x,y)|y&gt;x\}\)</span> be the open half-plane, and <span class="math inline">\(\partial\Omega=\{(x,x)|x\in\mathbb{R}\}\)</span> be the boundary of <span class="math inline">\(\Omega\)</span>. Let <span class="math inline">\(\mathcal{M}^p\)</span> be the space of Radon measures supported on <span class="math inline">\(\Omega\)</span> that have finite total <span class="math inline">\(p\)</span>-persistence, i.e. <span class="math inline">\(\int \|x-\partial\Omega\|^p {\rm d}\mu(x)&lt;\infty\)</span>. Define the distance between two measures <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> by</p>
+<p><span class="math display">\[
+\textrm{OT}_p = \inf_{\pi}\left(\int_{\bar{\Omega}\times\bar{\Omega}}\|x-y\|^p {\rm d}\pi(x,y)\right) 
+\]</span></p>
+<p>where <span class="math inline">\(\pi\)</span> ranges all measures supported on <span class="math inline">\(\bar{\Omega}\times\bar{\Omega}\)</span> whose first marginal coincides with <span class="math inline">\(\mu\)</span> and second marginal coincides with <span class="math inline">\(\nu\)</span>. Let <span class="math inline">\(P\)</span> be a probability distribution supported on <span class="math inline">\((\mathcal{M}^p,\textrm{OT}_p)\)</span>. Let <span class="math inline">\(\mathbf{E}(P)\)</span> be the measure defined by, for <span class="math inline">\(A\subset \Omega\)</span> compact,</p>
+<p><span class="math display">\[
+\mathbb{E}(P)[A] = \mathbb{E}_P[\mu(A)]
+\]</span></p>
+<p><span class="math inline">\(\mathbf{E}(P)\)</span> is called the expected persistence diagram. If <span class="math inline">\(P\)</span> is a distribution supported on the space of persistence diagrams, it is proved under mild assumptions, <span class="math inline">\(\mathbb{E}(P)\)</span> admits a density with respect to the Lebesgue measure on <span class="math inline">\(\Omega\)</span>.</p>
+<p>Given iid samples <span class="math inline">\(\mu_1,\cdots,\mu_n\sim P\)</span>, the empirical expected persistence diagram is defined by <span class="math inline">\(\bar{\mu}_n=\frac{1}{n}\sum \mu_i\)</span>. We have <span class="math inline">\(\bar{\mu}_n\rightarrow\mathbf{E}(P)\)</span> under <span class="math inline">\(\textrm{OT}_p\)</span> almost surely. Specifically,</p>
+<p><span class="math display">\[
+\mathbb{E}[\textrm{OT}_p^p(\bar{\mu}_n, \mathbf{E}(P))] = O(\frac{1}{n^{1/2}}+\frac{a_p(n)}{n^{p-q}})
+\]</span></p>
+<p>where <span class="math inline">\(1\le p&lt;\infty\)</span>, <span class="math inline">\(0\le q&lt; p\)</span>, and <span class="math inline">\(P\)</span> is a distribution with 'some' restrictions.</p>
 
     </article>
     <!-- license  -->
@@ -567,7 +585,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Frechet-means-for-distributions-of-persistence-diagrams"><span class="toc-number">1.</span> <span class="toc-text">Frechet means for distributions of persistence diagrams</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Convergence-rates-for-persistence-diagrams-estimation-in-topological-data-analysis"><span class="toc-number">2.</span> <span class="toc-text">Convergence rates for persistence diagrams estimation in topological data analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Subsampling-methods-for-persistent-homology"><span class="toc-number">3.</span> <span class="toc-text">Subsampling methods for persistent homology</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Estimation-and-quantization-of-expected-persistence-diagrams"><span class="toc-number">4.</span> <span class="toc-text">Estimation and quantization of expected persistence diagrams</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#frechet-means-for-distributions-of-persistence-diagrams"><span class="toc-number">1.</span> <span class="toc-text">Frechet means for distributions of persistence diagrams</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#convergence-rates-for-persistence-diagrams-estimation-in-topological-data-analysis"><span class="toc-number">2.</span> <span class="toc-text">Convergence rates for persistence diagrams estimation in topological data analysis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#subsampling-methods-for-persistent-homology"><span class="toc-number">3.</span> <span class="toc-text">Subsampling methods for persistent homology</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#estimation-and-quantization-of-expected-persistence-diagrams"><span class="toc-number">4.</span> <span class="toc-text">Estimation and quantization of expected persistence diagrams</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -995,19 +1013,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1064,9 +1082,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

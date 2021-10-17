@@ -352,11 +352,12 @@
         </a>
         <div class="abstract-content">
             <p>This article aims to solve an exercise in <a href="https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.html#" target="_blank" rel="noopener">High-Dimensional Probability</a> (Page 112, Exercise 5.2.3).</p>
-<h2 id="Gaussian-Isoperimetric-Inequality"><a href="#Gaussian-Isoperimetric-Inequality" class="headerlink" title="Gaussian Isoperimetric Inequality"></a>Gaussian Isoperimetric Inequality</h2><p>Let $\mathbb R^n$ equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> $\gamma_n$:</p>
-<script type="math/tex; mode=display">
-\gamma_n(E)=\frac{1}{(2\pi)^{n/2}}\int_E\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x</script><p>where $E\subseteq \mathbb R^n$ is a Borel set. Then $(\mathbb R^n,\gamma_n)$ is called Gauss space. Gaussian isoperimetric inequality states that, among all the measurable sets with given volume, half spaces have the <strong>smallest perimeter</strong>. Moreover, define the Minkowski sum </p>
-<script type="math/tex; mode=display">
-A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statement.</p>
+<h2 id="gaussian-isoperimetric-inequality">Gaussian Isoperimetric Inequality</h2>
+<p>Let <span class="math inline">\(\mathbb R^n\)</span> equip with the <a href="https://en.wikipedia.org/wiki/Gaussian_measure" target="_blank" rel="noopener">Gauss measure</a> <span class="math inline">\(\gamma_n\)</span>: <span class="math display">\[
+\gamma_n(E)=\frac{1}{(2\pi)^{n/2}}\int_E\exp\{-\frac{\|x\|^2}{2}\}{\rm d}x
+\]</span> where <span class="math inline">\(E\subseteq \mathbb R^n\)</span> is a Borel set. Then <span class="math inline">\((\mathbb R^n,\gamma_n)\)</span> is called Gauss space. Gaussian isoperimetric inequality states that, among all the measurable sets with given volume, half spaces have the <strong>smallest perimeter</strong>. Moreover, define the Minkowski sum <span class="math display">\[
+A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.
+\]</span> We have the following statement.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -385,7 +386,8 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
                 <span>Bayesian Linear Regression</span>
         </a>
         <div class="abstract-content">
-            <h2 id="The-Linear-Regression-Model"><a href="#The-Linear-Regression-Model" class="headerlink" title="The Linear Regression Model"></a>The Linear Regression Model</h2><p>A <em>normal linear regression model</em> assumes an output variable $Y$, a vector of covariates ${\bf x}=(x_1,\cdots ,x_p)$, and $Y$ is linear deterministic function $\bf \beta^Tx$ with additive Gaussian noise.</p>
+            <h2 id="the-linear-regression-model">The Linear Regression Model</h2>
+<p>A <em>normal linear regression model</em> assumes an output variable <span class="math inline">\(Y\)</span>, a vector of covariates <span class="math inline">\({\bf x}=(x_1,\cdots ,x_p)\)</span>, and <span class="math inline">\(Y\)</span> is linear deterministic function <span class="math inline">\(\bf \beta^Tx\)</span> with additive Gaussian noise.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -416,10 +418,11 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.</script><p>We have the following statem
                 <span>Notes on KNN Density Estimates (1)</span>
         </a>
         <div class="abstract-content">
-            <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>‘s work in 1979. </p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Suppose we have a <strong>bounded, twice differentiable density</strong> function $f$ on $\mathbb R^p$. Let $X_1,X_2,\cdots,X_n$ be $n$ i.i.d. samples of $f$. Let $x\in\mathbb R^p$ be a fixed point so that $f(x)&gt;0$. We want to estimate $f(x)$ based on $n$ samples. The KNN estimate is given by </p>
-<script type="math/tex; mode=display">
-f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where $Z_n$ is the distance between $x$ and its $k$th nearest neighbor, and $\omega$ is a <strong>bounded integrable</strong> weight function with $\int\omega(u){\rm d}u=1$. </p>
+            <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>'s work in 1979.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Suppose we have a <strong>bounded, twice differentiable density</strong> function <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb R^p\)</span>. Let <span class="math inline">\(X_1,X_2,\cdots,X_n\)</span> be <span class="math inline">\(n\)</span> i.i.d. samples of <span class="math inline">\(f\)</span>. Let <span class="math inline">\(x\in\mathbb R^p\)</span> be a fixed point so that <span class="math inline">\(f(x)&gt;0\)</span>. We want to estimate <span class="math inline">\(f(x)\)</span> based on <span class="math inline">\(n\)</span> samples. The KNN estimate is given by <span class="math display">\[
+f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
+\]</span> where <span class="math inline">\(Z_n\)</span> is the distance between <span class="math inline">\(x\)</span> and its <span class="math inline">\(k\)</span>th nearest neighbor, and <span class="math inline">\(\omega\)</span> is a <strong>bounded integrable</strong> weight function with <span class="math inline">\(\int\omega(u){\rm d}u=1\)</span>.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -450,7 +453,8 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
                 <span>A Proof of &#39;Everything is connected&#39;</span>
         </a>
         <div class="abstract-content">
-            <h2 id="Stories"><a href="#Stories" class="headerlink" title="Stories"></a>Stories</h2><p>The idea about building my own blog was originated from a long time ago when I first read <a href="https://terrytao.wordpress.com/" target="_blank" rel="noopener">Terry Tao’s homepage</a>. In 2019, when I became a graduate student, I realized it is necessary to write down the mathematics to keep track of my research. Honestly speaking, repetitions and failures really make one suffer. It is those tiny progresses that encourage me to hold on.</p>
+            <h2 id="stories">Stories</h2>
+<p>The idea about building my own blog was originated from a long time ago when I first read <a href="https://terrytao.wordpress.com/" target="_blank" rel="noopener">Terry Tao's homepage</a>. In 2019, when I became a graduate student, I realized it is necessary to write down the mathematics to keep track of my research. Honestly speaking, repetitions and failures really make one suffer. It is those tiny progresses that encourage me to hold on.</p>
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -981,19 +985,19 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),</script><p>where
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1050,9 +1054,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

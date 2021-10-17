@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">224</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                        <span>Word count: <span class="post-count word-count">228</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,26 +403,30 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>When I want to save a bunch of tex equations/symbols as svg files I find there is no efficient software to fulfill this goal. But I find the interesting <a href="https://xiaoxiang.io/5aab4864f26b75000111c679/" target="_blank" rel="noopener">pipeline</a> which is implemented on a Linux system.   The following is what I did on my CentOS7 server.</p>
-<h3 id="Install-Latex"><a href="#Install-Latex" class="headerlink" title="Install Latex"></a>Install Latex</h3><p>Login in as <strong>root</strong>. Then install texlive using the following two commands</p>
+        <p>When I want to save a bunch of tex equations/symbols as svg files I find there is no efficient software to fulfill this goal. But I find the interesting <a href="https://xiaoxiang.io/5aab4864f26b75000111c679/" target="_blank" rel="noopener">pipeline</a> which is implemented on a Linux system. The following is what I did on my CentOS7 server.</p>
+<h3 id="install-latex">Install Latex</h3>
+<p>Login in as <strong>root</strong>. Then install texlive using the following two commands</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install texlive-latex</span><br><span class="line">yum install texmaker</span><br></pre></td></tr></table></figure>
-<p>Check your pdflatex version using </p>
+<p>Check your pdflatex version using</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdflatex --version</span><br></pre></td></tr></table></figure>
-<h3 id="Install-pdfcrop"><a href="#Install-pdfcrop" class="headerlink" title="Install pdfcrop"></a>Install pdfcrop</h3><p><a href="https://github.com/ho-tex/pdfcrop" target="_blank" rel="noopener">pdfcrop</a> is written by perl. First install perl on CentOS</p>
+<h3 id="install-pdfcrop">Install pdfcrop</h3>
+<p><a href="https://github.com/ho-tex/pdfcrop" target="_blank" rel="noopener">pdfcrop</a> is written by perl. First install perl on CentOS</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install perl</span><br></pre></td></tr></table></figure>
 <p>Check the perl version using</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -v</span><br></pre></td></tr></table></figure>
 <p>Then download or clone the pdfcrop repository</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ho-tex/pdfcrop.git</span><br></pre></td></tr></table></figure>
-<p>cd to the directory where you can see the perl file. Run with a test pdf using </p>
+<p>cd to the directory where you can see the perl file. Run with a test pdf using</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl pdfcrop.pl test.pdf</span><br></pre></td></tr></table></figure>
-<p>The output is named as </p>
+<p>The output is named as</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test-crop.pdf</span><br></pre></td></tr></table></figure>
-<h3 id="Install-poppler"><a href="#Install-poppler" class="headerlink" title="Install poppler"></a>Install poppler</h3><p>The original pipeline uses <a href="https://github.com/dawbarton/pdf2svg" target="_blank" rel="noopener">pdf2svg</a> which requires <a href="https://poppler.freedesktop.org/" target="_blank" rel="noopener">poppler</a> and <a href="https://www.cairographics.org/" target="_blank" rel="noopener">cairo</a> of high version. Installing dependencies on CentOS7 is a terrible struggle. The simplest way is to use pdftocairo which is contained in poppler-utils. </p>
+<h3 id="install-poppler">Install poppler</h3>
+<p>The original pipeline uses <a href="https://github.com/dawbarton/pdf2svg" target="_blank" rel="noopener">pdf2svg</a> which requires <a href="https://poppler.freedesktop.org/" target="_blank" rel="noopener">poppler</a> and <a href="https://www.cairographics.org/" target="_blank" rel="noopener">cairo</a> of high version. Installing dependencies on CentOS7 is a terrible struggle. The simplest way is to use pdftocairo which is contained in poppler-utils.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install poppler-utils</span><br></pre></td></tr></table></figure>
 <p>Then run with a test pdf</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdftocairo test.pdf output.svg -svg</span><br></pre></td></tr></table></figure>
-<h3 id="Pack-the-pipeline"><a href="#Pack-the-pipeline" class="headerlink" title="Pack the pipeline"></a>Pack the pipeline</h3><p>Write a bash script to pack all steps together.</p>
+<h3 id="pack-the-pipeline">Pack the pipeline</h3>
+<p>Write a bash script to pack all steps together.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">vim test.tex</span><br><span class="line">pdflatex test.tex</span><br><span class="line">perl pdfcrop.pl test.pdf</span><br><span class="line">pdftocairo test-crop.pdf output.svg -svg</span><br><span class="line">rm test.* test-crop.pdf</span><br></pre></td></tr></table></figure>
 
     </article>
@@ -558,7 +562,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Latex"><span class="toc-number">1.</span> <span class="toc-text">Install Latex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-pdfcrop"><span class="toc-number">2.</span> <span class="toc-text">Install pdfcrop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-poppler"><span class="toc-number">3.</span> <span class="toc-text">Install poppler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pack-the-pipeline"><span class="toc-number">4.</span> <span class="toc-text">Pack the pipeline</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#install-latex"><span class="toc-number">1.</span> <span class="toc-text">Install Latex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-pdfcrop"><span class="toc-number">2.</span> <span class="toc-text">Install pdfcrop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-poppler"><span class="toc-number">3.</span> <span class="toc-text">Install poppler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pack-the-pipeline"><span class="toc-number">4.</span> <span class="toc-text">Pack the pipeline</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -986,19 +990,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1055,9 +1059,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

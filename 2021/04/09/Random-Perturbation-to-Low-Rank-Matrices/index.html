@@ -274,7 +274,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">901</span>Reading time: <span class="post-count reading-time">5 min</span></span>
+                        <span>Word count: <span class="post-count word-count">919</span>Reading time: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -403,58 +403,92 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>Let $A$ stand for the true symmetric matrix and $E$ represent the perturbation. Let $\lambda_i$’s be the eigenvalues of $A$, sorted in descending order and denote $\delta=\lambda_1-\lambda_2$ to be the eigengap. Let $u_i$ be the eigenvector of $A$ and $v_i$ be the eigenvector of $A+E$. The classical <a href="http://yueqicao.top/2021/01/12/Davis-Kahan-s-Theorem/" target="_blank" rel="noopener">Davis-Kahan theorem</a> states that</p>
-<script type="math/tex; mode=display">
-\sin(u_1,v_1)\le \frac{2\|E\|_{op}}{\delta}</script><p>up to constant the DK bound is sharp, as we see in the following example</p>
-<script type="math/tex; mode=display">
+        <h2 id="motivation">Motivation</h2>
+<p>Let <span class="math inline">\(A\)</span> stand for the true symmetric matrix and <span class="math inline">\(E\)</span> represent the perturbation. Let <span class="math inline">\(\lambda_i\)</span>'s be the eigenvalues of <span class="math inline">\(A\)</span>, sorted in descending order and denote <span class="math inline">\(\delta=\lambda_1-\lambda_2\)</span> to be the eigengap. Let <span class="math inline">\(u_i\)</span> be the eigenvector of <span class="math inline">\(A\)</span> and <span class="math inline">\(v_i\)</span> be the eigenvector of <span class="math inline">\(A+E\)</span>. The classical <a href="http://yueqicao.top/2021/01/12/Davis-Kahan-s-Theorem/">Davis-Kahan theorem</a> states that</p>
+<p><span class="math display">\[
+\sin(u_1,v_1)\le \frac{2\|E\|_{op}}{\delta}
+\]</span></p>
+<p>up to constant the DK bound is sharp, as we see in the following example</p>
+<p><span class="math display">\[
 A=\left[\begin{array}{cc}
-1+\epsilon & 0\\ 0 &1-\epsilon    
+1+\epsilon &amp; 0\\ 0 &amp;1-\epsilon    
 \end{array}\right],\, E=\left[\begin{array}{cc}
-    -\epsilon & \epsilon \\ \epsilon & \epsilon
-\end{array}\right]</script><p>However, researchers find that in certain cases the bound can be improved. In <a href="https://arxiv.org/abs/1311.2657v5" target="_blank" rel="noopener">Vu’s paper</a>, the author considered the following setting: $A$ is an $n\times n$ matrix but of low rank $r$, $E$ is a random Bernoulli matrix whose entries are iid random variables taking values $\pm 1$ with probability $1/2$. From random matrix theory we know that $|E|_{op}=(2+o(1))\sqrt{n}$. Then the classical DK bound is about $4\sqrt{n}/\delta$. But the experiment shows that this bound is far from optimal.</p>
-<p><img src="/2021/04/09/Random-Perturbation-to-Low-Rank-Matrices/DKbound.png" alt="DK"></p>
-<p>In the experiment we construct a $400\times 400$ matrix $A$ such that $A(1,1)=10+\delta, A(2,2)=10$ and zero otherwise. We set $\delta=100(1+rand)$ where $rand$ is uniform on $[0,1]$ and we run 20 times. The blue bar represents the true $\sin$ and red bar represents the classical DK bound. The result motivates us to find a sharper bound in random settings.</p>
-<h2 id="Random-Noises"><a href="#Random-Noises" class="headerlink" title="Random Noises"></a>Random Noises</h2><p>We state a simplified assumption on the random matrix $E$ from <a href="https://arxiv.org/abs/1311.2657v5" target="_blank" rel="noopener">Vu</a> (just omit the constants). The $n\times n$ matrix $E$ is $\gamma$-concentrated if for all unit vectors $u,v$ and every $t$ we have</p>
-<script type="math/tex; mode=display">
-\log\mathbb{P}(|u^TEv|>t)=O(-t^\gamma)</script><p>i.e. the rate tending to $-\infty$ is in order at least $\gamma$. </p>
+    -\epsilon &amp; \epsilon \\ \epsilon &amp; \epsilon
+\end{array}\right]
+\]</span></p>
+<p>However, researchers find that in certain cases the bound can be improved. In <a href="https://arxiv.org/abs/1311.2657v5" target="_blank" rel="noopener">Vu's paper</a>, the author considered the following setting: <span class="math inline">\(A\)</span> is an <span class="math inline">\(n\times n\)</span> matrix but of low rank <span class="math inline">\(r\)</span>, <span class="math inline">\(E\)</span> is a random Bernoulli matrix whose entries are iid random variables taking values <span class="math inline">\(\pm 1\)</span> with probability <span class="math inline">\(1/2\)</span>. From random matrix theory we know that <span class="math inline">\(\|E\|_{op}=(2+o(1))\sqrt{n}\)</span>. Then the classical DK bound is about <span class="math inline">\(4\sqrt{n}/\delta\)</span>. But the experiment shows that this bound is far from optimal.</p>
+<figure>
+<img src="/2021/04/09/Random-Perturbation-to-Low-Rank-Matrices/DKbound.png" alt="DK"><figcaption aria-hidden="true">DK</figcaption>
+</figure>
+<p>In the experiment we construct a <span class="math inline">\(400\times 400\)</span> matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(A(1,1)=10+\delta, A(2,2)=10\)</span> and zero otherwise. We set <span class="math inline">\(\delta=100(1+rand)\)</span> where <span class="math inline">\(rand\)</span> is uniform on <span class="math inline">\([0,1]\)</span> and we run 20 times. The blue bar represents the true <span class="math inline">\(\sin\)</span> and red bar represents the classical DK bound. The result motivates us to find a sharper bound in random settings.</p>
+<h2 id="random-noises">Random Noises</h2>
+<p>We state a simplified assumption on the random matrix <span class="math inline">\(E\)</span> from <a href="https://arxiv.org/abs/1311.2657v5" target="_blank" rel="noopener">Vu</a> (just omit the constants). The <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(E\)</span> is <span class="math inline">\(\gamma\)</span>-concentrated if for all unit vectors <span class="math inline">\(u,v\)</span> and every <span class="math inline">\(t\)</span> we have</p>
+<p><span class="math display">\[
+\log\mathbb{P}(|u^TEv|&gt;t)=O(-t^\gamma)
+\]</span></p>
+<p>i.e. the rate tending to <span class="math inline">\(-\infty\)</span> is in order at least <span class="math inline">\(\gamma\)</span>.</p>
 <p><strong>Examples:</strong></p>
 <ul>
-<li>Bernoulli matrix is $2$-concentrated;</li>
-<li>Gaussian matrix is $2$-concentrated;</li>
-<li>Sub-exponential matrix is $1$-concentrated.</li>
+<li>Bernoulli matrix is <span class="math inline">\(2\)</span>-concentrated;</li>
+<li>Gaussian matrix is <span class="math inline">\(2\)</span>-concentrated;</li>
+<li>Sub-exponential matrix is <span class="math inline">\(1\)</span>-concentrated.</li>
 </ul>
-<p>In particular, for bounded random matrices we have </p>
+<p>In particular, for bounded random matrices we have</p>
 <blockquote>
-<p>Let $E=(\xi<em>{ij})$ be a matrix with independent random variables each with mean zero. Furthermore, $|\xi</em>{ij}|\le K$ a.s. for all $i,j$. Then $E$ is $2$-concentrated and </p>
-<script type="math/tex; mode=display">
-\mathbb{P}(|u^TEv|>t)\le 2\exp(\frac{-t^2}{2K^2})</script></blockquote>
-<h2 id="Improved-DK-bound"><a href="#Improved-DK-bound" class="headerlink" title="Improved DK bound"></a>Improved DK bound</h2><p>Note that </p>
-<script type="math/tex; mode=display">
-\sin^2\angle (u_1,v_1) = 1-\cos^2\angle (u_1,v_1) = \sum_{i=2}^n |u_k\cdot v_1|^2</script><p>Thus it suffices to bound $|u<em>k\cdot v_1|$. In fact, Let $Q=[u_2,\cdots,u_r]$ and  $P=[u</em>{r+1},\cdots,u_n]$. we want to bound </p>
-<script type="math/tex; mode=display">
-\|Q^Tv_1\|^2 \text{ and } \|P^Tv_1\|^2</script><p>For $Q^Tv_1$ we have</p>
-<script type="math/tex; mode=display">
-Q^T(A+E)v_1-Q^TAv_1=Q^TEv_1</script><p>which is equivalent to</p>
-<script type="math/tex; mode=display">
-(\mu_1I-\Lambda_r)Q^Tv_1 = Q^TEv_1</script><p>where $\Lambda_k$ is the diagonal matrix consisting of $\lambda_2,\cdots,\lambda_r$. It follows</p>
-<script type="math/tex; mode=display">
-|\mu_1-\lambda_2|\|Q^Tv_1\|\le \|Q^TEv_1\|</script><p>Thus we need a lower bound for gap $|\mu_1-\lambda_2|$ and an upper bound for $|Q^TEv_1|$. For $\mu_1$ we have</p>
-<script type="math/tex; mode=display">
-\mu_1 = \|A+E\|_{op}\ge u_1^T(A+E)u_1 = \lambda_1 + u_1^TEu_1</script><p>Since $E$ is $\gamma$-concentrated, we see that $\mu_1\ge \lambda_1-t$ with probability at least $1-\exp(O(-t^\gamma))$. If the eigengap $\delta=\lambda_1-\lambda_2$ is sufficient large (for example, $\delta= 2t$) then $\mu_1-\lambda_2&gt;\delta/2$ with probability at least $1-\exp(O(-\delta^\gamma))$.</p>
-<p> From the above discussion we know $\mu_1\ge \lambda_1/2$ with probability at least $1-\exp(O(-\lambda_1^\gamma))$. Then</p>
-<script type="math/tex; mode=display">
-(PP^Tv_1)^T(A+E)v_1-(PP^Tv_1)^TAv_1=(PP^Tv_1)^TEv_1</script><p>Note that $P^TA=0$ by our construction and so $\mu_1(PP^Tv_1)^Tv_1=(PP^Tv_1)^TEv_1$. We know that </p>
-<script type="math/tex; mode=display">
-\|P^Tv_1\|^2 = (PP^Tv_1)^Tv_1 \le \frac{1}{\mu_1}\|P^Tv_1\|\|E\|_{op}</script><p>Therefore, $|P^Tv<em>1|\le 2|E|</em>{op}/\lambda_1$ with probability at least $1-\exp(O(-\lambda_1^\gamma))$. </p>
-<p>Now if we write $v_1= (I-PP^T)v_1+PP^Tv_1$ then</p>
-<script type="math/tex; mode=display">
-\|Q^TEv_1\|\le \|(I-PP^T)^TE(I-PP^T)\|_{op}+\|E\|_{op}\|P^Tv_1\|</script><p>By a standard $\epsilon$-net argument the first term is proved to be no greater than $tr^{1/\gamma}$ with probability at least $1-\exp(O(-rt^\gamma)+O(r))$. Above all we have</p>
-<script type="math/tex; mode=display">
-\|Q^Tv_1\|\le \frac{2}{\delta}(tr^{1/\gamma}+2\frac{\|E\|_{op}^2}{\lambda_1})</script><p>with probability at least $1-\exp(O(-rt^\gamma)+O(r))-\exp(O(-\lambda_1^\gamma))-\exp(O(-\delta^\gamma))$.</p>
-<p>Finally we see that the new bound is related to three items: the largest eigenvalue $\lambda_1$, the eigengap $\delta$ and the rank $r$:</p>
-<script type="math/tex; mode=display">
-\sin\angle (u_1,v_1)\le 4(\frac{tr^{1/\gamma}}{\delta}+\frac{\|E\|_{op}}{\lambda_1}+\frac{\|E\|^2_{op}}{\lambda_1\delta})</script><p>with probability at least $1-\exp(O(-rt^\gamma)+O(r))-\exp(O(-\lambda_1^\gamma))-\exp(O(-\delta^\gamma))$. </p>
-<p><strong>Remark 1.</strong> This result is only nontrivial if the amplitude of $\lambda<em>1$ is much larger than $\delta$ and $|E|</em>{op}$ (otherwise when $\lambda_1\sim\delta$ the bound is worse than classical DK bound). In this case the bound is $O(r^{\gamma}/\delta)$ which is much better than $O(n^{1/\gamma}/\delta)$. </p>
+<p>Let <span class="math inline">\(E=(\xi_{ij})\)</span> be a matrix with independent random variables each with mean zero. Furthermore, <span class="math inline">\(|\xi_{ij}|\le K\)</span> a.s. for all <span class="math inline">\(i,j\)</span>. Then <span class="math inline">\(E\)</span> is <span class="math inline">\(2\)</span>-concentrated and <span class="math display">\[
+\mathbb{P}(|u^TEv|&gt;t)\le 2\exp(\frac{-t^2}{2K^2}) 
+\]</span></p>
+</blockquote>
+<h2 id="improved-dk-bound">Improved DK bound</h2>
+<p>Note that</p>
+<p><span class="math display">\[
+\sin^2\angle (u_1,v_1) = 1-\cos^2\angle (u_1,v_1) = \sum_{i=2}^n |u_k\cdot v_1|^2
+\]</span></p>
+<p>Thus it suffices to bound <span class="math inline">\(|u_k\cdot v_1|\)</span>. In fact, Let <span class="math inline">\(Q=[u_2,\cdots,u_r]\)</span> and <span class="math inline">\(P=[u_{r+1},\cdots,u_n]\)</span>. we want to bound</p>
+<p><span class="math display">\[
+\|Q^Tv_1\|^2 \text{ and } \|P^Tv_1\|^2
+\]</span></p>
+<p>For <span class="math inline">\(Q^Tv_1\)</span> we have</p>
+<p><span class="math display">\[
+Q^T(A+E)v_1-Q^TAv_1=Q^TEv_1
+\]</span></p>
+<p>which is equivalent to</p>
+<p><span class="math display">\[
+(\mu_1I-\Lambda_r)Q^Tv_1 = Q^TEv_1
+\]</span></p>
+<p>where <span class="math inline">\(\Lambda_k\)</span> is the diagonal matrix consisting of <span class="math inline">\(\lambda_2,\cdots,\lambda_r\)</span>. It follows</p>
+<p><span class="math display">\[
+|\mu_1-\lambda_2|\|Q^Tv_1\|\le \|Q^TEv_1\|
+\]</span></p>
+<p>Thus we need a lower bound for gap <span class="math inline">\(|\mu_1-\lambda_2|\)</span> and an upper bound for <span class="math inline">\(|Q^TEv_1|\)</span>. For <span class="math inline">\(\mu_1\)</span> we have</p>
+<p><span class="math display">\[
+\mu_1 = \|A+E\|_{op}\ge u_1^T(A+E)u_1 = \lambda_1 + u_1^TEu_1 
+\]</span></p>
+<p>Since <span class="math inline">\(E\)</span> is <span class="math inline">\(\gamma\)</span>-concentrated, we see that <span class="math inline">\(\mu_1\ge \lambda_1-t\)</span> with probability at least <span class="math inline">\(1-\exp(O(-t^\gamma))\)</span>. If the eigengap <span class="math inline">\(\delta=\lambda_1-\lambda_2\)</span> is sufficient large (for example, <span class="math inline">\(\delta= 2t\)</span>) then <span class="math inline">\(\mu_1-\lambda_2&gt;\delta/2\)</span> with probability at least <span class="math inline">\(1-\exp(O(-\delta^\gamma))\)</span>.</p>
+<p>From the above discussion we know <span class="math inline">\(\mu_1\ge \lambda_1/2\)</span> with probability at least <span class="math inline">\(1-\exp(O(-\lambda_1^\gamma))\)</span>. Then</p>
+<p><span class="math display">\[
+(PP^Tv_1)^T(A+E)v_1-(PP^Tv_1)^TAv_1=(PP^Tv_1)^TEv_1
+\]</span></p>
+<p>Note that <span class="math inline">\(P^TA=0\)</span> by our construction and so <span class="math inline">\(\mu_1(PP^Tv_1)^Tv_1=(PP^Tv_1)^TEv_1\)</span>. We know that</p>
+<p><span class="math display">\[
+\|P^Tv_1\|^2 = (PP^Tv_1)^Tv_1 \le \frac{1}{\mu_1}\|P^Tv_1\|\|E\|_{op}
+\]</span></p>
+<p>Therefore, <span class="math inline">\(\|P^Tv_1\|\le 2\|E\|_{op}/\lambda_1\)</span> with probability at least <span class="math inline">\(1-\exp(O(-\lambda_1^\gamma))\)</span>.</p>
+<p>Now if we write <span class="math inline">\(v_1= (I-PP^T)v_1+PP^Tv_1\)</span> then</p>
+<p><span class="math display">\[
+\|Q^TEv_1\|\le \|(I-PP^T)^TE(I-PP^T)\|_{op}+\|E\|_{op}\|P^Tv_1\|
+\]</span></p>
+<p>By a standard <span class="math inline">\(\epsilon\)</span>-net argument the first term is proved to be no greater than <span class="math inline">\(tr^{1/\gamma}\)</span> with probability at least <span class="math inline">\(1-\exp(O(-rt^\gamma)+O(r))\)</span>. Above all we have</p>
+<p><span class="math display">\[
+\|Q^Tv_1\|\le \frac{2}{\delta}(tr^{1/\gamma}+2\frac{\|E\|_{op}^2}{\lambda_1})
+\]</span></p>
+<p>with probability at least <span class="math inline">\(1-\exp(O(-rt^\gamma)+O(r))-\exp(O(-\lambda_1^\gamma))-\exp(O(-\delta^\gamma))\)</span>.</p>
+<p>Finally we see that the new bound is related to three items: the largest eigenvalue <span class="math inline">\(\lambda_1\)</span>, the eigengap <span class="math inline">\(\delta\)</span> and the rank <span class="math inline">\(r\)</span>:</p>
+<p><span class="math display">\[
+\sin\angle (u_1,v_1)\le 4(\frac{tr^{1/\gamma}}{\delta}+\frac{\|E\|_{op}}{\lambda_1}+\frac{\|E\|^2_{op}}{\lambda_1\delta})
+\]</span></p>
+<p>with probability at least <span class="math inline">\(1-\exp(O(-rt^\gamma)+O(r))-\exp(O(-\lambda_1^\gamma))-\exp(O(-\delta^\gamma))\)</span>.</p>
+<p><strong>Remark 1.</strong> This result is only nontrivial if the amplitude of <span class="math inline">\(\lambda_1\)</span> is much larger than <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\|E\|_{op}\)</span> (otherwise when <span class="math inline">\(\lambda_1\sim\delta\)</span> the bound is worse than classical DK bound). In this case the bound is <span class="math inline">\(O(r^{\gamma}/\delta)\)</span> which is much better than <span class="math inline">\(O(n^{1/\gamma}/\delta)\)</span>.</p>
 <p><strong>Remark 2.</strong> From the above simulation we see that the bound is not sharp. Therefore there are chances to obtain better results for random perturbations.</p>
 
     </article>
@@ -590,7 +624,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Motivation"><span class="toc-number">1.</span> <span class="toc-text">Motivation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Random-Noises"><span class="toc-number">2.</span> <span class="toc-text">Random Noises</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Improved-DK-bound"><span class="toc-number">3.</span> <span class="toc-text">Improved DK bound</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#motivation"><span class="toc-number">1.</span> <span class="toc-text">Motivation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#random-noises"><span class="toc-number">2.</span> <span class="toc-text">Random Noises</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#improved-dk-bound"><span class="toc-number">3.</span> <span class="toc-text">Improved DK bound</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1018,19 +1052,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1087,9 +1121,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     

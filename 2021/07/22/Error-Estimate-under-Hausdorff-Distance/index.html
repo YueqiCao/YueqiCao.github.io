@@ -272,7 +272,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.1k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
+                        <span>Word count: <span class="post-count word-count">1.2k</span>Reading time: <span class="post-count reading-time">7 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -401,75 +401,102 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>This is a useful technique I learned from <a href="https://jmlr.csail.mit.edu/papers/volume16/chazal15a/chazal15a.pdf" target="_blank" rel="noopener">Convergence rates for persistence diagram estimation in topological data analysis</a> when one wants to prove convergence results for some estimator under Hausdorff distance. Typical settings are </p>
+        <p>This is a useful technique I learned from <a href="https://jmlr.csail.mit.edu/papers/volume16/chazal15a/chazal15a.pdf" target="_blank" rel="noopener">Convergence rates for persistence diagram estimation in topological data analysis</a> when one wants to prove convergence results for some estimator under Hausdorff distance. Typical settings are</p>
 <ul>
-<li>A metric space $(X,\rho)$;</li>
-<li>A probability measure $\mu$ with support $X_\mu$;</li>
-<li>i.i.d samples $\hat{X}={X_1,\cdots,X_n}$ from $\mu$;</li>
+<li>A metric space <span class="math inline">\((X,\rho)\)</span>;</li>
+<li>A probability measure <span class="math inline">\(\mu\)</span> with support <span class="math inline">\(X_\mu\)</span>;</li>
+<li>i.i.d samples <span class="math inline">\(\hat{X}=\{X_1,\cdots,X_n\}\)</span> from <span class="math inline">\(\mu\)</span>;</li>
 </ul>
-<p>the final essential condition is the $(a,b,r_0)$-standard assumption:</p>
+<p>the final essential condition is the <span class="math inline">\((a,b,r_0)\)</span>-standard assumption:</p>
 <ul>
-<li>when $r&gt;r_0$, the ball with radius $r$ has volume $\mu(B(r))&gt; ar^b\wedge 1$.</li>
+<li>when <span class="math inline">\(r&gt;r_0\)</span>, the ball with radius <span class="math inline">\(r\)</span> has volume <span class="math inline">\(\mu(B(r))&gt; ar^b\wedge 1\)</span>.</li>
 </ul>
-<h2 id="Bound-on-Covering-Number"><a href="#Bound-on-Covering-Number" class="headerlink" title="Bound on Covering Number"></a>Bound on Covering Number</h2><p>The covering number $Cv(A,r)$ for a metric space $A$ is the minimum number of balls of radius $r$ that cover $A$.</p>
-<p>The packing number $Pk(A,r)$ for a metric space $A$ is the maximum number of balls of radius $r$ such that they are mutually disjoint.</p>
+<h2 id="bound-on-covering-number">Bound on Covering Number</h2>
+<p>The covering number <span class="math inline">\(Cv(A,r)\)</span> for a metric space <span class="math inline">\(A\)</span> is the minimum number of balls of radius <span class="math inline">\(r\)</span> that cover <span class="math inline">\(A\)</span>.</p>
+<p>The packing number <span class="math inline">\(Pk(A,r)\)</span> for a metric space <span class="math inline">\(A\)</span> is the maximum number of balls of radius <span class="math inline">\(r\)</span> such that they are mutually disjoint.</p>
 <p>We have the following relation</p>
 <blockquote>
-<p>$Pk(A,r)\le Cv(A,r)\le Pk(A,r/2)$</p>
+<p><span class="math inline">\(Pk(A,r)\le Cv(A,r)\le Pk(A,r/2)\)</span></p>
 </blockquote>
-<p><strong>proof.</strong> Set $m=Pk(A,r)$. There exists $m$ points from $A$ such that the mutual distance is greater than $2r$. If $Cv(A,r)&lt;m$, then by pigeonhole principle there are at least two points lying in the same ball of radius $2r$ which is a contradiction.</p>
-<p>Similarly, let $m’=Pk(A,r/2)$, and let $x<em>1,\cdots, x</em>{m’}$ be points realizing the packing number. By definition, for any other point $x$ there exists at least one $x_i$ such that $\rho(x,x_i)\le r$. Therefore, $\cup B(x_i,r)=A$.$\blacksquare$</p>
-<p>The $(a,b,r_0)$-standard assumption helps us to bound the packing number and covering number.</p>
+<p><strong>proof.</strong> Set <span class="math inline">\(m=Pk(A,r)\)</span>. There exists <span class="math inline">\(m\)</span> points from <span class="math inline">\(A\)</span> such that the mutual distance is greater than <span class="math inline">\(2r\)</span>. If <span class="math inline">\(Cv(A,r)&lt;m\)</span>, then by pigeonhole principle there are at least two points lying in the same ball of radius <span class="math inline">\(2r\)</span> which is a contradiction.</p>
+<p>Similarly, let <span class="math inline">\(m&#39;=Pk(A,r/2)\)</span>, and let <span class="math inline">\(x_1,\cdots, x_{m&#39;}\)</span> be points realizing the packing number. By definition, for any other point <span class="math inline">\(x\)</span> there exists at least one <span class="math inline">\(x_i\)</span> such that <span class="math inline">\(\rho(x,x_i)\le r\)</span>. Therefore, <span class="math inline">\(\cup B(x_i,r)=A\)</span>.<span class="math inline">\(\blacksquare\)</span></p>
+<p>The <span class="math inline">\((a,b,r_0)\)</span>-standard assumption helps us to bound the packing number and covering number.</p>
 <blockquote>
-<p>when $r&gt;r_0$, the packing number and covering number are such that<br>$Pk(A,r)\le \frac{1}{ar^b}\vee 1$ and $Cv(A,r)\le \frac{2^b}{ar^b}\vee 1$.</p>
+<p>when <span class="math inline">\(r&gt;r_0\)</span>, the packing number and covering number are such that <span class="math inline">\(Pk(A,r)\le \frac{1}{ar^b}\vee 1\)</span> and <span class="math inline">\(Cv(A,r)\le \frac{2^b}{ar^b}\vee 1\)</span>.</p>
 </blockquote>
-<p><strong>proof.</strong> It suffices to prove for $r&lt;a^{-1/b}$. Let $m=Pk(A,r)$. Choose a packing $B_1,\cdots,B_m$. Since they are disjoint, by assumption we have</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^m\mu(B_i)\le 1\implies m\le \frac{1}{ar^b}\vee 1</script><p>and for covering numbers we have</p>
-<script type="math/tex; mode=display">
-Cv(A,r)\le Pk(A,r/2)\le \frac{2^b}{ar^b}\vee 1\quad\blacksquare</script><h2 id="Bound-on-Hausdorff-distance"><a href="#Bound-on-Hausdorff-distance" class="headerlink" title="Bound on Hausdorff distance"></a>Bound on Hausdorff distance</h2><p>When the sample size $n$ tends to infinity, our intuition tells us that the Hausdorff distance between samples and $X<em>\mu$ should converge to zeros. The idea of our proof is to reduce the distance between $X</em>\mu$ and $\hat{X}$ to the distance between covering set and $\hat{X}$, where in the latter case we are dealing with a fixed finite set. More precisely, let $\mathcal{C}={c<em>1,\cdots,c_p}$ be the set of points realizing the covering number $Cv(X</em>\mu,r/2)$. Then</p>
-<script type="math/tex; mode=display">
+<p><strong>proof.</strong> It suffices to prove for <span class="math inline">\(r&lt;a^{-1/b}\)</span>. Let <span class="math inline">\(m=Pk(A,r)\)</span>. Choose a packing <span class="math inline">\(B_1,\cdots,B_m\)</span>. Since they are disjoint, by assumption we have</p>
+<p><span class="math display">\[
+\sum_{i=1}^m\mu(B_i)\le 1\implies m\le \frac{1}{ar^b}\vee 1
+\]</span></p>
+<p>and for covering numbers we have</p>
+<p><span class="math display">\[
+Cv(A,r)\le Pk(A,r/2)\le \frac{2^b}{ar^b}\vee 1\quad\blacksquare
+\]</span></p>
+<h2 id="bound-on-hausdorff-distance">Bound on Hausdorff distance</h2>
+<p>When the sample size <span class="math inline">\(n\)</span> tends to infinity, our intuition tells us that the Hausdorff distance between samples and <span class="math inline">\(X_\mu\)</span> should converge to zeros. The idea of our proof is to reduce the distance between <span class="math inline">\(X_\mu\)</span> and <span class="math inline">\(\hat{X}\)</span> to the distance between covering set and <span class="math inline">\(\hat{X}\)</span>, where in the latter case we are dealing with a fixed finite set. More precisely, let <span class="math inline">\(\mathcal{C}=\{c_1,\cdots,c_p\}\)</span> be the set of points realizing the covering number <span class="math inline">\(Cv(X_\mu,r/2)\)</span>. Then</p>
+<p><span class="math display">\[
 \begin{aligned}
-\mathbb{P}(d_H(X,X_\mu)>r)\le & \mathbb{P}(d_H(X,\mathcal{C})+d_H(\mathcal{C},\hat{X})>r)\\
-\le & \mathbb{P}(d_H(\mathcal{C},\hat{X})>r/2)\\
-\le & \mathbb{P}(\exists i\in\{1,\cdots,p\} \text{ such that } \hat{X}\cap B(c_i)=\emptyset)\\
-\le & \sum_{i=1}^p \mathbb{P}(\hat{X}\cap B(c_i)=\emptyset)\\
-\le & \frac{4^b}{ar^b}[1-\frac{ar^b}{2^b}]^n\\
-\le & \frac{4^b}{ar^b}\exp(-n\frac{a}{2^b}r^b)
-\end{aligned}</script><p>The first inequality comes from the triangle inequality. The second line comes from the fact that any point in $X_\mu$ is in the ball of radius $r/2$ centered at covering set. The third line comes from the definition of Hausdorff distance. Note that for any sample point the distance to $\mathcal{C}$ is less than $r/2$. However, for a covering point the distance to $\hat{X}$ can be larger than $r/2$. The fourth line is a relaxation of the third line. The fifth line substitutes the bound on covering number and standard assumption.</p>
-<p>Then we have </p>
-<script type="math/tex; mode=display">
+\mathbb{P}(d_H(X,X_\mu)&gt;r)\le &amp; \mathbb{P}(d_H(X,\mathcal{C})+d_H(\mathcal{C},\hat{X})&gt;r)\\
+\le &amp; \mathbb{P}(d_H(\mathcal{C},\hat{X})&gt;r/2)\\
+\le &amp; \mathbb{P}(\exists i\in\{1,\cdots,p\} \text{ such that } \hat{X}\cap B(c_i)=\emptyset)\\
+\le &amp; \sum_{i=1}^p \mathbb{P}(\hat{X}\cap B(c_i)=\emptyset)\\
+\le &amp; \frac{4^b}{ar^b}[1-\frac{ar^b}{2^b}]^n\\
+\le &amp; \frac{4^b}{ar^b}\exp(-n\frac{a}{2^b}r^b)
+\end{aligned}
+\]</span></p>
+<p>The first inequality comes from the triangle inequality. The second line comes from the fact that any point in <span class="math inline">\(X_\mu\)</span> is in the ball of radius <span class="math inline">\(r/2\)</span> centered at covering set. The third line comes from the definition of Hausdorff distance. Note that for any sample point the distance to <span class="math inline">\(\mathcal{C}\)</span> is less than <span class="math inline">\(r/2\)</span>. However, for a covering point the distance to <span class="math inline">\(\hat{X}\)</span> can be larger than <span class="math inline">\(r/2\)</span>. The fourth line is a relaxation of the third line. The fifth line substitutes the bound on covering number and standard assumption.</p>
+<p>Then we have</p>
+<p><span class="math display">\[
 \begin{aligned}
-\mathbb{E}[d_H(\hat{X},X_\mu)]=&{}\int_{r>0}\mathbb{P}(d_H(\hat{X},X_\mu))\ {\rm d}r\\
-\le&{} r_0 + \int_{r>r_0}\mathbb{P}(d_H(\hat{X},X_\mu))\ {\rm d}r
-\end{aligned}</script><p>Let $r_n=2(\frac{\log n}{an})^{1/b}$ (the choice of $r_n$ depends on the term inside the exponential). Then </p>
-<script type="math/tex; mode=display">
+\mathbb{E}[d_H(\hat{X},X_\mu)]=&amp;{}\int_{r&gt;0}\mathbb{P}(d_H(\hat{X},X_\mu))\ {\rm d}r\\
+\le&amp;{} r_0 + \int_{r&gt;r_0}\mathbb{P}(d_H(\hat{X},X_\mu))\ {\rm d}r
+\end{aligned}
+\]</span></p>
+<p>Let <span class="math inline">\(r_n=2(\frac{\log n}{an})^{1/b}\)</span> (the choice of <span class="math inline">\(r_n\)</span> depends on the term inside the exponential). Then</p>
+<p><span class="math display">\[
 \begin{aligned}
-\mathbb{E}[d_H(\hat{X},X_\mu)]= r_0+r_n1_{(r_0,\infty)}+\int_{r>r_n}\mathbb{P}(d_H(\hat{X},X_\mu))\ {\rm d}r
-\end{aligned}</script><p>It suffices to bound the integral. Use the transformation of variable $t=nar^b/2^b$. The integral becomes</p>
-<script type="math/tex; mode=display">
+\mathbb{E}[d_H(\hat{X},X_\mu)]= r_0+r_n1_{(r_0,\infty)}+\int_{r&gt;r_n}\mathbb{P}(d_H(\hat{X},X_\mu))\ {\rm d}r
+\end{aligned}
+\]</span></p>
+<p>It suffices to bound the integral. Use the transformation of variable <span class="math inline">\(t=nar^b/2^b\)</span>. The integral becomes</p>
+<p><span class="math display">\[
 \begin{aligned}
-   \int_{r>r_n}\frac{4^b}{ar^b}\exp(-n\frac{a}{2^b}r^b)\,{\rm d}r &\le \int_{r>\log n} \frac{2^bn}{t}\exp(-t)\, {\rm d}(\frac{2t^{1/b}}{(na)^{1/b}})\\
-   & = \frac{2^{b+1}n^{1-1/b}}{a^{1/b}b}\int_{r>\log n}t^{1/b-2}\exp(-t)\,{\rm d}t\\
-    & =  \frac{2^{b+1}n^{1-1/b}}{a^{1/b}b}(\log n)^{1/b-2}\exp(-t)|^{\log n}_\infty\\
-    & = \frac{2^{b+1}}{a^{1/b}b}(\frac{\log n}{an})^{1/b}\frac{1}{(\log n)^2}
-\end{aligned}</script><p>If $r_0=0$, then we see that </p>
-<script type="math/tex; mode=display">
+   \int_{r&gt;r_n}\frac{4^b}{ar^b}\exp(-n\frac{a}{2^b}r^b)\,{\rm d}r &amp;\le \int_{r&gt;\log n} \frac{2^bn}{t}\exp(-t)\, {\rm d}(\frac{2t^{1/b}}{(na)^{1/b}})\\
+   &amp; = \frac{2^{b+1}n^{1-1/b}}{a^{1/b}b}\int_{r&gt;\log n}t^{1/b-2}\exp(-t)\,{\rm d}t\\
+    &amp; =  \frac{2^{b+1}n^{1-1/b}}{a^{1/b}b}(\log n)^{1/b-2}\exp(-t)|^{\log n}_\infty\\
+    &amp; = \frac{2^{b+1}}{a^{1/b}b}(\frac{\log n}{an})^{1/b}\frac{1}{(\log n)^2}
+\end{aligned}
+\]</span></p>
+<p>If <span class="math inline">\(r_0=0\)</span>, then we see that</p>
+<p><span class="math display">\[
 \begin{aligned}
 \mathbb{E}[d_H(\hat{X},X_\mu)]=O((\log n/n)^{1/b}) 
-\end{aligned}</script><p>Moreover, we see that </p>
-<script type="math/tex; mode=display">
+\end{aligned}
+\]</span></p>
+<p>Moreover, we see that</p>
+<p><span class="math display">\[
 \begin{aligned}
-   \mathbb{P}(d_H(\hat{X},X_\mu)\le r_n) = 1-\mathbb{P}(d_H(\hat{X},X_\mu)>r_n)\ge 1-O((\log n)^{1/b-2}/n^{1/b}) 
-\end{aligned}</script><p>thus with high probability, </p>
-<script type="math/tex; mode=display">
-d_H(\hat{X},X_\mu)\le r_n</script><p>or </p>
-<script type="math/tex; mode=display">
-\lim_{n\to \infty}\mathbb{P}(d_H(\hat{X},X_\mu)\le r_n)=1</script><h2 id="Bound-on-Bottleneck-Distance"><a href="#Bound-on-Bottleneck-Distance" class="headerlink" title="Bound on Bottleneck Distance"></a>Bound on Bottleneck Distance</h2><p>As an application we can prove the convergence rate for persistence diagrams. Suppose we are sampling points from a measure $\mu$ with support $X<em>\mu$. The support $X</em>\mu$ has a true persistence diagram $D(X<em>\mu)$. From the sampling points we have an empirical persistence diagram $D(\hat{X})$. We ask if $D(\hat{X})$ is a good estimator of $D(X</em>\mu)$. By the <a href="http://yueqicao.top/2019/10/02/Stability-Theorems-in-Topological-Data-Analysis-3/" target="_blank" rel="noopener">stability theorem</a>, </p>
-<script type="math/tex; mode=display">
-d_B(D(X_\mu),D(\hat{X}))\le d_H(X_\mu,\hat{X})</script><p>therefore we find that with high probability,</p>
-<script type="math/tex; mode=display">
-d_B(D(X_\mu),D(\hat{X}))\le r_n</script><p>Thus we can approximate the true persistence diagram by sampling. As the sample size tends to infinity, the empirical persistence diagram will approximate the true diagram with rate at least $O(r_n)$. However, since the computational cost for persistence homology is not economic, in practice we cannot have persistence diagram from large samples. In this case, we need bootstrap method to first approximate the persistence diagram for the large sample. See <a href="http://proceedings.mlr.press/v37/chazal15.pdf" target="_blank" rel="noopener">Subsampling methods fro persistent homology</a>.</p>
+   \mathbb{P}(d_H(\hat{X},X_\mu)\le r_n) = 1-\mathbb{P}(d_H(\hat{X},X_\mu)&gt;r_n)\ge 1-O((\log n)^{1/b-2}/n^{1/b}) 
+\end{aligned}
+\]</span></p>
+<p>thus with high probability,</p>
+<p><span class="math display">\[
+d_H(\hat{X},X_\mu)\le r_n
+\]</span></p>
+<p>or</p>
+<p><span class="math display">\[
+\lim_{n\to \infty}\mathbb{P}(d_H(\hat{X},X_\mu)\le r_n)=1
+\]</span></p>
+<h2 id="bound-on-bottleneck-distance">Bound on Bottleneck Distance</h2>
+<p>As an application we can prove the convergence rate for persistence diagrams. Suppose we are sampling points from a measure <span class="math inline">\(\mu\)</span> with support <span class="math inline">\(X_\mu\)</span>. The support <span class="math inline">\(X_\mu\)</span> has a true persistence diagram <span class="math inline">\(D(X_\mu)\)</span>. From the sampling points we have an empirical persistence diagram <span class="math inline">\(D(\hat{X})\)</span>. We ask if <span class="math inline">\(D(\hat{X})\)</span> is a good estimator of <span class="math inline">\(D(X_\mu)\)</span>. By the <a href="http://yueqicao.top/2019/10/02/Stability-Theorems-in-Topological-Data-Analysis-3/">stability theorem</a>,</p>
+<p><span class="math display">\[
+d_B(D(X_\mu),D(\hat{X}))\le d_H(X_\mu,\hat{X})
+\]</span></p>
+<p>therefore we find that with high probability,</p>
+<p><span class="math display">\[
+d_B(D(X_\mu),D(\hat{X}))\le r_n
+\]</span></p>
+<p>Thus we can approximate the true persistence diagram by sampling. As the sample size tends to infinity, the empirical persistence diagram will approximate the true diagram with rate at least <span class="math inline">\(O(r_n)\)</span>. However, since the computational cost for persistence homology is not economic, in practice we cannot have persistence diagram from large samples. In this case, we need bootstrap method to first approximate the persistence diagram for the large sample. See <a href="http://proceedings.mlr.press/v37/chazal15.pdf" target="_blank" rel="noopener">Subsampling methods fro persistent homology</a>.</p>
 
     </article>
     <!-- license  -->
@@ -604,7 +631,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bound-on-Covering-Number"><span class="toc-number">1.</span> <span class="toc-text">Bound on Covering Number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bound-on-Hausdorff-distance"><span class="toc-number">2.</span> <span class="toc-text">Bound on Hausdorff distance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bound-on-Bottleneck-Distance"><span class="toc-number">3.</span> <span class="toc-text">Bound on Bottleneck Distance</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#bound-on-covering-number"><span class="toc-number">1.</span> <span class="toc-text">Bound on Covering Number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bound-on-hausdorff-distance"><span class="toc-number">2.</span> <span class="toc-text">Bound on Hausdorff distance</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bound-on-bottleneck-distance"><span class="toc-number">3.</span> <span class="toc-text">Bound on Bottleneck Distance</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1032,19 +1059,19 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
-    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+        <span class="sidebar-tag-name" data-tags="Submanifolds"><span class="iconfont-archer">&#xe606;</span>Submanifolds</span>
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
     
         <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
     
@@ -1101,9 +1128,9 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
-    
         <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
+    
+        <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     
