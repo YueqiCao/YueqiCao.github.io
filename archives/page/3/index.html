@@ -346,6 +346,43 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/24/The-Space-of-Persistence-Diagrams/" >
+            
+                <span>The Space of Persistence Diagrams</span>
+        </a>
+        <div class="abstract-content">
+            <p><strong>Notation.</strong> In the following <span class="math inline">\(\mathbb R^2\)</span> is equipped with <span class="math inline">\(\infty\)</span>-norm. Let <span class="math inline">\(\Delta=\{(x,x)|x\in\mathbb R\}\)</span> denote the diagonal, <span class="math inline">\(\Delta_+=\{(x,y)|y&gt;x\}\)</span> denote the upper off-diagonal points, and <span class="math inline">\(\overline{\Delta}_+=\Delta\cup\Delta_+\)</span> is the closure of <span class="math inline">\(\Delta_+\)</span>. Set <span class="math inline">\(\overline{\mathbb N}=\{1,2,\cdots\}\cup\{\infty\}\)</span>.</p>
+<hr>
+<p><strong>Definition.</strong> A persistence diagram <span class="math inline">\(\mathcal T\)</span> is a pair <span class="math inline">\((S_{\mathcal T},i_{\mathcal T})\)</span> where <span class="math inline">\(S_{\mathcal T}\)</span> is a subset of <span class="math inline">\(\mathbb R^2\)</span> and <span class="math inline">\(i_{\mathcal T}:S_{\mathcal T}\to \overline{\mathbb N}\)</span> is a function such that</p>
+<ol type="1">
+<li><span class="math inline">\(\Delta\subset S_{\mathcal T}\subset \overline{\Delta}_+\)</span>;</li>
+<li><span class="math inline">\(i_{\mathcal T}(\Delta)=\{\infty\}\)</span>.</li>
+</ol>
+<p><span class="math inline">\(S_{\mathcal T}\)</span> is called the support of <span class="math inline">\(\mathcal T\)</span> while <span class="math inline">\(i_{\mathcal T}\)</span> is called the multiplicity function of <span class="math inline">\(\mathcal T\)</span>.</p>
+<p>Two persistence diagrams are said to be equal if they have the same support and multiplicity function. The graph of <span class="math inline">\(i_{\mathcal T}\)</span>, defined by <span class="math inline">\(G(i_{\mathcal T})=\{^k{\bf x}:=({\bf x},k)\in S_{\mathcal T}\times \overline{\mathbb N}|k\le i_{\mathcal T}({\bf x})\}\)</span>, is called the bundle space over <span class="math inline">\(\mathcal T\)</span>. The projection <span class="math inline">\(\pi_{\mathcal T}:G(i_{\mathcal T})\to S_{\mathcal T}\)</span> to the first factor defines a map from the bundle space to the support with fiber <span class="math inline">\(\pi_{\mathcal T}^{-1}({\bf x})=\{1,2,\cdots,i_{\mathcal T}({\bf x})\}\)</span> for each point <span class="math inline">\({\bf x}\in S_{\mathcal T}\)</span>. It is an easy consequence that two persistence diagrams are equal if and only if they have the same bundle spaces.</p>
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "TDA Stability">TDA Stability</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/11/09/Some-Applications-of-Wasserstein-Distances/" >
             
                 <span>Some Applications of Wasserstein Distances</span>
@@ -641,41 +678,6 @@ A+B=\{a+b\in\mathbb R^n,a\in A,b\in B\}.
         <a class="post-tag" href="javascript:void(0);" data-tags = "Linear Regression">Linear Regression</a>
     
         <a class="post-tag" href="javascript:void(0);" data-tags = "Least Squares">Least Squares</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/07/18/Notes-on-KNN-Density-Estimates(1)/" >
-            
-                <span>Notes on KNN Density Estimates (1)</span>
-        </a>
-        <div class="abstract-content">
-            <p>This series is a note of <a href="https://mathscinet.ams.org/mathscinet-getitem?mr=530638" target="_blank" rel="noopener">Y. P. Mack and M. Rosenblatt</a>'s work in 1979.</p>
-<h2 id="introduction">Introduction</h2>
-<p>Suppose we have a <strong>bounded, twice differentiable density</strong> function <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb R^p\)</span>. Let <span class="math inline">\(X_1,X_2,\cdots,X_n\)</span> be <span class="math inline">\(n\)</span> i.i.d. samples of <span class="math inline">\(f\)</span>. Let <span class="math inline">\(x\in\mathbb R^p\)</span> be a fixed point so that <span class="math inline">\(f(x)&gt;0\)</span>. We want to estimate <span class="math inline">\(f(x)\)</span> based on <span class="math inline">\(n\)</span> samples. The KNN estimate is given by <span class="math display">\[
-f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
-\]</span> where <span class="math inline">\(Z_n\)</span> is the distance between <span class="math inline">\(x\)</span> and its <span class="math inline">\(k\)</span>th nearest neighbor, and <span class="math inline">\(\omega\)</span> is a <strong>bounded integrable</strong> weight function with <span class="math inline">\(\int\omega(u){\rm d}u=1\)</span>.</p>
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/07/18</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Asymptotic Analysis">Asymptotic Analysis</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Nonparametric Estimates">Nonparametric Estimates</a>
     
 </div>
             
@@ -1001,9 +1003,16 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
     
     
     
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 31
+        Total : 32
         </div>
         <!-- search  -->
         
@@ -1016,6 +1025,11 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href= "/2021/10/19/Texlive-Sublime-SumatraPDF/" >Texlive+Sublime+SumatraPDF</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1195,6 +1209,8 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
@@ -1203,17 +1219,15 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
+        <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
+    
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
-    
-        <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
         <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
-    
-        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
         <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
     
@@ -1225,11 +1239,11 @@ f_n(x)=\frac{1}{n(Z_n)^p}\sum_{j=1}^n\omega(\frac{x-X_j}{Z_n}),
     
         <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
     
-        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
-    
         <span class="sidebar-tag-name" data-tags="Latex"><span class="iconfont-archer">&#xe606;</span>Latex</span>
     
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1264,27 +1278,27 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
-    
         <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
+    
+        <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     
-        <span class="sidebar-category-name" data-categories="Matrix-Analysis"><span class="iconfont-archer">&#xe60a;</span>Matrix-Analysis</span>
-    
         <span class="sidebar-category-name" data-categories="TDA"><span class="iconfont-archer">&#xe60a;</span>TDA</span>
     
-        <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
+        <span class="sidebar-category-name" data-categories="Matrix-Analysis"><span class="iconfont-archer">&#xe60a;</span>Matrix-Analysis</span>
     
         <span class="sidebar-category-name" data-categories="Manifold-Learning"><span class="iconfont-archer">&#xe60a;</span>Manifold-Learning</span>
     
-        <span class="sidebar-category-name" data-categories="TDA/Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>TDA/Statistical-Theory</span>
+        <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
     
         <span class="sidebar-category-name" data-categories="Network-Analysis"><span class="iconfont-archer">&#xe60a;</span>Network-Analysis</span>
     
-        <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
+        <span class="sidebar-category-name" data-categories="TDA/Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>TDA/Statistical-Theory</span>
     
         <span class="sidebar-category-name" data-categories="CS"><span class="iconfont-archer">&#xe60a;</span>CS</span>
+    
+        <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

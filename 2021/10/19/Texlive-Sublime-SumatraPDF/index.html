@@ -22,7 +22,7 @@
     <meta name="description" content="Reading & Thinking">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Tangent Space Estimation Using Local Polynomial Fitting · Everything is Connected</title>
+    <title>Texlive+Sublime+SumatraPDF · Everything is Connected</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Everything is Connected</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Tangent Space Estimation Using Local Polynomial Fitting</a>
+                <a href="#" class="post-name">Texlive+Sublime+SumatraPDF</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Tangent Space Estimation Using Local Polynomial Fitting
+            Texlive+Sublime+SumatraPDF
             <!-- 404 -->
             
         </h1>
@@ -266,20 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Submanifolds">Submanifolds</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Asymptotic Analysis">Asymptotic Analysis</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Latex">Latex</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>Word count: <span class="post-count word-count">1.5k</span>Reading time: <span class="post-count reading-time">9 min</span></span>
+                        <span>Word count: <span class="post-count word-count">273</span>Reading time: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/05/30</span>
+                    <span class="post-intro-time">2021/10/19</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -403,61 +401,55 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Generalizations of local PCA to tangent space estimation are considered in various papers. E. Aamari and C. Levrard considered the non-asymptotic rates of local PCA in a <a href="https://arxiv.org/pdf/1512.02857.pdf" target="_blank" rel="noopener">paper</a> of manifold reconstruction. Suppose <span class="math inline">\(n\)</span> is the number of points and <span class="math inline">\(m\)</span> is the manifold dimension. Then with bandwidth chosen to be <span class="math inline">\(O(\log(n)/n)^{1/m}\)</span> the minimax rate is <span class="math inline">\(O(1/n)^{1/m}\)</span>. In their <a href="https://arxiv.org/pdf/1705.00989.pdf" target="_blank" rel="noopener">subsequent work</a>, they considered generalization using local polynomial fitting. It happens that by involving more higher terms the convergence is faster. Suppose the fitting is up to <span class="math inline">\(k\)</span>th term, then with the same bandwidth the minimax rate is <span class="math inline">\(O(1/n)^{k/m}\)</span>. However, they did not show practical algorithms. In an <a href="http://www.cse.ust.hk/~scheng/pub/j5.pdf" target="_blank" rel="noopener">early paper</a> of S.-W. Cheng and M.-K. Chiu, they proposed an algorithm using polynomial fitting up to the second order, but their analysis did not show consistency with the above result. However, their method is practical and its principle is easy to understand. We present a simple description in the following.</p>
-<p>Let <span class="math inline">\(\mathcal{M}\subseteq \mathbb{R}^{m+1}\)</span> be a hypersurface. Suppose <span class="math inline">\(x\in\mathcal{M}\)</span> is the origin and we want to estimate <span class="math inline">\(T_x\mathcal{M}\)</span>. Firstly for the simplest case where <span class="math inline">\(T_x\mathcal{M}\)</span> coincides with the hyperplane spanned by the standard vectors <span class="math inline">\(e_1,\cdots,e_m\)</span> in <span class="math inline">\(\mathbb{R}^{m+1}\)</span>, we have the local parametrization <span class="math display">\[
-\mathbf{r}(u^1,\cdots,u^m)=(u^1,\cdots,u^m,f(u^1,\cdots,u^m))
-\]</span> By definition we deduce that <span class="math display">\[
-f(0)=0,\, Df(0)=0
-\]</span> Thus locally <span class="math inline">\(\mathcal{M}\)</span> is the level set of the function <span class="math display">\[
-F(\mathbf{u})=u^{m+1}-f(u^1,\cdots,u^m)=u^{m+1}-\frac{1}{2}[u^1,\cdots,u^m]D^2f(0)[u^1,\cdots,u^m]^t+O(\|\mathbf{u}\|^3)
-\]</span> We write the quadratic form in <span class="math inline">\(F(\mathbf{u})\)</span> as the product of two vectors <span class="math display">\[
-\begin{aligned}
-&amp;[\frac{1}{\sqrt{2}}(u^1)^2,u^1u^2,\cdots,u^1u^m,u^1u^{m+1},\frac{1}{\sqrt{2}}(u^2)^2,\cdots,u^2u^m,u^2u^{m+1},\cdots,\frac{1}{\sqrt{2}}(u^{m+1})^2]\cdot\\
-&amp;[\frac{1}{\sqrt{2}}\partial_1^2f(0),\partial_1\partial_2f(0),\cdots,\partial_1\partial_mf(0),0,\frac{1}{\sqrt{2}}\partial_2^2f(0),\cdots,\partial_2\partial_mf(0),0,\cdots,0]
-\end{aligned}
-\]</span> Define <span class="math inline">\(q:\mathbb{R}^{m+1}\to\mathbb{R}^{(m+1)m/2}\)</span> by <span class="math display">\[
-q(\mathbf{u})=[\frac{1}{\sqrt{2}}(u^1)^2,u^1u^2,\cdots,u^1u^{m+1},\frac{1}{\sqrt{2}}(u^2)^2,\cdots,u^2u^{m+1},\cdots,\frac{1}{\sqrt{2}}(u^{m+1})^2]^t
-\]</span> Denote the vectorized form of <span class="math inline">\(D^2f(0)\)</span> by <span class="math inline">\(Q_{m+1}\)</span>. Then <span class="math display">\[
-F(\mathbf{u})=\mathbf{u}^te_{m+1}-q(\mathbf{u})^tQ_{m+1}+O(\|\mathbf{u}\|^3)
-\]</span> In general, let <span class="math inline">\(T_x\mathcal{M}=\text{span}\{\hat{e}_1,\cdots,\hat{e}_m\}\)</span> and <span class="math inline">\([\hat{e}_1,\cdots,\hat{e}_m,\hat{e}_{m+1}]=P[e_1,\cdots,e_m,e_{m+1}]\)</span>. Let <span class="math inline">\(\mathbf{u}=\sum_{i=1}^{m+1}u^ie_i=\sum_{i=1}^{m+1}\hat{u}^i\hat{e}_i\)</span>. As in above <span class="math inline">\(F\)</span> should be a function of <span class="math inline">\(\hat{u}^1,\cdots,\hat{u}^{m+1}\)</span>, here we still express <span class="math inline">\(F\)</span> with respect to coordinate components <span class="math inline">\(u^1,\cdots,u^{m+1}\)</span>. <span class="math display">\[
-\begin{aligned}
-F(\mathbf{u})&amp;=\mathbf{u}^t\hat{e}_{m+1}-q(\mathbf{u})^tq(P)Q_{m+1}+O(\|\mathbf{u}\|^3)\\
-&amp;=\mathbf{u}^tPe_{m+1}-q(\mathbf{u})^tq(P)Q_{m+1}+O(\|\mathbf{u}\|^3)\\
-&amp;=[\mathbf{u},q(\mathbf{u})]^t\left[\begin{array}{c}Pe_{m+1}\\ q(P)Q_{m+1}\end{array}\right]+O(\|\mathbf{u}\|^3)
-\end{aligned}
-\]</span> where <span class="math inline">\(q(P)\)</span> is an orthogonal matrix in <span class="math inline">\(\mathbb{R}^{(m+1)m/2}\)</span>.</p>
-<p>For Euclidean submanifolds <span class="math inline">\(\mathcal{M} \subseteq\mathbb{R}^{d}\)</span>, it is similar since we have <span class="math inline">\(l=d-m\)</span> functions <span class="math inline">\(F_{m+1},\cdots,F_d\)</span> as above. That is, <span class="math display">\[
-F_\alpha(\mathbf{u})=[\mathbf{u},q(\mathbf{u})]^t\left[\begin{array}{c}Pe_{\alpha}\\ q(P)Q_{\alpha}\end{array}\right]+O(\|\mathbf{u}\|^3)
-\]</span> for <span class="math inline">\(\alpha=m+1,\cdots,d\)</span>. Now suppose we have <span class="math inline">\(n\)</span> samples <span class="math inline">\(X_1,\cdots,X_n\)</span> from some distribution on the manifold. It is natural to minimize the following error <span class="math display">\[
-\frac{1}{n}\sum_{\alpha=m+1}^d\sum_{i=1}^n\left([X_i,q(X_i)]^t\left[\begin{array}{c}Pe_{\alpha}\\ q(P)Q_{\alpha}\end{array}\right]\right)^2
-\]</span> If we set <span class="math display">\[
-\begin{aligned}
-&amp;A=\left[\begin{array}{ccc}X_{11}&amp;\cdots&amp;X_{1d}\\ \vdots&amp;\ddots&amp;\vdots\\ X_{n1}&amp;\cdots&amp; X_{nd}\end{array}\right]\\
-&amp;B=\left[\begin{array}{cccccc}\frac{1}{\sqrt{2}}X^2_{11}&amp;X_{11}X_{12}&amp;\cdots&amp;X_{11}X_{1d}&amp;\cdots&amp;\frac{1}{\sqrt{2}}X_{1d}^2\\ \vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\ddots&amp;\vdots\\ \frac{1}{\sqrt{2}}X^2_{n1}&amp;X_{n1}X_{n2}&amp;\cdots&amp;X_{n1}X_{nd}&amp;\cdots&amp;\frac{1}{\sqrt{2}}X_{nd}^2\end{array}\right]\\
-&amp;\left[\begin{array}{c}Pe_{\alpha}\\ q(P)Q_{\alpha}\end{array}\right]=\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]
-\end{aligned}
-\]</span> it is equivalent to minimize <span class="math display">\[
-\frac{1}{n}\sum_{\alpha=m+1}^d\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]^t[A,B]^t[A,B]\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]
-\]</span> Note the dimension of eigenspace of <span class="math inline">\([A B]^t[A B]\)</span> corresponding to <span class="math inline">\(0\)</span> can be far larger than that of normal space. Hence it works for hypersurfaces but becomes intractable for general submanifolds. Furthermore, if one writes down the asymptotic order with respect to bandwidth it is easy to notice that in fact it does not exceed local PCA. To work out a method faster than local PCA needs further consideration.</p>
-<p>Consider the case when the number of samples is less than <span class="math inline">\(d(d+1)/2\)</span>. we add the penalty term <span class="math display">\[
-\sum_{\alpha=m+1}^d(\frac{1}{n}\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]^t[A,B]^t[A,B]\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]+\gamma\|c_\alpha\|^2)
-\]</span> Then the objective function becomes <span class="math display">\[
-\sum_{\alpha=m+1}^d\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]^tZ\left[\begin{array}{c}g_{\alpha}\\ c_{\alpha}\end{array}\right]
-\]</span> where <span class="math display">\[
-Z=\left[\begin{array}{cc}\frac{1}{n}A^tA&amp;\frac{1}{n}A^tB\\\frac{1}{n}A^tB&amp;\frac{1}{n}B^tB+\gamma I\end{array}\right]=\left[\begin{array}{cc}I&amp;H_\gamma\\0&amp;I\end{array}\right]\left[\begin{array}{cc}W_\gamma&amp;0\\0&amp;U_\gamma\end{array}\right]\left[\begin{array}{cc}I&amp;0\\H_\gamma&amp;I\end{array}\right]
-\]</span> and <span class="math display">\[
-U_\gamma=\frac{1}{n}B^tB+\gamma I,\, H_\gamma=\frac{1}{n}A^tBU_\gamma^{-1},\, W_\gamma=\frac{1}{n}A^tA-H_\gamma U_\gamma H_\gamma^t
-\]</span> Therefore, we have <span class="math display">\[
-(10)=\sum_{\alpha=m+1}^dg_\alpha^tW_\gamma g_\alpha+(c_\alpha+H_\gamma^tg_\alpha)^tU_\gamma(c_\alpha+H^t_\gamma g_\alpha)
-\]</span> Note that <span class="math inline">\(U_\gamma\)</span> is positive definite for <span class="math inline">\(\gamma&gt;0\)</span>. Hence the minimum is achieved if <span class="math inline">\(c_\alpha+H^t_\gamma g_\alpha=0\)</span>. Let <span class="math inline">\(B=LSR\)</span> be the SVD decomposition of <span class="math inline">\(B\)</span>. Then <span class="math display">\[
-U_\gamma=R^t(\frac{1}{n}S^2+\gamma I)R
-\]</span> and <span class="math display">\[
-\frac{1}{n}B(U_\gamma^{-1})^tB^t=\frac{1}{n}LS(\frac{1}{n}S^2+\gamma I)^{-1}SL^t
-\]</span> Substituting into the expression of <span class="math inline">\(W_\gamma\)</span>, we see that <span class="math display">\[
-W_\gamma=\frac{1}{n}A^t(I-\frac{1}{n}B(U_\gamma^{-1})^tB^t)A=\frac{1}{n}A^tL(I-\frac{1}{n}S(\frac{1}{n}S^2+\gamma I)^{-1}S)L^tA
-\]</span> Note that the middle term is a diagonal matrix. Write <span class="math inline">\(W_\gamma=\gamma A^tL\Sigma_\gamma L^tA\)</span>. For an arbitrary element <span class="math inline">\(\lambda\in S\)</span> it becomes <span class="math inline">\(1/(\lambda^2+n\gamma)\)</span> in <span class="math inline">\(\Sigma_\gamma\)</span>. Therefore, the solution is given by the eigenvectors of <span class="math inline">\(W_\gamma\)</span> corresponding to the smallest eigenvalue.</p>
-<p>In the original paper, more techniques are involved to remove the penalty parameter and to make the computation efficient. For the convergence rate, the authors only focused on small sample size (between <span class="math inline">\((m+1)m/2\)</span> and <span class="math inline">\((d+1)d/2\)</span>). Under some assumptions, the angular error is <span class="math inline">\(O(h^2)\)</span> with high probability, where <span class="math inline">\(h\)</span> is the bandwidth. The proof involves a lot of estimations of matrix elements which are used in Gershgorin circle theorem. In fact, the paper contributes a lot to the estimation of eigenvalues. For eigenvectors they used results from <a href="https://ipsen.math.ncsu.edu/ps/rr978.ps" target="_blank" rel="noopener">relative perturbation bounds for eigenspaces</a>, which are generalizations of Davis-Kahan theorem.</p>
-<p><img src="/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/1.jpg" alt="1"><img src="/2020/05/30/Tangent-Space-Estimation-Using-Local-Polynomial-Fitting/2.jpg" alt="2"></p>
+        <p>operating system: win10</p>
+<h2 id="install-texlive">Install Texlive</h2>
+<p>Download and install Texlive from this <a href="https://tug.org/texlive/acquire-netinstall.html" target="_blank" rel="noopener">page</a>.</p>
+<h2 id="install-sumatrapdf">Install SumatraPDF</h2>
+<p>Download and install SumatraPdf from this <a href="https://www.sumatrapdfreader.org/download-free-pdf-viewer" target="_blank" rel="noopener">page</a>.</p>
+<h2 id="install-sublime-text">Install Sublime Text</h2>
+<p>Download and install Sublime Text from this <a href="https://www.sublimetext.com/" target="_blank" rel="noopener">page</a>.</p>
+<h3 id="install-package-control-plugin">Install Package Control plugin</h3>
+<ul>
+<li>Click the <code>Preferences &gt; Browse Packages…</code> menu</li>
+<li>Browse up a folder and then into the <code>Installed Packages/</code> folder</li>
+<li>Download <a href="https://packagecontrol.io/Package%20Control.sublime-package" target="_blank" rel="noopener">Package Control.sublime-package</a> and copy it into the <code>Installed Packages/</code> directory</li>
+<li>Restart Sublime Text</li>
+</ul>
+<h3 id="install-latextools-plugin">Install LatexTools plugin</h3>
+<ul>
+<li>Open the command palette by <code>Ctrl + Shift + P</code></li>
+<li>Type <code>Install Packages</code> and <code>Enter</code></li>
+<li>Type <code>LatexTools</code> and <code>Enter</code></li>
+</ul>
+<h3 id="update-latextools-settings">Update LatexTools settings</h3>
+<ul>
+<li>Click the <code>Preferences &gt; Packages Settings &gt; LatexTools &gt; Settings-User</code></li>
+<li>If you are installing LatexTools for the first time, sublime will ask you to create a copy of <code>default-setting</code> in the <code>User</code> file. Click <code>Ok</code> to create this copy</li>
+<li>Type <code>Ctrl + F</code> and find <code>windows</code>. Put your Texlive path and SumatraPDF path into <code>texpath</code> and <code>sumatra</code>. Fill <code>distro</code> by <code>texlive</code> and <code>sublime_excutable</code> by <code>\your\sublime\path\subl.exe</code></li>
+<li>Find <code>builder</code>. Replace <code>tradition</code> by <code>simple</code></li>
+<li>Find <code>keep-focues</code>. Set <code>false</code></li>
+</ul>
+<h3 id="auto-complete">Auto Complete</h3>
+<p>Press <code>Preferences &gt; Settings</code>. Add</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;auto_complete_selector&quot;: &quot;source,text&quot;,</span><br></pre></td></tr></table></figure>
+<h2 id="inverse-search-in-sumatrapdf">Inverse Search in SumatraPDF</h2>
+<ul>
+<li>Add your SumatraPDF path to system environment path.</li>
+<li>Open your SumatraPDF and click <code>advanced settings</code>. Set <code>true</code> for <code>EnableTexEnhancement</code></li>
+<li>Click <code>settings</code> and fill the last line with <code>"your\sublime\path\sublime_text.exe" "%f:%l"</code></li>
+</ul>
+<h2 id="test">Test</h2>
+<p>Create a new file and add the following</p>
+<pre><code>\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+hello this is a \LaTeX testing file
+\begin{equation}
+\int_a^b f {\rm d}x = F(b)-F(a)
+\end{equation}
+\end{document}</code></pre>
+<p>Press <code>Ctrl + B</code> to compile this tex file.</p>
 
     </article>
     <!-- license  -->
@@ -466,17 +458,12 @@ W_\gamma=\frac{1}{n}A^t(I-\frac{1}{n}B(U_\gamma^{-1})^tB^t)A=\frac{1}{n}A^tL(I-\
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2020/07/08/Local-PCA-with-Gaussian-Noise/" title= "Local PCA with Gaussian Noise">
-                    <div class="nextTitle">Local PCA with Gaussian Noise</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/05/21/Tangent-Space-Estimation-Using-Local-PCA/" title= "Tangent Space Estimation Using Local PCA">
-                    <div class="prevTitle">Tangent Space Estimation Using Local PCA</div>
+                <a href= "/2021/10/16/List-of-Convergence-Rates-in-TDA/" title= "List of Convergence Rates in TDA">
+                    <div class="prevTitle">List of Convergence Rates in TDA</div>
                 </a>
             
         </li>
@@ -592,7 +579,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#install-texlive"><span class="toc-number">1.</span> <span class="toc-text">Install Texlive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#install-sumatrapdf"><span class="toc-number">2.</span> <span class="toc-text">Install SumatraPDF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#install-sublime-text"><span class="toc-number">3.</span> <span class="toc-text">Install Sublime Text</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#install-package-control-plugin"><span class="toc-number">3.1.</span> <span class="toc-text">Install Package Control plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#install-latextools-plugin"><span class="toc-number">3.2.</span> <span class="toc-text">Install LatexTools plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#update-latextools-settings"><span class="toc-number">3.3.</span> <span class="toc-text">Update LatexTools settings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#auto-complete"><span class="toc-number">3.4.</span> <span class="toc-text">Auto Complete</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inverse-search-in-sumatrapdf"><span class="toc-number">4.</span> <span class="toc-text">Inverse Search in SumatraPDF</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#test"><span class="toc-number">5.</span> <span class="toc-text">Test</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

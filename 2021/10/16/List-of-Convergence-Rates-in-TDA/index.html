@@ -401,7 +401,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="frechet-means-for-distributions-of-persistence-diagrams">Frechet means for distributions of persistence diagrams</h2>
+        <h2 id="frechet-means-for-distributions-of-persistence-diagrams"><a href="https://link.springer.com/article/10.1007/s00454-014-9604-7" target="_blank" rel="noopener">Frechet means for distributions of persistence diagrams</a></h2>
 <p>Consider the measure <span class="math inline">\(\rho = 1/m \sum_{i=1}^m \delta_{Z_i}\)</span> on the space of persistence diagrams. The population Frechet mean is defined by</p>
 <p><span class="math display">\[
 Y = \arg\min_Z \int_{\mathcal{D}} d(X,Z)^2 {\rm d}\rho(X)
@@ -415,7 +415,7 @@ Y_n = \arg\min_Z \int_{\mathcal{D}} d(X,Z)^2 {\rm d}\rho_n(X)
 d(Y,Y_n)^2\le \frac{m^2F(Y)}{n}\log(\frac{m}{\delta})
 \]</span> for <span class="math inline">\(n\ge 8m\log(m/\delta)\)</span> and the right hand side is less than <span class="math inline">\(r^2\)</span> where <span class="math inline">\(r\)</span> characterizes the separation between the local minima of <span class="math inline">\(F\)</span>.</p>
 </blockquote>
-<h2 id="convergence-rates-for-persistence-diagrams-estimation-in-topological-data-analysis">Convergence rates for persistence diagrams estimation in topological data analysis</h2>
+<h2 id="convergence-rates-for-persistence-diagrams-estimation-in-topological-data-analysis"><a href="https://www.jmlr.org/papers/volume16/chazal15a/chazal15a.pdf" target="_blank" rel="noopener">Convergence rates for persistence diagrams estimation in topological data analysis</a></h2>
 <p>Let <span class="math inline">\((M,\rho)\)</span> be a metric space and <span class="math inline">\(\mu\)</span> is a measure on it with support <span class="math inline">\(M_\mu\)</span>. Further, assume that <span class="math inline">\(\mu\)</span> satisfies the <span class="math inline">\((a,b)\)</span>-standard assumption: for any <span class="math inline">\(x\)</span> in <span class="math inline">\(M_\mu\)</span> and <span class="math inline">\(r&gt;0\)</span>, <span class="math inline">\(\mu(B(x,r))\ge \min(ar^b,1)\)</span> (usually <span class="math inline">\(b=d\)</span> if in <span class="math inline">\(\mathbb{R}^d\)</span>). Let <span class="math inline">\(\mathbb{X}=\{X_1,\cdots,X_n\}\)</span> be iid samples from <span class="math inline">\(\mu\)</span>. Then we have</p>
 <blockquote>
 <p><span class="math inline">\(\mathbb{E}[d_\infty(\text{Dgm}(M_\mu),\text{Dgm}(\mathbb{X}))]\le C(\frac{\log n}{n})^{1/b}\)</span> where <span class="math inline">\(C\)</span> is a constant depending on <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</p>
@@ -424,10 +424,10 @@ d(Y,Y_n)^2\le \frac{m^2F(Y)}{n}\log(\frac{m}{\delta})
 <blockquote>
 <p>for any <span class="math inline">\(\epsilon&gt;0\)</span>, <span class="math inline">\(\mathbb{P}[d_H(M_\mu,\mathbb{X})]\le \frac{2^b}{a\epsilon^b}\exp(-na\epsilon^b)\wedge 1\)</span></p>
 </blockquote>
-<h2 id="subsampling-methods-for-persistent-homology">Subsampling methods for persistent homology</h2>
+<h2 id="subsampling-methods-for-persistent-homology"><a href="http://proceedings.mlr.press/v37/chazal15.pdf" target="_blank" rel="noopener">Subsampling methods for persistent homology</a></h2>
 <p>Let <span class="math inline">\((M,\rho,\mu)\)</span> be the metric measure space satisfying the <span class="math inline">\((a,b)\)</span>-standard assumption. Let <span class="math inline">\(S_1,\cdots,S_n\)</span> be <span class="math inline">\(n\)</span> iid samples of size <span class="math inline">\(m\)</span> from <span class="math inline">\(\mu\)</span>. Define the empirical average landscape by</p>
 <p><span class="math display">\[
-(\hat\lambda) = \frac{1}{n}\sum_{i=1}^n\lambda_{S_i}
+(\hat{\lambda}) = \frac{1}{n}\sum_{i=1}^n\lambda_{S_i}
 \]</span></p>
 <p>The empirical average landscape is supposed to converge to the population average landscape which is</p>
 <p><span class="math display">\[
@@ -441,7 +441,7 @@ d(Y,Y_n)^2\le \frac{m^2F(Y)}{n}\log(\frac{m}{\delta})
 <blockquote>
 <p><span class="math inline">\(\mathbb{E}\|\hat{\lambda}-\mathbb{E}[\lambda]\|_\infty\le O(1/\sqrt{n})\)</span></p>
 </blockquote>
-<h2 id="estimation-and-quantization-of-expected-persistence-diagrams">Estimation and quantization of expected persistence diagrams</h2>
+<h2 id="estimation-and-quantization-of-expected-persistence-diagrams"><a href="http://proceedings.mlr.press/v139/divol21a/divol21a.pdf" target="_blank" rel="noopener">Estimation and quantization of expected persistence diagrams</a></h2>
 <p>Let <span class="math inline">\(\Omega=\{(x,y)|y&gt;x\}\)</span> be the open half-plane, and <span class="math inline">\(\partial\Omega=\{(x,x)|x\in\mathbb{R}\}\)</span> be the boundary of <span class="math inline">\(\Omega\)</span>. Let <span class="math inline">\(\mathcal{M}^p\)</span> be the space of Radon measures supported on <span class="math inline">\(\Omega\)</span> that have finite total <span class="math inline">\(p\)</span>-persistence, i.e. <span class="math inline">\(\int \|x-\partial\Omega\|^p {\rm d}\mu(x)&lt;\infty\)</span>. Define the distance between two measures <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> by</p>
 <p><span class="math display">\[
 \textrm{OT}_p = \inf_{\pi}\left(\int_{\bar{\Omega}\times\bar{\Omega}}\|x-y\|^p {\rm d}\pi(x,y)\right) 
@@ -463,6 +463,11 @@ d(Y,Y_n)^2\le \frac{m^2F(Y)}{n}\log(\frac{m}{\delta})
     <!-- paginator  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2021/10/19/Texlive-Sublime-SumatraPDF/" title= "Texlive+Sublime+SumatraPDF">
+                    <div class="nextTitle">Texlive+Sublime+SumatraPDF</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -819,9 +824,16 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 31
+        Total : 32
         </div>
         <!-- search  -->
         
@@ -834,6 +846,11 @@ top:50vh;
     
     <div class="archive-year"> 2021 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/19</span><a class="archive-post-title" href= "/2021/10/19/Texlive-Sublime-SumatraPDF/" >Texlive+Sublime+SumatraPDF</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1013,6 +1030,8 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
+    
         <span class="sidebar-tag-name" data-tags="Linear Regression"><span class="iconfont-archer">&#xe606;</span>Linear Regression</span>
     
         <span class="sidebar-tag-name" data-tags="Least Squares"><span class="iconfont-archer">&#xe606;</span>Least Squares</span>
@@ -1021,17 +1040,15 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Concentration Inequality"><span class="iconfont-archer">&#xe606;</span>Concentration Inequality</span>
     
+        <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
+    
         <span class="sidebar-tag-name" data-tags="Perturbation Theory"><span class="iconfont-archer">&#xe606;</span>Perturbation Theory</span>
     
         <span class="sidebar-tag-name" data-tags="Matrix Analysis"><span class="iconfont-archer">&#xe606;</span>Matrix Analysis</span>
     
-        <span class="sidebar-tag-name" data-tags="Warped Products"><span class="iconfont-archer">&#xe606;</span>Warped Products</span>
-    
-        <span class="sidebar-tag-name" data-tags="TDA Stability"><span class="iconfont-archer">&#xe606;</span>TDA Stability</span>
+        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
         <span class="sidebar-tag-name" data-tags="Forman Curvature"><span class="iconfont-archer">&#xe606;</span>Forman Curvature</span>
-    
-        <span class="sidebar-tag-name" data-tags="Asymptotic Analysis"><span class="iconfont-archer">&#xe606;</span>Asymptotic Analysis</span>
     
         <span class="sidebar-tag-name" data-tags="Metric Convexity"><span class="iconfont-archer">&#xe606;</span>Metric Convexity</span>
     
@@ -1043,11 +1060,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="Wasserstein Distances"><span class="iconfont-archer">&#xe606;</span>Wasserstein Distances</span>
     
-        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
-    
         <span class="sidebar-tag-name" data-tags="Latex"><span class="iconfont-archer">&#xe606;</span>Latex</span>
     
         <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
+    
+        <span class="sidebar-tag-name" data-tags="About My Blog"><span class="iconfont-archer">&#xe606;</span>About My Blog</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -1082,27 +1099,27 @@ jsonContent:
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
     
-        <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
-    
         <span class="sidebar-category-name" data-categories="Geometry"><span class="iconfont-archer">&#xe60a;</span>Geometry</span>
+    
+        <span class="sidebar-category-name" data-categories="Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>Statistical-Theory</span>
     
         <span class="sidebar-category-name" data-categories="Probability"><span class="iconfont-archer">&#xe60a;</span>Probability</span>
     
-        <span class="sidebar-category-name" data-categories="Matrix-Analysis"><span class="iconfont-archer">&#xe60a;</span>Matrix-Analysis</span>
-    
         <span class="sidebar-category-name" data-categories="TDA"><span class="iconfont-archer">&#xe60a;</span>TDA</span>
     
-        <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
+        <span class="sidebar-category-name" data-categories="Matrix-Analysis"><span class="iconfont-archer">&#xe60a;</span>Matrix-Analysis</span>
     
         <span class="sidebar-category-name" data-categories="Manifold-Learning"><span class="iconfont-archer">&#xe60a;</span>Manifold-Learning</span>
     
-        <span class="sidebar-category-name" data-categories="TDA/Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>TDA/Statistical-Theory</span>
+        <span class="sidebar-category-name" data-categories="翻译"><span class="iconfont-archer">&#xe60a;</span>翻译</span>
     
         <span class="sidebar-category-name" data-categories="Network-Analysis"><span class="iconfont-archer">&#xe60a;</span>Network-Analysis</span>
     
-        <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
+        <span class="sidebar-category-name" data-categories="TDA/Statistical-Theory"><span class="iconfont-archer">&#xe60a;</span>TDA/Statistical-Theory</span>
     
         <span class="sidebar-category-name" data-categories="CS"><span class="iconfont-archer">&#xe60a;</span>CS</span>
+    
+        <span class="sidebar-category-name" data-categories="About-My-Blog"><span class="iconfont-archer">&#xe60a;</span>About-My-Blog</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
